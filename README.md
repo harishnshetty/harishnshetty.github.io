@@ -15,14 +15,14 @@ Visit the live site at:
 ## 📁 Structure
 
 - `index.html` – Main landing page
-- Links to: `projects.html`, `skills.html`, `certifications.html`, `experience.html`, etc.
+- Links to: `Script generator` `projects.html`, `skills.html`, `certifications.html`, `experience.html`,etc.
 - Dynamic typing animation, theme toggle, and mobile-friendly navigation
 
 ---
 
 ## 📫 Contact
 
-- 📧 harishn662@example.com  
+- 📧 harishn662@gmail.com  
 - 💼 [LinkedIn](https://www.linkedin.com/in/harish-n-shetty/)  
 - 💻 [GitHub](https://github.com/harishnshetty)
 
