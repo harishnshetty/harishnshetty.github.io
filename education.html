@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Education - Harish's Console</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      body {
+        background: linear-gradient(-45deg, #667eea, #cab6b6, #365fcd, #667eea);
+        background-size: 400% 400%;
+        animation: gradientShift 10s ease infinite;
+      }
+  
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+  
+      .gradient-text {
+        background: linear-gradient(90deg, #7f5af0, #e2cccc, #1e8a85);
+        background-size: 200% 200%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        animation: textGlow 6s ease infinite;
+        font-weight: bold;
+      }
+  
+      @keyframes textGlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+  
+      .glow-button {
+        background: linear-gradient(90deg, #7f5af0, #e2cccc, #1e8a85);
+        background-size: 200% 200%;
+        animation: glowGradient 6s ease infinite;
+        color: black;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        box-shadow: 0 0 10px rgba(127, 90, 240, 0.8);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+  
+      @keyframes glowGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+  
+      .glow-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(127, 90, 240, 1);
+      }
+  
+      .glow-card {
+        transition: box-shadow 0.4s ease, transform 0.4s ease, background 0.4s ease;
+        cursor: default;
+      }
+  
+      .glow-card:hover {
+        box-shadow: 0 0 25px 10px rgba(127, 90, 240, 0.3),
+                    0 0 40px 15px rgba(226, 204, 204, 0.2),
+                    0 0 60px 20px rgba(30, 138, 133, 0.2);
+        transform: translateY(-5px) scale(1.02);
+      }
+  
+      nav a {
+        color: #1a202c;
+      }
+  
+      .dark nav a {
+        color: #f9fafb;
+      }
+  
+      nav a:hover {
+        text-decoration: underline;
+        color: #3b82f6;
+      }
+  
+      #mobileMenu {
+        background-color: #ffffff;
+      }
+  
+      .dark #mobileMenu {
+        background-color: #1f2937;
+      }
+  
+      @media (min-width: 640px) {
+        #mobileMenu {
+          background-color: transparent;
+        }
+  
+        #mobileMenu a {
+          color: #ffffff;
+        }
+      }
+  
+      @media (min-width: 768px) {
+        footer {
+          margin-top: auto; /* Ensures footer is at the bottom */
+          padding: 1rem; /* Adjust padding to prevent overflow */
+        }
+        
+        footer .flex {
+          flex-wrap: wrap; /* Allows items to wrap in case of space constraints */
+          justify-content: center; /* Centers the footer items */
+          gap: 1rem; /* Adds space between items */
+        }
+        
+        footer img {
+          width: 2.5rem; /* Set width to 10rem (w-10) */
+          height: 2.5rem; /* Set height to 10rem (h-10) */
+        }
+        
+        footer span {
+          font-size: 1rem; /* Adjust the font size to match the icon size */
+        }
+        
+    </style>
+    <script>
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle('dark');
+      }
+  
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('menuOverlay');
+        menu.classList.toggle('hidden');
+        overlay.classList.toggle('hidden');
+      }
+    </script>
+  </head>
+
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen relative">
+  <div class="flex flex-col min-h-screen">
+    <!-- Overlay -->
+    <div id="menuOverlay" onclick="toggleMobileMenu()" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+
+    <!-- Header -->
+    <header class="bg-gray-800 text-white p-2 flex justify-between items-center">
+      <h1 class="text-3xl gradient-text">Education</h1>
+      <nav class="relative w-full sm:w-auto text-gray-900 dark:text-gray-100">
+        <div class="sm:hidden flex justify-end">
+          <button onclick="toggleMobileMenu()" class="text-white text-2xl">☰</button>
+        </div>
+        <div id="mobileMenu"
+          class="hidden sm:flex sm:flex-row sm:gap-4 gap-2 items-center absolute sm:static top-16 left-1/2 transform -translate-x-1/2 sm:translate-x-0 w-11/12 sm:w-auto z-50 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl flex-col sm:flex-row">
+          <div class="w-full flex justify-end sm:hidden mb-2">
+            <button onclick="toggleMobileMenu()" class="text-gray-600 dark:text-gray-300 text-xl font-bold">×</button>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4 items-center w-full sm:w-auto text-center">
+            <a href="index.html">Home</a>
+            <a href="certifications.html">Certifications</a>
+            <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
+           <!--  <a href="education.html">Education</a> -->
+            <a href="experience.html">Experience</a>
+            <a href="about.html">About</a>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full sm:w-auto mt-4 sm:mt-0 text-sm sm:text-base">
+            <a href="contact.html" class="bg-gray-600 px-2 py-2 rounded text-center truncate">Contact</a>
+            <a href="./resume.pdf" download class="glow-button text-center truncate">⬇️ Resume</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Education Section -->
+    <main class="flex-grow grid grid-cols-1 md:grid-cols-3 gap-0 px-0 mt-10 mb-16">
+      <!-- Arizona State University -->
+      <div class="glow-card bg-white dark:bg-gray-800 p-6 rounded shadow max-w-md w-full mx-auto">
+        <img src="img/bms.png" alt="ASU Logo" class="w-100 mb-4 h-50 mx-auto">
+        <p class="italic text-sm text-center">MS in Computer Science</p>
+        <p class="text-lg font-semibold text-center">January 2021 - Present</p>
+        <h4 class="mt-4 font-bold">Relevant Coursework</h4>
+        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 mt-2">
+          <li>Distributed Database Systems</li>
+          <li>Cloud Computing</li>
+          <li>Foundation Of Algorithms</li>
+        </ul>
+      </div>
+
+      <!-- Ahmedabad University -->
+      <div class="glow-card bg-white dark:bg-gray-800 p-6 rounded shadow max-w-md w-full mx-auto">
+        <img src="img/college.png" alt="Ahmedabad University Logo" class="w-100 mb-4 h-55 mx-auto">
+        <p class="italic text-sm text-center">B.Tech. in Information and Communication Technology</p>
+        <p class="text-lg font-semibold text-center">July 2014 - May 2018</p>
+        <h4 class="mt-4 font-bold">Relevant Coursework</h4>
+        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 mt-2">
+          <li>Database Management Systems</li>
+          <li>Algorithms & Optimization for Big Data</li>
+          <li>Machine Learning</li>
+        </ul>
+      </div>
+
+      <!-- School -->
+      <div class="glow-card bg-white dark:bg-gray-800 p-6 rounded shadow max-w-md w-full mx-auto">
+        <img src="img/school.png" alt="School Logo" class="w-40 mb-4  h-50 mx-auto">
+        <p class="italic text-sm text-center">B.Tech. in Information and Communication Technology</p>
+        <p class="text-lg font-semibold text-center">July 2014 - May 2018</p>
+        <h4 class="mt-4 font-bold">Relevant Coursework</h4>
+        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 mt-2">
+          <li>Database Management Systems</li>
+          <li>Algorithms & Optimization for Big Data</li>
+          <li>Machine Learning</li>
+        </ul>
+      </div>
+    </main>
+
+    <footer id="contact" class="bg-white text-black text-center py-4 px-2">
+      <div class="flex flex-wrap justify-center items-center gap-4 text-sm">
+    <a href="mailto:harishn662@example.com" class="hover:opacity-75" aria-label="Email">
+      <img src="img/gmail.svg" alt="Email" class="w-10 h-10" />
+    </a>
+    <span>harishn662@example.com</span>
+    <a href="https://github.com/harishnshetty" target="_blank" class="hover:opacity-75" aria-label="GitHub">
+      <img src="img/github.svg" alt="GitHub" class="w-10 h-10" />
+    </a>
+    <a href="https://www.linkedin.com/in/harish-n-shetty/" target="_blank" class="hover:opacity-75" aria-label="LinkedIn">
+      <img src="img/linkedin.svg" alt="LinkedIn" class="w-10 h-10" />
+    </a>
+  </div>
+</footer>
+    
+  </div>
+</body>
+</html>

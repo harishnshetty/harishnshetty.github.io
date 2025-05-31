@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills | Harish's Console</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(-45deg, #667eea, #cab6b6, #365fcd, #667eea);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #7f5af0, #e2cccc, #1e8a85);
+      background-size: 200% 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: textGlow 6s ease infinite;
+      font-weight: bold;
+    }
+
+    @keyframes textGlow {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .glow-card {
+      transition: box-shadow 0.4s ease, transform 0.4s ease, background 0.4s ease;
+    }
+
+    .glow-card:hover {
+      background: linear-gradient(145deg, #dd89a64d, #8b77e240, #d879a140);
+      box-shadow: 0 0 25px 10px rgba(127, 90, 240, 0.3),
+        0 0 40px 15px rgba(226, 204, 204, 0.2),
+        0 0 60px 20px rgba(30, 138, 133, 0.2);
+      transform: translateY(-5px) scale(1.02);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+  <header class="bg-gray-800 text-white p-4 flex justify-between items-center">
+    <h1 class="text-xl gradient-text">Harish's Console</h1>
+    <a href="index.html" class="glow-button text-sm">⬅️ Back to Home</a>
+  </header>
+
+  <section class="p-6 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold gradient-text mb-6 text-center">Skills & Tools</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="glow-card bg-white dark:bg-gray-800 p-6 rounded shadow">
+        <h3 class="text-xl font-bold mb-2">Languages</h3>
+        <ul class="list-disc list-inside">
+          <li>HTML, CSS, JavaScript</li>
+          <li>Python, Bash</li>
+        </ul>
+      </div>
+      <div class="glow-card bg-white dark:bg-gray-800 p-6 rounded shadow">
+        <h3 class="text-xl font-bold mb-2">Frameworks</h3>
+        <ul class="list-disc list-inside">
+          <li>React.js</li>
+          <li>Tailwind CSS</li>
+        </ul>
+      </div>
+      <div class="glow-card bg-white dark:bg-gray-800 p-6 rounded shadow">
+        <h3 class="text-xl font-bold mb-2">DevOps</h3>
+        <ul class="list-disc list-inside">
+          <li>Docker, Kubernetes</li>
+          <li>CI/CD, GitHub Actions</li>
+          <li>Terraform, Ansible</li>
+        </ul>
+      </div>
+      <div class="glow-card bg-white dark:bg-gray-800 p-6 rounded shadow">
+        <h3 class="text-xl font-bold mb-2">Cloud</h3>
+        <ul class="list-disc list-inside">
+          <li>AWS EC2, S3, Lambda</li>
+          <li>CloudFormation</li>
+        </ul>
+      </div>
+      <div class="glow-card bg-white dark:bg-gray-800 p-6 rounded shadow">
+        <h3 class="text-xl font-bold mb-2">Version Control</h3>
+        <ul class="list-disc list-inside">
+          <li>Git, GitHub</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-10 p-6 bg-gray-800 text-white text-center">
+    <p>Email: harish@example.com | GitHub: @harish-n | LinkedIn: https://www.linkedin.com/in/harish-n-shetty/</p>
+  </footer>
+</body>
+
+</html>

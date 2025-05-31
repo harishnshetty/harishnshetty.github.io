@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harish's Console</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+    html, body {
+      height: 100%; /* Ensures body takes up the full viewport height */
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column; /* Stack the content and footer vertically */
+      background: linear-gradient(-45deg, #667eea, #cab6b6, #365fcd, #667eea);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+      flex-grow: 1; /* Ensures the body grows to fill available space */
+    }
+
+    footer {
+      margin-top: auto; /* Ensures footer is at the bottom */
+      padding: 1rem; /* Adjust padding to prevent overflow */
+    }
+    
+    footer .flex {
+      flex-wrap: wrap; /* Allows items to wrap in case of space constraints */
+      justify-content: center; /* Centers the footer items */
+      gap: 1rem; /* Adds space between items */
+    }
+    
+    footer img {
+      width: 2.5rem; /* Set width to 10rem (w-10) */
+      height: 2.5rem; /* Set height to 10rem (h-10) */
+    }
+    
+    footer span {
+      font-size: 1rem; /* Adjust the font size to match the icon size */
+    }
+    
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #7f5af0, #e2cccc, #1e8a85);
+      background-size: 200% 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: textGlow 6s ease infinite;
+      font-weight: bold;
+    }
+
+    @keyframes textGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glow-button {
+      background: linear-gradient(90deg, #7f5af0, #e2cccc, #1e8a85);
+      background-size: 200% 200%;
+      animation: glowGradient 6s ease infinite;
+      color: black;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      box-shadow: 0 0 10px rgba(127, 90, 240, 0.8);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    @keyframes glowGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glow-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(127, 90, 240, 1);
+    }
+
+    .glow-card {
+      transition: box-shadow 0.4s ease, transform 0.4s ease, background 0.4s ease;
+    }
+
+    .glow-card:hover {
+      box-shadow:  0 0 25px 10px rgba(127, 90, 240, 0.3),
+                   0 0 40px 15px rgba(226, 204, 204, 0.2),
+                   0 0 60px 20px rgba(30, 138, 133, 0.2); 
+      transform: translateY(-5px) scale(1.02);
+    }
+
+    nav a {
+      color: #1a202c;
+    }
+
+    .dark nav a {
+      color: #f9fafb;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #3b82f6;
+    }
+
+    #mobileMenu {
+      background-color: #ffffff;
+    }
+
+    .dark #mobileMenu {
+      background-color: #1f2937;
+    }
+
+    @media (min-width: 640px) {
+      #mobileMenu {
+        background-color: transparent;
+      }
+
+      #mobileMenu a {
+        color: #ffffff;
+      }
+    }
+  </style>
+
+  <script>
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('menuOverlay');
+      menu.classList.toggle('hidden');
+      overlay.classList.toggle('hidden');
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen relative">
+
+  <!-- Overlay -->
+  <div id="menuOverlay" onclick="toggleMobileMenu()" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+
+  <header class="bg-gray-800 text-white p-2 flex justify-between items-center">
+    <h1 class="text-3xl gradient-text">Harish.N</h1>
+
+    <nav class="relative w-full sm:w-auto text-gray-900 dark:text-gray-100">
+      <div class="sm:hidden flex justify-end">
+        <button onclick="toggleMobileMenu()" class="text-white focus:outline-none text-2xl">☰</button>
+      </div>
+
+      <!-- FIXED: Menu behavior on desktop -->
+      <div id="mobileMenu"
+        class="hidden sm:flex sm:flex-row sm:gap-4 gap-2 items-center sm:static absolute top-16 left-1/2 sm:left-auto transform sm:transform-none -translate-x-1/2 sm:translate-x-0 w-11/12 sm:w-auto z-50 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl flex-col sm:flex-row">
+
+        <div class="w-full flex justify-end sm:hidden mb-2">
+          <button onclick="toggleMobileMenu()" class="text-gray-600 dark:text-gray-300 text-xl font-bold">×</button>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 items-center w-full sm:w-auto text-center">
+          <a href="certifications.html" class="hover:underline">Certifications</a>
+          <a href="projects.html" class="hover:underline">Projects</a>
+          <a href="skills.html" class="hover:underline">Skills</a>
+          <!-- <a href="education.html" class="hover:underline">Education</a> -->
+          <a href="experience.html" class="hover:underline">Experience</a>
+          <a href="about.html" class="hover:underline">About</a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full sm:w-auto mt-4 sm:mt-0 text-sm sm:text-base">
+          <a href="contact.html" class="bg-gray-600 px-2 py-2 rounded text-center truncate">Contact</a>
+          <a href="./resume.pdf" download class="glow-button text-center truncate">⬇️ Resume</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+ <section class="flex justify-center items-center py-10 px-4">
+  <div class="flex flex-col sm:flex-row items-center w-full max-w-4xl gap-4 overflow-x-hidden">
+    <img src="image.png" alt="Chat Assistant"
+         class="rounded-full w-24 sm:w-32 md:w-40 max-w-full flex-shrink-0 shadow-xl" />
+    
+    <div class="flex-grow text-left min-w-[200px]">
+      <h2 class="text-2xl md:text-4xl font-bold mb-2">Welcome to Harish's Portfolio</h2>
+      <p class="text-base md:text-lg mb-4">Cloud Enthusiast • DevOps Practitioner • AWS Explore </p>
+
+      <div class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full px-4 py-2 shadow-md flex items-center gap-2 w-full max-w-xs md:max-w-md mb-4">
+        <input id="autoInput" type="text" placeholder="Skills"
+               class="bg-transparent outline-none w-full text-sm md:text-base dark:text-white" />
+      </div>
+
+      <!-- LinkedIn Badge -->
+      <div class="mt-4">
+        <div class="badge-base LI-profile-badge"
+             data-locale="en_US"
+             data-size="medium"
+             data-theme="dark"
+             data-type="VERTICAL"
+             data-vanity="harishnshetty"
+             data-version="v1">
+          <a class="badge-base__link LI-simple-link"
+             href="https://in.linkedin.com/in/harishnshetty?trk=profile-badge" target="_blank">
+            💼 Harish N
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Typing Animation -->
+  <script>
+    const words = ["Jenkins", "Docker", "Kubernetes", "CI/CD", "AWS", "Terraform", "Ansible", "Git", "Bash", "Linux"];
+    const input = document.getElementById("autoInput");
+    let wordIndex = 0;
+    let charIndex = 0;
+    let typingForward = true;
+
+    function type() {
+      if (typingForward) {
+        if (charIndex < words[wordIndex].length) {
+          input.value += words[wordIndex][charIndex++];
+          setTimeout(type, 150);
+        } else {
+          typingForward = false;
+          setTimeout(type, 1000);
+        }
+      } else {
+        if (charIndex > 0) {
+          input.value = input.value.slice(0, --charIndex);
+          setTimeout(type, 100);
+        } else {
+          typingForward = true;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(type, 300);
+        }
+      }
+    }
+    type();
+  </script>
+
+  <!-- Services Section -->
+  <section id="services" class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+    <div class="glow-card bg-white dark:bg-gray-800 p-6 rounded shadow">
+      <a href="projects.html" class="block">
+        <h3 class="text-xl font-bold mb-2">Projects</h3>
+        <p>A showcase of my latest development work, hosted on GitHub and deployed in the cloud.</p>
+      </a>
+    </div>
+    <div class="glow-card bg-white dark:bg-gray-800 p-6 rounded shadow">
+      <a href="skills.html" class="block">
+        <h3 class="text-xl font-bold mb-2">Skills</h3>
+        <p>AWS, Jenkins, Docker, GitHub, Ansible, Linux, Bash Scripting, and more.</p>
+      </a>
+    </div>
+    <div class="glow-card bg-white dark:bg-gray-800 p-6 rounded shadow">
+      <a href="certifications.html" class="block">
+        <h3 class="text-xl font-bold mb-2">Certifications</h3>
+        <p>Courses and certifications completed in AWS, DevOps, and related technologies.</p>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- Script Generation Tool Section -->
+<section class="p-6">
+  <h2 class="text-2xl font-bold text-center mb-6 gradient-text">Script Generation Tool</h2>
+ <div class="flex justify-center">
+  <table class="table-auto bg-white dark:bg-gray-800 rounded-lg shadow-md">
+    <thead>
+      <tr class="text-left bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+        <th class="px-4 py-2 font-semibold">Tool</th>
+        <th class="px-4 py-2 font-semibold">Server 1</th>
+        <th class="px-4 py-2 font-semibold">Server 2</th>
+      </tr>
+    </thead>
+    <tbody class="text-gray-700 dark:text-gray-200">
+      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+        <td class="px-4 py-2 font-medium">Ansible</td>
+        <td class="px-4 py-2"><a href="tools/an/index.html" class="text-blue-600 hover:underline">Go</a></td>
+        <td class="px-4 py-2"><a href="https://harishnshetty.github.io/feedback/tools/an/index.html" class="text-blue-600 hover:underline">Go</a></td>
+      </tr>
+      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+        <td class="px-4 py-2 font-medium">Docker</td>
+        <td class="px-4 py-2"><a href="tools/do/index.html" class="text-blue-600 hover:underline">Go</a></td>
+        <td class="px-4 py-2"><a href="https://harishnshetty.github.io/feedback/tools/je/index.html" class="text-blue-600 hover:underline">Go</a></td>
+      </tr>
+      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+        <td class="px-4 py-2 font-medium">Jenkins</td>
+        <td class="px-4 py-2"><a href="tools/je/index.html" class="text-blue-600 hover:underline">Go</a></td>
+        <td class="px-4 py-2"><a href="https://harishnshetty.github.io/feedback/tools/do/index.html" class="text-blue-600 hover:underline">Go</a></td>
+      </tr>
+      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+        <td class="px-4 py-2 font-medium">Terraform</td>
+        <td class="px-4 py-2"><a href="tools/te/index.html" class="text-blue-600 hover:underline">Go</a></td>
+        <td class="px-4 py-2"><a href="https://harishnshetty.github.io/feedback/tools/te/index.html" class="text-blue-600 hover:underline">Go</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+
+
+  <footer id="contact" class="bg-white text-black text-center py-4 px-2">
+    <div class="flex flex-wrap justify-center items-center gap-4 text-sm">
+  <a href="mailto:harishn662@example.com" class="hover:opacity-75" aria-label="Email">
+    <img src="img/gmail.svg" alt="Email" class="w-10 h-10" />
+  </a>
+  <span>harishn662@example.com</span>
+  <a href="https://github.com/harishnshetty" target="_blank" class="hover:opacity-75" aria-label="GitHub">
+    <img src="img/github.svg" alt="GitHub" class="w-10 h-10" />
+  </a>
+  <a href="https://www.linkedin.com/in/harish-n-shetty/" target="_blank" class="hover:opacity-75" aria-label="LinkedIn">
+    <img src="img/linkedin.svg" alt="LinkedIn" class="w-10 h-10" />
+  </a>
+
+  <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank" class="hover:opacity-75" aria-label="Youtube">
+    <img src="img/youtube.svg" alt="LinkedIn" class="w-10 h-10" />
+  </a>
+
+</div>
+</footer>
+ 
+<!-- Floating Sidebar with LinkedIn Badge -->
+<div class="fixed right-0 top-1/3 transform -translate-y-1/2 z-50">
+  <div class="bg-white dark:bg-gray-800 p-2 rounded-l-lg shadow-lg">
+    <div class="badge-base LI-profile-badge"
+         data-locale="en_US"
+         data-size="medium"
+         data-theme="dark"
+         data-type="VERTICAL"
+         data-vanity="harishnshetty"
+         data-version="v1">
+      <a class="badge-base__link LI-simple-link"
+         href="https://in.linkedin.com/in/harishnshetty?trk=profile-badge" target="_blank">
+        💼 LinkedIn
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- LinkedIn badge script 
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script> -->
+
+</body>
+</html>
