@@ -15,32 +15,57 @@ function copyToClipboard() {
   });
 }
 
-// Show/hide app option groups based on selection
-function toggleAppOptions() {
-  const appSelect = document.getElementById('appSelect');
-  if (!appSelect) return;
+function generateDockerCLI() {
+  const action = document.getElementById("dockerAction")?.value;
 
-  const selectedApp = appSelect.value;
+  if (!action) {
+    alert("Please select a Docker CLI action.");
+    return;
+  }
 
-  // Hide all app options first
-  ['nginxOptions', 'tomcatOptions', 'httpdOptions', 'lampOptions'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'none';
-  });
+  const imageName = document.getElementById("dockerImage")?.value || "my-image";
+  const containerName = document.getElementById("dockerContainer")?.value || "my-container";
 
-  // Show the selected app options group
-  if (selectedApp === 'nginx') {
-    const el = document.getElementById('nginxOptions');
-    if (el) el.style.display = 'block';
-  } else if (selectedApp === 'tomcat') {
-    const el = document.getElementById('tomcatOptions');
-    if (el) el.style.display = 'block';
-  } else if (selectedApp === 'httpd') {
-    const el = document.getElementById('httpdOptions');
-    if (el) el.style.display = 'block';
-  } else if (selectedApp === 'lamp') {
-    const el = document.getElementById('lampOptions');
-    if (el) el.style.display = 'block';
+  let command = "";
+
+  switch (action) {
+    case "build":
+      command = `docker build -t ${imageName} .`;
+      break;
+    case "remove":
+      command = `docker rm -f ${containerName}`;
+      break;
+    case "cleanup":
+      command = `docker image prune -f`;
+      break;
+    case "run":
+      command = `docker run -d --name ${containerName}`;
+
+      if (document.getElementById("dockerNet")?.checked) {
+        const net = document.getElementById("dockerNetValue")?.value;
+        if (net) command += ` --net ${net}`;
+      }
+      if (document.getElementById("dockerIP")?.checked) {
+        const ip = document.getElementById("dockerIPValue")?.value;
+        if (ip) command += ` --ip ${ip}`;
+      }
+      if (document.getElementById("dockerPort")?.checked) {
+        const port = document.getElementById("dockerPortValue")?.value;
+        if (port) command += ` -p ${port}`;
+      }
+
+      command += ` ${imageName}`;
+      break;
+    default:
+      alert("Unknown Docker action selected.");
+      return;
+  }
+
+  const output = document.getElementById("output");
+  if (output) {
+    output.value = command;
+  } else {
+    alert("Output field not found!");
   }
 }
 
