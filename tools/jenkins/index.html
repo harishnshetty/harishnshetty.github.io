@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jenkinsfile Generator with Config Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col lg:flex-row items-center justify-center p-6">
+
+
+   <div class="w-full lg:w-80 bg-gray-50 p-6 shadow-inner lg:shadow-none lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-y-auto z-10">
+    <div class="text-center">
+      <h3 class="text-xl font-bold">Jenkins Page</h3>
+<img src="img/image.png" alt="Harish N Shetty" class="w-40 h-40 rounded-2xl mx-auto mb-4 shadow-md border border-gray-300" />
+      <h2 class="text-xl font-bold">Harish N Shetty</h2>
+      <p class="text-sm text-gray-600 mb-2">harishnshetty • he/him</p>
+      <p class="text-sm mb-4">DevOps Learner || Open Source Enthusiast || Keep learning, sharing and growing</p>
+
+      <ul class="text-left text-sm space-y-2">
+        <li><strong>Status:</strong> <span class="text-green-600">open to work</span></li>
+        <li><strong>Location:</strong> Bengaluru, Karnataka, India</li>
+        <li><strong>Email:</strong> <a href="mailto:harishn662@gmail.com" class="text-blue-600 underline">harishn662@gmail.com</a></li>
+        <li><strong>Website:</strong> <a href="https://harishnshetty.github.io/resume/" class="text-blue-600 underline" target="_blank">Website</a></li>
+        <li><strong>linkedin:</strong> <a href="https://www.linkedin.com/in/harishnshetty" class="text-blue-600 underline" target="_blank">harishnshetty</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/harishnshetty" class="text-blue-600 underline">@harishnshetty</a></li>
+        <li><strong>Youtube:</strong> <a href="https://www.youtube.com/@HarishNShetty0107" class="text-blue-600 underline">@HarishNShetty0107</a></li>
+      </ul>
+
+<p class="text-lg text-red-600 font-medium text-center mt-4 mx-auto max-w-2xl">
+  This is an open-source generator tool. You can support ongoing development & feature improvements.
+</p>
+     
+<ul class="text-left text-xl font-bold text-black space-y-2">
+  <li>
+    <strong>PayPal:</strong>
+    <a href="https://paypal.me/harishnshetty" class="text-blue-700 underline font-bold">@harishnshetty</a>
+  </li>
+  <li>
+    <strong>UPI ID:</strong> harishn662@ybl
+  </li>
+</ul>
+
+
+            <img src="img/qr1.png" alt="Harish N Shetty" class="w-45 h-45  mx-auto mb-4">
+<br> Desgin & Developed By</br><strong>Harish N Shetty</strong> 
+    </div>
+  </div>
+
+<div class="flex-0 p-1 overflow-y-auto lg:ml-80"></div>
+  <div class="max-w-4xl w-full bg-white rounded-xl shadow-md p-6">
+
+<div id="latestUpdate" class="mb-4 w-full max-w-full text-sm text-blue-800 bg-blue-100 p-3 rounded hidden">
+  <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 w-full">
+    <img src="img/7.gif" alt="update" class="w-10 h-10 sm:w-7 sm:h-7 flex-shrink-0" />
+<span id="updateMessage" class="text-sm sm:text-base font-medium break-words whitespace-pre-wrap w-full">
+  <svg class="animate-spin inline-block w-5 h-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+  </svg>
+  Fetching update...
+</span>
+  </div>
+</div>
+
+
+
+    <h1 class="text-2xl font-bold mb-6 text-center"> [ Jenkins Pipeline Generator ]  </h1>
+    
+<span class="space-x-4">
+    <a href="https://harishnshetty.github.io/resume/" class="text-blue-600 underline" target="_blank">Home</a>
+
+  <a href="jenkins.pdf" class="text-blue-600 underline" target="_blank">Jenkins-PDF</a>
+  <a href="https://www.youtube.com/playlist?list=PLB1yU-G7FE-ENj8uOF2wuiU_AWdvZAI7H" class="text-blue-600 underline" target="_blank">▶️ YouTube-Playlist</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_tqab3RWclUkxWWtBKdqYp0wjoGlCawZIYDT1itX-xAnY2g/viewform?usp=dialog" class="text-blue-600 underline" target="_blank">✍️ Feedback-Form</a>
+  <a href="https://harishnshetty.github.io/feedback/jenkins.html" class="text-blue-600 underline" target="_blank">🤝😊 Read-Feedback-Messages</a>
+</span>
+
+<div class="space-y-4">
+  <div>
+    <label class="font-semibold">Select Agent:</label>
+    <div class="flex items-center space-x-4">
+      <label class="inline-flex items-center">
+        <input type="checkbox" id="agentAny" class="mr-2" checked>
+        any
+      </label>
+      <label class="inline-flex items-center">
+        <input type="checkbox" id="agentCustom" class="mr-2">
+        Custom Label
+      </label>
+      <input type="text" id="customAgentLabel" class="border rounded p-2 hidden" placeholder="Enter agent label">
+    </div>
+  </div>
+
+  <div>
+
+
+  <div class="space-y-4">
+  <div>
+    <label class="font-semibold">Build Tools:</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
+
+
+  <label>
+  <input type="checkbox" id="useJava" class="mr-2"> Use Java
+  <select id="javaTool" class="ml-2 border rounded p-1">
+    <option value="JDK">JDK</option>
+    <option value="JDK17">JDK17</option>
+    <option value="JDK21">JDK21</option>
+  </select>
+</label>
+
+  <label>
+    <input type="checkbox" id="useMaven" class="mr-2"> Use Maven
+    <select id="mavenTool" class="ml-2 border rounded p-1">
+      <option value="mvn">mvn</option>
+      <option value="maven3">maven3</option>
+      <option value="apache-maven-3.8.6">apache-maven-3.8.6</option>
+    </select>
+  </label>
+
+  <label>
+    <input type="checkbox" id="useGradle" class="mr-2"> Use Gradle
+    <select id="gradleTool" class="ml-2 border rounded p-1">
+      <option value="gradle">gradle</option>
+      <option value="gradle7">gradle7</option>
+    </select>
+  </label>
+
+  <label>
+    <input type="checkbox" id="useNode" class="mr-2"> Use Node.js
+    <select id="nodeTool" class="ml-2 border rounded p-1">
+      <option value="node">node</option>
+      <option value="node18">node18</option>
+      <option value="nodejs-lts">nodejs-lts</option>
+    </select>
+  </label>
+
+  <label>
+    <input type="checkbox" id="usePython" class="mr-2"> Use Python
+    <select id="pythonTool" class="ml-2 border rounded p-1">
+      <option value="python3">python3</option>
+      <option value="python3.10">python3.10</option>
+    </select>
+  </label>
+
+<label>
+  <input type="checkbox" id="useAnt" class="mr-2"> Use Ant
+  <select id="antTool" class="ml-2 border rounded p-1">
+    <option value="ant">ant</option>
+    <option value="ant1.10">ant1.10</option>
+  </select>
+</label>
+
+
+ 
+
+
+</div>
+
+
+</div>
+
+  <div>
+    <label class="font-semibold">Additional Stages:</label>
+    <div class="space-y-2">
+      <label><input type="checkbox" id="runTest" class="mr-2"> Include Test Stage</label>
+      <label><input type="checkbox" id="runDeploy" class="mr-2"> Include Deploy Stage</label>
+    </div>
+  </div>
+
+
+
+
+
+  <label class="font-semibold">Environment Variables:</label>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
+    <label><input type="checkbox" class="env-toggle" data-key="IMAGE_NAME" data-default="custom-image"> docker_image_name (IMAGE_NAME)</label>
+    <label><input type="checkbox" class="env-toggle" data-key="CONTAINER_NAME" data-default="custom-container"> docker_container_name (CONTAINER_NAME)</label>
+    <label><input type="checkbox" class="env-toggle" data-key="GIT_REPO" data-default="https://github.com/example/repo.git"> Git Repository URL (GIT_REPO)</label>
+    <label><input type="checkbox" class="env-toggle" data-key="GIT_BRANCH" data-default="main"> Git Branch (GIT_BRANCH)</label>
+    <label><input type="checkbox" class="env-toggle" data-key="JAVA_HOME" data-default="/usr/lib/jvm/java-11-openjdk"> JAVA_HOME</label>
+    <label><input type="checkbox" class="env-toggle" data-key="MVN_HOME" data-default="/usr/share/maven"> MVN_HOME</label>
+  </div>
+
+  <div id="envVarsContainer" class="space-y-2 mt-4">
+    </div>
+
+  <button type="button" onclick="addEnvVar()" class="bg-blue-500 text-white px-3 py-1 rounded mt-2 hover:bg-blue-600">
+    + Add Custom Env Variable
+  </button>
+</div>
+
+<div class="mt-6">
+  <label class="font-semibold">Docker Section</label>
+  <pre id="envPreview" class="bg-gray-100 p-3 rounded text-sm text-gray-800 mt-2 whitespace-pre-wrap"></pre>
+</div>
+
+
+ <label>
+  <input type="checkbox" id="useDocker" class="mr-2"> Use Docker CLI
+</label>
+
+<div id="dockerOptions" class="mt-2 hidden">
+  <label class="font-semibold">Docker CLI Options:</label>
+  <div id="dockerActions" class="mt-2 space-y-1">
+  <label><input type="checkbox" id="dockerBuild" class="mr-2"> Build Image</label><br>
+  <label><input type="checkbox" id="dockerRemove" class="mr-2"> Remove Existing Container</label><br>
+  <label><input type="checkbox" id="dockerRun" class="mr-2"> Run New Container</label><br>
+  <label><input type="checkbox" id="dockerCleanup" class="mr-2"> Clean Up Dangling Images</label>
+  <label><input type="checkbox" id="dockerPush" class="mr-2"> Push Image to Docker Hub</label>
+
+</div>
+
+
+
+
+  <div id="dockerRunOptions" class="mt-2 hidden space-y-2">
+    <label><input type="checkbox" id="dockerNet" class="mr-2"> Set --net</label>
+    <input type="text" id="dockerNetValue" placeholder="e.g., bridge" class="border p-1 rounded w-full">
+
+    <label><input type="checkbox" id="dockerIP" class="mr-2"> Set --ip</label>
+    <input type="text" id="dockerIPValue" placeholder="e.g., 172.18.0.5" class="border p-1 rounded w-full">
+
+    <label><input type="checkbox" id="dockerPort" class="mr-2"> Set -p</label>
+    <input type="text" id="dockerPortValue" placeholder="e.g., 8080:80" class="border p-1 rounded w-full">
+  </div>
+</div>
+
+
+<div class="flex flex-wrap gap-3 mt-4">
+  <button onclick="resetEnvVars()" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+    🔄 Reset Env Vars
+  </button>
+  <button onclick="saveEnvTemplate()" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">
+    💾 Save Env Template
+  </button>
+  <button onclick="loadEnvTemplate()" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+    📥 Load Env Template
+  </button>
+  <button onclick="exportEnvBlock()" class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">
+    ⬇️ Export Env Block
+  </button>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+    <div class="mt-6 flex gap-4">
+      <button onclick="generateJenkinsfile()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        Generate YAML
+      </button>
+      <button onclick="copyYAML()" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+  Copy YAML
+</button>
+
+      <button onclick="downloadYAML()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        Download YAML
+      </button>
+      <button onclick="clearYAML()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+  Clear Output
+</button>
+
+    </div>
+
+    <div class="mt-6">
+      <label class="font-semibold">Generated YAML:</label>
+      <pre id="output" class="bg-gray-200 p-4 rounded whitespace-pre-wrap mt-2"></pre>
+    </div>
+  </div>
+ 
+  </div>
+
+  <script>
+     document.getElementById('agentCustom').addEventListener('change', function () {
+    const customInput = document.getElementById('customAgentLabel');
+    if (this.checked) {
+      customInput.classList.remove('hidden');
+      document.getElementById('agentAny').checked = false;
+    } else {
+      customInput.classList.add('hidden');
+    }
+  });
+
+  document.getElementById('agentAny').addEventListener('change', function () {
+    if (this.checked) {
+      document.getElementById('agentCustom').checked = false;
+      document.getElementById('customAgentLabel').classList.add('hidden');
+    }
+  });
+
+  function addEnvVar() {
+    const container = document.getElementById('envVarsContainer');
+    const div = document.createElement('div');
+    div.className = 'flex space-x-2 env-row';
+
+    div.innerHTML = `
+      <input type="text" class="env-key border rounded p-2 w-1/2" placeholder="Key">
+      <input type="text" class="env-value border rounded p-2 w-1/2" placeholder="Value">
+    `;
+    container.appendChild(div);
+  }
+    
+
+    // Show/hide config editor and load template when checkbox toggled
+    // Note: configCheckbox, configEditorContainer, configEditor, defaultConfigs, app are not defined in this HTML
+    // and are likely remnants from a different feature or previous iteration.
+    // They are commented out as they don't have corresponding HTML elements.
+    /*
+    document.getElementById("configCheckbox").addEventListener("change", function () {
+      const container = document.getElementById("configEditorContainer");
+      const editor = document.getElementById("configEditor");
+      const app = document.getElementById("app").value;
+
+      if (this.checked) {
+        container.classList.remove("hidden");
+        editor.value = defaultConfigs[app] || "# No template available for this app";
+      } else {
+        container.classList.add("hidden");
+        editor.value = "";
+      }
+    });
+
+    // Update config template when app changes and config checkbox is checked
+    document.getElementById("app").addEventListener("change", function () {
+      const configCheckbox = document.getElementById("configCheckbox");
+      const editor = document.getElementById("configEditor");
+      const app = this.value;
+
+      if (configCheckbox.checked) {
+        editor.value = defaultConfigs[app] || "# No template available for this app";
+      }
+    });
+    */
+
+// Updated generateJenkinsfile() to use selected Maven and Node tools
+function generateJenkinsfile() {
+  const useAny = document.getElementById('agentAny').checked;
+  const useCustom = document.getElementById('agentCustom').checked;
+  const customLabel = document.getElementById('customAgentLabel').value.trim();
+  const agentBlock = useAny ? 'any' : `{ label "${customLabel || 'custom-node'}" }`;
+
+  // Removed includeDocker and includeCleanup as they were redundant/misleading for how docker options are now handled.
+  // const includeDocker = document.getElementById('useDocker')?.checked;
+  // const includeCleanup = document.getElementById('cleanupImages')?.checked;
+
+  const useJava = document.getElementById('useJava')?.checked;
+const javaTool = document.getElementById('javaTool')?.value || 'jdk11';
+
+
+  const useMaven = document.getElementById('useMaven')?.checked;
+  const useNode = document.getElementById('useNode')?.checked;
+
+  const mavenTool = document.getElementById('mavenTool')?.value || 'mvn';
+  const nodeTool = document.getElementById('nodeTool')?.value || 'node';
+
+  const runTest = document.getElementById('runTest')?.checked;
+  const runDeploy = document.getElementById('runDeploy')?.checked;
+
+  const useGradle = document.getElementById('useGradle')?.checked;
+const gradleTool = document.getElementById('gradleTool')?.value || 'gradle';
+
+const usePython = document.getElementById('usePython')?.checked;
+const pythonTool = document.getElementById('pythonTool')?.value || 'python3';
+
+const useAnt = document.getElementById('useAnt')?.checked;
+const antTool = document.getElementById('antTool')?.value || 'ant';
+
+
+const useDocker = document.getElementById('useDocker')?.checked;
+const dockerBuild = document.getElementById('dockerBuild')?.checked;
+const dockerRun = document.getElementById('dockerRun')?.checked;
+const dockerRemove = document.getElementById('dockerRemove')?.checked;
+const dockerCleanup = document.getElementById('dockerCleanup')?.checked;
+const dockerPush = document.getElementById('dockerPush')?.checked;
+
+
+
+  const envBlocks = [];
+  document.querySelectorAll('#envVarsContainer .env-row').forEach(row => {
+    const key = row.querySelector('.env-key')?.value?.trim();
+    const val = row.querySelector('.env-value')?.value?.trim();
+    if (key && val) envBlocks.push(`    ${key} = '${val}'`);
+  });
+
+  // Default environment variables if none are explicitly added via the dynamic inputs or checkboxes
+  // This logic was originally a fallback and might be better handled by pre-populating with toggles
+  // if (envBlocks.length === 0) {
+  //     envBlocks.push('    IMAGE_NAME = \'custom-image\'');
+  //     envBlocks.push('    CONTAINER_NAME = \'custom-container\'');
+  // }
+  const envText = envBlocks.join('\n'); // No fallback here, environment block will be empty if no env vars chosen.
+
+  let jenkinsfile = `pipeline {
+  agent ${agentBlock}
+`;
+
+// Only add environment block if there are environment variables
+if (envText) {
+  jenkinsfile += `
+  environment {
+${envText}
+  }
+`;
+}
+
+jenkinsfile += `
+tools {
+${useMaven ? `    maven "${mavenTool}"\n` : ''}${useGradle ? `    gradle "${gradleTool}"\n` : ''}${useNode ? `    nodejs "${nodeTool}"\n` : ''}${usePython ? `    python "${pythonTool}"\n` : ''}${useJava ? `    jdk "${javaTool}"\n` : ''}${useAnt ? `    ant "${antTool}"\n` : ''}
+ }
+
+  stages {
+    stage('Clone Repository') {
+      steps {
+        git url: env.GIT_REPO${envBlocks.some(e => e.includes('GIT_BRANCH')) ? ', branch: env.GIT_BRANCH' : ''}
+      }
+    }
+`;
+
+  if (useMaven) {
+    jenkinsfile += `
+    stage('Build with Maven') {
+      steps {
+        sh 'mvn clean install'
+      }
+    }
+`;
+  }
+
+  if (useNode) {
+    jenkinsfile += `
+    stage('Build with Node.js') {
+      steps {
+        sh 'npm install'
+        sh 'npm run build'
+      }
+    }
+`;
+  }
+
+  if (runTest) {
+    jenkinsfile += `
+    stage('Test') {
+      steps {
+        echo 'Running tests...'
+        sh 'echo Run test commands here'
+      }
+    }
+`;
+  }
+
+
+if (useGradle) {
+  jenkinsfile += `
+    stage('Build with Gradle') {
+      steps {
+        sh 'gradle build'
+      }
+    }
+`;
+}
+
+if (usePython) {
+  jenkinsfile += `
+    stage('Python Setup') {
+      steps {
+        sh 'pip install -r requirements.txt'
+      }
+    }
+`;
+}
+
+
+if (useAnt) {
+  jenkinsfile += `
+    stage('Build with Ant') {
+      steps {
+        sh 'ant build'
+      }
+    }
+`;
+}
+
+
+if (useDocker) {
+  let dockerSteps = '';
+
+  if (dockerBuild) {
+    dockerSteps += `
+    stage('Build Docker Image') {
+  steps {
+    sh "docker build -t \$IMAGE_NAME ."
+  }
+}
+`;
+  }
+
+  if (dockerRemove) {
+    dockerSteps += `
+    stage('Remove Existing Container') {
+  steps {
+    sh '''
+      if docker ps -a --format '{{.Names}}' | grep -Eq "^$CONTAINER_NAME$"; then
+        docker rm -f $CONTAINER_NAME
+      fi
+    '''
+  }
+}
+    `;
+  }
+
+ if (dockerRun) {
+  let runCommand = `docker run -d --name $CONTAINER_NAME`;
+
+  const portVal = document.getElementById('dockerPortValue').value.trim();
+  const netVal = document.getElementById('dockerNetValue').value.trim();
+  const ipVal = document.getElementById('dockerIPValue').value.trim();
+
+  if (document.getElementById('dockerPort').checked && portVal) {
+    runCommand += ` -p ${portVal}`;
+  }
+  if (document.getElementById('dockerNet').checked && netVal) {
+    runCommand += ` --net=${netVal}`;
+  }
+  if (document.getElementById('dockerIP').checked && ipVal) {
+    runCommand += ` --ip=${ipVal}`;
+  }
+
+  runCommand += ` $IMAGE_NAME`;
+
+  dockerSteps += `
+    stage('Run Docker Container') {
+      steps {
+        sh "${runCommand}"
+      }
+    }
+`;
+}
+
+
+  if (dockerCleanup) {
+    dockerSteps += `stage('Clean Up Dangling Images') {
+  steps {
+    sh "docker image prune -f"
+  }
+}
+
+`;
+  }
+
+  if (dockerPush) {
+  dockerSteps += `
+    stage('Push Docker Image') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+          sh "echo \$DOCKER_PASS | docker login -u \$DOCKER_USER --password-stdin"
+          sh "docker push \$IMAGE_NAME:\$IMAGE_TAG"
+
+        }
+      }
+    }
+`;
+}
+
+
+  if (dockerSteps) {
+    jenkinsfile += `
+    stage('Docker Operations') {
+      steps {
+${dockerSteps.trim()}
+      }
+    }
+`;
+  }
+}
+
+
+
+if (runDeploy) {
+  jenkinsfile += `
+    stage('Deploy') {
+      steps {
+        echo 'Deploying application...'
+        sh 'echo Run deploy commands here'
+      }
+    }
+`;
+}
+
+jenkinsfile += `
+  }
+}`; // Closes stages and pipeline blocks
+
+
+  document.getElementById('output').textContent = jenkinsfile;
+
+  // Show just the environment block separately (moved logic here for clarity)
+  const previewDiv = document.getElementById('envPreview');
+  if (previewDiv) {
+      if (envText) {
+          previewDiv.textContent = `environment {
+${envText}
+}`;
+      } else {
+          previewDiv.textContent = ''; // Clear if no env vars are selected
+      }
+  }
+}
+
+  
+
+  // Reset all environment variables
+function resetEnvVars() {
+  document.querySelectorAll('.env-toggle').forEach(cb => (cb.checked = false));
+  document.getElementById('envVarsContainer').innerHTML = '';
+  document.getElementById('envPreview').textContent = '';
+}
+
+// Prevent duplicate environment keys - This function is defined but not called anywhere.
+// It's good practice to keep it if there's a plan to implement validation.
+function hasDuplicateKeys() {
+  const keys = [];
+  let hasDuplicate = false;
+  document.querySelectorAll('#envVarsContainer .env-row .env-key').forEach(input => {
+    const key = input.value.trim();
+    if (key) {
+      if (keys.includes(key)) {
+        hasDuplicate = true;
+      }
+      keys.push(key);
+    }
+  });
+  return hasDuplicate;
+}
+
+// Allow export of just the environment block
+function exportEnvBlock() {
+  const envBlock = document.getElementById('envPreview').textContent;
+  if (!envBlock) {
+      showToast('No environment block to export!', 'red');
+      return;
+  }
+  const blob = new Blob([envBlock], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'environment.groovy';
+  a.click();
+  showToast('✅ Environment block exported!');
+}
+
+// Allow saving current form config as template
+function saveEnvTemplate() {
+  const rows = document.querySelectorAll('#envVarsContainer .env-row');
+  const template = Array.from(rows).map(row => ({
+    key: row.querySelector('.env-key')?.value.trim(),
+    value: row.querySelector('.env-value')?.value.trim(),
+  })).filter(item => item.key && item.value);
+
+  localStorage.setItem('jenkinsEnvTemplate', JSON.stringify(template));
+  showToast('✅ Environment template saved!');
+}
+
+function loadEnvTemplate() {
+  const data = localStorage.getItem('jenkinsEnvTemplate');
+  if (!data) {
+      showToast('No saved environment template found!', 'red');
+      return;
+  }
+
+  const template = JSON.parse(data);
+  const container = document.getElementById('envVarsContainer');
+  container.innerHTML = ''; // Clear existing dynamic inputs
+  
+  // Also uncheck all default env toggles first
+  document.querySelectorAll('.env-toggle').forEach(cb => cb.checked = false);
+
+  template.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'flex space-x-2 env-row';
+    row.dataset.key = item.key;
+    row.innerHTML = `
+      <input type="text" value="${item.key}" class="env-key border rounded p-2 w-1/2" placeholder="Key">
+      <input type="text" value="${item.value}" class="env-value border rounded p-2 w-1/2" placeholder="Value">
+    `;
+    container.appendChild(row);
+
+    // If the loaded item matches a default env-toggle, check it
+    const matchingToggle = document.querySelector(`.env-toggle[data-key='${item.key}']`);
+    if (matchingToggle) {
+        matchingToggle.checked = true;
+    }
+  });
+  // After loading, update the preview.
+  generateJenkinsfile(); // Re-generate to update environment preview
+
+  showToast('✅ Loaded saved environment template!');
+}
+
+
+
+ 
+
+
+
+
+
+// The functions `updateCopyPathDropdown`, `appToPaths`, `copyContentCheckbox` related
+// to "copy content path" are not fully implemented/defined in this HTML
+// and seem to belong to a different feature.
+// They are commented out as they don't have corresponding HTML elements or complete logic.
+/*
+function updateCopyPathDropdown(app) {
+  const select = document.getElementById("copyContentPathSelect");
+  const customInput = document.getElementById("customCopyPath");
+  select.innerHTML = "";
+  customInput.classList.add("hidden");
+
+  const paths = appToPaths[app] || ["/var/www/html/index.html"];
+  paths.forEach(path => {
+    const option = document.createElement("option");
+    option.value = path;
+    option.textContent = path;
+    select.appendChild(option);
+  });
+
+  // Add "custom" option
+  const customOption = document.createElement("option");
+  customOption.value = "custom";
+  customOption.textContent = "🔧 Enter custom path";
+  select.appendChild(customOption);
+}
+
+
+// Show/hide and update on checkbox + app change
+document.getElementById("copyContentCheckbox").addEventListener("change", function () {
+  const select = document.getElementById("copyContentPathSelect");
+  select.classList.toggle("hidden", !this.checked);
+  if (this.checked) updateCopyPathDropdown(document.getElementById("app").value);
+});
+
+document.getElementById("app").addEventListener("change", function () {
+  const checkbox = document.getElementById("copyContentCheckbox");
+  if (checkbox.checked) updateCopyPathDropdown(this.value);
+});
+
+document.getElementById("copyContentPathSelect").addEventListener("change", function () {
+  const customInput = document.getElementById("customCopyPath");
+  if (this.value === "custom") {
+    customInput.classList.remove("hidden");
+  } else {
+    customInput.classList.add("hidden");
+  }
+});
+*/
+
+   function downloadYAML() {
+  const yaml = document.getElementById("output").textContent;
+  if (!yaml) {
+      showToast("Nothing to download!", 'red');
+      return;
+  }
+  const blob = new Blob([yaml], { type: "text/yaml" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "Jenkinsfile"; // Changed from playbook.yml
+  a.click();
+
+  showToast("✅ Download started!");
+}
+
+
+
+async function fetchLatestUpdate() {
+  try {
+const url = "https://script.google.com/macros/s/AKfycbxZVmJjswUOGZLNm2zR9afxjzUeSHccbW_pSXwmeaPMFVa-oJSteKwJNFWS423h5FSj/exec"; // Your web app URL    const res = await fetch(url);
+    const res = await fetch(url); //
+    const data = await res.json(); //
+
+    const values = data; //
+
+
+    if (!values || values.length < 2) return; //
+
+    const [timestamp, message] = values[values.length - 1]; // Get last row
+const updateBox = document.getElementById("latestUpdate"); //
+const updateMsg = document.getElementById("updateMessage"); //
+const dateObj = new Date(timestamp); //
+const formatted = dateObj.toLocaleString("en-IN", { //
+  dateStyle: "medium", //
+  timeStyle: "short" //
+});
+updateMsg.innerHTML = `🕒 ${formatted} — Latest Update: ${message}`; //
+
+
+updateBox.classList.remove("hidden"); //
+
+  } catch (err) {
+    console.error("Failed to fetch update:", err); //
+  }
+}
+
+function copyYAML() {
+  const output = document.getElementById("output");
+  if (output?.textContent) {
+    navigator.clipboard.writeText(output.textContent).then(() => {
+     showToast("✅ YAML copied!");
+
+    }).catch(err => { // Added error handling for clipboard API
+        console.error('Failed to copy text: ', err);
+        showToast('Failed to copy!', 'red');
+    });
+  } else {
+      showToast("Nothing to copy!", 'red');
+  }
+}
+
+function showToast(message, type = 'green') {
+  const toast = document.createElement("div");
+  toast.textContent = message;
+  toast.className = `fixed bottom-4 right-4 bg-${type}-600 text-white px-4 py-2 rounded shadow-md z-50`; // Added type for color
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
+
+// This fetchLatestUpdate is a duplicate. Keeping the first one as it's already used.
+// async function fetchLatestUpdate() {
+//   try {
+//     const url = "https://script.google.com/macros/s/AKfycbxZVmJjswUOGZLNm2zR9afxjzUeSHccbW_pSXwmeaPMFVa-oJSteKwJNFWS423h5FSj/exec";
+//     const res = await fetch(url);
+//     const data = await res.json();
+
+//     if (!Array.isArray(data) || data.length < 2) return;
+
+//     const [timestamp, message] = data[data.length - 1]; // Last row
+//     const updateBox = document.getElementById("latestUpdate");
+//     const updateMsg = document.getElementById("updateMessage");
+
+//     const dateObj = new Date(timestamp);
+//     const formatted = dateObj.toLocaleString("en-IN", {
+//       dateStyle: "medium",
+//       timeStyle: "short"
+//     });
+
+//     updateMsg.textContent = `🕒 ${formatted} — Latest Update: ${message}`;
+//     updateBox.classList.remove("hidden");
+
+//   } catch (err) {
+//     console.error("Failed to fetch update:", err);
+//   }
+// }
+
+
+document.addEventListener("DOMContentLoaded", fetchLatestUpdate); //
+function clearYAML() {
+  const output = document.getElementById("output");
+  if (output) {
+    output.textContent = "";
+  }
+  // Clear environment preview as well
+  document.getElementById('envPreview').textContent = '';
+  showToast("Output cleared!");
+}
+
+
+
+
+ 
+  // Set initial state - These are now handled by the general loop below.
+  // document.getElementById('javaTool').disabled = !document.getElementById('useJava').checked;
+  // document.getElementById('mavenTool').disabled = !document.getElementById('useMaven').checked;
+  // document.getElementById('nodeTool').disabled = !document.getElementById('useNode').checked;
+  // document.getElementById('gradleTool').disabled = !document.getElementById('useGradle').checked;
+  // document.getElementById('nodeTool').disabled = !document.getElementById('useNode').checked;
+  // document.getElementById('pythonTool').disabled = !document.getElementById('usePython').checked;
+
+
+
+  // Ensure tool dropdowns are disabled until checkbox is checked - These are now handled by the general loop below.
+  // document.getElementById('useMaven').addEventListener('change', function () {
+  //   document.getElementById('mavenTool').disabled = !this.checked;
+  // });
+
+  // document.getElementById('useNode').addEventListener('change', function () {
+  //   document.getElementById('nodeTool').disabled = !this.checked;
+  // });
+
+
+  // document.getElementById('useJava').addEventListener('change', function () {
+  // document.getElementById('javaTool').disabled = !this.checked;
+  // });
+
+
+  // document.getElementById('useGradle').addEventListener('change', function () {
+  // document.getElementById('gradleTool').disabled = !this.checked;
+  // });
+  // document.getElementById('usePython').addEventListener('change', function () {
+  // document.getElementById('pythonTool').disabled = !this.checked;
+  // });
+
+
+
+
+ 
+
+  </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const dockerCheckbox = document.getElementById("useDocker");
+  const dockerOptions = document.getElementById("dockerOptions");
+
+  function toggleDockerOptions() {
+    dockerOptions.classList.toggle("hidden", !dockerCheckbox.checked);
+  }
+
+  dockerCheckbox.addEventListener("change", toggleDockerOptions);
+
+  // Call once on load to set the correct state
+  toggleDockerOptions();
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const tools = [
+    { checkboxId: "useJava", dropdownId: "javaTool" },
+    { checkboxId: "useMaven", dropdownId: "mavenTool" },
+    { checkboxId: "useGradle", dropdownId: "gradleTool" },
+    { checkboxId: "useNode", dropdownId: "nodeTool" },
+    { checkboxId: "usePython", dropdownId: "pythonTool" },
+    { checkboxId: "useAnt", dropdownId: "antTool" }
+
+  ];
+
+  tools.forEach(({ checkboxId, dropdownId }) => {
+    const checkbox = document.getElementById(checkboxId);
+    const dropdown = document.getElementById(dropdownId);
+
+    if (checkbox && dropdown) {
+      dropdown.disabled = !checkbox.checked;
+      checkbox.addEventListener("change", () => {
+        dropdown.disabled = !checkbox.checked;
+      });
+    }
+  });
+});
+</script>
+
+
+
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Handle env-toggle checkboxes
+  document.querySelectorAll('.env-toggle').forEach(cb => {
+    cb.addEventListener('change', function () {
+      const container = document.getElementById('envVarsContainer');
+      const key = this.dataset.key;
+      const defaultVal = this.dataset.default;
+
+      // Find if an input row for this key already exists
+      let existingRow = container.querySelector(`.env-row[data-key='${key}']`);
+
+      if (this.checked) {
+        if (!existingRow) { // Only add if it doesn't already exist
+            const row = document.createElement('div');
+            row.className = 'flex space-x-2 env-row';
+            row.dataset.key = key; // Set data-key for easy lookup
+            row.innerHTML = `
+              <input type="text" value="${key}" class="env-key border rounded p-2 w-1/2" placeholder="Key">
+              <input type="text" value="${defaultVal}" class="env-value border rounded p-2 w-1/2" placeholder="Value">
+            `;
+            container.appendChild(row);
+        }
+      } else {
+        if (existingRow) { // Remove if it exists and checkbox is unchecked
+          existingRow.remove();
+        }
+      }
+      generateJenkinsfile(); // Regenerate Jenkinsfile to update environment preview
+    });
+  });
+
+  // The tool dropdown logic is now handled by the separate script block above.
+  // This section is now redundant and can be removed/ignored.
+  // document.getElementById('mavenTool').disabled = !document.getElementById('useMaven').checked;
+  // document.getElementById('nodeTool').disabled = !document.getElementById('useNode').checked;
+
+  // document.getElementById('useMaven').addEventListener('change', function () {
+  //   document.getElementById('mavenTool').disabled = !this.checked;
+  // });
+
+  // document.getElementById('useNode').addEventListener('change', function () {
+  //   document.getElementById('nodeTool').disabled = !this.checked;
+  // });
+
+  // Load latest update
+  fetchLatestUpdate(); //
+});
+</script>
+
+<script>
+// The original "dockerAction" select box is not present in the HTML.
+// The Docker options are now handled by individual checkboxes.
+// This script block is for a different UI approach and can be removed.
+/*
+document.getElementById("dockerAction").addEventListener("change", function () {
+  const runOptions = document.getElementById("dockerRunOptions");
+  runOptions.classList.toggle("hidden", this.value !== "run");
+});
+*/
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const runCheckbox = document.getElementById("dockerRun");
+  const runOptions = document.getElementById("dockerRunOptions");
+
+  function toggleRunOptions() {
+    runOptions.classList.toggle("hidden", !runCheckbox.checked);
+  }
+
+  runCheckbox.addEventListener("change", toggleRunOptions);
+  toggleRunOptions(); // initial state
+});
+
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Ensure generateJenkinsfile is globally accessible if defined late or after DOMContentLoaded
+  // (though it's already defined within the main script block and accessible by onclick attributes)
+  // This block is mostly redundant if the function is already in the global scope.
+  // window.generateJenkinsfile = function () {
+  //   // your existing function code
+  // };
+
+  // Initial generation on page load to show default Jenkinsfile
+  generateJenkinsfile();
+});
+</script>
+
+
+</body>
+</html>
