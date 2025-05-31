@@ -143,7 +143,7 @@
   
   <script>
     async function fetchCertifications() {
-      const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/1_QCMr-1j-LBO8zDbF1je3S3qCg6WH6J4JxH6XIita64/values/Sheet1?key=AIzaSyBwnJTt3tZV61gebywzYb8MIDk4CTcleHQ');
+      const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/link/values/Sheet1?key=links');
       const data = await response.json();
       const certifications = data.values.slice(1); // Skip headers
   
@@ -240,7 +240,7 @@
             <a href="about.html">About</a>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full sm:w-auto mt-4 sm:mt-0 text-sm sm:text-base">
-            <a href="contact.html" class="bg-gray-600 px-2 py-2 rounded text-center truncate">Contact</a>
+                       <!--  <a href="contact.html" class="bg-gray-600 px-2 py-2 rounded text-center truncate">Contact</a> -->
             <a href="./resume.pdf" download class="glow-button text-center truncate">⬇️ Resume</a>
           </div>
         </div>
@@ -263,6 +263,19 @@
   <a href="https://www.linkedin.com/in/harish-n-shetty/" target="_blank" class="hover:opacity-75" aria-label="LinkedIn">
     <img src="img/linkedin.svg" alt="LinkedIn" class="w-10 h-10" />
   </a>
+
+   <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank" class="hover:opacity-75" aria-label="Youtube">
+    <img src="img/youtube.svg" alt="Youtube" class="w-10 h-10" />
+  </a>
+
+  <a href="https://x.com/devopswitharish?t=SWH2zb-b8Dh4AGEm6tpwGg&s=09" target="_blank" class="hover:opacity-75" aria-label="Twitter">
+    <img src="img/twitter.svg" alt="Twitter" class="w-10 h-10" />
+  </a>
+
+  <a href="https://www.instagram.com/devopswithharish?igsh=YWc5ZzNmdzBzNjI4" target="_blank" class="hover:opacity-75" aria-label="Instagram">
+    <img src="img/instagram.svg" alt="Instagram" class="w-10 h-10" />
+  </a>
+
 </div>
 </footer>
 
