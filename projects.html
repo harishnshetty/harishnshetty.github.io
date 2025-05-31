@@ -338,7 +338,8 @@
 
         card.innerHTML = `
           <img src="${imgSrc}" alt="${rowData.title}" class="w-full aspect-video object-cover mb-4 rounded cursor-pointer" onclick="openProjectDetail(${projectIndex})" />
-          <h3 class="text-lg font-bold mb-2">${rowData.title}</h3>
+          <h3 class="text-lg font-bold mb-2 break-words line-clamp-2">${rowData.title}</h3>
+
           <div class="flex items-center gap-4 mt-2">
             ${rowData['youtube-url'] ? `<a href="${rowData['youtube-url']}" target="_blank" aria-label="YouTube"><img src="img/youtube.svg" alt="YouTube" class="w-6 h-6 hover:scale-110 transition" /></a>` : ''}
             ${rowData['git-url'] ? `<a href="${rowData['git-url']}" target="_blank" aria-label="GitHub"><img src="img/github.svg" alt="GitHub" class="w-6 h-6 hover:scale-110 transition" /></a>` : ''}
