@@ -105,14 +105,13 @@
     </select>
   </div>
 
-  <div>
-    <label for="appDropdownButton" class="font-semibold block mb-1">Select Applications:</label>
-<button id="appDropdownButton" class="w-full p-2 border border-black rounded bg-white text-left focus:outline-none">
-      Select Applications
-    </button>
-    
-    <div id="appDropdownMenu" class="absolute z-10 hidden bg-white border rounded mt-1 w-full max-h-64 overflow-y-auto shadow-lg">
-      <div class="p-2 font-semibold bg-gray-100">Web Servers</div>
+<div class="relative">
+  <label for="appDropdownButton" class="font-semibold block mb-1">Select Applications:</label>
+  <button id="appDropdownButton" class="w-full p-2 border border-black rounded bg-white text-left focus:outline-none">
+    Select Applications
+  </button>
+
+ <div id="appDropdownMenu" class="absolute z-10 hidden bg-white border rounded mt-1 w-full max-h-64 overflow-y-auto shadow-lg">      <div class="p-2 font-semibold bg-gray-100">Web Servers</div>
       <label class="flex items-center px-4 py-2 hover:bg-gray-50">
         <input type="checkbox" class="app-checkbox mr-2" value="nginx">Nginx
       </label>
@@ -302,7 +301,9 @@ document.getElementById("appDropdownButton").addEventListener("click", function(
   </div>
 
 
-  <div class="mt-6 flex gap-4">
+ <div class="mt-6 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+
       <button onclick="generateYAML()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
         Generate YAML
       </button>
@@ -886,7 +887,11 @@ document.getElementById("os").addEventListener("change", function () {
     setInterval(fetchLatestUpdate, 5 * 60 * 1000); // Refresh every 5 minutes
   });
 </script>
-
+<!-- 
+<script>
+  // Disable right-click
+  document.addEventListener("contextmenu", event => event.preventDefault());
+</script> -->
 
   
 </body>

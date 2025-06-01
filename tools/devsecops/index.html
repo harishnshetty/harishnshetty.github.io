@@ -360,7 +360,7 @@
 
 
 
-    <div class="mt-6 flex gap-4">
+ <div class="mt-6 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <button onclick="generateJenkinsfile()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
         Generate YAML
       </button>
@@ -1383,6 +1383,13 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(fetchLatestUpdate, 5 * 60 * 1000); // Refresh every 5 minutes
   });
 </script>
+
+
+<!-- 
+<script>
+  // Disable right-click
+  document.addEventListener("contextmenu", event => event.preventDefault());
+</script> -->
 
 
 </body>
