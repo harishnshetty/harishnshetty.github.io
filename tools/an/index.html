@@ -164,9 +164,7 @@
     </div>
   </div>
 </div>
-<label class="inline-flex items-center mr-4">
-        <input type="checkbox" value="basic-app" class="action mr-2" /> Basic Applications
-      </label>
+
 
 <div class="mt-6 flex flex-wrap gap-4">
   </div>
@@ -212,68 +210,60 @@ document.getElementById("appDropdownButton").addEventListener("click", function(
 </script>
 
 
-    <div class="mt-4">
-      <p class="font-semibold mb-1">Actions:</p>
-      
-
-      <label class="inline-flex items-center mr-4">
-        <input type="checkbox" value="sys-update" class="action mr-2" /> System update
-      </label>
-      <label class="inline-flex items-center mr-4">
-        <input type="checkbox" value="install" class="action mr-2" /> Install
-      </label>
-      <label class="inline-flex items-center">
-        <input type="checkbox" value="reload" class="action mr-2" /> Reload
-      </label>
-      <label class="inline-flex items-center">
-        <input type="checkbox" value="remove" class="action mr-2" /> Remove
-      </label>
-
-      <label class="inline-flex items-center ml-4">
-  <input type="checkbox" id="purgeConfig" class="mr-2" />
-  apt only (purge)
-</label>
-
-    </div>
-
-    <div class="mt-4">
-      <p class="font-semibold mb-1">Optional Features:</p>
-      <label class="inline-flex items-center mr-4">
-        <input type="checkbox" id="configCheckbox" value="config" class="feature mr-2" /> Config
-      </label>
-      <label class="inline-flex items-center mr-4">
-        <input type="checkbox" id="createUser" value="user" class="feature mr-2" /> User Create
-      </label>
-
-
-     <div class="flex flex-col gap-1 mb-2">
-  <label class="inline-flex items-center">
-    <input type="checkbox" id="copyContentCheckbox" value="cp-content" class="feature mr-2" />
-    <span>Copy Content</span>
-  </label>
-
-  <select id="copyContentPathSelect" class="p-2 border rounded hidden w-full">
-    <input
-  type="text"
-  id="customCopyPath"
-  class="p-2 border rounded w-full mt-2 hidden"
-  placeholder="Enter custom destination path (e.g. /opt/myapp/index.html)"
-/>
-
-    </select>
-  
+    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
+  <!-- Basic Applications -->
+  <div>
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="basic-app" class="action mr-2" />
+      <span class="font-semibold">Basic Applications</span>
+    </label>
+  </div>
 </div>
 
+<!-- Actions -->
+<div class="mt-4">
+  <p class="font-semibold mb-1">Actions:</p>
+  <div class="flex flex-wrap gap-4">
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="sys-update" class="action mr-2" /> System update
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="install" class="action mr-2" /> Install
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="reload" class="action mr-2" /> Reload
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="remove" class="action mr-2" /> Remove
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" id="purgeConfig" class="mr-2" /> apt only (purge)
+    </label>
+  </div>
+</div>
 
+<!-- Optional Features -->
+<div class="mt-4">
+  <p class="font-semibold mb-1">Optional Features:</p>
+  <div class="flex flex-wrap gap-4">
+    <label class="inline-flex items-center">
+      <input type="checkbox" id="configCheckbox" value="config" class="feature mr-2" /> Config
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" id="createUser" value="user" class="feature mr-2" /> User Create
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" id="copyContentCheckbox" value="cp-content" class="feature mr-2" /> Copy Content
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="ssl" class="feature mr-2" /> SSL
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="enableFirewall" class="feature mr-2" /> Firewall
+    </label>
+  </div>
+</div>
 
-
-      <label class="inline-flex items-center mr-4">
-        <input type="checkbox" value="ssl" class="feature mr-2" /> SSL
-      </label>
-
-      <label class="inline-flex items-center">
-        <input type="checkbox" value="enableFirewall" class="feature mr-2" /> Firewall
-      </label>
 
       <div id="firewallOptions" class="mt-2 ml-6 hidden">
         <label class="block font-medium mb-1">Firewall Tool:</label>
@@ -322,14 +312,15 @@ document.getElementById("appDropdownButton").addEventListener("click", function(
       </button>
       <button onclick="clearYAML()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
   Clear Output
-</button>
+</button><br>
 
     </div>
-</div>
-    <div class="mt-6">
+     <div class="mt-6">
       <label class="font-semibold">Generated YAML:</label>
 <pre id="output" class="bg-gray-100 p-4 rounded whitespace-pre text-sm font-mono border border-gray-300 mt-2"></pre>
     </div>
+</div>
+   
   </div>
 
 
