@@ -2,10 +2,23 @@ Copyright © 2025 Harish N Shetty
 
 All rights reserved.
 
-This website, including all source code, design, and content, is proprietary and confidential.
+This script generation tool and associated content (code, layout, design, images, and functionality) are the intellectual property of Harish N Shetty.
 
-No part of this project may be copied, reproduced, distributed, or used in any form without the prior written permission of the author.
+This project is made available for educational and personal learning purposes only. You may:
 
-The website is published publicly for demonstration and personal branding purposes only.
-Unauthorized use or reuse is strictly prohibited.
+✔️ Use this tool to generate scripts for your own learning or operational needs.
 
+❌ You may not:
+- Modify the source code.
+- Redistribute, republish, or host any part of this project on your own platform.
+- Reuse the design, layout, styles, or branding.
+- Use the tool or parts of its logic in your own tools, apps, or websites.
+- Use this project or its parts for commercial purposes.
+
+This website is publicly accessible for **demonstration and personal branding only**.
+Any unauthorized reuse, modification, or cloning of this project is strictly prohibited and may result in legal action.
+
+By using this tool, you agree to these terms.
+
+Contact: harishn662@gmail.com
+Website: https://harishnshetty.github.io
