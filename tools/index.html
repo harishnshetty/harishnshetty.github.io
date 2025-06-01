@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Script Tools | Harish N</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #2b2b63, #27273c);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .glow {
+      box-shadow: 0 0 25px rgba(114, 92, 242, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glow:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(150, 110, 255, 0.9);
+    }
+
+    .title-gradient {
+      background: linear-gradient(to right, #8a2be2, #00c6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+
+<body class="text-white min-h-screen flex flex-col items-center justify-center px-4 py-10">
+  <h1 class="text-4xl sm:text-5xl font-bold mb-6 title-gradient text-center">DevOps Script Tools</h1>
+  <p class="text-center text-gray-300 mb-10 max-w-xl">Choose from a variety of tools below to generate and customize DevOps scripts for your infrastructure.</p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 max-w-4xl w-full">
+    <!-- Ansible -->
+    <a href="an/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
+      <h2 class="text-2xl font-bold mb-2">Ansible</h2>
+      <p class="text-sm text-gray-300">Create playbooks to automate provisioning and configuration.</p>
+    </a>
+
+    <!-- Docker -->
+    <a href="do/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
+      <h2 class="text-2xl font-bold mb-2">Docker</h2>
+      <p class="text-sm text-gray-300">Generate Dockerfiles and manage container deployments.</p>
+    </a>
+
+    <!-- Jenkins -->
+    <a href="je/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
+      <h2 class="text-2xl font-bold mb-2">Jenkins</h2>
+      <p class="text-sm text-gray-300">Automate pipelines with Jenkinsfile creation tools.</p>
+    </a>
+
+    <!-- Terraform -->
+    <a href="te/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
+      <h2 class="text-2xl font-bold mb-2">Terraform</h2>
+      <p class="text-sm text-gray-300">Build cloud infrastructure templates with ease.</p>
+    </a>
+  </div>
+
+  <footer class="mt-16 text-sm text-gray-400 text-center">
+    &copy; 2025 Harish N Shetty · <a href="../index.html" class="underline hover:text-white">Back to Main Site</a>
+  </footer>
+</body>
+</html>
