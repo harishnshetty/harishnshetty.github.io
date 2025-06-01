@@ -2,23 +2,25 @@ Copyright © 2025 Harish N Shetty
 
 All rights reserved.
 
-This script generation tool and associated content (code, layout, design, images, and functionality) are the intellectual property of Harish N Shetty.
+This script generation tool, including but not limited to the source code, HTML/CSS layout, JavaScript functionality, images, and visual design, is the exclusive property of Harish N Shetty.
 
-This project is made available for educational and personal learning purposes only. You may:
+This website and tool are made publicly accessible for demonstration, educational, and personal branding purposes only.
 
-✔️ Use this tool to generate  scripts for your own learning or operational needs.
+You are permitted to:
+✔️ View and interact with the tool in your browser
+✔️ Use the generated output (e.g., YAML scripts) for personal or internal use
 
-❌ You may not:
-- Modify the source code.
-- Redistribute, republish, or host any part of this project on your own platform.
-- Reuse the design, layout, styles, or branding.
-- Use the tool or parts of its logic in your own tools, apps, or websites.
-- Use this project or its parts for commercial purposes.
+You are NOT permitted to:
+❌ Copy or reuse any part of the source code
+❌ Modify or derive your own version of this tool
+❌ Reuse or imitate the UI, branding, design, or content
+❌ Host, redistribute, or publish this project or any of its parts
+❌ Use this tool for commercial or training services without written consent
 
-This website is publicly accessible for **demonstration and personal branding only**.
-Any unauthorized reuse, modification, or cloning of this project is strictly prohibited and may result in legal action.
+Unauthorized use, reuse, modification, or distribution is strictly prohibited and may result in legal action.
 
-By using this tool, you agree to these terms.
+If you wish to license this tool for professional use, training, or customization, please contact the author directly.
 
-Contact: harishn662@gmail.com
-Website: https://harishnshetty.github.io
+Contact: harishn662@gmail.com  
+Website: https://harishnshetty.github.io  
+LinkedIn: https://www.linkedin.com/in/harishnshetty  
