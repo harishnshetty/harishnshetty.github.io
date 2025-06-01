@@ -1,6 +1,6 @@
 # Harish N Shetty – Portfolio Website
 
-This is the personal portfolio website of **Harish N Shetty**, a DevOps and Cloud enthusiast. It showcases professional experience, skills, projects, certifications, and educational background.
+This is the personal portfolio website of **Harish N Shetty**, a DevOps and Cloud enthusiast. It showcases professional experience, skills, projects, certifications, and Script Tool generator.
 
 The site is built using:
 - 🌐 HTML, Tailwind CSS, JavaScript
