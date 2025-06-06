@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Updates - Harish N Shetty</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-gray-100 min-h-screen p-6 font-sans text-gray-800">
+  
+  <!-- Top Navigation -->
+  <div class="max-w-4xl mx-auto mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+    <a href="index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow-lg transition duration-300">
+      ⬅️ Back to Home
+    </a>
+    <div class="flex flex-wrap gap-3">
+      <a href="https://harishnshetty.github.io/tools/an/index.html" class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded shadow text-sm">Ansible</a>
+      <a href="https://harishnshetty.github.io/tools/do/index.html" class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded shadow text-sm">Docker</a>
+      <a href="https://harishnshetty.github.io/tools/je/index.html" class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded shadow text-sm">Jenkins</a>
+      <a href="https://harishnshetty.github.io/tools/te/index.html" class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded shadow text-sm">Terraform</a>
+    </div>
+  </div>
+
+  <!-- Update List -->
+  <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-lg">
+    <h1 class="text-3xl font-bold mb-6 text-center text-blue-800">📋 Latest Updates</h1>
+    <div id="updateList" class="space-y-4">
+      <div class="text-center text-gray-500">Loading updates...</div>
+    </div>
+  </div>
+
+  <script>
+    async function fetchAllUpdates() {
+      try {
+        const url = "https://script.google.com/macros/s/AKfycbxZVmJjswUOGZLNm2zR9afxjzUeSHccbW_pSXwmeaPMFVa-oJSteKwJNFWS423h5FSj/exec";
+        const res = await fetch(url);
+        const json = await res.json();
+        const data = Array.isArray(json) ? json : json.data;
+
+        const updateList = document.getElementById("updateList");
+        updateList.innerHTML = "";
+
+        data.reverse().forEach(([timestamp, message], index) => {
+          const formatted = new Date(timestamp).toLocaleString("en-IN", {
+            dateStyle: "medium",
+            timeStyle: "short"
+          });
+
+          const card = document.createElement("div");
+          card.className = "bg-blue-50 border border-blue-200 rounded-lg shadow-sm p-4 hover:shadow-md transition-all duration-200";
+
+          card.innerHTML = `
+            <div class="flex items-center justify-between mb-2">
+              <span class="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                ${formatted}
+              </span>
+              <span class="text-sm text-gray-500">#${data.length - index}</span>
+            </div>
+            <p class="text-gray-800 text-sm leading-relaxed">${message}</p>
+          `;
+          updateList.appendChild(card);
+        });
+      } catch (err) {
+        document.getElementById("updateList").innerHTML = `
+          <div class="text-red-600 text-center font-semibold">
+            ❌ Failed to fetch updates.
+          </div>`;
+        console.error("Error fetching updates:", err);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", fetchAllUpdates);
+  </script>
+</body>
+</html>

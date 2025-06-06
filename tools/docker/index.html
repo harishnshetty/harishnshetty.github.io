@@ -1,0 +1,4319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dockerfile Generator with Config Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col lg:flex-row items-center justify-center p-6">
+
+
+   <div class="w-full lg:w-80 bg-gray-50 p-6 shadow-inner lg:shadow-none lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-y-auto z-10">
+    <div class="text-center">
+      <h3 class="text-xl font-bold">Docker Page</h3>
+<img src="img/image.png" alt="Harish N Shetty" class="w-40 h-40 rounded-2xl mx-auto mb-4 shadow-md border border-gray-300" />
+      <h2 class="text-xl font-bold">Harish N Shetty</h2>
+      <p class="text-sm text-gray-600 mb-2">harishnshetty • he/him</p>
+      <p class="text-sm mb-4">DevOps Learner || Open Source Enthusiast || Keep learning, sharing and growing</p>
+
+     <ul class="text-left text-sm space-y-2">
+  <li><strong>Status:</strong> <span class="text-green-600">open to work</span></li>
+  <li><strong>Location:</strong> Bengaluru, Karnataka, India</li>
+  <li><strong>Email:</strong> <a href="mailto:harishn662@gmail.com" class="text-blue-600 underline">harishn662@gmail.com</a></li>
+  <li><strong>Website:</strong> <a href="https://harishnshetty.github.io" class="text-blue-600 underline" target="_blank">Website</a></li>
+  
+  <!-- Social Media Icons -->
+  <li class="flex items-center">
+    <strong class="mr-2">Social:</strong>
+    <div class="flex space-x-3">
+      <a href="https://www.linkedin.com/in/harishnshetty" target="_blank" title="LinkedIn">
+        <img src="img/linkedin.png" alt="LinkedIn" class="w-8 h-8 hover:opacity-80">
+      </a>
+      <a href="https://github.com/harishnshetty" target="_blank" title="GitHub">
+        <img src="img/github.png" alt="GitHub" class="w-8 h-8 hover:opacity-80">
+      </a>
+      <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank" title="YouTube">
+        <img src="img/youtube.png" alt="YouTube" class="w-8 h-8 hover:opacity-80">
+      </a>
+      <a href="https://www.instagram.com/devopswithharish?igsh=YWc5ZzNmdzBzNjI4" target="_blank" title="Instagram">
+        <img src="img/instagram.png" alt="Instagram" class="w-8 h-8 hover:opacity-80">
+      </a>
+      <a href="https://x.com/devopswitharish?t=SWH2zb-b8Dh4AGEm6tpwGg&s=09" target="_blank" title="Twitter (X)">
+        <img src="img/twitter.png" alt="Twitter" class="w-8 h-8 hover:opacity-80">
+      </a>
+    </div>
+  </li>
+</ul>
+
+<p class="text-lg text-red-600 font-medium text-center mt-4 mx-auto max-w-2xl">
+  This is an open-source generator tool. You can support ongoing development & feature improvements.
+</p>
+     🔒 License & Usage Notice<br>
+  &copy; 2025 Harish N Shetty. All rights reserved.
+<ul class="text-left text-xl font-bold text-black space-y-2">
+  <li>
+    <strong>PayPal:</strong>
+    <a href="https://paypal.me/harishnshetty" class="text-blue-700 underline font-bold">@harishnshetty</a>
+  </li>
+  <li>
+    <strong>UPI ID:</strong> harishn662@ybl
+  </li>
+</ul>
+
+
+            <img src="img/qr1.png" alt="Harish N Shetty" class="w-45 h-45  mx-auto mb-4">
+<br> Desgin & Developed By</br><strong>Harish N Shetty</strong> 
+    </div>
+  </div>
+
+  <!-- Main Content -->
+<div class="flex-0 p-1 overflow-y-auto lg:ml-80"></div>
+  <div class="max-w-4xl w-full bg-white rounded-xl shadow-md p-6">
+    <a href="update.html" target="_blank">
+      
+      <div id="latestUpdate" class="mb-4 w-full max-w-full text-sm text-blue-800 bg-blue-100 p-3 rounded hidden cursor-pointer hover:bg-blue-200 transition">
+        <img src="img/7.gif" alt="update" class="w-10 h-10 sm:w-7 sm:h-7 flex-shrink-0" />
+        <div class="flex items-center gap-3">
+          <i class="fas fa-bell text-blue-600"></i>
+          <span id="updateMessage">Fetching updates...</span>
+        </div>
+      </div>
+    </a>
+
+   <h1 class="text-2xl font-bold mb-2 text-center">
+  <i class="fab fa-docker text-blue-500 mr-2"></i>Advanced Dockerfile Generator
+</h1>
+<p class="text-sm text-gray-600 text-center italic mb-6">
+  This tool is still in improvement stage — please review and modify the generated script based on your own knowledge.
+</p>
+
+    
+    <div class="flex flex-wrap gap-3 justify-center mb-6">
+      <a href="docker.pdf" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-file-pdf text-red-500 mr-2"></i> 📕Docker PDF
+      </a>
+      <a href="https://youtube.com/playlist?list=PLB1yU-G7FE-ENj8uOF2wuiU_AWdvZAI7H" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fab fa-youtube text-red-500 mr-2"></i> Tutorials
+      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_tqab3RWclUkxWWtBKdqYp0wjoGlCawZIYDT1itX-xAnY2g/viewform" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-comment-dots text-blue-500 mr-2"></i> ✍️ Feedback Form
+      </a>
+
+
+      <a href="https://harishnshetty.github.io/feedback/docker.html" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-comment-dots text-blue-500 mr-2"></i> Read Feedback
+      </a>
+
+      <a href="lic.txt" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-comment-dots text-blue-500 mr-2"></i> 🔑LICENSE
+      </a>
+
+          </div>
+
+      <!-- Generator Form -->
+    <div class="space-y-6 mt-6">
+  <!-- Project Configuration -->
+  <div class="bg-gray-50 p-4 rounded-lg border-2 border-black">
+    <h3 class="font-semibold text-lg mb-3 flex items-center">
+          <i class="fas fa-cog text-blue-500 mr-2"></i> Project Configuration
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Base Image Selection -->
+          <div>
+            <label class="block font-medium mb-1">Base Image</label>
+         <select id="baseImageSelect" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300">
+  <option value="" selected>-- Select Base Image --</option>
+  <!-- Languages / Runtimes -->
+              <optgroup label="🧑‍💻 Languages & Runtimes">
+                <option value="openjdk:17-jdk-slim">Java 17 (openjdk:17-jdk-slim)</option>
+                <option value="node:18-alpine">Node.js 18 (node:18-alpine)</option>
+                <option value="python:3.10-slim">Python 3.10 (python:3.10-slim)</option>
+                <option value="ruby:3.2-alpine">Ruby 3.2 (ruby:3.2-alpine)</option>
+                <option value="dotnet/sdk:8.0">.NET 8 SDK (dotnet/sdk:8.0)</option>
+                <option value="golang:1.20-alpine">Go 1.20 (golang:1.20-alpine)</option>
+              </optgroup>
+
+              <!-- CI/CD Build Tools -->
+              <optgroup label="🔧 CI/CD Build Tools">
+                <option value="jenkins/jenkins:lts-jdk17">Jenkins (jenkins:lts-jdk17)</option>
+                <option value="gitlab/gitlab-runner:alpine">GitLab Runner (alpine)</option>
+                <option value="circleci/node:20.2">CircleCI Node.js</option>
+                <option value="bitnami/git:latest">Bitnami Git CLI</option>
+              </optgroup>
+
+              <!-- Security / DevSecOps -->
+              <optgroup label="🛡️ DevSecOps & Security">
+                <option value="sonarsource/sonar-scanner-cli:latest">SonarScanner</option>
+                <option value="owasp/dependency-check:latest">OWASP Dependency Check</option>
+                <option value="aquasec/trivy:latest">Trivy Scanner</option>
+                <option value="anchore/grype:latest">Grype Scanner</option>
+                <option value="zapcore/zap-stable">OWASP ZAP (DAST)</option>
+              </optgroup>
+
+              <!-- Infrastructure / IaC -->
+              <optgroup label="☁️ Infrastructure as Code">
+                <option value="hashicorp/terraform:1.6">Terraform CLI</option>
+                <option value="hashicorp/packer:latest">Packer</option>
+                <option value="bitnami/kubectl:latest">kubectl</option>
+                <option value="amazon/aws-cli:2.15.0">AWS CLI</option>
+              </optgroup>
+
+              <!-- Container & Image Tools -->
+              <optgroup label="📦 Container Tools">
+                <option value="docker:24.0-dind">Docker-in-Docker</option>
+                <option value="quay.io/buildah/stable:latest">Buildah</option>
+                <option value="gcr.io/kaniko-project/executor:latest">Kaniko</option>
+              </optgroup>
+
+              <!-- Databases -->
+              <optgroup label="🗃️ Databases & Storage">
+                <option value="postgres:15-alpine">PostgreSQL 15</option>
+                <option value="mysql:8.0">MySQL 8</option>
+                <option value="mongo:6.0">MongoDB 6</option>
+                <option value="redis:7.2-alpine">Redis 7.2</option>
+                <option value="minio/minio:latest">MinIO</option>
+              </optgroup>
+
+              <!-- Minimal OS -->
+              <optgroup label="📁 Base OS">
+                <option value="alpine:latest">Alpine (Minimal)</option>
+              </optgroup>
+            </select>
+          </div>
+          
+
+          
+          <!-- Build Type -->
+          <div>
+            <label class="block font-medium mb-1">Build Type</label>
+            <select id="buildType" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300">
+              <option value="simple">Simple Build</option>
+              <option value="multistage">Multi-stage Build</option>
+              <option value="production">Production Optimized</option>
+            </select>
+          </div>
+          
+ 
+  
+  <div class="grid grid-cols-1 gap-4">
+    <!-- Web Hosting Image Selection -->
+    <div>
+      <label class="block font-medium mb-1">Web Hosting Image</label>
+      <select id="webHostingImageSelect" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300">
+        <option value="" selected>-- Select Web Hosting Image --</option>
+        <!-- Web Servers -->
+        <optgroup label="⚙️ Web Servers">
+          <option value="nginx:alpine">Nginx (nginx:alpine)</option>
+          <option value="nginx:stable">Nginx (stable)</option>
+          <option value="httpd:2.4-alpine">Apache HTTPD 2.4 (httpd:2.4-alpine)</option>
+          <option value="caddy:latest">Caddy (caddy:latest)</option>
+        </optgroup>
+
+        <!-- App Servers & Framework Hosts -->
+        <optgroup label="📦 App Servers & Framework Hosts">
+          <option value="php:8.2-apache">PHP + Apache (php:8.2-apache)</option>
+          <option value="php:8.2-fpm-alpine">PHP-FPM (php:8.2-fpm-alpine)</option>
+          <option value="node:20-alpine">Node.js (node:20-alpine)</option>
+          <option value="python:3.12-slim">Python (Flask/Django) (python:3.12-slim)</option>
+          <option value="ruby:3.2-alpine">Ruby (Rails, Sinatra)</option>
+        </optgroup>
+
+        <!-- Reverse Proxies / Gateways -->
+        <optgroup label="🔁 Reverse Proxies / Gateways">
+          <option value="traefik:v3.0">Traefik (traefik:v3.0)</option>
+          <option value="haproxy:2.8">HAProxy (haproxy:2.8)</option>
+          <option value="envoyproxy/envoy:v1.29-latest">Envoy Proxy (envoy:v1.29)</option>
+        </optgroup>
+
+        <!-- Static File Hosting -->
+        <optgroup label="📁 Static File Hosting">
+          <option value="httpd:alpine">Apache for static files</option>
+          <option value="nginx:alpine">Nginx for static assets</option>
+          <option value="caddy:alpine">Caddy (auto HTTPS)</option>
+        </optgroup>
+
+        <!-- Platform-Specific Hosts -->
+        <optgroup label="☁️ Platform-Specific Hosts">
+          <option value="amazonlinux:2023">Amazon Linux (Lightweight Web Hosting)</option>
+          <option value="ubuntu:22.04">Ubuntu (Generic Host Base)</option>
+          <option value="debian:bullseye-slim">Debian (Lightweight Hosting)</option>
+        </optgroup>
+      </select>
+    </div>
+    
+    <!-- Additional Web Hosting Options -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block font-medium mb-1">Web Port</label>
+        <input type="number" id="webPort" value="80" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300">
+      </div>
+      
+      <div class="flex items-center">
+        <input type="checkbox" id="enableHttps" class="mr-2">
+        <label for="enableHttps">Generate HTTPS Configuration</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+          <!-- Port Configuration -->
+          <div>
+            <label class="block font-medium mb-1">Exposed Port</label>
+            <input type="number" id="exposedPort" value="8080" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300">
+          </div>
+          
+          <!-- Non-root User -->
+          <div class="flex items-center">
+            <input type="checkbox" id="nonRootUser" checked class="mr-2">
+            <label for="nonRootUser">Use non-root user</label>
+          </div>
+        </div>
+      </div>
+
+
+<!-- Full Section Container -->
+<div class="border-2 border-black rounded p-4 bg-gray-50 shadow-sm mb-6">
+  <!-- Base OS Selection -->
+  <div class="mb-4">
+    <label class="block font-medium mb-1">Select Base OS</label>
+    <select id="baseOsSelect" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300">
+      <option value="">-- Choose Base OS --</option>
+      <option value="ubuntu2204">Ubuntu 22.04</option>
+      <option value="ubuntu2004">Ubuntu 20.04</option>
+      <option value="debian-bullseye">Debian Bullseye</option>
+      <option value="debian-bookworm">Debian Bookworm</option>
+      <option value="alpine">Alpine</option>
+      <option value="centos7">CentOS 7</option>
+      <option value="rockylinux9">Rocky Linux 9</option>
+      <option value="amazonlinux2023">Amazon Linux 2023</option>
+      <option value="fedora40">Fedora 40</option>
+      <option value="ubi8">Red Hat UBI 8</option>
+      <option value="busybox">BusyBox</option>
+      <option value="scratch">Scratch</option>
+      <option value="distroless">Distroless</option>
+    </select>
+  </div>
+
+  <!-- Base OS Description -->
+  <div id="baseOsDescription" class="mt-2 text-sm text-gray-700 font-medium hidden border-l-4 border-blue-500 pl-3 py-2 bg-blue-100 rounded">
+    <!-- Description will appear here -->
+  </div>
+
+  <!-- App Checkboxes Section -->
+  <div id="applicationOptions" class="hidden mt-4">
+    <label class="block font-medium mb-2 text-lg text-black">Available Applications</label>
+    <div id="checkboxContainer" class="grid grid-cols-2 gap-2"></div>
+    
+    <!-- Basic Utilities Section -->
+    <div id="basicUtilsSection" class="mt-4 hidden">
+      <label class="block font-medium mb-2 text-lg text-black">Basic Utilities</label>
+      <div class="flex flex-wrap gap-3 p-2 bg-gray-100 rounded">
+        <!-- Existing tools -->
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="vim" class="form-checkbox text-blue-600"><span>vim</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="nano" class="form-checkbox text-blue-600"><span>nano</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="curl" class="form-checkbox text-blue-600"><span>curl</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="wget" class="form-checkbox text-blue-600"><span>wget</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="git" class="form-checkbox text-blue-600"><span>git</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="htop" class="form-checkbox text-blue-600"><span>htop</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="tmux" class="form-checkbox text-blue-600"><span>tmux</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="jq" class="form-checkbox text-blue-600"><span>jq</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="lsof" class="form-checkbox text-blue-600"><span>lsof</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="strace" class="form-checkbox text-blue-600"><span>strace</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="net-tools" class="form-checkbox text-blue-600"><span>net-tools</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="bash-completion" class="form-checkbox text-blue-600"><span>bash-completion</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="ca-certificates" class="form-checkbox text-blue-600"><span>ca-certificates</span></label>
+
+    <!-- Additional important utilities -->
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="sudo" class="form-checkbox text-blue-600"><span>sudo</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="openssh-server" class="form-checkbox text-blue-600"><span>openssh-server</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="openssh-client" class="form-checkbox text-blue-600"><span>openssh-client</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="gnupg" class="form-checkbox text-blue-600"><span>gnupg</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="rsync" class="form-checkbox text-blue-600"><span>rsync</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="unzip" class="form-checkbox text-blue-600"><span>unzip</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="zip" class="form-checkbox text-blue-600"><span>zip</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="tree" class="form-checkbox text-blue-600"><span>tree</span></label>
+    <label class="flex items-center space-x-2"><input type="checkbox" name="basicutils" value="procps" class="form-checkbox text-blue-600"><span>procps (ps, top, etc.)</span></label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const baseOsToApps = {
+  ubuntu2204: ["nginx", "apache", "mysql", "php", "python", "node", "django", "flask", "wordpress", "java"],
+  ubuntu2004: ["nginx", "apache", "mysql", "php", "python", "node", "django", "flask", "wordpress", "java"],
+  "debian-bullseye": ["nginx", "mysql", "php", "django", "flask", "static", "react", "postgres", "java"],
+  "debian-bookworm": ["nginx", "mysql", "php", "django", "flask", "static", "react", "postgres", "java"],
+  alpine: ["nginx", "node", "pm2", "python", "go", "express", "static", "java", "caddy", "httpd", "lighttpd"],
+  centos7: ["apache", "mysql", "php", "tomcat", "java"],
+  rockylinux9: ["httpd", "mysql", "php", "python", "nginx", "java"],
+  amazonlinux2023: ["nginx", "node", "python", "flask", "django", "java"],
+  fedora40: ["nginx", "postgres", "php", "laravel", "django", "java"],
+  ubi8: ["tomcat", "java", "nginx", "uwsgi", "gunicorn"],
+  busybox: ["static", "go", "python"],
+  scratch: ["static", "go"],
+  distroless: ["static", "node", "python", "java"]
+};
+
+const baseOsDescriptions = {
+  ubuntu2204: "Ubuntu 22.04 - Popular LTS distro, widely supported",
+  ubuntu2004: "Ubuntu 20.04 - Older LTS version, still heavily used",
+  "debian-bullseye": "Debian Bullseye - Stable Debian base",
+  "debian-bookworm": "Debian Bookworm - Latest stable release",
+  alpine: "Alpine - Lightweight, minimal image (~5MB)",
+  centos7: "CentOS 7 - Legacy RHEL clone, still in use",
+  rockylinux9: "Rocky Linux 9 - Modern CentOS alternative",
+  amazonlinux2023: "Amazon Linux 2023 - AWS-optimized image",
+  fedora40: "Fedora 40 - Cutting-edge Linux distribution",
+  ubi8: "Red Hat UBI 8 - Red Hat's universal base image",
+  busybox: "BusyBox - Ultra-minimal (~1MB), includes shell tools",
+  scratch: "Scratch - Empty base for fully static builds (no shell, no libc)",
+  distroless: "Distroless - Secure, minimal images by Google for Node, Java, Python, Go"
+};
+
+const appNames = {
+  nginx: "Nginx Reverse Proxy",
+  apache: "Apache Web Server",
+  httpd: "Apache HTTPD",
+  mysql: "MySQL Database",
+  php: "PHP Application",
+  python: "Python Application",
+  node: "Node.js Application",
+  django: "Django (Python Web)",
+  flask: "Flask (Python API)",
+  wordpress: "WordPress CMS",
+  static: "Static Files",
+  react: "React SPA",
+  express: "Express (Node.js API)",
+  go: "Go Application",
+  tomcat: "Java Web (Tomcat)",
+  java: "Java Application",
+  pm2: "PM2 (Node.js Process Manager)",
+  postgres: "PostgreSQL Database",
+  laravel: "Laravel (PHP Framework)",
+  uwsgi: "uWSGI (Python WSGI)",
+  gunicorn: "Gunicorn (Python WSGI)",
+  caddy: "Caddy Web Server",
+  lighttpd: "Lighttpd Web Server"
+};
+
+const appPorts = {
+  nginx: 80,
+  apache: 80,
+  httpd: 80,
+  mysql: 3306,
+  php: 8000,
+  python: 8000,
+  node: 3000,
+  django: 8000,
+  flask: 5000,
+  wordpress: 80,
+  static: 80,
+  react: 3000,
+  express: 3000,
+  go: 8080,
+  tomcat: 8080,
+  java: 8080,
+  pm2: 3000,
+  postgres: 5432,
+  laravel: 8000,
+  uwsgi: 8000,
+  gunicorn: 8000,
+  caddy: 80,
+  lighttpd: 80
+};
+
+const javaVariants = {
+  jdk: ["ubuntu2204", "ubuntu2004", "debian-bullseye", "debian-bookworm", "centos7", "rockylinux9", "fedora40"],
+  jre: ["alpine", "amazonlinux2023", "ubi8"]
+};
+
+const javaVersions = ["11", "17", "21"];
+
+// Update the existing event listener
+document.getElementById("baseOsSelect").addEventListener("change", function () {
+  const selectedOs = this.value;
+  const checkboxContainer = document.getElementById("checkboxContainer");
+  const appSection = document.getElementById("applicationOptions");
+  const descriptionBox = document.getElementById("baseOsDescription");
+  const basicUtilsSection = document.getElementById("basicUtilsSection");
+
+  checkboxContainer.innerHTML = "";
+
+  if (baseOsDescriptions[selectedOs]) {
+    descriptionBox.textContent = baseOsDescriptions[selectedOs];
+    descriptionBox.classList.remove("hidden");
+  } else {
+    descriptionBox.textContent = "";
+    descriptionBox.classList.add("hidden");
+  }
+
+  if (baseOsToApps[selectedOs]) {
+    appSection.classList.remove("hidden");
+    basicUtilsSection.classList.remove("hidden");
+    const appsToShow = baseOsToApps[selectedOs];
+
+    appsToShow.forEach(app => {
+      const label = document.createElement("label");
+      label.className = "flex flex-col space-y-1";
+
+      const checkboxHTML = `
+        <div class="flex items-center space-x-2">
+          <input type="checkbox" value="${app}" name="apps" id="check-${app}" class="form-checkbox h-4 w-4 text-blue-600">
+          <span>${appNames[app] || app}</span>
+        </div>
+      `;
+      label.innerHTML = checkboxHTML;
+
+      // Add change event listener to generate templates when checked
+      label.querySelector(`#check-${app}`).addEventListener("change", function() {
+        generateTemplatesFromSelectedApps();
+      });
+
+      // Java version selection
+      if (app === "java") {
+        const select = document.createElement("select");
+        select.className = "mt-1 p-1 border rounded text-sm";
+        select.name = "javaVersion";
+        select.id = "jdk-version";
+
+        const isJDK = javaVariants.jdk.includes(selectedOs);
+        const variantLabel = isJDK ? "JDK" : "JRE";
+
+        javaVersions.forEach(ver => {
+          const opt = document.createElement("option");
+          opt.value = `${variantLabel.toLowerCase()}${ver}`;
+          opt.innerText = `${variantLabel} ${ver}`;
+          select.appendChild(opt);
+        });
+
+        select.disabled = true;
+        label.appendChild(select);
+
+        label.querySelector(`#check-${app}`).addEventListener("change", function (e) {
+          select.disabled = !e.target.checked;
+          generateTemplatesFromSelectedApps();
+        });
+      }
+
+      checkboxContainer.appendChild(label);
+    });
+  } else {
+    appSection.classList.add("hidden");
+    basicUtilsSection.classList.add("hidden");
+  }
+});
+
+// Add event listener for basic utilities
+document.querySelectorAll('input[name="basicutils"]').forEach(checkbox => {
+  checkbox.addEventListener('change', function() {
+    generateTemplatesFromSelectedApps();
+  });
+});
+
+// Generate templates from selected apps
+function generateTemplatesFromSelectedApps() {
+  const selectedOs = document.getElementById('baseOsSelect').value;
+  const selectedApps = Array.from(document.querySelectorAll('#checkboxContainer input[name="apps"]:checked')).map(el => el.value);
+  const selectedUtils = Array.from(document.querySelectorAll('#basicUtilsSection input[name="basicutils"]:checked')).map(el => el.value);
+  
+  if (!selectedOs) {
+    return;
+  }
+
+  let dockerfile = '';
+  let entrypoint = '';
+  let config = '';
+  let exposedPorts = new Set();
+
+  // Start with base OS setup
+  dockerfile = `FROM ${getBaseImageForOs(selectedOs)}\n\n`;
+  
+  // Add common setup commands based on OS
+  dockerfile += getBaseOsSetupCommands(selectedOs);
+  
+  // Process each selected application
+  selectedApps.forEach(app => {
+    const { df, ep, cfg } = getAppTemplate(selectedOs, app);
+    dockerfile += df + '\n';
+    if (ep) entrypoint += ep + '\n';
+    if (cfg) config += cfg + '\n';
+    
+    // Add port if defined for this app
+    if (appPorts[app]) {
+      exposedPorts.add(appPorts[app]);
+    }
+  });
+
+  // Add basic utilities if any selected
+  if (selectedUtils.length > 0) {
+    dockerfile += `\n# Install basic utilities\n`;
+    dockerfile += getPackageInstallCommand(selectedOs, selectedUtils.join(' ')) + '\n';
+  }
+
+  // Add common footer
+  dockerfile += `\nWORKDIR /app\n`;
+  dockerfile += `COPY . .\n\n`;
+  dockerfile += `COPY entrypoint.sh /entrypoint.sh\n`;
+  dockerfile += `RUN chmod +x /entrypoint.sh\n\n`;
+  
+  // Add EXPOSE commands for all ports
+  if (exposedPorts.size > 0) {
+    dockerfile += `EXPOSE ${Array.from(exposedPorts).join(' ')}\n`;
+  }
+  
+  dockerfile += `ENTRYPOINT ["/entrypoint.sh"]`;
+
+  // Set default entrypoint if none was generated
+  if (!entrypoint) {
+    entrypoint = `#!/bin/sh\n# Entrypoint script\nset -e\n\nexec "\$@"`;
+  }
+
+  // Set the outputs
+  document.getElementById('dockerfileOutput').textContent = dockerfile;
+  document.getElementById('entrypointOutput').textContent = entrypoint;
+  document.getElementById('configOutput').textContent = config || '# No specific configuration required';
+  document.getElementById('entrypointScript').value = entrypoint;
+}
+
+// Helper functions
+function getBaseImageForOs(os) {
+  const osImages = {
+    ubuntu2204: 'ubuntu:22.04',
+    ubuntu2004: 'ubuntu:20.04',
+    'debian-bullseye': 'debian:bullseye',
+    'debian-bookworm': 'debian:bookworm',
+    alpine: 'alpine:latest',
+    centos7: 'centos:7',
+    rockylinux9: 'rockylinux:9',
+    amazonlinux2023: 'amazonlinux:2023',
+    fedora40: 'fedora:40',
+    ubi8: 'registry.access.redhat.com/ubi8/ubi',
+    busybox: 'busybox:latest',
+    scratch: 'scratch',
+    distroless: 'gcr.io/distroless/base'
+  };
+  return osImages[os] || 'ubuntu:22.04';
+}
+
+function getBaseOsSetupCommands(os) {
+  const commands = {
+    ubuntu2204: 'RUN apt-get update && apt-get install -y curl gnupg && rm -rf /var/lib/apt/lists/*\n',
+    ubuntu2004: 'RUN apt-get update && apt-get install -y curl gnupg && rm -rf /var/lib/apt/lists/*\n',
+    'debian-bullseye': 'RUN apt-get update && apt-get install -y curl gnupg && rm -rf /var/lib/apt/lists/*\n',
+    'debian-bookworm': 'RUN apt-get update && apt-get install -y curl gnupg && rm -rf /var/lib/apt/lists/*\n',
+    alpine: 'RUN apk add --no-cache curl bash\n',
+    centos7: 'RUN yum update -y && yum install -y curl && yum clean all\n',
+    rockylinux9: 'RUN dnf update -y && dnf install -y curl && dnf clean all\n',
+    amazonlinux2023: 'RUN yum update -y && yum install -y curl && yum clean all\n',
+    fedora40: 'RUN dnf update -y && dnf install -y curl && dnf clean all\n',
+    ubi8: 'RUN dnf update -y && dnf install -y curl && dnf clean all\n',
+    busybox: '# BusyBox has limited package management\n',
+    scratch: '# Scratch image has no package manager\n',
+    distroless: '# Distroless images have no package manager\n'
+  };
+  return commands[os] || '';
+}
+
+function getAppTemplate(os, app) {
+  const templates = {
+    nginx: {
+      df: `# Install Nginx
+${getPackageInstallCommand(os, 'nginx')}`,
+      ep: `# Start Nginx
+exec nginx -g 'daemon off;'`,
+      cfg: `# nginx.conf
+worker_processes auto;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+        }
+    }
+}`
+    },
+    apache: {
+      df: `# Install Apache
+${getPackageInstallCommand(os, 'apache2')}`,
+      ep: `# Start Apache
+exec httpd-foreground`,
+      cfg: `# httpd.conf
+ServerRoot "/usr/local/apache2"
+Listen 80
+
+LoadModule mpm_event_module modules/mod_mpm_event.so
+LoadModule authz_core_module modules/mod_authz_core.so
+LoadModule dir_module modules/mod_dir.so
+LoadModule mime_module modules/mod_mime.so
+
+DocumentRoot "/usr/local/apache2/htdocs"
+<Directory "/usr/local/apache2/htdocs">
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>`
+    },
+    mysql: {
+      df: `# Install MySQL
+${getPackageInstallCommand(os, 'mysql-server')}`,
+      ep: `# Start MySQL
+exec mysqld`,
+      cfg: `# my.cnf
+[mysqld]
+bind-address = 0.0.0.0`
+    },
+    php: {
+      df: `# Install PHP
+${getPackageInstallCommand(os, 'php')}`,
+      ep: `# Start PHP built-in server
+exec php -S 0.0.0.0:8000`,
+      cfg: `# php.ini
+[PHP]
+expose_php = Off
+upload_max_filesize = 2M
+post_max_size = 8M`
+    },
+    python: {
+      df: `# Install Python
+${getPackageInstallCommand(os, 'python3')}`,
+      ep: `# Start Python application
+exec python3 app.py`,
+      cfg: `# requirements.txt
+flask==2.0.1`
+    },
+    node: {
+      df: `# Install Node.js
+${getPackageInstallCommand(os, 'nodejs npm')}`,
+      ep: `# Start Node application
+exec node index.js`,
+      cfg: `# package.json
+{
+  "name": "node-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}`
+    },
+    // Add more application templates as needed
+    java: {
+      df: `# Install Java
+${getPackageInstallCommand(os, 'openjdk-17-jdk')}`,
+      ep: `# Start Java application
+exec java -jar app.jar`,
+      cfg: `# JVM Options (set via environment variables)
+# Example:
+# JAVA_OPTS="-Xmx512m -Xms256m"`
+    },
+    postgres: {
+      df: `# Install PostgreSQL
+${getPackageInstallCommand(os, 'postgresql')}`,
+      ep: `# Start PostgreSQL
+exec postgres`,
+      cfg: `# postgresql.conf
+listen_addresses = '*'`
+    }
+  };
+  
+  return templates[app] || { df: '', ep: '', cfg: '' };
+}
+
+function getPackageInstallCommand(os, packages) {
+  const commands = {
+    ubuntu2204: `RUN apt-get update && apt-get install -y ${packages} && rm -rf /var/lib/apt/lists/*`,
+    ubuntu2004: `RUN apt-get update && apt-get install -y ${packages} && rm -rf /var/lib/apt/lists/*`,
+    'debian-bullseye': `RUN apt-get update && apt-get install -y ${packages} && rm -rf /var/lib/apt/lists/*`,
+    'debian-bookworm': `RUN apt-get update && apt-get install -y ${packages} && rm -rf /var/lib/apt/lists/*`,
+    alpine: `RUN apk add --no-cache ${packages}`,
+    centos7: `RUN yum install -y ${packages} && yum clean all`,
+    rockylinux9: `RUN dnf install -y ${packages} && dnf clean all`,
+    amazonlinux2023: `RUN yum install -y ${packages} && yum clean all`,
+    fedora40: `RUN dnf install -y ${packages} && dnf clean all`,
+    ubi8: `RUN dnf install -y ${packages} && dnf clean all`,
+    busybox: `# BusyBox has limited package management - ${packages} may not be available`,
+    scratch: `# Scratch image has no package manager - cannot install ${packages}`,
+    distroless: `# Distroless images have no package manager - cannot install ${packages}`
+  };
+  return commands[os] || `RUN # Install command for ${packages} not configured for this OS`;
+}
+</script>
+
+
+
+
+
+ <!-- Project Based Apps Section -->
+<div class="bg-gray-50 p-4 rounded-lg mb-6 border-2 border-black">
+  <div class="flex justify-between items-center mb-3">
+    <h3 class="font-semibold text-lg flex items-center">
+          <i class="fas fa-project-diagram text-blue-500 mr-2"></i> Project Based Apps
+        </h3>
+        <button id="toggleProjectApps" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+          <i class="fas fa-expand mr-1"></i> Expand
+        </button>
+      </div>
+      
+      <div id="projectAppsTable" class="hidden overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="py-2 px-4 border-b text-left">Base OS Image</th>
+              <th class="py-2 px-4 border-b text-left">Installed Application(s)</th>
+              <th class="py-2 px-4 border-b text-left">Common Use Case</th>
+              <th class="py-2 px-4 border-b text-left">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Flask/Django with Nginx -->
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">ubuntu:22.04</td>
+              <td class="py-2 px-4 border-b">nginx, python3, gunicorn</td>
+              <td class="py-2 px-4 border-b">Flask/Django API server with Nginx reverse proxy</td>
+              <td class="py-2 px-4 border-b">
+                <button onclick="applyProjectTemplate('flask-nginx-ubuntu')" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+                  Use Template
+                </button>
+              </td>
+            </tr>
+            
+            <!-- LAMP Stack -->
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">ubuntu:20.04</td>
+              <td class="py-2 px-4 border-b">apache2, php, mysql-client</td>
+              <td class="py-2 px-4 border-b">LAMP stack (WordPress, Drupal)</td>
+              <td class="py-2 px-4 border-b">
+                <button onclick="applyProjectTemplate('lamp-ubuntu')" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+                  Use Template
+                </button>
+              </td>
+            </tr>
+            
+            <!-- Java/Spring Boot -->
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">debian:bullseye</td>
+              <td class="py-2 px-4 border-b">openjdk-17, maven, tomcat</td>
+              <td class="py-2 px-4 border-b">Java/Spring Boot deployment</td>
+              <td class="py-2 px-4 border-b">
+                <button onclick="applyProjectTemplate('java-tomcat-debian')" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+                  Use Template
+                </button>
+              </td>
+            </tr>
+            
+            <!-- Node.js Microservices -->
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">alpine:latest</td>
+              <td class="py-2 px-4 border-b">nodejs, npm, pm2</td>
+              <td class="py-2 px-4 border-b">Lightweight Node.js microservices</td>
+              <td class="py-2 px-4 border-b">
+                <button onclick="applyProjectTemplate('node-pm2-alpine')" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+                  Use Template
+                </button>
+              </td>
+            </tr>
+            
+            <!-- Nginx Static -->
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">alpine:latest</td>
+              <td class="py-2 px-4 border-b">nginx</td>
+              <td class="py-2 px-4 border-b">Static file hosting or reverse proxy</td>
+              <td class="py-2 px-4 border-b">
+                <button onclick="applyProjectTemplate('nginx-static-alpine')" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+                  Use Template
+                </button>
+              </td>
+            </tr>
+            
+            <!-- Legacy Enterprise -->
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">centos:7</td>
+              <td class="py-2 px-4 border-b">httpd, mod_ssl</td>
+              <td class="py-2 px-4 border-b">Legacy enterprise app hosting</td>
+              <td class="py-2 px-4 border-b">
+                <button onclick="applyProjectTemplate('apache-legacy-centos')" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+                  Use Template
+                </button>
+              </td>
+            </tr>
+            
+            <!-- PHP-FPM with Nginx -->
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">rockylinux:9</td>
+              <td class="py-2 px-4 border-b">nginx, php-fpm, mariadb-client</td>
+              <td class="py-2 px-4 border-b">RHEL-based PHP apps with Nginx</td>
+              <td class="py-2 px-4 border-b">
+                <button onclick="applyProjectTemplate('nginx-php-fpm-rocky')" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+                  Use Template
+                </button>
+              </td>
+            </tr>
+            
+            <!-- AWS S3 with HTTPS -->
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">amazonlinux:2023</td>
+              <td class="py-2 px-4 border-b">nginx, certbot, aws-cli</td>
+              <td class="py-2 px-4 border-b">Static hosting with AWS S3 sync + HTTPS</td>
+              <td class="py-2 px-4 border-b">
+                <button onclick="applyProjectTemplate('nginx-certbot-aws')" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+                  Use Template
+                </button>
+              </td>
+            </tr>
+            
+            <!-- React/Next.js -->
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">ubuntu:22.04</td>
+              <td class="py-2 px-4 border-b">nodejs, yarn, nginx</td>
+              <td class="py-2 px-4 border-b">React/Next.js frontend with Nginx proxy</td>
+              <td class="py-2 px-4 border-b">
+                <button onclick="applyProjectTemplate('node-react-nginx-ubuntu')" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+                  Use Template
+                </button>
+              </td>
+            </tr>
+            
+            <!-- Python WSGI -->
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">debian:bookworm</td>
+              <td class="py-2 px-4 border-b">python3, uwsgi, nginx</td>
+              <td class="py-2 px-4 border-b">Python backend server (WSGI)</td>
+              <td class="py-2 px-4 border-b">
+                <button onclick="applyProjectTemplate('python-uwsgi-debian')" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+                  Use Template
+                </button>
+              </td>
+            </tr>
+            
+            <!-- Go with Nginx -->
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">fedora:40</td>
+              <td class="py-2 px-4 border-b">golang, nginx</td>
+              <td class="py-2 px-4 border-b">Go APIs with lightweight proxy</td>
+              <td class="py-2 px-4 border-b">
+                <button onclick="applyProjectTemplate('go-nginx-fedora')" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+                  Use Template
+                </button>
+              </td>
+            </tr>
+            
+            <!-- RHEL Enterprise Java -->
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">ubi8/ubi</td>
+              <td class="py-2 px-4 border-b">java, podman, curl</td>
+              <td class="py-2 px-4 border-b">Secure RHEL-based image for enterprise builds</td>
+              <td class="py-2 px-4 border-b">
+                <button onclick="applyProjectTemplate('java-podman-rhel')" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+                  Use Template
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Advanced Options -->
+<div class="bg-gray-50 p-4 rounded-lg border-2 border-black">
+  <h3 class="font-semibold text-lg mb-3 flex items-center">
+          <i class="fas fa-sliders-h text-blue-500 mr-2"></i> Advanced Options
+        </h3>
+        
+        <!-- Environment Variables -->
+        <div class="mb-4">
+          <div class="flex justify-between items-center mb-2">
+            <label class="font-medium">Environment Variables</label>
+            <button onclick="addEnvVar()" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+              <i class="fas fa-plus mr-1"></i> Add Variable
+            </button>
+          </div>
+          <div id="envVarsContainer" class="space-y-2"></div>
+        </div>
+        
+        <!-- Health Check -->
+        <div class="mb-4">
+          <label class="font-medium block mb-2">Health Check</label>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <input type="text" id="healthCheckCmd" placeholder="CMD" value="curl -f http://localhost:8080/health || exit 1" class="p-2 border rounded">
+            <input type="text" id="healthCheckInterval" placeholder="Interval" value="30s" class="p-2 border rounded">
+            <input type="text" id="healthCheckTimeout" placeholder="Timeout" value="5s" class="p-2 border rounded">
+          </div>
+        </div>
+        
+        <!-- Build Arguments -->
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label class="font-medium">Build Arguments</label>
+            <button onclick="addBuildArg()" class="text-sm bg-blue-100 hover:bg-blue-200 px-2 py-1 rounded">
+              <i class="fas fa-plus mr-1"></i> Add Argument
+            </button>
+          </div>
+          <div id="buildArgsContainer" class="space-y-2"></div>
+        </div>
+      </div>
+
+      <!-- Replace the current Entrypoint Script section with this code -->
+<div class="bg-gray-50 p-4 rounded-lg border-2 border-black">
+  <h3 class="font-semibold text-lg mb-3 flex items-center">
+    <i class="fas fa-terminal text-blue-500 mr-2"></i> Entrypoint Script
+  </h3>
+  
+  <div class="flex items-center mb-3">
+    <input type="checkbox" id="useTemplate" class="mr-2" onchange="toggleEntrypointTemplate()">
+    <label for="useTemplate">Use application template</label>
+  </div>
+  
+  <div id="templateSelection" class="hidden mb-3">
+    <select id="appType" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300" onchange="generateEntrypointTemplate()">
+      <option value="">-- Select Application Type --</option>
+      <option value="apache">Apache Web Server</option>
+<option value="django">Django (Python Web)</option>
+<option value="dotnet">.NET Application</option>
+<option value="express">Express (Node.js API)</option>
+<option value="flask">Flask (Python API)</option>
+<option value="go">Go Application</option>
+<option value="gunicorn">Gunicorn (Python WSGI)</option>
+<option value="kong">Kong API Gateway</option>
+<option value="laravel">Laravel (PHP Framework)</option>
+<option value="mysql">MySQL Database</option>
+<option value="nextjs">Next.js SSR/Static Site</option>
+<option value="nginx">Nginx Reverse Proxy</option>
+<option value="nginx-certbot">Nginx + Certbot SSL</option>
+<option value="node">Node.js Application</option>
+<option value="php">PHP Application</option>
+<option value="pm2">PM2 (Node.js Process Manager)</option>
+<option value="postgres">PostgreSQL Database</option>
+<option value="python">Python Application</option>
+<option value="react">React SPA</option>
+<option value="redis">Redis Cache</option>
+<option value="ruby">Ruby Application</option>
+<option value="static">Static Files</option>
+<option value="java">Java Application</option>
+<option value="tomcat">Java Web (Tomcat)</option>
+<option value="traefik">Traefik Reverse Proxy</option>
+<option value="uwsgi">uWSGI (Python WSGI)</option>
+<option value="vue">Vue.js SPA</option>
+<option value="wordpress">WordPress CMS</option>
+    </select>
+  </div>
+  
+  <textarea id="entrypointScript" rows="6" class="w-full p-3 border rounded font-mono bg-gray-100 text-sm focus:ring-2 focus:ring-blue-300" placeholder="#!/bin/sh
+# Example entrypoint script
+exec java -jar app.jar"></textarea>
+</div>
+      <!-- Dockerignore Configuration -->
+<div class="bg-gray-50 p-4 rounded-lg border-2 border-black">
+  <h3 class="font-semibold text-lg mb-3 flex items-center">
+          <i class="fas fa-filter text-blue-500 mr-2"></i> .dockerignore Configuration
+        </h3>
+        <div class="flex items-center mb-2">
+          <input type="checkbox" id="generateDockerignore" checked class="mr-2">
+          <label for="generateDockerignore">Generate .dockerignore file</label>
+        </div>
+        <select id="dockerignoreTemplate" class="w-full p-2 border rounded mb-3 focus:ring-2 focus:ring-blue-300">
+          <option value="node">Node.js</option>
+          <option value="java">Java</option>
+          <option value="python">Python</option>
+          <option value="go">Go</option>
+          <option value="custom">Custom</option>
+        </select>
+        <textarea id="dockerignoreContent" rows="5" class="w-full p-3 border rounded font-mono bg-gray-100 text-sm focus:ring-2 focus:ring-blue-300">node_modules
+.git
+.env
+*.log
+*.tmp
+*.swp</textarea>
+      </div>
+
+      <!-- Generate Button -->
+<button onclick="generateAllFiles()" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-medium transition flex items-center justify-center">
+  <i class="fas fa-magic mr-2"></i> Generate Docker Configuration
+</button>
+
+<!-- Reset Button -->
+<button onclick="resetForm()" class="w-full mt-4 bg-gray-600 hover:bg-gray-700 text-white px-4 py-3 rounded-lg font-medium transition flex items-center justify-center">
+  <i class="fas fa-redo mr-2"></i> Reset Form
+</button>
+
+    <!-- Output Preview -->
+<div class="mt-6 space-y-4">
+  <div class="relative bg-gray-50 p-4 rounded-lg border-2 border-black">
+    <div class="flex justify-between items-center mb-2">
+      <h4 class="font-semibold flex items-center">
+              <i class="fab fa-docker text-blue-500 mr-2"></i> Dockerfile
+            </h4>
+            <div class="flex space-x-2">
+              <button onclick="copyToClipboard('dockerfileOutput')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-copy mr-1"></i> Copy
+              </button>
+              <button onclick="downloadFile('dockerfileOutput', 'Dockerfile')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-download mr-1"></i> Download
+              </button>
+            </div>
+          </div>
+          <pre id="dockerfileOutput" class="p-3 bg-white rounded text-sm overflow-x-auto"></pre>
+        </div>
+
+        <div class="relative bg-gray-50 p-4 rounded-lg border-2 border-black">
+  <div class="flex justify-between items-center mb-2">
+    <h4 class="font-semibold flex items-center">
+              <i class="fas fa-file-code text-blue-500 mr-2"></i> entrypoint.sh
+            </h4>
+            <div class="flex space-x-2">
+              <button onclick="copyToClipboard('entrypointOutput')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-copy mr-1"></i> Copy
+              </button>
+              <button onclick="downloadFile('entrypointOutput', 'entrypoint.sh')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-download mr-1"></i> Download
+              </button>
+            </div>
+          </div>
+          <pre id="entrypointOutput" class="p-3 bg-white rounded text-sm overflow-x-auto"></pre>
+        </div>
+
+
+<div class="relative bg-gray-50 p-4 rounded-lg border-2 border-black">
+  <div class="flex justify-between items-center mb-2">
+    <h4 class="font-semibold flex items-center">
+              <i class="fas fa-file-code text-blue-500 mr-2"></i> configuration
+            </h4>
+            <div class="flex space-x-2">
+              <button onclick="copyToClipboard('configOutput')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-copy mr-1"></i> Copy
+              </button>
+              <button onclick="downloadFile('configOutput', 'rename.config')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-download mr-1"></i> Download
+              </button>
+            </div>
+          </div>
+          <pre id="configOutput" class="p-3 bg-white rounded text-sm overflow-x-auto"></pre>
+        </div>
+
+        
+
+<div class="relative bg-gray-50 p-4 rounded-lg border-2 border-black">
+  <div class="flex justify-between items-center mb-2">
+    <h4 class="font-semibold flex items-center">
+              <i class="fas fa-shield-alt text-blue-500 mr-2"></i> .dockerignore
+            </h4>
+            <div class="flex space-x-2">
+              <button onclick="copyToClipboard('dockerignoreOutput')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-copy mr-1"></i> Copy
+              </button>
+              <button onclick="downloadFile('dockerignoreOutput', '.dockerignore')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-download mr-1"></i> Download
+              </button>
+            </div>
+          </div>
+          <pre id="dockerignoreOutput" class="p-3 bg-white rounded text-sm overflow-x-auto"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <script>
+    // Environment Variables Management
+    function addEnvVar(key = '', value = '') {
+      const container = document.getElementById('envVarsContainer');
+      const id = 'envVar_' + Date.now();
+      
+      const div = document.createElement('div');
+      div.className = 'flex items-center space-x-2';
+      div.innerHTML = `
+        <input type="text" placeholder="Key" value="${key}" class="flex-1 p-2 border rounded" id="${id}_key">
+        <span>=</span>
+        <input type="text" placeholder="Value" value="${value}" class="flex-1 p-2 border rounded" id="${id}_value">
+        <button onclick="this.parentElement.remove()" class="text-red-500 hover:text-red-700">
+          <i class="fas fa-times"></i>
+        </button>
+      `;
+      container.appendChild(div);
+    }
+
+    // Build Arguments Management
+    function addBuildArg(key = '', value = '') {
+      const container = document.getElementById('buildArgsContainer');
+      const id = 'buildArg_' + Date.now();
+      
+      const div = document.createElement('div');
+      div.className = 'flex items-center space-x-2';
+      div.innerHTML = `
+        <input type="text" placeholder="Key" value="${key}" class="flex-1 p-2 border rounded" id="${id}_key">
+        <span>=</span>
+        <input type="text" placeholder="Value" value="${value}" class="flex-1 p-2 border rounded" id="${id}_value">
+        <button onclick="this.parentElement.remove()" class="text-red-500 hover:text-red-700">
+          <i class="fas fa-times"></i>
+        </button>
+      `;
+      container.appendChild(div);
+    }
+
+    // Dockerignore Templates
+    const dockerignoreTemplates = {
+      node: `node_modules
+npm-debug.log
+.DS_Store
+.env
+.git
+.gitignore
+.idea
+.vscode
+coverage
+dist
+build
+*.log
+*.tmp
+*.swp`,
+      java: `target
+.classpath
+.project
+.settings
+bin
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+.idea
+.DS_Store
+.git
+.gitignore
+.env
+*.log
+*.tmp
+*.swp`,
+      python: `__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+venv
+.venv
+.env
+.git
+.gitignore
+.idea
+.vscode
+*.log
+*.tmp
+*.swp
+.coverage
+htmlcov
+dist
+build
+*.egg-info`,
+      go: `bin
+pkg
+vendor
+*.exe
+*.test
+*.out
+.env
+.git
+.gitignore
+.idea
+.vscode
+*.log
+*.tmp
+*.swp`
+    };
+
+    // Toggle port fields based on selected images
+    function togglePortFields() {
+      const webHostingImage = document.getElementById('webHostingImageSelect').value;
+      
+      // Toggle Exposed Port field
+      const exposedPortContainer = document.getElementById('exposedPort').parentElement;
+      if (baseImage) {
+        exposedPortContainer.style.display = 'block';
+      } else {
+        exposedPortContainer.style.display = 'none';
+      }
+      
+      // Toggle Web Port field and HTTPS option
+      const webPortContainer = document.getElementById('webPort').parentElement;
+      const httpsContainer = document.getElementById('enableHttps').parentElement;
+      if (webHostingImage) {
+        webPortContainer.style.display = 'block';
+        httpsContainer.style.display = 'flex';
+      } else {
+        webPortContainer.style.display = 'none';
+        httpsContainer.style.display = 'none';
+        document.getElementById('enableHttps').checked = false;
+      }
+    }
+
+    document.getElementById('dockerignoreTemplate').addEventListener('change', function() {
+      const template = this.value;
+      if (template !== 'custom') {
+        document.getElementById('dockerignoreContent').value = dockerignoreTemplates[template];
+      }
+    });
+
+    // Main Generation Function
+    function generateAllFiles() {
+      // Get all form values
+      const webHostingImage = document.getElementById('webHostingImageSelect').value;
+      const buildType = document.getElementById('buildType').value;
+      const exposedPort = document.getElementById('exposedPort').value;
+      const useNonRoot = document.getElementById('nonRootUser').checked;
+      const entryScript = document.getElementById('entrypointScript').value.trim();
+      const generateDockerignore = document.getElementById('generateDockerignore').checked;
+      const dockerignoreContent = document.getElementById('dockerignoreContent').value.trim();
+      const healthCheckCmd = document.getElementById('healthCheckCmd').value.trim();
+      const healthCheckInterval = document.getElementById('healthCheckInterval').value.trim();
+      const healthCheckTimeout = document.getElementById('healthCheckTimeout').value.trim();
+      const webPort = document.getElementById('webPort').value;
+      const enableHttps = document.getElementById('enableHttps').checked;
+
+      // Validate at least one image is selected
+      if (!baseImage && !webHostingImage) {
+        showToast('Please select at least one image (Base or Web Hosting)', 'red');
+        return;
+      }
+
+      // Collect environment variables
+      const envVars = [];
+      document.querySelectorAll('#envVarsContainer > div').forEach(div => {
+        const key = div.querySelector('input[id$="_key"]').value.trim();
+        const value = div.querySelector('input[id$="_value"]').value.trim();
+        if (key) envVars.push({ key, value });
+      });
+
+      // Collect build arguments
+      const buildArgs = [];
+      document.querySelectorAll('#buildArgsContainer > div').forEach(div => {
+        const key = div.querySelector('input[id$="_key"]').value.trim();
+        const value = div.querySelector('input[id$="_value"]').value.trim();
+        if (key) buildArgs.push({ key, value });
+      });
+
+      // Generate Dockerfile based on build type
+      let dockerfile = '';
+      
+      if (baseImage) {
+        if (buildType === 'multistage') {
+          // Multi-stage build template
+          dockerfile = `# Build stage
+FROM ${baseImage} AS builder
+WORKDIR /app
+${buildArgs.map(arg => `ARG ${arg.key}${arg.value ? `=${arg.value}` : ''}`).join('\n')}
+COPY . .
+RUN # Add your build commands here
+
+# Runtime stage
+FROM ${baseImage.replace(/:.*/, ':alpine')}
+WORKDIR /app
+${useNonRoot ? `RUN addgroup -S appgroup && adduser -S appuser -G appgroup\nUSER appuser` : ''}
+COPY --from=builder /app/target ./target
+${envVars.map(env => `ENV ${env.key}=${env.value}`).join('\n')}
+EXPOSE ${exposedPort}
+${healthCheckCmd ? `HEALTHCHECK --interval=${healthCheckInterval} --timeout=${healthCheckTimeout} --start-period=5s --retries=3 CMD ${healthCheckCmd}` : ''}
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]`;
+        } else if (buildType === 'production') {
+          // Production optimized template
+          dockerfile = `FROM ${baseImage.replace(/:.*/, ':alpine')}
+WORKDIR /app
+${buildArgs.map(arg => `ARG ${arg.key}${arg.value ? `=${arg.value}` : ''}`).join('\n')}
+${envVars.map(env => `ENV ${env.key}=${env.value}`).join('\n')}
+${useNonRoot ? `RUN addgroup -S appgroup && adduser -S appuser -G appgroup\nUSER appuser` : ''}
+COPY --chown=${useNonRoot ? 'appuser:appgroup' : 'root:root'} . .
+RUN # Add your build commands here
+EXPOSE ${exposedPort}
+${healthCheckCmd ? `HEALTHCHECK --interval=${healthCheckInterval} --timeout=${healthCheckTimeout} --start-period=5s --retries=3 CMD ${healthCheckCmd}` : ''}
+COPY --chown=${useNonRoot ? 'appuser:appgroup' : 'root:root'} entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]`;
+        } else {
+          // Simple build template
+          dockerfile = `FROM ${baseImage}
+WORKDIR /app
+${buildArgs.map(arg => `ARG ${arg.key}${arg.value ? `=${arg.value}` : ''}`).join('\n')}
+${envVars.map(env => `ENV ${env.key}=${env.value}`).join('\n')}
+${useNonRoot ? `RUN addgroup -S appgroup && adduser -S appuser -G appgroup\nUSER appuser` : ''}
+COPY --chown=${useNonRoot ? 'appuser:appgroup' : 'root:root'} . .
+RUN # Add your build commands here
+EXPOSE ${exposedPort}
+${healthCheckCmd ? `HEALTHCHECK --interval=${healthCheckInterval} --timeout=${healthCheckTimeout} --start-period=5s --retries=3 CMD ${healthCheckCmd}` : ''}
+COPY --chown=${useNonRoot ? 'appuser:appgroup' : 'root:root'} entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]`;
+        }
+      }
+
+      // Add web hosting configuration if selected
+      if (webHostingImage) {
+        if (dockerfile) dockerfile += '\n\n';
+        
+        let httpsConfig = '';
+        if (enableHttps) {
+          httpsConfig = `
+# HTTPS Configuration
+RUN apt-get update && apt-get install -y openssl
+RUN mkdir -p /etc/nginx/ssl
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \\
+  -keyout /etc/nginx/ssl/nginx.key \\
+  -out /etc/nginx/ssl/nginx.crt \\
+  -subj "/C=US/ST=State/L=City/O=Company/OU=IT/CN=example.com"
+
+COPY nginx-https.conf /etc/nginx/conf.d/default.conf`;
+        } else {
+          httpsConfig = `COPY nginx.conf /etc/nginx/conf.d/default.conf`;
+        }
+        
+        dockerfile += `# Web Hosting Configuration
+FROM ${webHostingImage}
+WORKDIR /usr/share/nginx/html
+${baseImage ? 'COPY --from=builder /app/dist ./' : 'COPY . ./'}
+EXPOSE ${webPort}${enableHttps ? ' 443' : ''}
+${httpsConfig}`;
+      }
+
+      // Set output content
+      document.getElementById('dockerfileOutput').textContent = dockerfile || '# No Dockerfile generated - please select at least one image';
+      document.getElementById('entrypointOutput').textContent = entryScript || '# No entrypoint script generated';
+            document.getElementById('configOutput').textContent = entryScript || '# No entrypoint script generated';
+
+      document.getElementById('dockerignoreOutput').textContent = generateDockerignore ? dockerignoreContent : '# .dockerignore generation was disabled';
+    }
+
+    // Utility functions
+    function copyToClipboard(elementId) {
+      const element = document.getElementById(elementId);
+      navigator.clipboard.writeText(element.textContent)
+        .then(() => showToast('Copied to clipboard!', 'green'))
+        .catch(err => showToast('Failed to copy: ' + err, 'red'));
+    }
+
+    function downloadFile(elementId, fileName) {
+  const element = document.getElementById(elementId);
+  const content = element.textContent;
+  if (!content || content.startsWith('# No') || content.startsWith('# .dockerignore')) {
+    showToast('Nothing to download!', 'red');
+    return;
+  }
+  
+  const blob = new Blob([content], { type: fileName === 'Dockerfile' ? 'text/plain' : 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  
+  // Force the download name without .txt extension for Dockerfile
+  if (fileName === 'Dockerfile') {
+    a.setAttribute('download', 'Dockerfile');
+  } else {
+    a.setAttribute('download', fileName);
+  }
+  
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  
+  showToast(`Downloaded ${fileName === 'Dockerfile' ? 'Dockerfile' : fileName}!`, 'green');
+}
+    function showToast(message, type = 'green') {
+      const toast = document.createElement('div');
+      toast.className = `fixed bottom-4 right-4 px-4 py-2 rounded shadow-md z-50 flex items-center ${
+        type === 'green' ? 'bg-green-600 text-white' : 'bg-red-600 text-white'
+      }`;
+      toast.innerHTML = `<i class="fas fa-${type === 'green' ? 'check' : 'exclamation'} mr-2"></i> ${message}`;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    // Initialize with some example env vars
+    document.addEventListener('DOMContentLoaded', () => {
+      addEnvVar('APP_ENV', 'production');
+      addEnvVar('PORT', '8080');
+      addBuildArg('VERSION', '1.0.0');
+      
+      // Set default dockerignore template
+      document.getElementById('dockerignoreTemplate').dispatchEvent(new Event('change'));
+      
+      // Set up event listeners for image selection changes
+      document.getElementById('webHostingImageSelect').addEventListener('change', togglePortFields);
+      
+      // Initially hide port fields
+      togglePortFields();
+      
+      // Load update message
+      fetchLatestUpdate();
+    });
+
+    // Update notification system
+    async function fetchLatestUpdate() {
+      try {
+        const url = "https://script.google.com/macros/s/AKfycbxZVmJjswUOGZLNm2zR9afxjzUeSHccbW_pSXwmeaPMFVa-oJSteKwJNFWS423h5FSj/exec";
+        const res = await fetch(url);
+        const json = await res.json();
+        const data = Array.isArray(json) ? json : json.data;
+
+        if (Array.isArray(data) && data.length >= 2) {
+          const [timestamp, message] = data[data.length - 1];
+          const dateObj = new Date(timestamp);
+          const formatted = dateObj.toLocaleString("en-IN", {
+            dateStyle: "medium",
+            timeStyle: "short"
+          });
+
+          document.getElementById("updateMessage").innerHTML = 
+            `<i class="fas fa-info-circle mr-2"></i> ${formatted} - ${message}`;
+          document.getElementById("latestUpdate").classList.remove("hidden");
+        }
+      } catch (err) {
+        console.error("Update check failed:", err);
+      }
+    }
+  </script>
+
+<script>
+    // Toggle project apps table visibility
+    document.getElementById('toggleProjectApps').addEventListener('click', function() {
+      const table = document.getElementById('projectAppsTable');
+      const button = document.getElementById('toggleProjectApps');
+      
+      if (table.classList.contains('hidden')) {
+        table.classList.remove('hidden');
+        button.innerHTML = '<i class="fas fa-compress mr-1"></i> Collapse';
+      } else {
+        table.classList.add('hidden');
+        button.innerHTML = '<i class="fas fa-expand mr-1"></i> Expand';
+      }
+    });
+
+    // Project template presets - enhanced version
+function applyProjectTemplate(template) {
+  // Reset form
+  document.getElementById('webHostingImageSelect').value = '';
+  document.getElementById('buildType').value = 'production';
+  document.getElementById('exposedPort').value = '8080';
+  document.getElementById('nonRootUser').checked = true;
+  
+  // Clear existing env vars and build args
+  document.getElementById('envVarsContainer').innerHTML = '';
+  document.getElementById('buildArgsContainer').innerHTML = '';
+  
+  // Common environment variables
+  addEnvVar('PORT', '8080');
+  addEnvVar('ENVIRONMENT', 'production');
+  
+  // Template-specific configurations
+  switch(template) {
+    case 'flask-nginx-ubuntu':
+      document.getElementById('baseImageSelect').value = 'ubuntu:22.04';
+      document.getElementById('exposedPort').value = '8000';
+      addEnvVar('APP_MODULE', 'app:app');
+      addEnvVar('NGINX_PORT', '80');
+      
+      const flaskEntrypoint = `#!/bin/bash
+set -e
+
+# Start Gunicorn
+gunicorn --bind 0.0.0.0:8000 \${APP_MODULE} &
+
+# Start Nginx
+exec nginx -g 'daemon off;'`;
+
+      document.getElementById('entrypointScript').value = flaskEntrypoint;
+      document.getElementById('entrypointOutput').textContent = flaskEntrypoint;
+
+      document.getElementById('dockerfileOutput').textContent = `# Ubuntu with Python, Nginx and Gunicorn
+FROM ubuntu:22.04
+
+# Install system packages
+RUN apt-get update && \\
+    apt-get install -y python3 python3-pip nginx && \\
+    pip3 install gunicorn && \\
+    apt-get clean
+
+# Configure Nginx
+COPY nginx.conf /etc/nginx/sites-available/default
+RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Copy application
+COPY . /app
+WORKDIR /app
+RUN pip3 install -r requirements.txt
+
+# Copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 80 8000
+CMD ["/entrypoint.sh"]`;
+
+      document.getElementById('configOutput').textContent = `server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        proxy_pass http://localhost:8000;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+    }
+
+    location /static/ {
+        alias /app/static/;
+    }
+}`;
+      break;
+
+    case 'lamp-ubuntu':
+      document.getElementById('baseImageSelect').value = 'ubuntu:20.04';
+      document.getElementById('exposedPort').value = '80';
+      addEnvVar('DB_HOST', 'mysql');
+      addEnvVar('DB_USER', 'appuser');
+      addEnvVar('DB_PASSWORD', 'secret');
+      
+      const lampEntrypoint = `#!/bin/bash
+set -e
+
+# Wait for MySQL if needed
+while ! mysqladmin ping -h"\$DB_HOST" -u"\$DB_USER" -p"\$DB_PASSWORD" --silent; do
+  sleep 1
+done
+
+# Start Apache
+exec apache2ctl -D FOREGROUND`;
+
+      document.getElementById('entrypointScript').value = lampEntrypoint;
+      document.getElementById('entrypointOutput').textContent = lampEntrypoint;
+
+      document.getElementById('dockerfileOutput').textContent = `# Ubuntu LAMP Stack
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install packages
+RUN apt-get update && \\
+    apt-get install -y apache2 php libapache2-mod-php php-mysql mysql-client && \\
+    apt-get clean
+
+# Configure Apache
+RUN a2enmod rewrite
+COPY apache.conf /etc/apache2/sites-available/000-default.conf
+
+# Copy app
+COPY . /var/www/html
+RUN chown -R www-data:www-data /var/www/html
+
+# Entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 80
+CMD ["/entrypoint.sh"]`;
+
+      document.getElementById('configOutput').textContent = `<VirtualHost *:80>
+    DocumentRoot /var/www/html/public
+    <Directory /var/www/html>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>`;
+      break;
+
+    case 'java-tomcat-debian':
+      document.getElementById('baseImageSelect').value = 'debian:bullseye';
+      document.getElementById('exposedPort').value = '8080';
+      addEnvVar('CATALINA_HOME', '/opt/tomcat');
+      addEnvVar('JAVA_OPTS', '-Xmx512m');
+      
+      const javaEntrypoint = `#!/bin/bash
+set -e
+
+# Deploy WAR if exists
+if [ -f *.war ]; then
+  cp *.war \$CATALINA_HOME/webapps/
+fi
+
+# Start Tomcat
+exec \$CATALINA_HOME/bin/catalina.sh run`;
+
+      document.getElementById('entrypointScript').value = javaEntrypoint;
+      document.getElementById('entrypointOutput').textContent = javaEntrypoint;
+
+      document.getElementById('dockerfileOutput').textContent = `# Debian with Java and Tomcat
+FROM debian:bullseye
+
+# Install Java
+RUN apt-get update && \\
+    apt-get install -y openjdk-17-jdk wget && \\
+    apt-get clean
+
+# Install Tomcat
+RUN wget https://downloads.apache.org/tomcat/tomcat-10/v10.1.20/bin/apache-tomcat-10.1.20.tar.gz && \\
+    tar xzf apache-tomcat-*.tar.gz -C /opt && \\
+    mv /opt/apache-tomcat-* /opt/tomcat && \\
+    rm apache-tomcat-*.tar.gz
+
+ENV CATALINA_HOME /opt/tomcat
+WORKDIR \$CATALINA_HOME
+
+# Copy configuration files
+COPY server.xml \$CATALINA_HOME/conf/server.xml
+
+# Copy app and entrypoint
+COPY . .
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 8080
+CMD ["/entrypoint.sh"]`;
+
+      document.getElementById('configOutput').textContent = `
+      #save in the name of server.xml and remove the line
+      <?xml version="1.0" encoding="UTF-8"?>
+<Server port="8005" shutdown="SHUTDOWN">
+  <Service name="Catalina">
+    <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+    <Engine name="Catalina" defaultHost="localhost">
+      <Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+        <Context path="" docBase="app" />
+      </Host>
+    </Engine>
+  </Service>
+</Server>`;
+      break;
+
+case 'node-pm2-alpine':
+      document.getElementById('baseImageSelect').value = 'alpine:latest';
+      document.getElementById('exposedPort').value = '3000';
+      addEnvVar('NODE_ENV', 'production');
+      
+      const nodeEntrypoint = `#!/bin/bash
+# Entrypoint for PM2 Node.js Microservice
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Optional: Install dependencies if not present
+if [ ! -d "node_modules" ]; then
+  echo "Installing node modules..."
+  npm install
+fi
+
+# Start the app with PM2
+echo "Starting app with PM2..."
+pm2-runtime start ecosystem.config.js`;
+
+      document.getElementById('entrypointScript').value = nodeEntrypoint;
+      document.getElementById('entrypointOutput').textContent = nodeEntrypoint;
+
+      document.getElementById('dockerfileOutput').textContent = `# Use Alpine as base image
+FROM alpine:latest
+
+# Install dependencies
+RUN apk add --no-cache nodejs npm bash
+
+# Install PM2 globally
+RUN npm install -g pm2
+
+# Set working directory
+WORKDIR /app
+
+# Copy app files
+COPY . .
+
+# Add entrypoint script
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Expose port (adjust according to your app)
+EXPOSE 3000
+
+# Set entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]`;
+
+      document.getElementById('configOutput').textContent = `
+      # save in the ecosystem.config.js
+      module.exports = {
+  apps: [
+    {
+      name: "microservice",
+      script: "index.js", // Change to your main file
+      instances: 1, // Or 'max' for all cores
+      autorestart: true,
+      watch: false,
+      env: {
+        NODE_ENV: "production"
+      }
+    }
+  ]
+};`;
+      break;
+
+
+   case 'nginx-static-alpine':
+      document.getElementById('baseImageSelect').value = 'alpine:latest';
+      document.getElementById('webHostingImageSelect').value = 'nginx:alpine';
+      document.getElementById('exposedPort').value = '80';
+      
+      const nginxEntrypoint = `#!/bin/bash
+# Entrypoint for NGINX Alpine container
+
+# Exit immediately on error
+set -e
+
+echo "Starting NGINX..."
+exec nginx -g "daemon off;"`;
+
+      document.getElementById('entrypointScript').value = nginxEntrypoint;
+      document.getElementById('entrypointOutput').textContent = nginxEntrypoint;
+
+      document.getElementById('dockerfileOutput').textContent = `# Use Alpine as base image
+FROM alpine:latest
+
+# Install nginx
+RUN apk add --no-cache nginx bash
+
+# Create necessary folders
+RUN mkdir -p /run/nginx /var/www/html
+
+# Copy custom nginx config and entrypoint
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Copy static files (if any)
+COPY static/ /var/www/html/
+
+# Expose HTTP port
+EXPOSE 80
+
+# Set entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]`;
+
+      document.getElementById('configOutput').textContent = `worker_processes 1;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    # Static file server
+    server {
+        listen 80;
+        server_name localhost;
+
+        root /var/www/html;
+        index index.html;
+
+        location / {
+            try_files $uri $uri/ =404;
+        }
+
+        # Optional reverse proxy (uncomment if needed)
+        # location /api/ {
+        #     proxy_pass http://backend:3000;
+        #     proxy_http_version 1.1;
+        #     proxy_set_header Upgrade $http_upgrade;
+        #     proxy_set_header Connection 'upgrade';
+        #     proxy_set_header Host $host;
+        #     proxy_cache_bypass $http_upgrade;
+        # }
+    }
+}`;
+      break;
+
+    // Continue with other templates...
+  case 'apache-legacy-centos':
+      document.getElementById('baseImageSelect').value = 'centos:7';
+      document.getElementById('exposedPort').value = '80';
+      addEnvVar('SERVER_ADMIN', 'admin@example.com');
+      addEnvVar('DOCUMENT_ROOT', '/var/www/html');
+      
+      const apacheEntrypoint = `#!/bin/bash
+# Entrypoint for CentOS Apache container
+
+# Exit on any error
+set -e
+
+# Ensure logs go to STDOUT
+ln -sf /dev/stdout /var/log/httpd/access_log
+ln -sf /dev/stderr /var/log/httpd/error_log
+
+echo "Starting Apache HTTP Server..."
+exec /usr/sbin/httpd -DFOREGROUND`;
+
+      document.getElementById('entrypointScript').value = apacheEntrypoint;
+      document.getElementById('entrypointOutput').textContent = apacheEntrypoint;
+
+      document.getElementById('dockerfileOutput').textContent = `FROM centos:7
+
+# Install Apache HTTPD and mod_ssl
+RUN yum -y update && \\
+    yum -y install httpd mod_ssl && \\
+    yum clean all
+
+# Copy entrypoint and config
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY httpd.conf /etc/httpd/conf/httpd.conf
+COPY ssl.conf /etc/httpd/conf.d/ssl.conf
+
+# Copy website content (optional)
+COPY html/ /var/www/html/
+
+# Make entrypoint executable
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Expose HTTP and HTTPS
+EXPOSE 80 443
+
+# Start Apache via entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]`;
+
+      document.getElementById('configOutput').textContent = `
+      #save the file name httpd.conf and remove this line
+      ServerRoot "/etc/httpd"
+Listen 80
+Include conf.modules.d/*.conf
+
+User apache
+Group apache
+
+ServerAdmin you@example.com
+DocumentRoot "/var/www/html"
+
+<Directory "/var/www/html">
+    AllowOverride None
+    Require all granted
+</Directory>
+
+ErrorLog "logs/error_log"
+CustomLog "logs/access_log" combined
+
+# Load SSL module
+Include conf.d/ssl.conf`;
+      break;
+
+    case 'nginx-php-fpm-rocky':
+      document.getElementById('baseImageSelect').value = 'rockylinux:9';
+      document.getElementById('exposedPort').value = '80';
+      addEnvVar('PHP_FPM_PM', 'dynamic');
+      addEnvVar('PHP_FPM_MAX_CHILDREN', '5');
+      addEnvVar('PHP_FPM_START_SERVERS', '2');
+      
+      const phpFpmEntrypoint = `#!/bin/bash
+# Entrypoint script for Rocky Linux PHP-Nginx container
+
+set -e
+
+echo "Starting PHP-FPM..."
+php-fpm --daemonize
+
+echo "Starting Nginx..."
+exec nginx -g "daemon off;"`;
+
+      document.getElementById('entrypointScript').value = phpFpmEntrypoint;
+      document.getElementById('entrypointOutput').textContent = phpFpmEntrypoint;
+
+      document.getElementById('dockerfileOutput').textContent = `FROM rockylinux:9
+
+# Install EPEL and required packages
+RUN dnf -y install epel-release && \\
+    dnf -y install nginx php-fpm php-mysqlnd mariadb mariadb-common bash && \\
+    dnf clean all
+
+# Configure timezone (optional)
+# RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+
+# Copy configuration files and entrypoint
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
+COPY php-fpm.conf /etc/php-fpm.d/www.conf
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+
+# Make the entrypoint script executable
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Copy application files
+COPY html/ /var/www/html/
+
+# Ensure permissions
+RUN chown -R nginx:nginx /var/www/html
+
+# Expose HTTP port
+EXPOSE 80
+
+# Start entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]`;
+
+      document.getElementById('configOutput').textContent = `
+      #NOTE:- in this config script have 3 conf script so please check and implement**************
+      # nginx.conf
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    include /etc/nginx/conf.d/*.conf;
+}
+
+# default.conf
+server {
+    listen       80;
+    server_name  localhost;
+
+    root   /var/www/html;
+    index  index.php index.html;
+
+    location / {
+        try_files $uri $uri/ /index.php?\$query_string;
+    }
+
+    location ~ \\.php\$ {
+        include        fastcgi_params;
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+    }
+
+    location ~ /\\.ht {
+        deny  all;
+    }
+}
+
+# php-fpm.conf
+[www]
+user = nginx
+group = nginx
+
+listen = 127.0.0.1:9000
+
+pm = dynamic
+pm.max_children = 5
+pm.start_servers = 2
+pm.min_spare_servers = 1
+pm.max_spare_servers = 3
+
+php_value[session.save_handler] = files
+php_value[session.save_path]    = /var/lib/php/session`;
+      break;
+
+    case 'nginx-certbot-aws':
+      document.getElementById('baseImageSelect').value = 'amazonlinux:2023';
+      document.getElementById('exposedPort').value = '80';
+      addEnvVar('DOMAIN', 'example.com');
+      addEnvVar('EMAIL', 'admin@example.com');
+      addEnvVar('BUCKET_NAME', 'your-s3-bucket-name');
+      
+      const awsEntrypoint = `
+      ################################################
+      docker run -d \
+  -e BUCKET_NAME=my-s3-bucket \
+  -e DOMAIN=example.com \
+  -e EMAIL=admin@example.com \
+  -p 80:80 -p 443:443 \
+  your-image-name
+################################################ remove thos lines this is for refernce
+      
+      #!/bin/bash
+# Entrypoint for Amazon Linux static host with S3 + HTTPS
+
+set -e
+
+# Sync from S3 (optional - requires env AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, BUCKET_NAME)
+if [[ -n "$BUCKET_NAME" ]]; then
+  echo "Syncing static content from S3 bucket: $BUCKET_NAME"
+  aws s3 sync s3://$BUCKET_NAME/ /usr/share/nginx/html/
+fi
+
+# Ensure log folders exist
+mkdir -p /var/log/nginx /run/nginx
+
+# Optionally obtain HTTPS certificate via Let's Encrypt
+if [[ -n "$DOMAIN" && -n "$EMAIL" ]]; then
+  echo "Requesting certificate for $DOMAIN"
+  certbot --nginx --non-interactive --agree-tos -m "$EMAIL" -d "$DOMAIN"
+else
+  echo "Skipping Certbot — DOMAIN or EMAIL not set."
+fi
+
+echo "Starting Nginx..."
+exec nginx -g "daemon off;"`;
+
+      document.getElementById('entrypointScript').value = awsEntrypoint;
+      document.getElementById('entrypointOutput').textContent = awsEntrypoint;
+
+      document.getElementById('dockerfileOutput').textContent = `FROM amazonlinux:2023
+
+# Install system dependencies: nginx, certbot, aws-cli
+RUN dnf -y update && \\
+    dnf -y install nginx aws-cli certbot python3-certbot-nginx bash && \\
+    dnf clean all
+
+# Copy static site, config files, and entrypoint
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY static/ /usr/share/nginx/html/
+
+# Make entrypoint executable
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Expose HTTP and HTTPS ports
+EXPOSE 80 443
+
+# Start container with entrypoint script
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]`;
+
+      document.getElementById('configOutput').textContent = `
+      #save the nginx.conf and remove the line
+      user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+    server_tokens off;
+
+    server {
+        listen 80 default_server;
+        server_name _;
+
+        root /usr/share/nginx/html;
+        index index.html;
+
+        location / {
+            try_files \$uri \$uri/ =404;
+        }
+
+        # Redirect HTTP to HTTPS if a domain is set
+        if (\$host = \$DOMAIN) {
+            return 301 https://\$host\$request_uri;
+        }
+    }
+}`;
+      break;
+
+    case 'node-react-nginx-ubuntu':
+      document.getElementById('baseImageSelect').value = 'ubuntu:22.04';
+      document.getElementById('exposedPort').value = '80';
+      addEnvVar('NODE_ENV', 'production');
+      addEnvVar('PORT', '80');
+      
+      const reactEntrypoint = `#!/bin/bash
+# Entrypoint for Ubuntu React/Next.js app with Nginx
+
+set -e
+
+# Ensure Nginx log dirs exist
+mkdir -p /run/nginx /var/log/nginx
+
+echo "Starting Nginx to serve frontend..."
+exec nginx -g "daemon off;"`;
+
+      document.getElementById('entrypointScript').value = reactEntrypoint;
+      document.getElementById('entrypointOutput').textContent = reactEntrypoint;
+
+      document.getElementById('dockerfileOutput').textContent = `FROM ubuntu:22.04
+
+# Install dependencies
+RUN apt-get update && \\
+    apt-get install -y curl gnupg nginx bash && \\
+    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \\
+    apt-get install -y nodejs && \\
+    npm install -g yarn && \\
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy app source files
+COPY . .
+
+# Build the React/Next.js frontend
+RUN yarn install && yarn build
+
+# Copy built frontend to Nginx public dir
+RUN mkdir -p /var/www/frontend && \\
+    cp -r out/* /var/www/frontend/
+
+# Copy Nginx configuration
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+
+# Make the entrypoint executable
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Expose ports
+EXPOSE 80
+
+# Start entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]`;
+
+      document.getElementById('configOutput').textContent = `user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    access_log  /var/log/nginx/access.log;
+    error_log   /var/log/nginx/error.log;
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        root /var/www/frontend;
+        index index.html;
+
+        location / {
+            try_files \$uri \$uri/ /index.html;
+        }
+
+        error_page 404 /index.html;
+    }
+}`;
+      break;
+
+ case 'python-uwsgi-debian':
+      document.getElementById('baseImageSelect').value = 'debian:bookworm';
+      document.getElementById('exposedPort').value = '80';
+      addEnvVar('UWSGI_WORKERS', '2');
+      addEnvVar('UWSGI_THREADS', '2');
+      addEnvVar('FLASK_APP', 'app.py');
+      
+      const pythonEntrypoint = `#!/bin/bash
+# Entrypoint script for Python + uWSGI + Nginx stack
+
+set -e
+
+echo "Starting uWSGI..."
+uwsgi --ini /etc/uwsgi/apps-enabled/app.ini &
+
+echo "Starting Nginx..."
+exec nginx -g "daemon off;"`;
+
+      document.getElementById('entrypointScript').value = pythonEntrypoint;
+      document.getElementById('entrypointOutput').textContent = pythonEntrypoint;
+
+      document.getElementById('dockerfileOutput').textContent = `FROM debian:bookworm
+
+# Install dependencies
+RUN apt-get update && \\
+    apt-get install -y python3 python3-pip python3-dev nginx uwsgi uwsgi-plugin-python3 bash && \\
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy application code
+COPY app/ /app/
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Copy Nginx and uWSGI configs, and entrypoint
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY uwsgi.ini /etc/uwsgi/apps-enabled/app.ini
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Expose HTTP port
+EXPOSE 80
+
+# Start script
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]`;
+
+      document.getElementById('configOutput').textContent = `# nginx.conf
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    access_log  /var/log/nginx/access.log;
+    error_log   /var/log/nginx/error.log;
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        location / {
+            include uwsgi_params;
+            uwsgi_pass 127.0.0.1:3031;
+        }
+
+        error_page 502 /502.html;
+    }
+}
+
+# uwsgi.ini
+[uwsgi]
+plugin = python3
+socket = 127.0.0.1:3031
+chdir = /app
+wsgi-file = app.py
+callable = app
+processes = 2
+threads = 2
+master = true
+vacuum = true
+die-on-term = true`;
+      break;
+
+  case 'go-nginx-fedora':
+      document.getElementById('baseImageSelect').value = 'fedora:40';
+      document.getElementById('exposedPort').value = '80';
+      addEnvVar('GO_PORT', '8080');
+      addEnvVar('NGINX_PORT', '80');
+      
+      const goEntrypoint = `#!/bin/bash
+# Entrypoint for Go API + Nginx reverse proxy
+
+set -e
+
+# Start Go backend API
+echo "Starting Go API..."
+/app/server &
+
+# Start Nginx proxy
+echo "Starting Nginx..."
+exec nginx -g "daemon off;"`;
+
+      document.getElementById('entrypointScript').value = goEntrypoint;
+      document.getElementById('entrypointOutput').textContent = goEntrypoint;
+
+      document.getElementById('dockerfileOutput').textContent = `FROM fedora:40
+
+# Install dependencies
+RUN dnf -y install golang nginx bash && \\
+    dnf clean all
+
+# Set working directory
+WORKDIR /app
+
+# Copy Go source code
+COPY go-api/ /app/
+
+# Build Go binary
+RUN go build -o server main.go
+
+# Copy nginx config and entrypoint script
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+
+# Make the entrypoint executable
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Expose ports
+EXPOSE 80
+
+# Start entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]`;
+
+      document.getElementById('configOutput').textContent = `worker_processes auto;
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    access_log  /var/log/nginx/access.log;
+    error_log   /var/log/nginx/error.log;
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        location / {
+            proxy_pass         http://127.0.0.1:8080;
+            proxy_http_version 1.1;
+            proxy_set_header   Host \$host;
+            proxy_set_header   X-Real-IP \$remote_addr;
+            proxy_set_header   X-Forwarded-For \$proxy_add_x_forwarded_for;
+        }
+    }
+}`;
+
+      // Show example Go API code in a comment
+      document.getElementById('dockerfileOutput').textContent += `
+
+# Example Go API (go-api/main.go):#################
+# package main
+#
+# import (
+#     "fmt"
+#     "net/http"
+# )
+#
+# func handler(w http.ResponseWriter, r *http.Request) {
+#     fmt.Fprintf(w, "Hello from Go API via Nginx!")
+# }
+#
+# func main() {
+#     http.HandleFunc("/", handler)
+#     fmt.Println("Go API listening on :8080")
+#     http.ListenAndServe(":8080", nil)
+# }
+#########################################################`;
+
+      // Show project structure in a comment
+      document.getElementById('dockerfileOutput').textContent += `
+
+# Project structure:###############
+# project-root/
+# ├── Dockerfile
+# ├── entrypoint.sh
+# ├── nginx.conf
+# └── go-api/
+#     └── main.go#################`;
+      break;
+
+  case 'java-podman-rhel':
+      document.getElementById('baseImageSelect').value = 'registry.access.redhat.com/ubi8/ubi';
+      document.getElementById('exposedPort').value = '8080';
+      addEnvVar('JAVA_HOME', '/usr/lib/jvm/java-17-openjdk');
+      addEnvVar('ARTIFACT_URL', '');
+      addEnvVar('JAVA_OPTS', '-Xmx1g');
+      
+      const javaPodmanEntrypoint = `#!/bin/bash
+# Entrypoint for secure UBI-based build image
+
+set -e
+
+echo "[INFO] Using Java at: $(which java)"
+echo "[INFO] Java version:"
+java -version
+
+echo "[INFO] Using Podman version:"
+podman --version
+
+echo "[INFO] Running secure enterprise build steps..."
+
+# Example usage of curl to pull an artifact
+if [[ -n "$ARTIFACT_URL" ]]; then
+  echo "[INFO] Downloading artifact from $ARTIFACT_URL"
+  curl -L "$ARTIFACT_URL" -o /workspace/artifact.jar
+fi
+
+# Run a build script if provided
+if [[ -x "./build.sh" ]]; then
+  echo "[INFO] Executing build.sh..."
+  ./build.sh
+else
+  echo "[INFO] No build.sh found, idle mode."
+  tail -f /dev/null
+fi`;
+
+      document.getElementById('entrypointScript').value = javaPodmanEntrypoint;
+      document.getElementById('entrypointOutput').textContent = javaPodmanEntrypoint;
+
+      document.getElementById('dockerfileOutput').textContent = `FROM registry.access.redhat.com/ubi8/ubi
+
+# Install Java (OpenJDK 17), Podman, and curl
+RUN dnf -y update && \\
+    dnf -y install java-17-openjdk podman curl && \\
+    dnf clean all
+
+# Set environment variables
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk \\
+    PATH=$PATH:/usr/lib/jvm/java-17-openjdk/bin
+
+# Create working directory
+WORKDIR /workspace
+
+# Copy scripts/configs
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY build.conf /etc/build.conf
+
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Default command
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]`;
+
+      document.getElementById('configOutput').textContent = `# Placeholder for build settings (parsed by build.sh or external tools) build.conf   
+[build]
+artifact_repo=https://repo.company.internal/artifacts/
+build_tool=gradle
+java_opts=-Xmx1g`;
+
+      // Show example build script and project structure in comments
+      document.getElementById('dockerfileOutput').textContent += `
+
+# Example build.sh (optional):
+# #!/bin/bash
+# set -e
+# 
+# echo "Running build with Gradle..."
+# gradle build
+# 
+# echo "Building container image..."
+# podman build -t my-app -f Containerfile .
+
+# Example Containerfile for app (optional):
+# FROM registry.access.redhat.com/ubi8/openjdk-17-runtime
+# COPY build/libs/*.jar /app.jar
+# CMD ["java", "-jar", "/app.jar"]`;
+
+      document.getElementById('dockerfileOutput').textContent += `
+
+# Project structure:
+# project-root/
+# ├── Dockerfile
+# ├── entrypoint.sh
+# ├── build.conf
+# ├── build.sh         # (optional)
+# ├── Containerfile    # (optional, for app image)
+# └── src/             # (optional, for source code)`;
+
+      // Show example docker run command
+      document.getElementById('dockerfileOutput').textContent += `
+
+# Example run command:
+# docker run --rm -it \\
+#   -e ARTIFACT_URL=https://example.com/app.jar \\
+#   -v $PWD:/workspace \\
+#   ubi8-java-podman-build`;
+      break;
+
+     default:
+      showToast('Template not implemented yet!', 'red');
+      return;
+  }
+  
+  // Show success message
+  showToast(`Applied ${template} template!`, 'green');
+  
+  // Maintain toggle button state
+  const table = document.getElementById('projectAppsTable');
+  const button = document.getElementById('toggleProjectApps');
+  if (!table.classList.contains('hidden')) {
+    button.innerHTML = '<i class="fas fa-compress mr-1"></i> Collapse';
+  }
+}
+</script>
+
+<script>
+  // Toggle template selection visibility
+  function toggleEntrypointTemplate() {
+    const templateSelection = document.getElementById('templateSelection');
+    if (document.getElementById('useTemplate').checked) {
+      templateSelection.classList.remove('hidden');
+      generateEntrypointTemplate();
+    } else {
+      templateSelection.classList.add('hidden');
+    }
+  }
+
+  // Generate entrypoint template based on selected application type
+  function generateEntrypointTemplate() {
+    if (!document.getElementById('useTemplate').checked) return;
+    
+    const appType = document.getElementById('appType').value;
+    let template = '';
+    
+    switch(appType) {
+      case 'java':
+        template = `#!/bin/sh
+# Java application entrypoint
+set -e
+
+# Check if required environment variables are set
+: "\${JAVA_OPTS:=""}"
+: "\${APP_JAR:?Please set APP_JAR environment variable}"
+
+# Run Java application
+exec java \${JAVA_OPTS} -jar \${APP_JAR} "\$@"`;
+        break;
+        
+      case 'node':
+        template = `#!/bin/sh
+# Node.js application entrypoint
+set -e
+
+# Install dependencies if node_modules doesn't exist
+if [ ! -d "node_modules" ]; then
+  npm install
+fi
+
+# Run the application
+exec node \${ENTRY_FILE:-index.js} "\$@"`;
+        break;
+        
+      case 'python':
+        template = `#!/bin/sh
+# Python application entrypoint
+set -e
+
+# Activate virtual environment if exists
+if [ -f "venv/bin/activate" ]; then
+  . venv/bin/activate
+fi
+
+# Install requirements if needed
+if [ -f "requirements.txt" ]; then
+  pip install -r requirements.txt
+fi
+
+# Run the application
+exec python \${ENTRY_FILE:-main.py} "\$@"`;
+        break;
+        
+      case 'php':
+        template = `#!/bin/sh
+# PHP application entrypoint
+set -e
+
+# Install composer dependencies if needed
+if [ -f "composer.json" ] && [ ! -d "vendor" ]; then
+  composer install
+fi
+
+# Run PHP built-in server if no other server is specified
+exec php -S 0.0.0.0:\${PORT:-8080} \${ENTRY_FILE:-index.php}`;
+        break;
+        
+      case 'dotnet':
+        template = `#!/bin/sh
+# .NET application entrypoint
+set -e
+
+# Restore dependencies if needed
+if [ -f "*.csproj" ] && [ ! -d "bin" ]; then
+  dotnet restore
+fi
+
+# Run the application
+exec dotnet \${DLL_FILE} "\$@"`;
+        break;
+        
+      case 'go':
+        template = `#!/bin/sh
+# Go application entrypoint
+set -e
+
+# Build if binary doesn't exist
+if [ ! -f "app" ]; then
+  go build -o app
+fi
+
+# Run the application
+exec ./app "\$@"`;
+        break;
+        
+      case 'nginx':
+        template = `#!/bin/sh
+# Nginx entrypoint
+set -e
+
+# Substitute environment variables in config files
+envsubst '\$PORT \$SERVER_NAME \$UPSTREAM' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
+
+# Start Nginx
+exec nginx -g 'daemon off;'`;
+        break;
+        
+      case 'flask':
+        template = `#!/bin/sh
+# Flask application entrypoint
+set -e
+
+# Activate virtual environment if exists
+if [ -f "venv/bin/activate" ]; then
+  . venv/bin/activate
+fi
+
+# Install requirements if needed
+if [ -f "requirements.txt" ]; then
+  pip install -r requirements.txt
+fi
+
+# Run Flask application
+exec gunicorn -b :\${PORT:-8000} --access-logfile - --error-logfile - \${APP_MODULE:-app:app}`;
+        break;
+        
+      case 'express':
+        template = `#!/bin/sh
+# Express.js application entrypoint
+set -e
+
+# Install dependencies if node_modules doesn't exist
+if [ ! -d "node_modules" ]; then
+  npm install
+fi
+
+# Run the application
+exec node \${ENTRY_FILE:-app.js} "\$@"`;
+        break;
+        
+      case 'react':
+        template = `#!/bin/sh
+# React SPA entrypoint
+set -e
+
+# Install dependencies if node_modules doesn't exist
+if [ ! -d "node_modules" ]; then
+  npm install
+fi
+
+# Serve static files (assuming build has been done)
+exec serve -s build -l \${PORT:-3000}`;
+        break;
+        
+      case 'postgres':
+        template = `#!/bin/sh
+# PostgreSQL entrypoint
+set -e
+
+# Initialize database if not already initialized
+if [ -z "\$(ls -A \${PGDATA})" ]; then
+  initdb -D \${PGDATA}
+  echo "host all all all md5" >> \${PGDATA}/pg_hba.conf
+fi
+
+# Start PostgreSQL
+exec postgres -D \${PGDATA}`;
+        break;
+        
+      case 'nginx-certbot':
+        template = `#!/bin/sh
+# Nginx with Certbot SSL entrypoint
+set -e
+
+# Generate SSL certificates if needed
+if [ ! -f "/etc/letsencrypt/live/\${DOMAIN}/fullchain.pem" ]; then
+  certbot certonly --standalone -d \${DOMAIN} --email \${EMAIL} --agree-tos --non-interactive
+fi
+
+# Start cron for certificate renewal
+service cron start
+
+# Substitute environment variables in nginx config
+envsubst '\${DOMAIN}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
+
+# Start Nginx
+exec nginx -g 'daemon off;'`;
+        break;
+        
+      case 'gunicorn':
+        template = `#!/bin/sh
+# Gunicorn entrypoint for Python WSGI apps
+set -e
+
+# Activate virtual environment if exists
+if [ -f "venv/bin/activate" ]; then
+  . venv/bin/activate
+fi
+
+# Install requirements if needed
+if [ -f "requirements.txt" ]; then
+  pip install -r requirements.txt
+fi
+
+# Run Gunicorn
+exec gunicorn -b :\${PORT:-8000} --workers \${WORKERS:-4} --threads \${THREADS:-2} --access-logfile - --error-logfile - \${APP_MODULE:-app:app}`;
+        break;
+        
+      case 'laravel':
+        template = `#!/bin/sh
+# Laravel application entrypoint
+set -e
+
+# Install composer dependencies if needed
+if [ -f "composer.json" ] && [ ! -d "vendor" ]; then
+  composer install
+fi
+
+# Generate application key if not set
+if [ -f "artisan" ] && [ -z "\$(grep APP_KEY .env)" ]; then
+  php artisan key:generate
+fi
+
+# Run migrations if needed
+if [ -f "artisan" ] && [ "\${RUN_MIGRATIONS}" = "true" ]; then
+  php artisan migrate --force
+fi
+
+# Start PHP-FPM or built-in server
+if [ "\${USE_FPM}" = "true" ]; then
+  exec php-fpm
+else
+  exec php -S 0.0.0.0:\${PORT:-8000} -t public
+fi`;
+        break;
+        
+      default:
+        template = `#!/bin/sh
+# Custom application entrypoint
+set -e
+
+# Add your custom startup commands here
+
+# Run the main application
+exec "\$@"`;
+    }
+    
+    document.getElementById('entrypointScript').value = template;
+  }
+</script>
+
+
+
+
+<script>
+  // Web Hosting Image Template Generator
+  document.getElementById('webHostingImageSelect').addEventListener('change', function() {
+    const selectedImage = this.value;
+    if (!selectedImage) return;
+    
+    let dockerfile = '';
+    let entrypoint = '';
+    let config = '';
+    
+    // Determine image type and generate appropriate templates
+    if (selectedImage.includes('nginx')) {
+      if (selectedImage.includes('alpine')) {
+        // Nginx Alpine template
+        dockerfile = `FROM ${selectedImage}
+
+# Create directory for app
+WORKDIR /usr/share/nginx/html
+
+# Copy static files
+COPY . .
+
+# Copy custom configuration
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Expose port
+EXPOSE 80
+
+# Start Nginx
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+        entrypoint = `#!/bin/sh
+# Nginx entrypoint script
+set -e
+
+# Substitute environment variables in config
+envsubst '\$PORT \$SERVER_NAME' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
+
+# Start Nginx
+exec nginx -g 'daemon off;'`;
+
+        config = `worker_processes auto;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        root /usr/share/nginx/html;
+        index index.html;
+
+        location / {
+            try_files \$uri \$uri/ /index.html;
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+            root /usr/share/nginx/html;
+        }
+    }
+}`;
+      } else {
+        // Nginx standard template
+        dockerfile = `FROM ${selectedImage}
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    gnupg \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create directory for app
+WORKDIR /usr/share/nginx/html
+
+# Copy static files
+COPY . .
+
+# Copy custom configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Expose port
+EXPOSE 80
+
+# Start Nginx
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+        entrypoint = `#!/bin/bash
+# Nginx entrypoint script
+set -e
+
+# Generate self-signed SSL cert if enabled
+if [[ "\${ENABLE_SSL}" == "true" ]]; then
+  mkdir -p /etc/nginx/ssl
+  openssl req -x509 -nodes -days 365 -newkey rsa:2048 \\
+    -keyout /etc/nginx/ssl/nginx.key \\
+    -out /etc/nginx/ssl/nginx.crt \\
+    -subj "/C=US/ST=State/L=City/O=Company/CN=localhost"
+fi
+
+# Start Nginx
+exec nginx -g 'daemon off;'`;
+
+        config = `server {
+    listen 80;
+    server_name localhost;
+
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+
+    location / {
+        try_files \$uri \$uri/ /index.html;
+    }
+
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+        root /usr/share/nginx/html;
+    }
+}`;
+      }
+    } 
+    else if (selectedImage.includes('httpd') || selectedImage.includes('apache')) {
+      // Apache HTTPD template
+      dockerfile = `FROM ${selectedImage}
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create directory for app
+WORKDIR /var/www/html
+
+# Copy files
+COPY . .
+
+# Copy custom configuration
+COPY httpd.conf /usr/local/apache2/conf/httpd.conf
+
+# Copy entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Expose port
+EXPOSE 80
+
+# Start Apache
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Apache entrypoint script
+set -e
+
+# Set document root if specified
+if [ -n "\${DOCUMENT_ROOT}" ]; then
+  sed -i "s|/var/www/html|\${DOCUMENT_ROOT}|g" /usr/local/apache2/conf/httpd.conf
+fi
+
+# Start Apache
+exec httpd-foreground`;
+
+      config = `ServerRoot "/usr/local/apache2"
+Listen 80
+
+LoadModule mpm_event_module modules/mod_mpm_event.so
+LoadModule authz_core_module modules/mod_authz_core.so
+LoadModule dir_module modules/mod_dir.so
+LoadModule mime_module modules/mod_mime.so
+
+DocumentRoot "/var/www/html"
+<Directory "/var/www/html">
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>
+
+<FilesMatch "\\.(html|htm|js|css)$">
+    SetOutputFilter DEFLATE
+</FilesMatch>`;
+    }
+    else if (selectedImage.includes('php')) {
+      if (selectedImage.includes('fpm')) {
+        // PHP-FPM template (with Nginx)
+        dockerfile = `FROM ${selectedImage} as php
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+WORKDIR /var/www/html
+
+FROM nginx:alpine
+
+# Copy PHP-FPM configuration
+COPY --from=php /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
+COPY --from=php /usr/local/etc/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
+
+# Copy app files
+COPY . /var/www/html
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 80
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+        entrypoint = `#!/bin/sh
+# PHP-FPM + Nginx entrypoint
+set -e
+
+# Start PHP-FPM
+php-fpm -D
+
+# Start Nginx
+nginx -g 'daemon off;'`;
+
+        config = `server {
+    listen 80;
+    server_name localhost;
+    root /var/www/html/public;
+    index index.php index.html;
+
+    location / {
+        try_files \$uri \$uri/ /index.php?\$query_string;
+    }
+
+    location ~ \\.php\$ {
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}`;
+      } else {
+        // PHP with Apache template
+        dockerfile = `FROM ${selectedImage}
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+WORKDIR /var/www/html
+
+# Copy app files
+COPY . .
+
+# Copy custom configuration
+COPY apache2.conf /etc/apache2/apache2.conf
+
+# Copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 80
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+        entrypoint = `#!/bin/sh
+# PHP Apache entrypoint
+set -e
+
+# Install dependencies if composer.json exists
+if [ -f "composer.json" ] && [ ! -d "vendor" ]; then
+  composer install
+fi
+
+# Start Apache
+exec apache2-foreground`;
+
+        config = `<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html/public
+
+    <Directory /var/www/html/public>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog \${APACHE_LOG_DIR}/error.log
+    CustomLog \${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>`;
+      }
+    }
+    else if (selectedImage.includes('node')) {
+      // Node.js template
+      dockerfile = `FROM ${selectedImage}
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package*.json ./
+RUN npm install
+
+# Bundle app source
+COPY . .
+
+# Copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 3000
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Node.js entrypoint
+set -e
+
+# Use PORT environment variable if set
+: "\${PORT:=3000}"
+
+# Start the application
+exec node server.js`;
+
+      config = `{
+  "name": "node-app",
+  "version": "1.0.0",
+  "description": "Node.js application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}`;
+    }
+    else if (selectedImage.includes('python')) {
+      // Python template
+      dockerfile = `FROM ${selectedImage}
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create and activate virtual environment
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:\$PATH"
+
+# Install Python dependencies
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy project
+COPY . .
+
+# Copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 8000
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Python entrypoint
+set -e
+
+# Activate virtual environment
+. /opt/venv/bin/activate
+
+# Run migrations if this is Django
+if [ -f "manage.py" ]; then
+  python manage.py migrate
+fi
+
+# Start the application
+exec gunicorn --bind :8000 --workers 4 app.wsgi:application`;
+
+      config = `# requirements.txt
+gunicorn==20.1.0
+flask==2.2.3
+django==4.2.0`;
+    }
+    else if (selectedImage.includes('caddy')) {
+      // Caddy template
+      dockerfile = `FROM ${selectedImage}
+
+# Copy static files
+WORKDIR /srv
+COPY . .
+
+# Copy Caddyfile
+COPY Caddyfile /etc/caddy/Caddyfile
+
+# Copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 80 443
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Caddy entrypoint
+set -e
+
+# Substitute environment variables in Caddyfile
+envsubst < /etc/caddy/Caddyfile.template > /etc/caddy/Caddyfile
+
+# Start Caddy
+exec caddy run --config /etc/caddy/Caddyfile`;
+
+      config = `{
+    http_port 80
+    https_port 443
+}
+
+localhost {
+    root * /srv
+    file_server
+}`;
+    }
+    else if (selectedImage.includes('traefik')) {
+      // Traefik template
+      dockerfile = `FROM ${selectedImage}
+
+# Copy configuration
+COPY traefik.yml /etc/traefik/traefik.yml
+COPY dynamic.yml /etc/traefik/dynamic.yml
+
+# Copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 80 443
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Traefik entrypoint
+set -e
+
+# Start Traefik
+exec traefik --configfile=/etc/traefik/traefik.yml`;
+
+      config = `# traefik.yml
+api:
+  dashboard: true
+  insecure: true
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+providers:
+  file:
+    filename: "/etc/traefik/dynamic.yml"
+    watch: true
+
+log:
+  level: DEBUG`;
+    }
+    else if (selectedImage.includes('amazonlinux') || selectedImage.includes('ubuntu') || selectedImage.includes('debian')) {
+      // Generic Linux template
+      dockerfile = `FROM ${selectedImage}
+
+# Install basic packages
+RUN yum update -y && \
+    yum install -y \
+    curl \
+    tar \
+    gzip \
+    && yum clean all
+
+# Create app directory
+WORKDIR /app
+
+# Copy application files
+COPY . .
+
+# Copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 80
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/bash
+# Generic entrypoint
+set -e
+
+echo "Application starting..."
+exec "\$@"`;
+
+      config = `# Add your application configuration here`;
+    }
+    else {
+      // Default template for unknown images
+      dockerfile = `FROM ${selectedImage}
+
+# Set working directory
+WORKDIR /app
+
+# Copy application files
+COPY . .
+
+# Copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 80
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Generic entrypoint
+set -e
+
+# Start the application
+exec "\$@"`;
+
+      config = `# Configuration for ${selectedImage}`;
+    }
+
+    // Set the generated content in the output sections
+    document.getElementById('dockerfileOutput').textContent = dockerfile;
+    document.getElementById('entrypointOutput').textContent = entrypoint;
+    document.getElementById('configOutput').textContent = config;
+    
+    // Also set the entrypoint script in the editor
+    document.getElementById('entrypointScript').value = entrypoint;
+    
+    showToast(`Generated template for ${selectedImage}`, 'green');
+  });
+</script>
+
+
+<script>
+  // Reset Form Function
+  function resetForm() {
+    showToast('Form reset successfully!', 'green');
+    setTimeout(() => {
+      location.reload();
+    }, 1000); // Wait 1 second before reloading to show the toast
+  }
+</script>
+
+
+<script>
+// Base Image Templates
+function applyBaseImageTemplate(imageType) {
+  // Reset form
+  document.getElementById('nonRootUser').checked = false; // Default to root user for templates
+  
+  let dockerfile = '';
+  let entrypoint = '';
+  let config = '';
+  
+  switch(imageType) {
+    // Languages & Runtimes
+    case 'openjdk:17-jdk-slim':
+      dockerfile = `FROM openjdk:17-jdk-slim
+
+# Install system dependencies
+RUN apt-get update && \\
+    apt-get install -y curl && \\
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy application JAR
+COPY target/*.jar app.jar
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 8080
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Java application entrypoint
+set -e
+
+exec java -jar app.jar`;
+
+      config = `# JVM Options (set via environment variables)
+# Example:
+# JAVA_OPTS="-Xmx512m -Xms256m"`;
+      break;
+
+    case 'node:18-alpine':
+      dockerfile = `FROM node:18-alpine
+
+# Install system dependencies
+RUN apk add --no-cache curl
+
+WORKDIR /app
+
+# Copy package files first for better caching
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy application files
+COPY . .
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 3000
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Node.js entrypoint
+set -e
+
+exec node index.js`;
+
+      config = `{
+  "name": "node-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}`;
+      break;
+
+    case 'python:3.10-slim':
+      dockerfile = `FROM python:3.10-slim
+
+# Install system dependencies
+RUN apt-get update && \\
+    apt-get install -y --no-install-recommends \\
+    curl \\
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Create and activate virtual environment
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application
+COPY . .
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 8000
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Python entrypoint
+set -e
+
+# Activate virtual environment
+. /opt/venv/bin/activate
+
+exec gunicorn -b :8000 app:app`;
+
+      config = `# requirements.txt
+gunicorn==20.1.0
+flask==2.2.3`;
+      break;
+
+    // CI/CD Build Tools
+    case 'jenkins/jenkins:lts-jdk17':
+      dockerfile = `FROM jenkins/jenkins:lts-jdk17
+
+# Skip initial setup
+ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
+
+# Install plugins
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
+
+# Copy configuration as code
+COPY jenkins.yaml /usr/share/jenkins/ref/jenkins.yaml
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 8080
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Jenkins entrypoint
+set -e
+
+exec /sbin/tini -- /usr/local/bin/jenkins.sh`;
+
+      config = `# plugins.txt
+git
+workflow-aggregator
+blueocean
+pipeline-utility-steps
+
+# jenkins.yaml
+jenkins:
+  systemMessage: "Jenkins Configured as Code"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+      - id: "admin"
+        password: "admin"`;
+      break;
+
+    // Security/DevSecOps
+    case 'aquasec/trivy:latest':
+      dockerfile = `FROM aquasec/trivy:latest
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Trivy entrypoint
+set -e
+
+# Default command
+exec trivy image --security-checks vuln,secret \$@`;
+
+      config = `# Common Trivy commands:
+# Scan an image: trivy image [image-name]
+# Scan a directory: trivy fs --security-checks vuln,secret /path
+# Scan a repo: trivy repo [repo-url]`;
+      break;
+
+    // Infrastructure as Code
+    case 'hashicorp/terraform:1.6':
+      dockerfile = `FROM hashicorp/terraform:1.6
+
+# Install additional tools
+RUN apk add --no-cache \\
+    curl \\
+    jq \\
+    git
+
+WORKDIR /workspace
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Terraform entrypoint
+set -e
+
+# Initialize if .terraform doesn't exist
+if [ ! -d ".terraform" ]; then
+  terraform init
+fi
+
+exec terraform \$@`;
+
+      config = `# Terraform configuration example:
+# provider "aws" {
+#   region = "us-east-1"
+# }`;
+      break;
+
+    // Container Tools
+    case 'docker:24.0-dind':
+      dockerfile = `FROM docker:24.0-dind
+
+# Install additional tools
+RUN apk add --no-cache \\
+    curl \\
+    bash \\
+    git
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Docker-in-Docker entrypoint
+set -e
+
+# Start Docker daemon
+dockerd-entrypoint.sh &
+
+# Wait for Docker daemon to start
+while ! docker info > /dev/null 2>&1; do
+  echo "Waiting for Docker daemon to start..."
+  sleep 1
+done
+
+exec "\$@"`;
+
+      config = `# Docker-in-Docker usage:
+# This container runs its own Docker daemon
+# Mount docker.sock for host Docker access: -v /var/run/docker.sock:/var/run/docker.sock`;
+      break;
+
+    // Databases
+    case 'postgres:15-alpine':
+      dockerfile = `FROM postgres:15-alpine
+
+# Copy initialization scripts
+COPY init.sql /docker-entrypoint-initdb.d/
+COPY postgresql.conf /etc/postgresql/postgresql.conf
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 5432
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# PostgreSQL entrypoint
+set -e
+
+# Start PostgreSQL
+exec docker-entrypoint.sh postgres -c config_file=/etc/postgresql/postgresql.conf`;
+
+      config = `# postgresql.conf
+listen_addresses = '*'
+max_connections = 100
+shared_buffers = 128MB
+
+# init.sql
+CREATE DATABASE appdb;
+CREATE USER appuser WITH ENCRYPTED PASSWORD 'password';
+GRANT ALL PRIVILEGES ON DATABASE appdb TO appuser;`;
+      break;
+
+    // Minimal OS
+    case 'alpine:latest':
+      dockerfile = `FROM alpine:latest
+
+# Install base packages
+RUN apk add --no-cache \\
+    bash \\
+    curl \\
+    git
+
+WORKDIR /app
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+      entrypoint = `#!/bin/sh
+# Alpine entrypoint
+set -e
+
+exec "\$@"`;
+
+      config = `# Alpine Linux minimal container
+# Add your application setup here`;
+      break;
+
+
+
+      // Add these cases to the switch statement in applyBaseImageTemplate()
+case 'ruby:3.2-alpine':
+  dockerfile = `FROM ruby:3.2-alpine
+
+# Install dependencies
+RUN apk add --no-cache \\
+    build-base \\
+    postgresql-dev \\
+    sqlite-dev \\
+    tzdata
+
+WORKDIR /app
+
+# Install gems
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+# Copy application
+COPY . .
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 3000
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# Ruby entrypoint
+set -e
+
+exec bundle exec rails server -b 0.0.0.0 -p 3000`;
+
+  config = `# Gemfile
+source 'https://rubygems.org'
+gem 'rails', '~> 7.0'`;
+  break;
+
+case 'dotnet/sdk:8.0':
+  dockerfile = `FROM dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY . .
+RUN dotnet restore
+RUN dotnet publish -c Release -o /app
+
+FROM dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /app .
+ENTRYPOINT ["dotnet", "YourApp.dll"]`;
+
+  entrypoint = `#!/bin/sh
+# .NET entrypoint
+set -e
+
+exec dotnet YourApp.dll`;
+
+  config = `# .NET project file
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+</Project>`;
+  break;
+
+case 'golang:1.20-alpine':
+  dockerfile = `FROM golang:1.20-alpine AS builder
+WORKDIR /app
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -o /app/bin/app
+
+FROM alpine:latest
+WORKDIR /app
+COPY --from=builder /app/bin/app /app/app
+ENTRYPOINT ["/app/app"]`;
+
+  entrypoint = `#!/bin/sh
+# Go entrypoint
+set -e
+
+exec /app/app`;
+
+  config = `// main.go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+}`;
+  break;
+
+case 'gitlab/gitlab-runner:alpine':
+  dockerfile = `FROM gitlab/gitlab-runner:alpine
+
+# Register the runner (configuration should be mounted)
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# GitLab Runner entrypoint
+set -e
+
+exec /usr/bin/dumb-init /entrypoint.sh run --user=gitlab-runner --working-directory=/home/gitlab-runner`;
+
+  config = `# Sample GitLab Runner configuration (config.toml)
+concurrent = 4
+check_interval = 0
+
+[[runners]]
+  name = "docker-runner"
+  url = "https://gitlab.com/"
+  token = "YOUR_RUNNER_TOKEN"
+  executor = "docker"
+  [runners.docker]
+    tls_verify = false
+    image = "alpine:latest"
+    privileged = false
+    disable_cache = false
+    volumes = ["/cache"]
+    shm_size = 0`;
+  break;
+
+case 'circleci/node:20.2':
+  dockerfile = `FROM circleci/node:20.2
+
+WORKDIR /project
+
+# Install system dependencies
+RUN sudo apt-get update && \\
+    sudo apt-get install -y \\
+    python3 \\
+    python3-pip \\
+    && sudo rm -rf /var/lib/apt/lists/*
+
+# Copy package files first for better caching
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy application files
+COPY . .
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# CircleCI Node entrypoint
+set -e
+
+exec npm start`;
+
+  config = `# .circleci/config.yml
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:20.2
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test`;
+  break;
+
+case 'bitnami/git:latest':
+  dockerfile = `FROM bitnami/git:latest
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# Git CLI entrypoint
+set -e
+
+exec git \$@`;
+
+  config = `# Common Git commands:
+# git clone [repository]
+# git pull
+# git push`;
+  break;
+
+case 'sonarsource/sonar-scanner-cli:latest':
+  dockerfile = `FROM sonarsource/sonar-scanner-cli:latest
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# SonarScanner entrypoint
+set -e
+
+exec sonar-scanner \$@`;
+
+  config = `# sonar-project.properties
+sonar.projectKey=my_project
+sonar.projectName=My Project
+sonar.projectVersion=1.0
+sonar.sources=.
+sonar.sourceEncoding=UTF-8`;
+  break;
+
+case 'owasp/dependency-check:latest':
+  dockerfile = `FROM owasp/dependency-check:latest
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# OWASP Dependency Check entrypoint
+set -e
+
+exec dependency-check.sh \$@`;
+
+  config = `# Example command:
+# dependency-check.sh --project "My Project" --scan ./ --out ./report`;
+  break;
+
+case 'anchore/grype:latest':
+  dockerfile = `FROM anchore/grype:latest
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# Grype entrypoint
+set -e
+
+exec grype \$@`;
+
+  config = `# Common Grype commands:
+# grype [image] - scan a container image
+# grype dir:/path - scan a directory
+# grype sbom:/path/to/sbom.json - scan an SBOM`;
+  break;
+
+case 'zapcore/zap-stable':
+  dockerfile = `FROM zapcore/zap-stable
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# OWASP ZAP entrypoint
+set -e
+
+exec zap.sh \$@`;
+
+  config = `# Common ZAP commands:
+# zap.sh -cmd -quickurl http://target -quickout /report.html
+# zap.sh -daemon -port 8080 -host 0.0.0.0`;
+  break;
+
+case 'hashicorp/packer:latest':
+  dockerfile = `FROM hashicorp/packer:latest
+
+# Install additional tools
+RUN apk add --no-cache \\
+    curl \\
+    jq \\
+    git
+
+WORKDIR /workspace
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# Packer entrypoint
+set -e
+
+exec packer \$@`;
+
+  config = `# packer.json
+{
+  "builders": [{
+    "type": "docker",
+    "image": "ubuntu",
+    "commit": true
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "inline": ["echo Hello World"]
+  }]
+}`;
+  break;
+
+case 'bitnami/kubectl:latest':
+  dockerfile = `FROM bitnami/kubectl:latest
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# kubectl entrypoint
+set -e
+
+exec kubectl \$@`;
+
+  config = `# Common kubectl commands:
+# kubectl get pods
+# kubectl apply -f deployment.yaml
+# kubectl logs [pod-name]`;
+  break;
+
+case 'amazon/aws-cli:2.15.0':
+  dockerfile = `FROM amazon/aws-cli:2.15.0
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# AWS CLI entrypoint
+set -e
+
+exec aws \$@`;
+
+  config = `# Common AWS CLI commands:
+# aws s3 ls
+# aws ec2 describe-instances
+# aws configure set region us-east-1`;
+  break;
+
+case 'quay.io/buildah/stable:latest':
+  dockerfile = `FROM quay.io/buildah/stable:latest
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# Buildah entrypoint
+set -e
+
+exec buildah \$@`;
+
+  config = `# Common Buildah commands:
+# buildah bud -t myimage .
+# buildah push myimage docker://registry/myimage
+# buildah images`;
+  break;
+
+case 'gcr.io/kaniko-project/executor:latest':
+  dockerfile = `FROM gcr.io/kaniko-project/executor:latest
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# Kaniko entrypoint
+set -e
+
+exec /kaniko/executor \$@`;
+
+  config = `# Common Kaniko commands:
+# /kaniko/executor --context=dir:///workspace --dockerfile=Dockerfile --destination=myimage:tag`;
+  break;
+
+case 'mysql:8.0':
+  dockerfile = `FROM mysql:8.0
+
+# Copy initialization scripts
+COPY init.sql /docker-entrypoint-initdb.d/
+COPY my.cnf /etc/mysql/conf.d/my.cnf
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 3306
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# MySQL entrypoint
+set -e
+
+exec docker-entrypoint.sh mysqld`;
+
+  config = `# my.cnf
+[mysqld]
+default_authentication_plugin=mysql_native_password
+
+# init.sql
+CREATE DATABASE IF NOT EXISTS appdb;
+CREATE USER 'appuser'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON appdb.* TO 'appuser'@'%';`;
+  break;
+
+case 'mongo:6.0':
+  dockerfile = `FROM mongo:6.0
+
+# Copy initialization scripts
+COPY init.js /docker-entrypoint-initdb.d/
+COPY mongod.conf /etc/mongod.conf
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 27017
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# MongoDB entrypoint
+set -e
+
+exec docker-entrypoint.sh mongod --config /etc/mongod.conf`;
+
+  config = `# mongod.conf
+storage:
+  dbPath: /data/db
+  journal:
+    enabled: true
+
+# init.js
+db.createUser({
+  user: 'appuser',
+  pwd: 'password',
+  roles: [{
+    role: 'readWrite',
+    db: 'appdb'
+  }]
+});`;
+  break;
+
+case 'redis:7.2-alpine':
+  dockerfile = `FROM redis:7.2-alpine
+
+# Copy configuration
+COPY redis.conf /usr/local/etc/redis/redis.conf
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 6379
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# Redis entrypoint
+set -e
+
+exec redis-server /usr/local/etc/redis/redis.conf`;
+
+  config = `# redis.conf
+bind 0.0.0.0
+protected-mode no
+requirepass yourpassword`;
+  break;
+
+case 'minio/minio:latest':
+  dockerfile = `FROM minio/minio:latest
+
+# Copy configuration
+COPY minio-config.json /etc/minio/config.json
+
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 9000 9001
+
+ENTRYPOINT ["/entrypoint.sh"]`;
+
+  entrypoint = `#!/bin/sh
+# MinIO entrypoint
+set -e
+
+exec minio server /data --console-address ":9001"`;
+
+  config = `# minio-config.json
+{
+  "version": "1",
+  "credential": {
+    "accessKey": "minioadmin",
+    "secretKey": "minioadmin"
+  },
+  "region": "us-east-1",
+  "browser": "on"
+}`;
+  break;
+  
+    default:
+      showToast('Template not implemented yet!', 'red');
+      return;
+  }
+
+  // Set the outputs
+  document.getElementById('dockerfileOutput').textContent = dockerfile;
+  document.getElementById('entrypointOutput').textContent = entrypoint;
+  document.getElementById('configOutput').textContent = config;
+  document.getElementById('entrypointScript').value = entrypoint;
+
+  // Set the exposed port based on image type
+  const portMap = {
+    'openjdk:17-jdk-slim': '8080',
+    'node:18-alpine': '3000',
+    'python:3.10-slim': '8000',
+    'jenkins/jenkins:lts-jdk17': '8080',
+    'postgres:15-alpine': '5432',
+    // Add more port mappings as needed
+  };
+
+  if (portMap[imageType]) {
+    document.getElementById('exposedPort').value = portMap[imageType];
+  }
+
+  showToast(`Applied ${imageType} template!`, 'green');
+}
+
+// Add event listener to base image select
+document.getElementById('baseImageSelect').addEventListener('change', function() {
+  const selectedImage = this.value;
+  if (selectedImage) {
+    applyBaseImageTemplate(selectedImage);
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,735 @@
+<!-- Full Section Container -->
+<div class="border-2 border-black rounded p-4 bg-gray-50 shadow-sm mb-6">
+
+  <!-- Base OS Selection -->
+  <div class="mb-4">
+    <label class="block font-medium mb-1">Select Base OS</label>
+    <select id="baseOsSelect" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-300">
+      <option value="">-- Choose Base OS --</option>
+      <option value="ubuntu2204">Ubuntu 22.04</option>
+      <option value="ubuntu2004">Ubuntu 20.04</option>
+      <option value="debian-bullseye">Debian Bullseye</option>
+      <option value="debian-bookworm">Debian Bookworm</option>
+      <option value="alpine">Alpine</option>
+      <option value="centos7">CentOS 7</option>
+      <option value="rockylinux9">Rocky Linux 9</option>
+      <option value="amazonlinux2023">Amazon Linux 2023</option>
+      <option value="fedora40">Fedora 40</option>
+      <option value="ubi8">Red Hat UBI 8</option>
+      <option value="busybox">BusyBox</option>
+      <option value="scratch">Scratch</option>
+      <option value="distroless">Distroless</option>
+    </select>
+  </div>
+
+  <!-- Base OS Description -->
+  <div id="baseOsDescription" class="mt-2 text-sm text-gray-700 font-medium hidden border-l-4 border-blue-500 pl-3 py-2 bg-blue-100 rounded">
+    <!-- Description will appear here -->
+  </div>
+
+  <!-- App Checkboxes Section -->
+  <div id="applicationOptions" class="hidden mt-4">
+    <label class="block font-medium mb-2 text-lg text-black">Available Applications</label>
+    <div id="checkboxContainer" class="grid grid-cols-2 gap-2"></div>
+  </div>
+
+</div>
+
+<!-- Output Section -->
+<div class="mt-6 space-y-4">
+  <div>
+    <label class="block font-medium mb-1">Dockerfile</label>
+    <pre id="dockerfileOutput" class="bg-gray-100 p-4 rounded border border-gray-300 overflow-x-auto"></pre>
+  </div>
+  
+  <div>
+    <label class="block font-medium mb-1">Entrypoint Script</label>
+    <pre id="entrypointOutput" class="bg-gray-100 p-4 rounded border border-gray-300 overflow-x-auto"></pre>
+  </div>
+  
+  <div>
+    <label class="block font-medium mb-1">Configuration</label>
+    <pre id="configOutput" class="bg-gray-100 p-4 rounded border border-gray-300 overflow-x-auto"># No configuration required</pre>
+  </div>
+  
+  <input type="hidden" id="entrypointScript" value="">
+</div>
+
+<script>
+const baseOsToApps = {
+  ubuntu2204: ["nginx", "apache", "mysql", "php", "python", "node", "django", "flask", "wordpress", "java", "basicuti"],
+  ubuntu2004: ["nginx", "apache", "mysql", "php", "python", "node", "django", "flask", "wordpress", "java", "basicuti"],
+  "debian-bullseye": ["nginx", "mysql", "php", "django", "flask", "static", "react", "postgres", "java", "basicuti"],
+  "debian-bookworm": ["nginx", "mysql", "php", "django", "flask", "static", "react", "postgres", "java", "basicuti"],
+  alpine: ["nginx", "node", "pm2", "python", "go", "express", "static", "java", "caddy", "httpd", "lighttpd", "basicuti"],
+  centos7: ["apache", "mysql", "php", "tomcat", "java", "basicuti"],
+  rockylinux9: ["httpd", "mysql", "php", "python", "nginx", "java", "basicuti"],
+  amazonlinux2023: ["nginx", "node", "python", "flask", "django", "java", "basicuti"],
+  fedora40: ["nginx", "postgres", "php", "laravel", "django", "java", "basicuti"],
+  ubi8: ["tomcat", "java", "nginx", "uwsgi", "gunicorn", "basicuti"],
+  busybox: ["static", "go", "python", "basicuti"],
+  scratch: ["static", "go", "basicuti"],
+  distroless: ["static", "node", "python", "java", "basicuti"]
+};
+
+const baseOsDescriptions = {
+  ubuntu2204: "Ubuntu 22.04 - Popular LTS distro, widely supported",
+  ubuntu2004: "Ubuntu 20.04 - Older LTS version, still heavily used",
+  "debian-bullseye": "Debian Bullseye - Stable Debian base",
+  "debian-bookworm": "Debian Bookworm - Latest stable release",
+  alpine: "Alpine - Lightweight, minimal image (~5MB)",
+  centos7: "CentOS 7 - Legacy RHEL clone, still in use",
+  rockylinux9: "Rocky Linux 9 - Modern CentOS alternative",
+  amazonlinux2023: "Amazon Linux 2023 - AWS-optimized image",
+  fedora40: "Fedora 40 - Cutting-edge Linux distribution",
+  ubi8: "Red Hat UBI 8 - Red Hat's universal base image",
+  busybox: "BusyBox - Ultra-minimal (~1MB), includes shell tools",
+  scratch: "Scratch - Empty base for fully static builds (no shell, no libc)",
+  distroless: "Distroless - Secure, minimal images by Google for Node, Java, Python, Go"
+};
+
+const appNames = {
+  nginx: "Nginx Reverse Proxy",
+  apache: "Apache Web Server",
+  httpd: "Apache HTTPD",
+  mysql: "MySQL Database",
+  php: "PHP Application",
+  python: "Python Application",
+  node: "Node.js Application",
+  django: "Django (Python Web)",
+  flask: "Flask (Python API)",
+  wordpress: "WordPress CMS",
+  static: "Static Files",
+  react: "React SPA",
+  express: "Express (Node.js API)",
+  go: "Go Application",
+  tomcat: "Java Web (Tomcat)",
+  java: "Java Application",
+  pm2: "PM2 (Node.js Process Manager)",
+  postgres: "PostgreSQL Database",
+  laravel: "Laravel (PHP Framework)",
+  uwsgi: "uWSGI (Python WSGI)",
+  gunicorn: "Gunicorn (Python WSGI)",
+  caddy: "Caddy Web Server",
+  lighttpd: "Lighttpd Web Server",
+  basicuti: "Basic Utilities"
+};
+
+const javaVariants = {
+  jdk: ["ubuntu2204", "ubuntu2004", "debian-bullseye", "debian-bookworm", "centos7", "rockylinux9", "fedora40"],
+  jre: ["alpine", "amazonlinux2023", "ubi8"]
+};
+
+const javaVersions = ["11", "17", "21"];
+
+const basicUtilsList = [
+  "vim", "nano", "net-tools", "iproute2", "git", "ping", "wget", "curl", "tar", "gzip", "unzip",
+  "bash", "sudo", "ssh", "htop", "screen", "tmux", "rsync", "ca-certificates", "openssl",
+  "dnsutils", "iputils", "lsof", "strace", "jq", "findutils", "bash-completion"
+];
+
+function generateTemplatesFromSelectedApps() {
+  const selectedOs = document.getElementById('baseOsSelect').value;
+  const selectedApps = Array.from(document.querySelectorAll('#checkboxContainer input[name="apps"]:checked')).map(el => el.value);
+  
+  if (!selectedOs || selectedApps.length === 0) {
+    document.getElementById('dockerfileOutput').textContent = '';
+    document.getElementById('entrypointOutput').textContent = '';
+    document.getElementById('configOutput').textContent = '# No configuration required';
+    return;
+  }
+
+  let dockerfile = '';
+  let entrypoint = '#!/bin/sh\nset -e\n\n';
+  let config = '';
+
+  // Start with base OS setup
+  dockerfile = `FROM ${getBaseImageForOs(selectedOs)}\n\n`;
+  
+  // Add common setup commands based on OS
+  dockerfile += getBaseOsSetupCommands(selectedOs);
+  
+  // Get selected basic utilities if basicuti is checked
+  const basicUtilsSelected = selectedApps.includes('basicuti') ? 
+    Array.from(document.querySelectorAll('#basic-utils-container input[name="basicutils"]:checked')).map(el => el.value) : [];
+  
+  // Get Java version if java is checked
+  const javaVersion = selectedApps.includes('java') ? 
+    document.getElementById('jdk-version')?.value : null;
+  
+  // Process each selected application
+  selectedApps.forEach(app => {
+    const { df, ep, cfg } = getAppTemplate(selectedOs, app, {
+      basicUtils: app === 'basicuti' ? basicUtilsSelected : [],
+      javaVersion: app === 'java' ? javaVersion : null
+    });
+    
+    if (df) dockerfile += df + '\n';
+    if (ep) entrypoint += ep + '\n';
+    if (cfg) config += cfg + '\n';
+  });
+
+  // Add common footer
+  dockerfile += `\nWORKDIR /app\n`;
+  dockerfile += `COPY . .\n\n`;
+  
+  // Add entrypoint only if we have commands to run
+  if (entrypoint.trim() !== '#!/bin/sh\nset -e') {
+    dockerfile += `COPY entrypoint.sh /entrypoint.sh\n`;
+    dockerfile += `RUN chmod +x /entrypoint.sh\n\n`;
+    dockerfile += `ENTRYPOINT ["/entrypoint.sh"]\n`;
+  }
+  
+  // Add default expose if we have web servers
+  const webServers = ['nginx', 'apache', 'httpd', 'caddy', 'lighttpd', 'node', 'python', 'php', 'django', 'flask', 'express'];
+  if (selectedApps.some(app => webServers.includes(app))) {
+    dockerfile += `EXPOSE 80\n`;
+  }
+
+  // Set default entrypoint if no commands were added
+  if (entrypoint.trim() === '#!/bin/sh\nset -e') {
+    entrypoint += '\nexec "$@"';
+  }
+
+  // Set the outputs
+  document.getElementById('dockerfileOutput').textContent = dockerfile;
+  document.getElementById('entrypointOutput').textContent = entrypoint;
+  document.getElementById('configOutput').textContent = config || '# No specific configuration required';
+  document.getElementById('entrypointScript').value = entrypoint;
+}
+
+// Helper functions
+function getBaseImageForOs(os) {
+  const osImages = {
+    ubuntu2204: 'ubuntu:22.04',
+    ubuntu2004: 'ubuntu:20.04',
+    'debian-bullseye': 'debian:bullseye',
+    'debian-bookworm': 'debian:bookworm',
+    alpine: 'alpine:latest',
+    centos7: 'centos:7',
+    rockylinux9: 'rockylinux:9',
+    amazonlinux2023: 'amazonlinux:2023',
+    fedora40: 'fedora:40',
+    ubi8: 'registry.access.redhat.com/ubi8/ubi',
+    busybox: 'busybox:latest',
+    scratch: 'scratch',
+    distroless: 'gcr.io/distroless/base'
+  };
+  return osImages[os] || 'ubuntu:22.04';
+}
+
+function getBaseOsSetupCommands(os) {
+  const commands = {
+    ubuntu2204: 'RUN apt-get update && apt-get install -y curl gnupg && rm -rf /var/lib/apt/lists/*\n',
+    ubuntu2004: 'RUN apt-get update && apt-get install -y curl gnupg && rm -rf /var/lib/apt/lists/*\n',
+    'debian-bullseye': 'RUN apt-get update && apt-get install -y curl gnupg && rm -rf /var/lib/apt/lists/*\n',
+    'debian-bookworm': 'RUN apt-get update && apt-get install -y curl gnupg && rm -rf /var/lib/apt/lists/*\n',
+    alpine: 'RUN apk add --no-cache curl bash\n',
+    centos7: 'RUN yum update -y && yum install -y curl && yum clean all\n',
+    rockylinux9: 'RUN dnf update -y && dnf install -y curl && dnf clean all\n',
+    amazonlinux2023: 'RUN yum update -y && yum install -y curl && yum clean all\n',
+    fedora40: 'RUN dnf update -y && dnf install -y curl && dnf clean all\n',
+    ubi8: 'RUN dnf update -y && dnf install -y curl && dnf clean all\n',
+    busybox: '# BusyBox has limited package management\n',
+    scratch: '# Scratch image has no package manager\n',
+    distroless: '# Distroless images have no package manager\n'
+  };
+  return commands[os] || '';
+}
+
+function getAppTemplate(os, app, options = {}) {
+  const templates = {
+    nginx: {
+      df: `# Install Nginx
+${getPackageInstallCommand(os, 'nginx')}`,
+      ep: `# Start Nginx
+exec nginx -g 'daemon off;'`,
+      cfg: `# nginx.conf
+worker_processes auto;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+        }
+    }
+}`
+    },
+    apache: {
+      df: `# Install Apache
+${getPackageInstallCommand(os, 'apache2')}`,
+      ep: `# Start Apache
+exec httpd-foreground`,
+      cfg: `# httpd.conf
+ServerRoot "/usr/local/apache2"
+Listen 80
+
+LoadModule mpm_event_module modules/mod_mpm_event.so
+LoadModule authz_core_module modules/mod_authz_core.so
+LoadModule dir_module modules/mod_dir.so
+LoadModule mime_module modules/mod_mime.so
+
+DocumentRoot "/usr/local/apache2/htdocs"
+<Directory "/usr/local/apache2/htdocs">
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>`
+    },
+    httpd: {
+      df: `# Install Apache HTTPD
+${getPackageInstallCommand(os, 'httpd')}`,
+      ep: `# Start Apache HTTPD
+exec httpd -DFOREGROUND`,
+      cfg: `# httpd.conf (basic configuration)
+ServerRoot "/etc/httpd"
+Listen 80
+
+LoadModule mpm_event_module modules/mod_mpm_event.so
+LoadModule authz_core_module modules/mod_authz_core.so
+LoadModule dir_module modules/mod_dir.so
+LoadModule mime_module modules/mod_mime.so
+
+DocumentRoot "/var/www/html"
+<Directory "/var/www/html">
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>`
+    },
+    mysql: {
+      df: `# Install MySQL
+${getPackageInstallCommand(os, 'mysql-server')}`,
+      ep: `# Start MySQL
+exec mysqld`,
+      cfg: `# my.cnf
+[mysqld]
+bind-address = 0.0.0.0`
+    },
+    php: {
+      df: `# Install PHP
+${getPackageInstallCommand(os, 'php')}`,
+      ep: `# Start PHP built-in server
+exec php -S 0.0.0.0:8000`,
+      cfg: `# php.ini
+[PHP]
+expose_php = Off
+upload_max_filesize = 2M
+post_max_size = 8M`
+    },
+    python: {
+      df: `# Install Python
+${getPackageInstallCommand(os, 'python3 python3-pip')}`,
+      ep: `# Start Python application
+exec python3 app.py`,
+      cfg: `# requirements.txt
+flask==2.0.1`
+    },
+    node: {
+      df: `# Install Node.js
+${getPackageInstallCommand(os, 'nodejs npm')}`,
+      ep: `# Start Node application
+exec node index.js`,
+      cfg: `# package.json
+{
+  "name": "node-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}`
+    },
+    django: {
+      df: `# Install Python and Django
+${getPackageInstallCommand(os, 'python3 python3-pip')}
+RUN pip install django`,
+      ep: `# Start Django development server
+exec python manage.py runserver 0.0.0.0:8000`,
+      cfg: `# Django settings.py (excerpt)
+ALLOWED_HOSTS = ['*']`
+    },
+    flask: {
+      df: `# Install Python and Flask
+${getPackageInstallCommand(os, 'python3 python3-pip')}
+RUN pip install flask`,
+      ep: `# Start Flask application
+exec python app.py`,
+      cfg: `# app.py (basic example)
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return "Hello, World!"
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)`
+    },
+    wordpress: {
+      df: `# Install WordPress requirements
+${getPackageInstallCommand(os, 'php php-mysql apache2')}
+RUN curl -o wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz \\
+    && tar -xzf wordpress.tar.gz -C /var/www/html \\
+    && rm wordpress.tar.gz`,
+      ep: `# Start Apache for WordPress
+exec apache2-foreground`,
+      cfg: `# wp-config.php (basic setup)
+define('DB_NAME', 'wordpress');
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
+define('DB_HOST', 'localhost');`
+    },
+    static: {
+      df: `# Install tools for static file serving
+${getPackageInstallCommand(os, 'nginx')}`,
+      ep: `# Serve static files with nginx
+exec nginx -g 'daemon off;'`,
+      cfg: `# nginx configuration for static files
+server {
+    listen 80;
+    server_name localhost;
+    root /app;
+    index index.html;
+}`
+    },
+    react: {
+      df: `# Install Node.js for React
+${getPackageInstallCommand(os, 'nodejs npm')}
+RUN npm install -g serve`,
+      ep: `# Serve React build
+exec serve -s build -l 3000`,
+      cfg: `# package.json (React example)
+{
+  "name": "react-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3"
+  }
+}`
+    },
+    express: {
+      df: `# Install Node.js and Express
+${getPackageInstallCommand(os, 'nodejs npm')}
+RUN npm install express`,
+      ep: `# Start Express server
+exec node server.js`,
+      cfg: `# server.js (basic example)
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(port, () => {
+  console.log(\`Example app listening at http://localhost:\${port}\`);
+});`
+    },
+    go: {
+      df: `# Install Go
+${getPackageInstallCommand(os, 'golang')}`,
+      ep: `# Run Go application
+exec ./app`,
+      cfg: `# main.go (basic example)
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+}`
+    },
+    tomcat: {
+      df: `# Install Tomcat
+${getPackageInstallCommand(os, 'tomcat')}`,
+      ep: `# Start Tomcat
+exec catalina.sh run`,
+      cfg: `# server.xml (basic configuration)
+<Connector port="8080" protocol="HTTP/1.1"
+           connectionTimeout="20000"
+           redirectPort="8443" />`
+    },
+    java: {
+      df: options.javaVersion ? `# Install ${options.javaVersion.includes('jdk') ? 'JDK' : 'JRE'} ${options.javaVersion.replace(/\D/g, '')}
+${getPackageInstallCommand(os, getJavaPackageName(os, options.javaVersion))}` : '# Java version not selected',
+      ep: `# Run Java application
+exec java -jar app.jar`,
+      cfg: `# Example Java application
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}`
+    },
+    pm2: {
+      df: `# Install Node.js and PM2
+${getPackageInstallCommand(os, 'nodejs npm')}
+RUN npm install -g pm2`,
+      ep: `# Start application with PM2
+exec pm2-runtime start ecosystem.config.js`,
+      cfg: `# ecosystem.config.js
+module.exports = {
+  apps: [{
+    name: 'app',
+    script: 'index.js',
+    instances: 'max',
+    autorestart: true,
+    watch: false,
+    max_memory_restart: '1G',
+    env: {
+      NODE_ENV: 'production'
+    }
+  }]
+}`
+    },
+    postgres: {
+      df: `# Install PostgreSQL
+${getPackageInstallCommand(os, 'postgresql')}`,
+      ep: `# Start PostgreSQL
+exec postgres -D /var/lib/postgresql/data`,
+      cfg: `# postgresql.conf (basic settings)
+listen_addresses = '*'
+max_connections = 100`
+    },
+    laravel: {
+      df: `# Install PHP and Composer
+${getPackageInstallCommand(os, 'php php-mysql composer')}`,
+      ep: `# Start Laravel development server
+exec php artisan serve --host=0.0.0.0 --port=8000`,
+      cfg: `# .env (basic settings)
+APP_ENV=production
+APP_DEBUG=false`
+    },
+    uwsgi: {
+      df: `# Install Python and uWSGI
+${getPackageInstallCommand(os, 'python3 python3-pip')}
+RUN pip install uwsgi`,
+      ep: `# Start uWSGI
+exec uwsgi --ini uwsgi.ini`,
+      cfg: `# uwsgi.ini
+[uwsgi]
+http = :8000
+module = app:app
+master = true
+processes = 4`
+    },
+    gunicorn: {
+      df: `# Install Python and Gunicorn
+${getPackageInstallCommand(os, 'python3 python3-pip')}
+RUN pip install gunicorn`,
+      ep: `# Start Gunicorn
+exec gunicorn -b 0.0.0.0:8000 app:app`,
+      cfg: `# gunicorn.conf.py
+workers = 4
+bind = '0.0.0.0:8000'`
+    },
+    caddy: {
+      df: `# Install Caddy
+${getPackageInstallCommand(os, 'caddy')}`,
+      ep: `# Start Caddy
+exec caddy run --config /etc/caddy/Caddyfile`,
+      cfg: `# Caddyfile
+:80 {
+    root * /usr/share/caddy
+    file_server
+}`
+    },
+    lighttpd: {
+      df: `# Install lighttpd
+${getPackageInstallCommand(os, 'lighttpd')}`,
+      ep: `# Start lighttpd
+exec lighttpd -D -f /etc/lighttpd/lighttpd.conf`,
+      cfg: `# lighttpd.conf (basic)
+server.document-root = "/var/www/html"
+server.port = 80`
+    },
+    basicuti: {
+      df: options.basicUtils && options.basicUtils.length > 0 ? 
+        `# Install basic utilities\n${getPackageInstallCommand(os, options.basicUtils.join(' '))}` : 
+        '# No utilities selected',
+      ep: '',
+      cfg: ''
+    }
+  };
+  
+  return templates[app] || { df: '', ep: '', cfg: '' };
+}
+
+function getJavaPackageName(os, javaVersion) {
+  if (!javaVersion) return '';
+  
+  const version = javaVersion.replace(/\D/g, '');
+  const isJDK = javaVersion.includes('jdk');
+  
+  const packages = {
+    ubuntu2204: `openjdk-${version}-jdk`,
+    ubuntu2004: `openjdk-${version}-jdk`,
+    'debian-bullseye': `openjdk-${version}-jdk`,
+    'debian-bookworm': `openjdk-${version}-jdk`,
+    alpine: `openjdk${version}-jre`,
+    centos7: `java-${version}-openjdk-devel`,
+    rockylinux9: `java-${version}-openjdk-devel`,
+    amazonlinux2023: `java-${version}-amazon-corretto`,
+    fedora40: `java-${version}-openjdk-devel`,
+    ubi8: `java-${version}-openjdk`
+  };
+  
+  return packages[os] || '';
+}
+
+function getPackageInstallCommand(os, packages) {
+  if (!packages) return '';
+  
+  const commands = {
+    ubuntu2204: `RUN apt-get update && apt-get install -y ${packages} && rm -rf /var/lib/apt/lists/*`,
+    ubuntu2004: `RUN apt-get update && apt-get install -y ${packages} && rm -rf /var/lib/apt/lists/*`,
+    'debian-bullseye': `RUN apt-get update && apt-get install -y ${packages} && rm -rf /var/lib/apt/lists/*`,
+    'debian-bookworm': `RUN apt-get update && apt-get install -y ${packages} && rm -rf /var/lib/apt/lists/*`,
+    alpine: `RUN apk add --no-cache ${packages}`,
+    centos7: `RUN yum install -y ${packages} && yum clean all`,
+    rockylinux9: `RUN dnf install -y ${packages} && dnf clean all`,
+    amazonlinux2023: `RUN yum install -y ${packages} && yum clean all`,
+    fedora40: `RUN dnf install -y ${packages} && dnf clean all`,
+    ubi8: `RUN dnf install -y ${packages} && dnf clean all`,
+    busybox: `# BusyBox has limited package management - ${packages} may not be available`,
+    scratch: `# Scratch image has no package manager - cannot install ${packages}`,
+    distroless: `# Distroless images have no package manager - cannot install ${packages}`
+  };
+  
+  return commands[os] || `# Install command for ${packages} not configured for this OS`;
+}
+
+// Update the existing event listener
+document.getElementById("baseOsSelect").addEventListener("change", function () {
+  const selectedOs = this.value;
+  const checkboxContainer = document.getElementById("checkboxContainer");
+  const appSection = document.getElementById("applicationOptions");
+  const descriptionBox = document.getElementById("baseOsDescription");
+
+  checkboxContainer.innerHTML = "";
+
+  if (baseOsDescriptions[selectedOs]) {
+    descriptionBox.textContent = baseOsDescriptions[selectedOs];
+    descriptionBox.classList.remove("hidden");
+  } else {
+    descriptionBox.textContent = "";
+    descriptionBox.classList.add("hidden");
+  }
+
+  if (baseOsToApps[selectedOs]) {
+    appSection.classList.remove("hidden");
+    const appsToShow = baseOsToApps[selectedOs];
+
+    appsToShow.forEach(app => {
+      const label = document.createElement("label");
+      label.className = "flex flex-col space-y-1";
+
+      const checkboxHTML = `
+        <div class="flex items-center space-x-2">
+          <input type="checkbox" value="${app}" name="apps" id="check-${app}" class="form-checkbox h-4 w-4 text-blue-600">
+          <span>${appNames[app] || app}</span>
+        </div>
+      `;
+      label.innerHTML = checkboxHTML;
+
+      // Add change event listener to generate templates when checked
+      label.querySelector(`#check-${app}`).addEventListener("change", function() {
+        generateTemplatesFromSelectedApps();
+      });
+
+      if (app === "java") {
+        const select = document.createElement("select");
+        select.className = "mt-1 p-1 border rounded text-sm";
+        select.name = "javaVersion";
+        select.id = "jdk-version";
+
+        const isJDK = javaVariants.jdk.includes(selectedOs);
+        const variantLabel = isJDK ? "JDK" : "JRE";
+
+        javaVersions.forEach(ver => {
+          const opt = document.createElement("option");
+          opt.value = `${variantLabel.toLowerCase()}${ver}`;
+          opt.innerText = `${variantLabel} ${ver}`;
+          select.appendChild(opt);
+        });
+
+        select.disabled = true;
+        label.appendChild(select);
+
+        label.querySelector(`#check-${app}`).addEventListener("change", function (e) {
+          select.disabled = !e.target.checked;
+          generateTemplatesFromSelectedApps();
+        });
+
+        select.addEventListener("change", function() {
+          generateTemplatesFromSelectedApps();
+        });
+      }
+
+      if (app === "basicuti") {
+        const utilsContainer = document.createElement("div");
+        utilsContainer.className = "ml-4 mt-2 space-y-1 hidden";
+        utilsContainer.id = "basic-utils-container";
+
+        basicUtilsList.forEach(tool => {
+          const toolLabel = document.createElement("label");
+          toolLabel.className = "flex items-center space-x-2 text-sm";
+
+          toolLabel.innerHTML = `
+            <input type="checkbox" name="basicutils" value="${tool}" class="form-checkbox h-4 w-4 text-green-600">
+            <span class="text-gray-700">${tool}</span>
+          `;
+
+          // Add event listener for utility checkboxes
+          toolLabel.querySelector('input').addEventListener("change", function() {
+            generateTemplatesFromSelectedApps();
+          });
+
+          utilsContainer.appendChild(toolLabel);
+        });
+
+        const basicutiCheckbox = label.querySelector(`#check-basicuti`);
+        basicutiCheckbox.addEventListener("change", function () {
+          utilsContainer.classList.toggle("hidden", !this.checked);
+          generateTemplatesFromSelectedApps();
+        });
+
+        label.appendChild(utilsContainer);
+      }
+
+      checkboxContainer.appendChild(label);
+    });
+  } else {
+    appSection.classList.add("hidden");
+  }
+});
+
+// Initialize with empty outputs
+document.getElementById('dockerfileOutput').textContent = '';
+document.getElementById('entrypointOutput').textContent = '';
+document.getElementById('configOutput').textContent = '# No configuration required';
+</script>

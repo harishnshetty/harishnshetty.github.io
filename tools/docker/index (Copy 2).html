@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dockerfile Generator with Config Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col lg:flex-row items-center justify-center p-6">
+
+
+   <div class="w-full lg:w-80 bg-gray-50 p-6 shadow-inner lg:shadow-none lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-y-auto z-10">
+    <div class="text-center">
+      <h3 class="text-xl font-bold">Docker Page</h3>
+<img src="img/image.png" alt="Harish N Shetty" class="w-40 h-40 rounded-2xl mx-auto mb-4 shadow-md border border-gray-300" />
+      <h2 class="text-xl font-bold">Harish N Shetty</h2>
+      <p class="text-sm text-gray-600 mb-2">harishnshetty • he/him</p>
+      <p class="text-sm mb-4">DevOps Learner || Open Source Enthusiast || Keep learning, sharing and growing</p>
+
+      <ul class="text-left text-sm space-y-2">
+        <li><strong>Status:</strong> <span class="text-green-600">open to work</span></li>
+        <li><strong>Location:</strong> Bengaluru, Karnataka, India</li>
+        <li><strong>Email:</strong> <a href="mailto:harishn662@gmail.com" class="text-blue-600 underline">harishn662@gmail.com</a></li>
+        <li><strong>Website:</strong> <a href="https://harishnshetty.github.io" class="text-blue-600 underline" target="_blank">Website</a></li>
+        <li><strong>linkedin:</strong> <a href="https://www.linkedin.com/in/harishnshetty" class="text-blue-600 underline" target="_blank">harishnshetty</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/harishnshetty" class="text-blue-600 underline">@harishnshetty</a></li>
+        <li><strong>Youtube:</strong> <a href="https://www.youtube.com/@HarishNShetty0107" class="text-blue-600 underline">@HarishNShetty0107</a></li>
+        <li><strong>Instagram:</strong> <a href="https://www.instagram.com/devopswithharish?igsh=YWc5ZzNmdzBzNjI4" class="text-blue-600 underline" target="_blank">@devopswithharish</a></li>
+  <li><strong>Twitter (X):</strong> <a href="https://x.com/devopswitharish?t=SWH2zb-b8Dh4AGEm6tpwGg&s=09" class="text-blue-600 underline" target="_blank">@devopswitharish</a></li>
+
+      </ul>
+
+<p class="text-lg text-red-600 font-medium text-center mt-4 mx-auto max-w-2xl">
+  This is an open-source generator tool. You can support ongoing development & feature improvements.
+</p>
+     🔒 License & Usage Notice<br>
+  &copy; 2025 Harish N Shetty. All rights reserved.
+<ul class="text-left text-xl font-bold text-black space-y-2">
+  <li>
+    <strong>PayPal:</strong>
+    <a href="https://paypal.me/harishnshetty" class="text-blue-700 underline font-bold">@harishnshetty</a>
+  </li>
+  <li>
+    <strong>UPI ID:</strong> harishn662@ybl
+  </li>
+</ul>
+
+
+            <img src="img/qr1.png" alt="Harish N Shetty" class="w-45 h-45  mx-auto mb-4">
+<br> Desgin & Developed By</br><strong>Harish N Shetty</strong> 
+    </div>
+  </div>
+
+<div class="flex-0 p-1 overflow-y-auto lg:ml-80"></div>
+  <div class="max-w-4xl w-full bg-white rounded-xl shadow-md p-6">
+
+<a href="update.html" target="_blank">
+  <div id="latestUpdate" class="mb-4 w-full max-w-full text-sm text-blue-800 bg-blue-100 p-3 rounded hidden cursor-pointer hover:bg-blue-200 transition">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 w-full">
+      <img src="img/7.gif" alt="update" class="w-10 h-10 sm:w-7 sm:h-7 flex-shrink-0" />
+      <span id="updateMessage" class="text-sm sm:text-base font-medium break-words whitespace-pre-wrap w-full">
+        <svg class="animate-spin inline-block w-5 h-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+        </svg>
+        Fetching update...
+      </span>
+    </div>
+  </div>
+</a>
+
+
+    <h1 class="text-2xl font-bold mb-6 text-center"> [ Docker File Script Generator ]  </h1>
+    
+<span class="space-x-4">
+    <a href="https://harishnshetty.github.io" class="text-blue-600 underline" target="_blank">Home</a>
+
+  <a href="docker.pdf" class="text-blue-600 underline" target="_blank">Docker-PDF</a>
+  <a href="https://www.youtube.com/playlist?list=PLB1yU-G7FE-ENj8uOF2wuiU_AWdvZAI7H" class="text-blue-600 underline" target="_blank">▶️ YouTube-Playlist</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_tqab3RWclUkxWWtBKdqYp0wjoGlCawZIYDT1itX-xAnY2g/viewform?usp=dialog" class="text-blue-600 underline" target="_blank">✍️ Feedback-Form</a>
+  <a href="https://harishnshetty.github.io/feedback/docker.html" class="text-blue-600 underline" target="_blank">🤝😊 Read-Feedback-Messages</a>
+    <a href="lic.txt" class="text-blue-600 underline" target="_blank">🔑LICENSE</a>
+</span>
+
+<!-- Updated Dockerfile Generator UI: Includes Base Image, Entrypoint, Dockerignore Generator -->
+<div class="space-y-6 mt-6">
+
+  <!-- Base Image Selection -->
+  <div>
+    <label class="font-semibold">Select Base Image:</label>
+    <select id="baseImageSelect" class="w-full p-2 border rounded mt-2">
+      <option value="openjdk:17-jdk-slim">Java 17 (openjdk:17-jdk-slim)</option>
+      <option value="node:18-alpine">Node.js 18 (node:18-alpine)</option>
+      <option value="python:3.10-slim">Python 3.10 (python:3.10-slim)</option>
+      <option value="maven:3.8.6-openjdk-17">Maven + Java 17 (maven:3.8.6-openjdk-17)</option>
+      <option value="alpine:latest">Alpine (Minimal)</option>
+    </select>
+  </div>
+
+  <!-- Entrypoint Script -->
+  <div>
+    <label class="font-semibold">Entrypoint Script:</label>
+    <textarea id="entrypointScript" rows="6" class="w-full p-2 border rounded font-mono bg-gray-100 text-sm" placeholder="#!/bin/sh
+exec java -jar app.jar"></textarea>
+  </div>
+
+  <!-- Dockerignore Generator -->
+  <div>
+    <label class="inline-flex items-center">
+      <input type="checkbox" id="generateDockerignore" class="mr-2">
+      Generate .dockerignore file
+    </label>
+    <textarea id="dockerignoreContent" rows="5" class="w-full p-2 border rounded font-mono bg-gray-100 text-sm mt-2 hidden">node_modules
+.git
+Dockerfile
+*.tar.gz
+</textarea>
+  </div>
+
+  <!-- Generate All Button -->
+  <button onclick="generateAllFiles()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+    🚀 Generate Dockerfile, Entrypoint, and .dockerignore
+  </button>
+
+  <!-- Output Preview -->
+ <div class="mt-6">
+    <label class="font-semibold">Generated Files:</label>
+    <div class="relative bg-gray-200 p-4 rounded whitespace-pre-wrap mt-2 text-sm">
+        <pre id="dockerfileOutput"></pre>
+        <button onclick="copyToClipboard('dockerfileOutput')" class="absolute top-2 right-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded text-xs">Copy</button>
+        <button onclick="downloadFile('dockerfileOutput', 'Dockerfile')" class="absolute top-2 right-14 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded text-xs">Download</button>
+    </div>
+    <div class="relative bg-gray-200 p-4 rounded whitespace-pre-wrap mt-2 text-sm">
+        <pre id="entrypointOutput"></pre>
+        <button onclick="copyToClipboard('entrypointOutput')" class="absolute top-2 right-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded text-xs">Copy</button>
+        <button onclick="downloadFile('entrypointOutput', 'entrypoint.sh')" class="absolute top-2 right-14 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded text-xs">Download</button>
+    </div>
+    <div class="relative bg-gray-200 p-4 rounded whitespace-pre-wrap mt-2 text-sm">
+        <pre id="dockerignoreOutput"></pre>
+        <button onclick="copyToClipboard('dockerignoreOutput')" class="absolute top-2 right-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded text-xs">Copy</button>
+        <button onclick="downloadFile('dockerignoreOutput', '.dockerignore')" class="absolute top-2 right-14 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded text-xs">Download</button>
+    </div>
+  </div>
+
+<script>
+function generateAllFiles() {
+  const baseImage = document.getElementById('baseImageSelect').value;
+  const entryScript = document.getElementById('entrypointScript').value.trim();
+  const dockerignore = document.getElementById('generateDockerignore').checked;
+  const dockerignoreContent = document.getElementById('dockerignoreContent').value.trim();
+
+  const dockerfile = `FROM ${baseImage}
+
+WORKDIR /app
+COPY . .
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT [\"/entrypoint.sh\"]`;
+
+  document.getElementById('dockerfileOutput').textContent = `📄 Dockerfile\n\n${dockerfile}`;
+  document.getElementById('entrypointOutput').textContent = entryScript ? `📄 entrypoint.sh\n\n${entryScript}` : '';
+  document.getElementById('dockerignoreOutput').textContent = (dockerignore && dockerignoreContent)
+    ? `📄 .dockerignore\n\n${dockerignoreContent}` : '';
+
+  document.getElementById('dockerignoreContent').classList.toggle('hidden', !dockerignore);
+}
+</script>
+<script>  
+
+  // Reset all environment variables
+function resetEnvVars() {
+  document.querySelectorAll('.env-toggle').forEach(cb => (cb.checked = false));
+  document.getElementById('envVarsContainer').innerHTML = '';
+  document.getElementById('envPreview').textContent = '';
+}
+
+
+  document.getElementById('dockerfileOutput').textContent = `📄 Dockerfile\n\n${dockerfile}`;
+  document.getElementById('entrypointOutput').textContent = entryScript ? `📄 entrypoint.sh\n\n${entryScript}` : '';
+  document.getElementById('dockerignoreOutput').textContent = (generateDockerignore && dockerignoreContent)
+    ? `📄 .dockerignore\n\n${dockerignoreContent}` : '';
+
+  document.getElementById('dockerignoreContent').classList.toggle('hidden', !generateDockerignore);
+}
+
+
+
+  
+
+   function downloadYAML() {
+  const yaml = document.getElementById("output").textContent;
+  if (!yaml) {
+      showToast("Nothing to download!", 'red');
+      return;
+  }
+  const blob = new Blob([yaml], { type: "text/yaml" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "Dockerfile"; // Changed from playbook.yml
+  a.click();
+
+  showToast("✅ Download started!");
+}
+
+
+
+
+function showToast(message, type = 'green') {
+  const toast = document.createElement("div");
+  toast.textContent = message;
+  toast.className = `fixed bottom-4 right-4 bg-${type}-600 text-white px-4 py-2 rounded shadow-md z-50`; // Added type for color
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
+
+
+
+document.addEventListener("DOMContentLoaded", fetchLatestUpdate); //
+
+
+
+
+ 
+
+  </script>
+
+
+
+<script>
+  function clearAllCheckboxes() {
+  location.reload(); // Simply refreshes the page
+}
+
+</script>
+
+
+<script>
+  async function fetchLatestUpdate() {
+    try {
+      const url = "https://script.google.com/macros/s/AKfycbxZVmJjswUOGZLNm2zR9afxjzUeSHccbW_pSXwmeaPMFVa-oJSteKwJNFWS423h5FSj/exec";
+      const res = await fetch(url);
+      const json = await res.json();
+
+      // Adjust this depending on your actual data structure
+      const data = Array.isArray(json) ? json : json.data;
+
+      console.log("Fetched data:", data); // Debug check
+
+      if (!Array.isArray(data) || data.length < 2) return;
+
+      const [timestamp, message] = data[data.length - 1];
+      const updateBox = document.getElementById("latestUpdate");
+      const updateMsg = document.getElementById("updateMessage");
+
+      const dateObj = new Date(timestamp);
+      const formatted = dateObj.toLocaleString("en-IN", {
+        dateStyle: "medium",
+        timeStyle: "short"
+      });
+
+      updateMsg.textContent = `🕒 ${formatted} — Latest Update: ${message}`;
+      updateBox.classList.remove("hidden");
+    } catch (err) {
+      console.error("Failed to fetch update:", err);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchLatestUpdate();
+    setInterval(fetchLatestUpdate, 5 * 60 * 1000); // Refresh every 5 minutes
+  });
+</script>
+
+
+<!-- 
+<script>
+  // Disable right-click
+  document.addEventListener("contextmenu", event => event.preventDefault());
+</script> -->
+
+
+</body>
+</html>

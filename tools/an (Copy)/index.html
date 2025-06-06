@@ -9,8 +9,7 @@
 <body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col lg:flex-row items-center justify-center p-6">
 
 
-   <!-- LEFT: Fixed Profile Card -->
-  <div class="w-full lg:w-80 bg-gray-50 p-6 shadow-inner lg:shadow-none lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-y-auto z-10">
+   <div class="w-full lg:w-80 bg-gray-50 p-6 shadow-inner lg:shadow-none lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-y-auto z-10">
     <div class="text-center">
       <h3 class="text-xl font-bold">Ansible Page</h3>
 <img src="img/image.png" alt="Harish N Shetty" class="w-40 h-40 rounded-2xl mx-auto mb-4 shadow-md border border-gray-300" />
@@ -32,8 +31,14 @@
 
 
 <p class="text-lg text-red-600 font-medium text-center mt-4 mx-auto max-w-2xl">
+
+
+  
+
   This is an open-source generator tool. You can support ongoing development & feature improvements.
 </p>
+🔒 License & Usage Notice<br>
+  &copy; 2025 Harish N Shetty. All rights reserved.
      
 <ul class="text-left text-xl font-bold text-black space-y-2">
   <li>
@@ -54,18 +59,21 @@
 <div class="flex-0 p-1 overflow-y-auto lg:ml-80"></div>
   <div class="max-w-4xl w-full bg-white rounded-xl shadow-md p-6">
 
-<div id="latestUpdate" class="mb-4 w-full max-w-full text-sm text-blue-800 bg-blue-100 p-3 rounded hidden">
-  <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 w-full">
-    <img src="img/7.gif" alt="update" class="w-10 h-10 sm:w-7 sm:h-7 flex-shrink-0" />
-<span id="updateMessage" class="text-sm sm:text-base font-medium break-words whitespace-pre-wrap w-full">
-  <svg class="animate-spin inline-block w-5 h-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-  </svg>
-  Fetching update...
-</span>
+<a href="update.html" target="_blank">
+  <div id="latestUpdate" class="mb-4 w-full max-w-full text-sm text-blue-800 bg-blue-100 p-3 rounded hidden cursor-pointer hover:bg-blue-200 transition">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 w-full">
+      <img src="img/7.gif" alt="update" class="w-10 h-10 sm:w-7 sm:h-7 flex-shrink-0" />
+      <span id="updateMessage" class="text-sm sm:text-base font-medium break-words whitespace-pre-wrap w-full">
+        <svg class="animate-spin inline-block w-5 h-5 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+        </svg>
+        Fetching update...
+      </span>
+    </div>
   </div>
-</div>
+</a>
+
 
 
 
@@ -85,94 +93,185 @@
 
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-6"></div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+
       
 
 
 
-      <div>
-        <label for="os" class="font-semibold">Select OS:</label>
-        <select id="os" class="w-full mt-1 p-2 border rounded">
-          <option value="ubuntu">Ubuntu</option>
-          <option value="redhat">RedHat</option>
-          <option value="amazon">Amazon Linux</option>
-          <option value="alpine">Alpine</option>
-        </select>
-      </div>
 
-      <div>
-        <label for="app" class="font-semibold">Select Application:</label>
-        <select id="app" class="w-full mt-1 p-2 border rounded">
-          <option value="nginx">Nginx</option>
-          <option value="httpd">HTTPD</option>
-          <option value="apache2">Apache2</option>
-          <option value="mysql">MySQL</option>
-          <option value="mariadb">MariaDB</option>
-          <option value="maven">Maven</option>
-          <option value="openjdk11">OpenJDK 11</option>
-          <option value="openjdk17">OpenJDK 17</option>
-          <option value="openjdk21">OpenJDK 21</option>
-          <option value="mongodb">MongoDB</option>
-          <option value="nodejs">Node.js</option>
-        </select>
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+  <div>
+    <label for="os" class="font-semibold block mb-1">Select OS:</label>
+    <select id="os" class="w-full p-2 border rounded">
+      <option value="ubuntu">Ubuntu</option>
+      <option value="redhat">RedHat</option>
+      <option value="amazon">Amazon Linux</option>
+      <option value="alpine">Alpine</option>
+    </select>
+  </div>
+
+<div class="relative">
+  <label for="appDropdownButton" class="font-semibold block mb-1">Select Applications:</label>
+  <button id="appDropdownButton" class="w-full p-2 border border-black rounded bg-white text-left focus:outline-none">
+    Select Applications
+  </button>
+
+ <div id="appDropdownMenu" class="absolute z-10 hidden bg-white border rounded mt-1 w-full max-h-64 overflow-y-auto shadow-lg">      <div class="p-2 font-semibold bg-gray-100">Web Servers</div>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="nginx">Nginx
+      </label>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="apache2">Apache2
+      </label>
+
+      <div class="p-2 font-semibold bg-gray-100">Databases</div>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="mysql">MySQL
+      </label>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="mariadb">MariaDB
+      </label>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="postgresql">PostgreSQL
+      </label>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="mongodb">MongoDB
+      </label>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="redis">Redis
+      </label>
+
+      <div class="p-2 font-semibold bg-gray-100">DevOps Tools</div>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="docker">Docker
+      </label>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="git">Git
+      </label>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="ansible">Ansible
+      </label>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="terraform">Terraform
+      </label>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="jenkins">Jenkins
+      </label>
+
+      <div class="p-2 font-semibold bg-gray-100">Monitoring</div>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="prometheus">Prometheus
+      </label>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="grafana">Grafana
+      </label>
+      <label class="flex items-center px-4 py-2 hover:bg-gray-50">
+        <input type="checkbox" class="app-checkbox mr-2" value="zabbix-agent">Zabbix Agent
+      </label>
     </div>
-
-    <div class="mt-4">
-      <p class="font-semibold mb-1">Actions:</p>
-      <label class="inline-flex items-center mr-4">
-        <input type="checkbox" value="sys-update" class="action mr-2" /> System update
-      </label>
-      <label class="inline-flex items-center mr-4">
-        <input type="checkbox" value="install" class="action mr-2" /> Install
-      </label>
-      <label class="inline-flex items-center">
-        <input type="checkbox" value="reload" class="action mr-2" /> Reload
-      </label>
-      <label class="inline-flex items-center">
-        <input type="checkbox" value="remove" class="action mr-2" /> Remove
-      </label>
-    </div>
-
-    <div class="mt-4">
-      <p class="font-semibold mb-1">Optional Features:</p>
-      <label class="inline-flex items-center mr-4">
-        <input type="checkbox" id="configCheckbox" value="config" class="feature mr-2" /> Config
-      </label>
-      <label class="inline-flex items-center mr-4">
-        <input type="checkbox" id="createUser" value="user" class="feature mr-2" /> User Create
-      </label>
-
-
-     <div class="flex flex-col gap-1 mb-2">
-  <label class="inline-flex items-center">
-    <input type="checkbox" id="copyContentCheckbox" value="cp-content" class="feature mr-2" />
-    <span>Copy Content</span>
-  </label>
-
-  <select id="copyContentPathSelect" class="p-2 border rounded hidden w-full">
-    <input
-  type="text"
-  id="customCopyPath"
-  class="p-2 border rounded w-full mt-2 hidden"
-  placeholder="Enter custom destination path (e.g. /opt/myapp/index.html)"
-/>
-
-    <!-- Options will be added dynamically -->
-  </select>
-  
+  </div>
 </div>
 
 
+<div class="mt-6 flex flex-wrap gap-4">
+  </div>
 
 
-      <label class="inline-flex items-center mr-4">
-        <input type="checkbox" value="ssl" class="feature mr-2" /> SSL
-      </label>
+<script>
+document.addEventListener("click", function (e) {
+  setTimeout(() => {
+    const button = document.getElementById("appDropdownButton");
+    const menu = document.getElementById("appDropdownMenu");
 
-      <label class="inline-flex items-center">
-        <input type="checkbox" value="enableFirewall" class="feature mr-2" /> Firewall
-      </label>
+    if (!button.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.add("hidden");
+    }
+  }, 100); // Delay enough to let toggle finish first
+});
+
+// ADDED THIS PART TO TOGGLE THE DROPDOWN WHEN THE BUTTON IS CLICKED
+document.getElementById("appDropdownButton").addEventListener("click", function(event) {
+    event.stopPropagation(); // Prevent the document click listener from immediately closing it
+    const menu = document.getElementById("appDropdownMenu");
+    menu.classList.toggle("hidden");
+});
+
+
+  // Update button label based on selected items
+  document.querySelectorAll(".app-checkbox").forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      const selected = [...document.querySelectorAll(".app-checkbox:checked")].map(cb => cb.value);
+      document.getElementById("appDropdownButton").textContent = selected.length > 0 ? selected.join(", ") : "Select Applications";
+      // Also trigger config update if config checkbox is checked
+      const configCheckbox = document.getElementById("configCheckbox");
+      if (configCheckbox.checked) {
+        updateConfigEditor();
+      }
+      // Also trigger copy path dropdown update if copy content checkbox is checked
+      const copyContentCheckbox = document.getElementById("copyContentCheckbox");
+      if (copyContentCheckbox.checked && selected.length > 0) {
+        updateCopyPathDropdown(selected[0]); // Update based on the first selected app
+      }
+    });
+  });
+</script>
+
+
+    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
+  <!-- Basic Applications -->
+  <div>
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="basic-app" class="action mr-2" />
+      <span class="font-semibold">Basic Applications</span>
+    </label>
+  </div>
+</div>
+
+<!-- Actions -->
+<div class="mt-4">
+  <p class="font-semibold mb-1">Actions:</p>
+  <div class="flex flex-wrap gap-4">
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="sys-update" class="action mr-2" /> System update
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="install" class="action mr-2" /> Install
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="reload" class="action mr-2" /> Reload
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="remove" class="action mr-2" /> Remove
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" id="purgeConfig" class="mr-2" /> apt only (purge)
+    </label>
+  </div>
+</div>
+
+<!-- Optional Features -->
+<div class="mt-4">
+  <p class="font-semibold mb-1">Optional Features:</p>
+  <div class="flex flex-wrap gap-4">
+    <label class="inline-flex items-center">
+      <input type="checkbox" id="configCheckbox" value="config" class="feature mr-2" /> Config
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" id="createUser" value="user" class="feature mr-2" /> User Create
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" id="copyContentCheckbox" value="cp-content" class="feature mr-2" /> Copy Content
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="ssl" class="feature mr-2" /> SSL
+    </label>
+    <label class="inline-flex items-center">
+      <input type="checkbox" value="enableFirewall" class="feature mr-2" /> Firewall
+    </label>
+  </div>
+</div>
+
 
       <div id="firewallOptions" class="mt-2 ml-6 hidden">
         <label class="block font-medium mb-1">Firewall Tool:</label>
@@ -194,7 +293,6 @@
       
 </div>
 
-    <!-- Config Editor textarea -->
     <div id="configEditorContainer" class="mt-4 hidden">
       <label for="configEditor" class="font-semibold">Edit Configuration Template:</label>
       <textarea
@@ -204,7 +302,14 @@
       ></textarea>
     </div>
 
-    <div class="mt-6 flex gap-4">
+    
+ 
+  </div>
+
+
+ <div class="mt-6 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+
       <button onclick="generateYAML()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
         Generate YAML
       </button>
@@ -217,17 +322,17 @@
       </button>
       <button onclick="clearYAML()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
   Clear Output
-</button>
+</button><br>
 
     </div>
-
-    <div class="mt-6">
+     <div class="mt-6">
       <label class="font-semibold">Generated YAML:</label>
-      <pre id="output" class="bg-gray-200 p-4 rounded whitespace-pre-wrap mt-2"></pre>
+<pre id="output" class="bg-gray-100 p-4 rounded whitespace-pre text-sm font-mono border border-gray-300 mt-2"></pre>
     </div>
+</div>
+   
   </div>
- 
-  </div>
+
 
   <script>
     // Default config templates for apps
@@ -366,86 +471,120 @@ export PATH
 `.trim(),
 };
 
-    
-
-    // Show/hide config editor and load template when checkbox toggled
-    document.getElementById("configCheckbox").addEventListener("change", function () {
-      const container = document.getElementById("configEditorContainer");
-      const editor = document.getElementById("configEditor");
-      const app = document.getElementById("app").value;
-
-      if (this.checked) {
-        container.classList.remove("hidden");
-        editor.value = defaultConfigs[app] || "# No template available for this app";
-      } else {
-        container.classList.add("hidden");
-        editor.value = "";
-      }
-    });
-
-    // Update config template when app changes and config checkbox is checked
-    document.getElementById("app").addEventListener("change", function () {
+    // Helper to update the config editor content
+    function updateConfigEditor() {
       const configCheckbox = document.getElementById("configCheckbox");
       const editor = document.getElementById("configEditor");
-      const app = this.value;
+      const selectedApps = [...document.querySelectorAll(".app-checkbox:checked")].map(cb => cb.value);
 
       if (configCheckbox.checked) {
-        editor.value = defaultConfigs[app] || "# No template available for this app";
+        if (selectedApps.length > 0) {
+          const firstSelectedApp = selectedApps[0];
+          editor.value = defaultConfigs[firstSelectedApp] || `# No template available for ${firstSelectedApp}`;
+        } else {
+          editor.value = "# Select an application to load its config template";
+        }
+        document.getElementById("configEditorContainer").classList.remove("hidden");
+      } else {
+        document.getElementById("configEditorContainer").classList.add("hidden");
+        editor.value = "";
       }
-    });
-
-    function generateYAML() {
-      const os = document.getElementById("os").value;
-      const app = document.getElementById("app").value;
-      const actions = [...document.querySelectorAll(".action:checked")].map(el => el.value);
-      const features = [...document.querySelectorAll(".feature:checked")].map(el => el.value);
-      const configContent = document.getElementById("configEditor").value;
-
-      let yaml = `- name: Manage ${app} on ${os}\n  hosts: all\n  become: true\n  tasks:\n`;
-
-      if (actions.includes("sys-update")) {
-  yaml += getUpdateTask(os);
-}
-
-if (actions.includes("install")) {
-  yaml += getInstallTask(os, app);
-}
-
-if (actions.includes("remove")) {
-  yaml += getRemoveTask(os, app);
-}
- if (actions.includes("reload")) {
-      yaml += getReloadTask(app);
     }
-   if (features.includes("user")) {
-  yaml += getUserCreationTask(app);
+
+    // Show/hide config editor and load template when checkbox toggled
+    document.getElementById("configCheckbox").addEventListener("change", updateConfigEditor);
+
+    // Initial update when the page loads if config checkbox is pre-checked (unlikely, but good practice)
+    document.addEventListener("DOMContentLoaded", updateConfigEditor);
+
+
+function generateYAML() {
+  const os = document.getElementById("os").value;
+  const selectedApps = [...document.querySelectorAll(".app-checkbox:checked")].map(cb => cb.value);
+  const actions = [...document.querySelectorAll(".action:checked")].map(el => el.value);
+  const features = [...document.querySelectorAll(".feature:checked")].map(el => el.value);
+  const configContent = document.getElementById("configEditor").value;
+
+  let yaml = `- name: Manage apps on ${os}\n  hosts: all\n  become: true\n  tasks:\n`;
+
+  if (actions.includes("sys-update")) {
+    yaml += getUpdateTask(os);
+  }
+
+if (actions.includes("basic-app")) {
+  yaml += getBasicAppPackages(os);
 }
 
+  // App-specific actions
+  for (const app of selectedApps) {
+  if (actions.includes("install")) yaml += getInstallTask(os, app);
+  if (actions.includes("remove")) yaml += getRemoveTask(os, app);
+  if (actions.includes("reload")) yaml += getReloadTask(app);
+  if (features.includes("user")) yaml += getUserCreationTask(app);
 
+  if (features.includes("config")) {
+    const configDestPath = getConfigDestinationPath(app);
+    const indented = configContent.split("\n").map(l => "      " + l).join("\n");
+    yaml += `  - name: Configure ${app}\n    copy:\n      content: |\n${indented}\n    dest: ${configDestPath}\n    owner: root\n    group: root\n    mode: '0644'\n\n`;
+  }
 
-
-      features.forEach(feature => {
-        if (feature === "config") {
-          yaml += `  - name: Configure ${app}\n    copy:\n      content: |\n`;
-          // Indent config lines with 6 spaces (2 for YAML indent + 4 for content block)
-          const indentedConfig = configContent.split("\n").map(line => "      " + line).join("\n");
-          yaml += indentedConfig + "\n\n";
-          yaml += `    dest: /etc/${app}/${app}.conf\n    owner: root\n    group: root\n    mode: '0644'\n\n`;
-        } else if (feature === "cp-content") {
-let path = document.getElementById("copyContentPathSelect")?.value;
-if (path === "custom") {
-  const customPath = document.getElementById("customCopyPath")?.value.trim();
-  path = customPath || "/var/www/html/index.html"; // fallback if empty
-}
-  yaml += `  - name: Copy index.html to ${path}\n    copy:\n      src: files/index.html\n      dest: ${path}\n      owner: root\n      group: root\n      mode: '0644'\n\n`;
-} else {
-  yaml += getFeatureTask(app, feature);
-}
-
-      });
-
-      document.getElementById("output").textContent = yaml;
+  if (features.includes("cp-content")) {
+    let path = document.getElementById("copyContentPathSelect")?.value;
+    if (path === "custom") {
+      const customPath = document.getElementById("customCopyPath")?.value.trim();
+      path = customPath || "/var/www/html/index.html";
     }
+    yaml += `  - name: Copy index.html to ${path}\n    copy:\n      src: files/index.html\n      dest: ${path}\n      owner: root\n      group: root\n      mode: '0644'\n\n`;
+  }
+
+  if (features.includes("ssl")) yaml += getFeatureTask(app, "ssl");
+  if (features.includes("enableFirewall")) yaml += getFeatureTask(app, "enableFirewall");
+}
+
+// 🔄 Global features when no apps are selected
+if (selectedApps.length === 0) {
+  if (features.includes("config")) {
+    const indented = configContent.split("\n").map(l => "      " + l).join("\n");
+    yaml += `  - name: Apply general configuration\n    copy:\n      content: |\n${indented}\n    dest: /etc/default.conf\n    owner: root\n    group: root\n    mode: '0644'\n\n`;
+  }
+
+  if (features.includes("cp-content")) {
+    let path = document.getElementById("copyContentPathSelect")?.value || "/var/www/html/index.html";
+    if (path === "custom") {
+      const customPath = document.getElementById("customCopyPath")?.value.trim();
+      path = customPath || "/var/www/html/index.html";
+    }
+    yaml += `  - name: Copy index.html to ${path}\n    copy:\n      src: files/index.html\n      dest: ${path}\n      owner: root\n      group: root\n      mode: '0644'\n\n`;
+  }
+
+  if (features.includes("enableFirewall")) yaml += getFeatureTask(null, "enableFirewall");
+  if (features.includes("ssl")) yaml += getFeatureTask(null, "ssl");
+}
+
+  document.getElementById("output").textContent = yaml;
+}
+
+
+    // Helper to determine config destination path
+    function getConfigDestinationPath(app) {
+      switch (app) {
+        case 'nginx':
+          return '/etc/nginx/nginx.conf';
+        case 'apache2':
+        case 'httpd':
+          return '/etc/apache2/apache2.conf'; // or /etc/httpd/conf/httpd.conf
+        case 'mysql':
+          return '/etc/mysql/my.cnf';
+        case 'mariadb':
+          return '/etc/mariadb/mariadb.conf';
+        case 'mongodb':
+          return '/etc/mongod.conf';
+        // Add more app-specific paths here
+        default:
+          return `/etc/${app}/${app}.conf`;
+      }
+    }
+
 
     function getUpdateTask(os) {
   if (["ubuntu", "debian"].includes(os)) {
@@ -461,6 +600,49 @@ if (path === "custom") {
 }
 
 
+function getBasicAppPackages(os) {
+  const packagesByOS = {
+    ubuntu: [
+      "vim", "nano", "net-tools", "iproute2", "curl", "wget", "telnet", "dnsutils",
+      "htop", "lsof", "psmisc", "git", "build-essential", "ca-certificates",
+      "gnupg", "openssh-client", "sudo"
+    ],
+    redhat: [
+      "vim", "nano", "net-tools", "iproute", "curl", "wget", "telnet", "bind-utils",
+      "htop", "lsof", "psmisc", "git", "gcc", "make", "gcc-c++", "ca-certificates",
+      "gnupg2", "openssh-clients", "sudo"
+    ],
+    amazon: [
+      "vim", "nano", "net-tools", "iproute", "curl", "wget", "telnet", "bind-utils",
+      "htop", "lsof", "psmisc", "git", "gcc", "make", "gcc-c++", "ca-certificates",
+      "gnupg2", "openssh-clients", "sudo"
+    ],
+    alpine: [
+      "vim", "nano", "iproute2", "net-tools", "curl", "wget", "bind-tools", "nc",
+      "htop", "lsof", "procps", "psmisc", "git", "build-base", "ca-certificates",
+      "gnupg", "openssh", "sudo"
+    ]
+  };
+
+  const pkgList = packagesByOS[os] || [];
+
+  if (pkgList.length === 0) return "";
+
+  let installLine = "";
+
+  if (os === "ubuntu" || os === "debian") {
+    installLine = `  - name: Install basic packages\n    apt:\n      name:\n${pkgList.map(p => `        - ${p}`).join("\n")}\n      state: present\n      update_cache: yes\n\n`;
+  } else if (os === "redhat") {
+    installLine = `  - name: Install basic packages\n    dnf:\n      name:\n${pkgList.map(p => `        - ${p}`).join("\n")}\n      state: present\n\n`;
+  } else if (os === "amazon") {
+    installLine = `  - name: Install basic packages\n    yum:\n      name:\n${pkgList.map(p => `        - ${p}`).join("\n")}\n      state: present\n\n`;
+  } else if (os === "alpine") {
+    installLine = `  - name: Install basic packages\n    apk:\n      name:\n${pkgList.map(p => `        - ${p}`).join("\n")}\n      state: present\n\n`;
+  }
+
+  return installLine;
+}
+
     function getInstallTask(os, app) {
   if (os === "ubuntu" || os === "debian") {
     return `  - name: Install ${app}\n    apt:\n      name: ${app}\n      state: present\n      update_cache: yes\n\n`;
@@ -475,9 +657,11 @@ if (path === "custom") {
 }
 
 
-    function getRemoveTask(os, app) {
-  if (os === "ubuntu" || os === "debian") {
-    return `  - name: Remove ${app}\n    apt:\n      name: ${app}\n      state: absent\n      purge: yes\n\n`;
+function getRemoveTask(os, app) {
+  const purge = document.getElementById("purgeConfig")?.checked;
+
+  if (os === "ubuntu") {
+    return `  - name: Remove ${app}${purge ? " and purge config" : ""}\n    apt:\n      name: ${app}\n      state: absent\n${purge ? "      purge: yes\n" : ""}\n`;
   } else if (os === "redhat") {
     return `  - name: Remove ${app}\n    dnf:\n      name: ${app}\n      state: absent\n\n`;
   } else if (os === "amazon") {
@@ -485,8 +669,10 @@ if (path === "custom") {
   } else if (os === "alpine") {
     return `  - name: Remove ${app}\n    apk:\n      name: ${app}\n      state: absent\n\n`;
   }
+
   return "";
 }
+
 
 function getReloadTask(app) {
     return `  - name: Reload ${app} service\n    service:\n      name: ${app}\n      state: reloaded\n\n`;
@@ -556,7 +742,7 @@ function getUserCreationTask(app) {
 
   document.addEventListener("DOMContentLoaded", function () {
   const copyCheckbox = document.getElementById("copyContentCheckbox");
-  
+  // No action needed here, as the listeners below handle visibility
 });
 
 const appToPaths = {
@@ -577,6 +763,7 @@ function updateCopyPathDropdown(app) {
   select.innerHTML = "";
   customInput.classList.add("hidden");
 
+  // Ensure `app` is valid and present in appToPaths, otherwise default
   const paths = appToPaths[app] || ["/var/www/html/index.html"];
   paths.forEach(path => {
     const option = document.createElement("option");
@@ -597,13 +784,16 @@ function updateCopyPathDropdown(app) {
 document.getElementById("copyContentCheckbox").addEventListener("change", function () {
   const select = document.getElementById("copyContentPathSelect");
   select.classList.toggle("hidden", !this.checked);
-  if (this.checked) updateCopyPathDropdown(document.getElementById("app").value);
+  if (this.checked) {
+    const selectedApps = [...document.querySelectorAll(".app-checkbox:checked")].map(cb => cb.value);
+    if (selectedApps.length > 0) {
+      updateCopyPathDropdown(selectedApps[0]); // Update based on the first selected app
+    } else {
+      updateCopyPathDropdown(null); // No app selected, load default options if desired
+    }
+  }
 });
 
-document.getElementById("app").addEventListener("change", function () {
-  const checkbox = document.getElementById("copyContentCheckbox");
-  if (checkbox.checked) updateCopyPathDropdown(this.value);
-});
 
 document.getElementById("copyContentPathSelect").addEventListener("change", function () {
   const customInput = document.getElementById("customCopyPath");
@@ -627,36 +817,6 @@ document.getElementById("copyContentPathSelect").addEventListener("change", func
 
 
 
-async function fetchLatestUpdate() {
-  try {
-const url = "https://script.google.com/macros/s/AKfycbxZVmJjswUOGZLNm2zR9afxjzUeSHccbW_pSXwmeaPMFVa-oJSteKwJNFWS423h5FSj/exec"; // Your web app URL    const res = await fetch(url);
-    const data = await res.json();
-
-    const values = data;
-document.addEventListener("DOMContentLoaded", () => {
-  fetchLatestUpdate();
-  setInterval(fetchLatestUpdate, 5 * 60 * 1000); // Refresh every 5 minutes
-});
-
-    if (!values || values.length < 2) return;
-
-    const [timestamp, message] = values[values.length - 1]; // Get last row
-const updateBox = document.getElementById("latestUpdate");
-const updateMsg = document.getElementById("updateMessage");
-const dateObj = new Date(timestamp);
-const formatted = dateObj.toLocaleString("en-IN", {
-  dateStyle: "medium",
-  timeStyle: "short"
-});
-updateMsg.innerHTML = `🕒 ${formatted} — Latest Update: ${message}`;
-
-
-updateBox.classList.remove("hidden");
-
-  } catch (err) {
-    console.error("Failed to fetch update:", err);
-  }
-}
 
 function copyYAML() {
   const output = document.getElementById("output");
@@ -676,34 +836,9 @@ function showToast(message) {
   setTimeout(() => toast.remove(), 3000);
 }
 
-async function fetchLatestUpdate() {
-  try {
-    const url = "https://script.google.com/macros/s/AKfycbxZVmJjswUOGZLNm2zR9afxjzUeSHccbW_pSXwmeaPMFVa-oJSteKwJNFWS423h5FSj/exec";
-    const res = await fetch(url);
-    const data = await res.json();
+// Duplicated fetchLatestUpdate function removed, keeping only one.
+// The initial call and interval setting for fetchLatestUpdate are already there.
 
-    if (!Array.isArray(data) || data.length < 2) return;
-
-    const [timestamp, message] = data[data.length - 1]; // Last row
-    const updateBox = document.getElementById("latestUpdate");
-    const updateMsg = document.getElementById("updateMessage");
-
-    const dateObj = new Date(timestamp);
-    const formatted = dateObj.toLocaleString("en-IN", {
-      dateStyle: "medium",
-      timeStyle: "short"
-    });
-
-    updateMsg.textContent = `🕒 ${formatted} — Latest Update: ${message}`;
-    updateBox.classList.remove("hidden");
-
-  } catch (err) {
-    console.error("Failed to fetch update:", err);
-  }
-}
-
-
-document.addEventListener("DOMContentLoaded", fetchLatestUpdate);
 function clearYAML() {
   const output = document.getElementById("output");
   if (output) {
@@ -711,6 +846,63 @@ function clearYAML() {
   }
 }
 
-  </script>
+document.getElementById("os").addEventListener("change", function () {
+  const purgeCheckbox = document.getElementById("purgeConfig");
+  const isUbuntu = this.value === "ubuntu";
+
+  purgeCheckbox.disabled = !isUbuntu;
+  if (!isUbuntu) {
+    purgeCheckbox.checked = false;
+  }
+});
+</script>
+
+<script>
+  async function fetchLatestUpdate() {
+    try {
+      const url = "https://script.google.com/macros/s/AKfycbxZVmJjswUOGZLNm2zR9afxjzUeSHccbW_pSXwmeaPMFVa-oJSteKwJNFWS423h5FSj/exec";
+      const res = await fetch(url);
+      const json = await res.json();
+
+      // Adjust this depending on your actual data structure
+      const data = Array.isArray(json) ? json : json.data;
+
+      console.log("Fetched data:", data); // Debug check
+
+      if (!Array.isArray(data) || data.length < 2) return;
+
+      const [timestamp, message] = data[data.length - 1];
+      const updateBox = document.getElementById("latestUpdate");
+      const updateMsg = document.getElementById("updateMessage");
+
+      const dateObj = new Date(timestamp);
+      const formatted = dateObj.toLocaleString("en-IN", {
+        dateStyle: "medium",
+        timeStyle: "short"
+      });
+
+      updateMsg.textContent = `🕒 ${formatted} — Latest Update: ${message}`;
+      updateBox.classList.remove("hidden");
+    } catch (err) {
+      console.error("Failed to fetch update:", err);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchLatestUpdate();
+    setInterval(fetchLatestUpdate, 5 * 60 * 1000); // Refresh every 5 minutes
+  });
+</script>
+<!-- 
+<script>
+  // Disable right-click
+  document.addEventListener("contextmenu", event => event.preventDefault());
+</script> -->
+
+
+  
 </body>
+
+
+
 </html>
