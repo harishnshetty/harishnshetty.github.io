@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monitoring Script Generator with Config Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col lg:flex-row items-center justify-center p-6">
+
+  <!-- Sidebar -->
+  <div class="w-full lg:w-80 bg-gray-50 p-6 shadow-inner lg:shadow-none lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-y-auto z-10">
+    <div class="text-center">
+      <h3 class="text-xl font-bold">Monitoring Script Page</h3>
+      <img src="img/image.png" alt="Harish N Shetty" class="w-40 h-40 rounded-2xl mx-auto mb-4 shadow-md border border-gray-300" />
+      <h2 class="text-xl font-bold">Harish N Shetty</h2>
+      <p class="text-sm text-gray-600 mb-2">harishnshetty • he/him</p>
+      <p class="text-sm mb-4">DevOps Learner || Open Source Enthusiast || Keep learning, sharing and growing</p>
+
+      <ul class="text-left text-sm space-y-2">
+        <li><strong>Status:</strong> <span class="text-green-600">open to work</span></li>
+        <li><strong>Location:</strong> Bengaluru, Karnataka, India</li>
+        <li><strong>Email:</strong> <a href="mailto:harishn662@gmail.com" class="text-blue-600 underline">harishn662@gmail.com</a></li>
+        <li><strong>Website:</strong> <a href="https://harishnshetty.github.io" class="text-blue-600 underline" target="_blank">Website</a></li>
+        
+        <li class="flex items-center">
+          <strong class="mr-2">Social:</strong>
+          <div class="flex space-x-3">
+            <a href="https://www.linkedin.com/in/harishnshetty" target="_blank" title="LinkedIn">
+              <img src="img/linkedin.png" alt="LinkedIn" class="w-8 h-8 hover:opacity-80">
+            </a>
+            <a href="https://github.com/harishnshetty" target="_blank" title="GitHub">
+              <img src="img/github.png" alt="GitHub" class="w-8 h-8 hover:opacity-80">
+            </a>
+            <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank" title="YouTube">
+              <img src="img/youtube.png" alt="YouTube" class="w-8 h-8 hover:opacity-80">
+            </a>
+            <a href="https://www.instagram.com/devopswithharish?igsh=YWc5ZzNmdzBzNjI4" target="_blank" title="Instagram">
+              <img src="img/instagram.png" alt="Instagram" class="w-8 h-8 hover:opacity-80">
+            </a>
+            <a href="https://x.com/devopswitharish?t=SWH2zb-b8Dh4AGEm6tpwGg&s=09" target="_blank" title="Twitter (X)">
+              <img src="img/twitter.png" alt="Twitter" class="w-8 h-8 hover:opacity-80">
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <p class="text-lg text-red-600 font-medium text-center mt-4 mx-auto max-w-2xl">
+        This is an open-source generator tool. You can support ongoing development & feature improvements.
+      </p>
+      🔒 License & Usage Notice<br>
+      &copy; 2025 Harish N Shetty. All rights reserved.
+      <ul class="text-left text-xl font-bold text-black space-y-2">
+        <li>
+          <strong>PayPal:</strong>
+          <a href="https://paypal.me/harishnshetty" class="text-blue-700 underline font-bold">@harishnshetty</a>
+        </li>
+        <li>
+          <strong>UPI ID:</strong> harishn662@ybl
+        </li>
+      </ul>
+
+      <img src="img/qr1.png" alt="Harish N Shetty" class="w-45 h-45 mx-auto mb-4">
+      <br> Design & Developed By</br><strong>Harish N Shetty</strong> 
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-0 p-1 overflow-y-auto lg:ml-80"></div>
+  <div class="max-w-4xl w-full bg-white rounded-xl shadow-md p-6">
+    <a href="update.html" target="_blank">
+      <div id="latestUpdate" class="mb-4 w-full max-w-full text-sm text-blue-800 bg-blue-100 p-3 rounded hidden cursor-pointer hover:bg-blue-200 transition">
+        <img src="img/7.gif" alt="update" class="w-10 h-10 sm:w-7 sm:h-7 flex-shrink-0" />
+        <div class="flex items-center gap-3">
+          <i class="fas fa-bell text-blue-600"></i>
+          <span id="updateMessage">Fetching updates...</span>
+        </div>
+      </div>
+    </a>
+
+    <h1 class="text-2xl font-bold mb-2 text-center">
+      <i class="fab fa-monitoring script text-blue-500 mr-2"></i>Advanced Monitoring Script Generator
+    </h1>
+    <p class="text-sm text-gray-600 text-center italic mb-6">
+      This tool is still in improvement stage — please review and modify the generated script based on your own knowledge.
+    </p>
+
+    <div class="flex flex-wrap gap-3 justify-center mb-6">
+      <a href="monitoring script.pdf" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-file-pdf text-red-500 mr-2"></i> 📕Monitoring Script PDF
+      </a>
+      <a href="https://youtube.com/playlist?list=PLB1yU-G7FE-ENj8uOF2wuiU_AWdvZAI7H" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fab fa-youtube text-red-500 mr-2"></i> Tutorials
+      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_tqab3RWclUkxWWtBKdqYp0wjoGlCawZIYDT1itX-xAnY2g/viewform" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-comment-dots text-blue-500 mr-2"></i> ✍️ Feedback Form
+      </a>
+      <a href="https://harishnshetty.github.io/feedback/monitoring script.html" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-comment-dots text-blue-500 mr-2"></i> Read Feedback
+      </a>
+      <a href="lic.txt" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-comment-dots text-blue-500 mr-2"></i> 🔑LICENSE
+      </a>
+    </div>
+
+    <div class="mt-8">
+      <h2 class="text-xl font-bold mb-4">Prometheus and Grafana Installation Generator</h2>
+      
+      <div class="mb-6">
+        <label class="flex items-center space-x-3 mb-3">
+          <input type="checkbox" id="installPrometheus" class="form-checkbox h-5 w-5 text-blue-600" checked>
+          <span class="text-gray-700 font-medium">Install Prometheus</span>
+        </label>
+        
+        <div id="prometheusOptions" class="ml-8 mb-4">
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="prometheusUrl">
+              Prometheus Download URL
+            </label>
+            <input type="text" id="prometheusUrl" 
+                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   value="https://github.com/prometheus/prometheus/releases/download/v2.51.2/prometheus-2.51.2.linux-amd64.tar.gz">
+            <p class="text-xs text-gray-500 mt-1">You can find latest versions at <a href="https://prometheus.io/download/" class="text-blue-500" target="_blank">prometheus.io/download</a></p>
+          </div>
+          
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="prometheusPort">
+              Prometheus Web Port
+            </label>
+            <input type="number" id="prometheusPort" value="9090"
+                   class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <label class="flex items-center space-x-3 mb-3">
+          <input type="checkbox" id="addHostMonitoring" class="form-checkbox h-5 w-5 text-blue-600">
+          <span class="text-gray-700 font-medium">Add Host To Monitoring</span>
+        </label>
+        
+        <div id="hostMonitoringOptions" class="ml-8 mb-4 hidden">
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="hostJobName">
+              Job Name
+            </label>
+            <input type="text" id="hostJobName" value="node_exporter"
+                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          </div>
+          
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="hostTargets">
+              Target Hosts (comma separated)
+            </label>
+            <input type="text" id="hostTargets" value="localhost:9100"
+                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <p class="text-xs text-gray-500 mt-1">Format: host1:port,host2:port (default port is 9100)</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mb-6">
+        <label class="flex items-center space-x-3 mb-3">
+          <input type="checkbox" id="installNodeExporter" class="form-checkbox h-5 w-5 text-blue-600">
+          <span class="text-gray-700 font-medium">Install Node Exporter</span>
+        </label>
+        
+        <div id="nodeExporterOptions" class="ml-8 mb-4 hidden">
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="nodeExporterUrl">
+              Node Exporter Download URL
+            </label>
+            <input type="text" id="nodeExporterUrl" 
+                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   value="https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz">
+          </div>
+          
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="nodeExporterPort">
+              Node Exporter Port
+            </label>
+            <input type="number" id="nodeExporterPort" value="9100"
+                   class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          </div>
+        </div>
+      </div>
+      
+      <div class="mb-6">
+        <label class="flex items-center space-x-3 mb-3">
+          <input type="checkbox" id="installGrafana" class="form-checkbox h-5 w-5 text-blue-600">
+          <span class="text-gray-700 font-medium">Install Grafana</span>
+        </label>
+        
+        <div id="grafanaOptions" class="ml-8 mb-4 hidden">
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaPort">
+              Grafana Web Port
+            </label>
+            <input type="number" id="grafanaPort" value="3000"
+                   class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          </div>
+          
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaAdminPassword">
+              Admin Password (min 8 chars)
+            </label>
+            <input type="password" id="grafanaAdminPassword" placeholder="Leave blank for default"
+                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          </div>
+        </div>
+      </div>
+      
+      <div class="mb-6">
+        <label class="flex items-center space-x-3 mb-3">
+          <input type="checkbox" id="enableService" class="form-checkbox h-5 w-5 text-blue-600" checked>
+          <span class="text-gray-700 font-medium">Enable as Systemd Service</span>
+        </label>
+      </div>
+      
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="linuxDistro">
+          Linux Distribution
+        </label>
+        <select id="linuxDistro" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <option value="ubuntu">Ubuntu/Debian</option>
+          <option value="centos">CentOS/RHEL</option>
+          <option value="generic">Generic Linux</option>
+        </select>
+      </div>
+      
+      <button id="generateScript" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        Generate Installation Script
+      </button>
+    </div>
+    
+    <div id="scriptOutput" class="mt-8 hidden">
+      <h3 class="text-lg font-bold mb-2">Generated Installation Script</h3>
+      <div class="bg-gray-800 text-green-200 p-4 rounded-lg overflow-x-auto">
+        <pre id="generatedScript" class="text-sm"></pre>
+      </div>
+      <button id="copyScript" class="mt-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        <i class="fas fa-copy mr-2"></i>Copy to Clipboard
+      </button>
+
+      <div id="configOutput" class="mt-8 hidden">
+        <h3 class="text-lg font-bold mb-2">Generated Monitoring Configuration</h3>
+        <div class="bg-gray-800 text-green-200 p-4 rounded-lg overflow-x-auto">
+          <pre id="generatedConfig" class="text-sm"></pre>
+        </div>
+        <button id="copyConfig" class="mt-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <i class="fas fa-copy mr-2"></i>Copy Configuration to Clipboard
+        </button>
+        
+        <div class="mt-4 bg-blue-50 p-4 rounded-lg">
+          <h4 class="font-bold mb-2">How to add this configuration:</h4>
+          <div class="bg-gray-800 text-green-200 p-4 rounded-lg overflow-x-auto">
+            <pre id="addConfigCommands" class="text-sm"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle options based on checkboxes
+    document.getElementById('installPrometheus').addEventListener('change', function() {
+      document.getElementById('prometheusOptions').style.display = this.checked ? 'block' : 'none';
+    });
+    
+    document.getElementById('addHostMonitoring').addEventListener('change', function() {
+      document.getElementById('hostMonitoringOptions').classList.toggle('hidden', !this.checked);
+    });
+    
+    document.getElementById('installNodeExporter').addEventListener('change', function() {
+      document.getElementById('nodeExporterOptions').classList.toggle('hidden', !this.checked);
+    });
+    
+    document.getElementById('installGrafana').addEventListener('change', function() {
+      document.getElementById('grafanaOptions').classList.toggle('hidden', !this.checked);
+    });
+
+    // Generate script button
+    document.getElementById('generateScript').addEventListener('click', function() {
+      const installPrometheus = document.getElementById('installPrometheus').checked;
+      const prometheusUrl = document.getElementById('prometheusUrl').value;
+      const prometheusPort = document.getElementById('prometheusPort').value;
+      
+      const installNodeExporter = document.getElementById('installNodeExporter').checked;
+      const nodeExporterUrl = document.getElementById('nodeExporterUrl').value;
+      const nodeExporterPort = document.getElementById('nodeExporterPort').value;
+      
+      const enableService = document.getElementById('enableService').checked;
+      const linuxDistro = document.getElementById('linuxDistro').value;
+      
+      const addHostMonitoring = document.getElementById('addHostMonitoring').checked;
+      const hostJobName = document.getElementById('hostJobName').value;
+      const hostTargets = document.getElementById('hostTargets').value;
+
+      const installGrafana = document.getElementById('installGrafana').checked;
+      const grafanaPort = document.getElementById('grafanaPort').value;
+      const grafanaAdminPassword = document.getElementById('grafanaAdminPassword').value;
+
+      // Generate host monitoring configuration if enabled
+      if (addHostMonitoring) {
+        const formattedTargets = hostTargets.split(',')
+          .map(target => `"${target.trim()}"`)
+          .join(', ');
+        
+        const config = `  - job_name: "${hostJobName}"
+    static_configs:
+      - targets: [${formattedTargets}]`;
+        
+        const commands = `# To add this configuration to prometheus.yml:
+sudo cp /etc/prometheus/prometheus.yml /etc/prometheus/prometheus.yml.bak  # Create backup
+sudo nano /etc/prometheus/prometheus.yml  # Edit the file
+
+# Add the following under scrape_configs:
+${config}
+
+# Then restart Prometheus:
+sudo systemctl restart prometheus`;
+
+        document.getElementById('generatedConfig').textContent = config;
+        document.getElementById('addConfigCommands').textContent = commands;
+        document.getElementById('configOutput').classList.remove('hidden');
+      } else {
+        document.getElementById('configOutput').classList.add('hidden');
+      }
+
+      // Add copy functionality for the configuration
+      document.getElementById('copyConfig').addEventListener('click', function() {
+        const configText = document.getElementById('generatedConfig').textContent;
+        navigator.clipboard.writeText(configText).then(function() {
+          alert('Configuration copied to clipboard!');
+        }, function() {
+          alert('Failed to copy configuration');
+        });
+      });
+
+      // Generate the main installation script
+      let script = `#!/bin/bash
+# Monitoring Installation Script
+# Generated by Harish N Shetty's Monitoring Generator https://harishnshetty.github.io/tools/
+# WARNING: Review this script before running on production systems\n\n`;
+
+      // Only create Prometheus user/directories if Prometheus or Node Exporter is being installed
+      if (installPrometheus || installNodeExporter) {
+        script += `# Create user and directories for Prometheus/Node Exporter
+sudo useradd --no-create-home --shell /bin/false prometheus
+sudo mkdir -p /etc/prometheus /var/lib/prometheus\n\n`;
+      }
+
+      if (installPrometheus) {
+        script += `
+# Install Prometheus
+echo "Installing Prometheus from ${prometheusUrl}"
+wget ${prometheusUrl} -O /tmp/prometheus.tar.gz
+tar xvf /tmp/prometheus.tar.gz -C /tmp
+sudo mv /tmp/prometheus-*/prometheus /tmp/prometheus-*/promtool /usr/local/bin/
+sudo mv /tmp/prometheus-*/prometheus.yml /etc/prometheus/
+sudo mv /tmp/prometheus-*/consoles /tmp/prometheus-*/console_libraries /etc/prometheus/
+sudo chown -R prometheus:prometheus /etc/prometheus /var/lib/prometheus
+
+# Create systemd service
+cat <<EOF | sudo tee /etc/systemd/system/prometheus.service
+[Unit]
+Description=Prometheus
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+ExecStart=/usr/local/bin/prometheus \\
+    --config.file /etc/prometheus/prometheus.yml \\
+    --storage.tsdb.path /var/lib/prometheus/ \\
+    --web.listen-address=:${prometheusPort}
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable prometheus
+sudo systemctl start prometheus
+`;
+      }
+
+      if (installNodeExporter) {
+        script += `
+# Install Node Exporter
+echo "Installing Node Exporter from ${nodeExporterUrl}"
+wget ${nodeExporterUrl} -O /tmp/node_exporter.tar.gz
+tar xvf /tmp/node_exporter.tar.gz -C /tmp
+sudo mv /tmp/node_exporter-*/node_exporter /usr/local/bin/
+
+# Create systemd service
+cat <<EOF | sudo tee /etc/systemd/system/node_exporter.service
+[Unit]
+Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+ExecStart=/usr/local/bin/node_exporter --web.listen-address=:${nodeExporterPort}
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable node_exporter
+sudo systemctl start node_exporter
+`;
+      }
+
+      if (installGrafana) {
+        script += `
+# Install Grafana
+echo "Installing Grafana"
+
+# Different commands based on Linux distribution
+if [ "${linuxDistro}" = "ubuntu" ]; then
+  sudo apt-get install -y apt-transport-https
+  sudo apt-get install -y software-properties-common wget
+  wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+  echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+  sudo apt-get update
+  sudo apt-get install -y grafana
+elif [ "${linuxDistro}" = "centos" ]; then
+  cat <<EOF | sudo tee /etc/yum.repos.d/grafana.repo
+[grafana]
+name=grafana
+baseurl=https://packages.grafana.com/oss/rpm
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.grafana.com/gpg.key
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+EOF
+  sudo yum install -y grafana
+else
+  echo "Generic Linux detected - manual Grafana installation required"
+  echo "Please see https://grafana.com/docs/grafana/latest/setup-grafana/installation/"
+fi
+
+# Configure Grafana if installed
+if command -v grafana-server &> /dev/null; then
+  # Set admin password if provided
+  ${grafanaAdminPassword ? `sudo sed -i "s/;admin_password = admin/admin_password = ${grafanaAdminPassword}/" /etc/grafana/grafana.ini` : '# Using default admin password (admin:admin)'}
+  
+  # Change port if different from default
+  ${grafanaPort !== '3000' ? `sudo sed -i "s/;http_port = 3000/http_port = ${grafanaPort}/" /etc/grafana/grafana.ini` : '# Using default port 3000'}
+  
+  # Enable and start service
+  sudo systemctl daemon-reload
+  sudo systemctl enable grafana-server
+  sudo systemctl start grafana-server
+fi
+`;
+      }
+
+      script += `echo "Installation complete!"\n`;
+
+      if (installPrometheus) {
+        script += `echo "Prometheus is running on port ${prometheusPort}"\n`;
+      }
+      if (installNodeExporter) {
+        script += `echo "Node Exporter is running on port ${nodeExporterPort}"\n`;
+      }
+      if (installGrafana) {
+        script += `echo "Grafana is running on port ${grafanaPort}"\n`;
+        script += `echo "Default credentials: admin:${grafanaAdminPassword || 'admin'}"\n`;
+        if (installPrometheus) {
+          script += `echo "After login, add Prometheus as data source with URL: http://localhost:${prometheusPort}"\n`;
+        }
+      }
+
+      if (installGrafana) {
+        script += `
+# Grafana Post-Installation Notes:
+- Access Grafana dashboard at: http://your-server-ip:${grafanaPort}
+- Default username: admin
+- Default password: ${grafanaAdminPassword || 'admin'} (change this after first login)`;
+        
+        if (installPrometheus) {
+          script += `
+- To add Prometheus as data source:
+  1. Go to Configuration > Data Sources
+  2. Add Prometheus
+  3. Set URL to: http://localhost:${prometheusPort}
+  4. Click Save & Test`;
+        }
+
+        script += `
+# Recommended next steps:
+- Import dashboard ID 1860 for Node Exporter metrics
+- Set up authentication and users
+- Configure alerts and notifications
+`;
+      }
+
+      document.getElementById('generatedScript').textContent = script;
+      document.getElementById('scriptOutput').classList.remove('hidden');
+    });
+
+    // Copy to clipboard button
+    document.getElementById('copyScript').addEventListener('click', function() {
+      const scriptText = document.getElementById('generatedScript').textContent;
+      navigator.clipboard.writeText(scriptText).then(function() {
+        alert('Script copied to clipboard!');
+      }, function() {
+        alert('Failed to copy script');
+      });
+    });
+  </script>
+
+  <!-- message update -->
+  <script>
+    async function fetchLatestUpdate() {
+      try {
+        const url = "https://script.google.com/macros/s/AKfycbxZVmJjswUOGZLNm2zR9afxjzUeSHccbW_pSXwmeaPMFVa-oJSteKwJNFWS423h5FSj/exec";
+        const res = await fetch(url);
+        const json = await res.json();
+
+        // Adjust this depending on your actual data structure
+        const data = Array.isArray(json) ? json : json.data;
+
+        console.log("Fetched data:", data); // Debug check
+
+        if (!Array.isArray(data) || data.length < 2) return;
+
+        const [timestamp, message] = data[data.length - 1];
+        const updateBox = document.getElementById("latestUpdate");
+        const updateMsg = document.getElementById("updateMessage");
+
+        const dateObj = new Date(timestamp);
+        const formatted = dateObj.toLocaleString("en-IN", {
+          dateStyle: "medium",
+          timeStyle: "short"
+        });
+
+        updateMsg.textContent = `🕒 ${formatted} — Latest Update: ${message}`;
+        updateBox.classList.remove("hidden");
+      } catch (err) {
+        console.error("Failed to fetch update:", err);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchLatestUpdate();
+      setInterval(fetchLatestUpdate, 5 * 60 * 1000); // Refresh every 5 minutes
+    });
+  </script>
+</body>
+</html>

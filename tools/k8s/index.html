@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>k8s Script Generator with Config Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Custom styles for toast notification */
+    .toast-notification {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      z-index: 1000;
+    }
+    .toast-notification.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col lg:flex-row items-center justify-center p-6">
+
+  <div class="w-full lg:w-80 bg-gray-50 p-6 shadow-inner lg:shadow-none lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-y-auto z-10">
+    <div class="text-center">
+      <h3 class="text-xl font-bold">k8s Script Page</h3>
+      <img src="img/image.png" alt="Harish N Shetty" class="w-40 h-40 rounded-2xl mx-auto mb-4 shadow-md border border-gray-300" />
+      <h2 class="text-xl font-bold">Harish N Shetty</h2>
+      <p class="text-sm text-gray-600 mb-2">harishnshetty • he/him</p>
+      <p class="text-sm mb-4">DevOps Learner || Open Source Enthusiast || Keep learning, sharing and growing</p>
+
+      <ul class="text-left text-sm space-y-2">
+        <li><strong>Status:</strong> <span class="text-green-600">open to work</span></li>
+        <li><strong>Location:</strong> Bengaluru, Karnataka, India</li>
+        <li><strong>Email:</strong> <a href="mailto:harishn662@gmail.com" class="text-blue-600 underline">harishn662@gmail.com</a></li>
+        <li><strong>Website:</strong> <a href="https://harishnshetty.github.io" class="text-blue-600 underline" target="_blank">Website</a></li>
+        
+        <li class="flex items-center">
+          <strong class="mr-2">Social:</strong>
+          <div class="flex space-x-3">
+            <a href="https://www.linkedin.com/in/harishnshetty" target="_blank" title="LinkedIn">
+              <img src="img/linkedin.png" alt="LinkedIn" class="w-8 h-8 hover:opacity-80">
+            </a>
+            <a href="https://github.com/harishnshetty" target="_blank" title="GitHub">
+              <img src="img/github.png" alt="GitHub" class="w-8 h-8 hover:opacity-80">
+            </a>
+            <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank" title="YouTube">
+              <img src="img/youtube.png" alt="YouTube" class="w-8 h-8 hover:opacity-80">
+            </a>
+            <a href="https://www.instagram.com/devopswithharish?igsh=YWc5ZzNmdzBzNjI4" target="_blank" title="Instagram">
+              <img src="img/instagram.png" alt="Instagram" class="w-8 h-8 hover:opacity-80">
+            </a>
+            <a href="https://x.com/devopswitharish?t=SWH2zb-b8Dh4AGEm6tpwGg&s=09" target="_blank" title="Twitter (X)">
+              <img src="img/twitter.png" alt="Twitter" class="w-8 h-8 hover:opacity-80">
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <p class="text-lg text-red-600 font-medium text-center mt-4 mx-auto max-w-2xl">
+        This is an open-source generator tool. You can support ongoing development & feature improvements.
+      </p>
+      🔒 License & Usage Notice<br>
+      © 2025 Harish N Shetty. All rights reserved.
+      <ul class="text-left text-xl font-bold text-black space-y-2">
+        <li>
+          <strong>PayPal:</strong>
+          <a href="https://paypal.me/harishnshetty" class="text-blue-700 underline font-bold">@harishnshetty</a>
+        </li>
+        <li>
+          <strong>UPI ID:</strong> harishn662@ybl
+        </li>
+      </ul>
+
+      <img src="img/qr1.png" alt="Harish N Shetty" class="w-45 h-45 mx-auto mb-4">
+      <br> Design & Developed By</br><strong>Harish N Shetty</strong> 
+    </div>
+  </div>
+
+  <div class="flex-0 p-1 overflow-y-auto lg:ml-80"></div>
+  <div class="max-w-4xl w-full bg-white rounded-xl shadow-md p-6">
+    <a href="update.html" target="_blank">
+      <div id="latestUpdate" class="mb-4 w-full max-w-full text-sm text-blue-800 bg-blue-100 p-3 rounded hidden cursor-pointer hover:bg-blue-200 transition">
+        <div class="flex items-center gap-3">
+          <i class="fas fa-bell text-blue-600"></i>
+          <span id="updateMessage">Fetching updates...</span>
+        </div>
+      </div>
+    </a>
+
+    <h1 class="text-2xl font-bold mb-2 text-center">
+      <i class="fab fa-kubernetes text-blue-500 mr-2"></i>Advanced k8s Script Generator
+    </h1>
+    <p class="text-sm text-gray-600 text-center italic mb-6">
+      This tool is still in improvement stage — please review and modify the generated script based on your own knowledge.
+    </p>
+
+    <div class="flex flex-wrap gap-3 justify-center mb-6">
+      <a href="k8s script.pdf" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-file-pdf text-red-500 mr-2"></i> 📕k8s Script PDF
+      </a>
+      <a href="https://youtube.com/playlist?list=PLB1yU-G7FE-ENj8uOF2wuiU_AWdvZAI7H" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fab fa-youtube text-red-500 mr-2"></i> Tutorials
+      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_tqab3RWclUkxWWtBKdqYp0wjoGlCawZIYDT1itX-xAnY2g/viewform" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-comment-dots text-blue-500 mr-2"></i> ✍️ Feedback Form
+      </a>
+      <a href="https://harishnshetty.github.io/feedback/k8s script.html" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-comment-dots text-blue-500 mr-2"></i> Read Feedback
+      </a>
+      <a href="lic.txt" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-comment-dots text-blue-500 mr-2"></i> 🔑LICENSE
+      </a>
+    </div>
+
+   <div class="flex-0 p-1 overflow-y-auto lg:ml-80"></div>
+  <div class="max-w-4xl w-full bg-white rounded-xl shadow-md p-6">
+    <div class="flex border-b mb-6 overflow-x-auto">
+      <button id="tab1" class="tab-button py-2 px-4 font-medium text-blue-600 border-b-2 border-blue-600 whitespace-nowrap" onclick="showTab(1)">1. Cluster Setup</button>
+      <button id="tab2" class="tab-button py-2 px-4 font-medium text-gray-500 whitespace-nowrap" onclick="showTab(2)">2. Workload</button>
+      <button id="tab3" class="tab-button py-2 px-4 font-medium text-gray-500 whitespace-nowrap" onclick="showTab(3)">3. Networking</button>
+      <button id="tab4" class="tab-button py-2 px-4 font-medium text-gray-500 whitespace-nowrap" onclick="showTab(4)">4. Advanced</button>
+      <button id="tab5" class="tab-button py-2 px-4 font-medium text-gray-500 whitespace-nowrap" onclick="showTab(5)">5. Review</button>
+    </div>
+
+    <div id="tabContents">
+      <div id="tabContent1" class="tab-content space-y-4">
+        <h3 class="text-lg font-semibold border-b pb-2">Cluster Configuration</h3>
+        
+        <div>
+          <label for="environmentType" class="block text-sm font-medium mb-1">Environment Type</label>
+          <select id="environmentType" class="w-full p-2 border rounded">
+            <option value="cloud">Cloud Provider</option>
+            <option value="local">Local Development</option>
+            <option value="onprem">On-Premises</option>
+          </select>
+        </div>
+
+        <div id="cloudProviderSection">
+          <label for="cloudProvider" class="block text-sm font-medium mb-1">Cloud Provider</label>
+          <select id="cloudProvider" class="w-full p-2 border rounded">
+            <option value="aws">AWS (EKS)</option>
+            <option value="gcp">GCP (GKE)</option>
+            <option value="azure">Azure (AKS)</option>
+            <option value="digitalocean">DigitalOcean</option>
+          </select>
+        </div>
+
+        <div id="localClusterSection" class="hidden">
+          <label for="localCluster" class="block text-sm font-medium mb-1">Local Cluster</label>
+          <select id="localCluster" class="w-full p-2 border rounded">
+            <option value="minikube">Minikube</option>
+            <option value="kind">KIND</option>
+            <option value="k3d">k3d</option>
+            <option value="microk8s">MicroK8s</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="k8sVersion" class="block text-sm font-medium mb-1">Kubernetes Version</label>
+          <select id="k8sVersion" class="w-full p-2 border rounded">
+            <option value="1.28">1.28 (latest stable)</option>
+            <option value="1.27">1.27</option>
+            <option value="1.26">1.26 (LTS)</option>
+            <option value="1.25">1.25</option>
+          </select>
+        </div>
+
+        <div class="flex justify-end mt-6">
+          <button onclick="nextTab(2)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Next: Workload <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="tabContent2" class="tab-content hidden space-y-4">
+        <h3 class="text-lg font-semibold border-b pb-2">Workload Configuration</h3>
+        
+        <div>
+          <label for="namespace" class="block text-sm font-medium mb-1">Namespace</label>
+          <input type="text" id="namespace" placeholder="default" class="w-full p-2 border rounded">
+        </div>
+
+        <div>
+          <label for="workloadType" class="block text-sm font-medium mb-1">Workload Type</label>
+          <select id="workloadType" class="w-full p-2 border rounded">
+            <option value="Deployment">Deployment</option>
+            <option value="StatefulSet">StatefulSet</option>
+            <option value="DaemonSet">DaemonSet</option>
+            <option value="CronJob">CronJob</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="workloadName" class="block text-sm font-medium mb-1">Workload Name <span class="text-red-500">*</span></label>
+          <input type="text" id="workloadName" placeholder="my-app" class="w-full p-2 border rounded" required>
+        </div>
+
+        <div>
+          <label for="workloadLabels" class="block text-sm font-medium mb-1">Labels (comma-separated key=value pairs)</label>
+          <input type="text" id="workloadLabels" placeholder="app=my-app,env=prod" class="w-full p-2 border rounded">
+        </div>
+
+        <div>
+          <label for="containerImage" class="block text-sm font-medium mb-1">Container Image <span class="text-red-500">*</span></label>
+          <input type="text" id="containerImage" placeholder="nginx:latest" class="w-full p-2 border rounded" required>
+        </div>
+
+        <div>
+          <label for="containerPort" class="block text-sm font-medium mb-1">Container Port <span class="text-red-500">*</span></label>
+          <input type="number" id="containerPort" value="80" class="w-full p-2 border rounded" required>
+        </div>
+
+        <div>
+          <label for="replicaCount" class="block text-sm font-medium mb-1">Replicas</label>
+          <input type="number" id="replicaCount" min="1" value="2" class="w-full p-2 border rounded">
+        </div>
+
+        <div class="flex justify-between mt-6">
+          <button onclick="prevTab(1)" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
+            <i class="fas fa-arrow-left mr-2"></i> Back
+          </button>
+          <button onclick="nextTab(3)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Next: Networking <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="tabContent3" class="tab-content hidden">
+        <div class="space-y-4 p-4 bg-gray-50 rounded-lg">
+          <h3 class="text-lg font-semibold border-b pb-2">Service Configuration</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div>
+              <label for="serviceType" class="block text-sm font-medium mb-1">Service Type</label>
+              <select id="serviceType" class="w-full p-2 border rounded">
+                <option value="none">No Service</option>
+                <option value="ClusterIP">ClusterIP (internal)</option>
+                <option value="NodePort">NodePort</option>
+                <option value="LoadBalancer">LoadBalancer</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="serviceName" class="block text-sm font-medium mb-1">Service Name</label>
+              <input type="text" id="serviceName" placeholder="app-service" class="w-full p-2 border rounded">
+            </div>
+
+            <div>
+              <label for="servicePort" class="block text-sm font-medium mb-1">Service Port</label>
+              <input type="number" id="servicePort" value="80" class="w-full p-2 border rounded">
+            </div>
+
+            <div>
+              <label for="targetPort" class="block text-sm font-medium mb-1">Target Port</label>
+              <input type="number" id="targetPort" value="80" class="w-full p-2 border rounded">
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+          <h3 class="text-lg font-semibold border-b pb-2">Ingress Configuration</h3>
+          <div class="space-y-2 mt-4">
+            <label for="enableIngress" class="flex items-center">
+              <input type="checkbox" id="enableIngress" class="mr-2">
+              Enable Ingress
+            </label>
+            
+            <div id="ingressOptions" class="hidden ml-6 space-y-2">
+              <div>
+                <label for="ingressClass" class="block text-sm">Ingress Class</label>
+                <input type="text" id="ingressClass" placeholder="nginx" class="w-full p-2 border rounded">
+              </div>
+              <div>
+                <label for="ingressHost" class="block text-sm">Hostname <span class="text-red-500">*</span></label>
+                <input type="text" id="ingressHost" placeholder="example.com" class="w-full p-2 border rounded">
+              </div>
+              <div>
+                <label for="ingressPath" class="block text-sm">Path</label>
+                <input type="text" id="ingressPath" value="/" class="w-full p-2 border rounded">
+              </div>
+              <div>
+                <label for="ingressPathType" class="block text-sm">Path Type</label>
+                <select id="ingressPathType" class="w-full p-2 border rounded">
+                  <option value="Prefix">Prefix</option>
+                  <option value="Exact">Exact</option>
+                  <option value="ImplementationSpecific">ImplementationSpecific</option>
+                </select>
+              </div>
+              <div>
+                <label for="ingressTLS" class="block text-sm">TLS (HTTPS)</label>
+                <select id="ingressTLS" class="w-full p-2 border rounded">
+                  <option value="none">No TLS</option>
+                  <option value="letsencrypt">Let's Encrypt (cert-manager)</option>
+                  <option value="custom">Custom Certificate</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between mt-6">
+          <button onclick="prevTab(2)" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
+            <i class="fas fa-arrow-left mr-2"></i> Back
+          </button>
+          <button onclick="nextTab(4)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Next: Advanced <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="tabContent4" class="tab-content hidden">
+        <div class="space-y-4">
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h3 class="text-lg font-semibold border-b pb-2">Resource Configuration</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div>
+                <label for="cpuRequest" class="block text-sm font-medium mb-1">CPU Request</label>
+                <input type="text" id="cpuRequest" placeholder="100m" class="w-full p-2 border rounded">
+              </div>
+              <div>
+                <label for="cpuLimit" class="block text-sm font-medium mb-1">CPU Limit</label>
+                <input type="text" id="cpuLimit" placeholder="500m" class="w-full p-2 border rounded">
+              </div>
+              <div>
+                <label for="memoryRequest" class="block text-sm font-medium mb-1">Memory Request</label>
+                <input type="text" id="memoryRequest" placeholder="128Mi" class="w-full p-2 border rounded">
+              </div>
+              <div>
+                <label for="memoryLimit" class="block text-sm font-medium mb-1">Memory Limit</label>
+                <input type="text" id="memoryLimit" placeholder="512Mi" class="w-full p-2 border rounded">
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h3 class="text-lg font-semibold border-b pb-2">Autoscaling</h3>
+            
+            <div class="space-y-4 mt-4">
+              <div>
+                <label for="enableHPA" class="flex items-center">
+                  <input type="checkbox" id="enableHPA" class="mr-2">
+                  Enable Horizontal Pod Autoscaler (HPA)
+                </label>
+                
+                <div id="hpaOptions" class="hidden ml-6 space-y-2 mt-2">
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <label for="hpaMin" class="block text-sm">Min Replicas</label>
+                      <input type="number" id="hpaMin" min="1" value="2" class="w-full p-2 border rounded">
+                    </div>
+                    <div>
+                      <label for="hpaMax" class="block text-sm">Max Replicas</label>
+                      <input type="number" id="hpaMax" min="1" value="10" class="w-full p-2 border rounded">
+                    </div>
+                    <div>
+                      <label for="hpaCpu" class="block text-sm">Target CPU %</label>
+                      <input type="number" id="hpaCpu" min="1" max="100" value="80" class="w-full p-2 border rounded">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="enableVPA" class="flex items-center">
+                  <input type="checkbox" id="enableVPA" class="mr-2">
+                  Enable Vertical Pod Autoscaler (VPA)
+                </label>
+                
+                <div id="vpaOptions" class="hidden ml-6 space-y-2 mt-2">
+                  <div>
+                    <label for="vpaUpdatePolicy" class="block text-sm">Update Policy</label>
+                    <select id="vpaUpdatePolicy" class="w-full p-2 border rounded">
+                      <option value="Off">Off</option>
+                      <option value="Initial">Initial</option>
+                      <option value="Recreate">Recreate</option>
+                      <option value="Auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label for="vpaMinCpu" class="block text-sm">Min Allowed CPU</label>
+                      <input type="text" id="vpaMinCpu" placeholder="100m" class="w-full p-2 border rounded">
+                    </div>
+                    <div>
+                      <label for="vpaMaxCpu" class="block text-sm">Max Allowed CPU</label>
+                      <input type="text" id="vpaMaxCpu" placeholder="2" class="w-full p-2 border rounded">
+                    </div>
+                    <div>
+                      <label for="vpaMinMemory" class="block text-sm">Min Allowed Memory</label>
+                      <input type="text" id="vpaMinMemory" placeholder="128Mi" class="w-full p-2 border rounded">
+                    </div>
+                    <div>
+                      <label for="vpaMaxMemory" class="block text-sm">Max Allowed Memory</label>
+                      <input type="text" id="vpaMaxMemory" placeholder="4Gi" class="w-full p-2 border rounded">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h3 class="text-lg font-semibold border-b pb-2">Security</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div>
+                <label for="enableRBAC" class="flex items-center">
+                  <input type="checkbox" id="enableRBAC" class="mr-2" checked>
+                  Enable RBAC
+                </label>
+                <label for="enableNetworkPolicy" class="flex items-center">
+                  <input type="checkbox" id="enableNetworkPolicy" class="mr-2">
+                  Add Network Policy
+                </label>
+              </div>
+              <div>
+                <label for="serviceAccount" class="block text-sm font-medium mb-1">Service Account Name</label>
+                <input type="text" id="serviceAccount" placeholder="default" class="w-full p-2 border rounded">
+              </div>
+              <div class="md:col-span-2">
+                <label for="securityContext" class="block text-sm font-medium mb-1">Security Context (runAsUser, fsGroup, etc.)</label>
+                <textarea id="securityContext" rows="3" placeholder="runAsUser: 1000\nfsGroup: 2000" class="w-full p-2 border rounded"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between mt-6">
+          <button onclick="prevTab(3)" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
+            <i class="fas fa-arrow-left mr-2"></i> Back
+          </button>
+          <button onclick="nextTab(5)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Next: Review <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="tabContent5" class="tab-content hidden">
+        <h3 class="text-lg font-semibold border-b pb-2">Review Your Configuration</h3>
+        
+        <div class="mt-4 space-y-4">
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h4 class="font-medium mb-2">Cluster Settings</h4>
+            <div id="reviewCluster" class="text-sm space-y-1"></div>
+          </div>
+          
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h4 class="font-medium mb-2">Workload Settings</h4>
+            <div id="reviewWorkload" class="text-sm space-y-1"></div>
+          </div>
+          
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h4 class="font-medium mb-2">Networking Settings</h4>
+            <div id="reviewNetworking" class="text-sm space-y-1"></div>
+          </div>
+          
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h4 class="font-medium mb-2">Advanced Settings</h4>
+            <div id="reviewAdvanced" class="text-sm space-y-1"></div>
+          </div>
+        </div>
+
+        <div class="flex justify-between mt-6">
+          <button onclick="prevTab(4)" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
+            <i class="fas fa-arrow-left mr-2"></i> Back
+          </button>
+          <button id="generateScript" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            <i class="fas fa-magic mr-2"></i> Generate Configuration
+          </button>
+        </div>
+      </div>
+    </div>
+        
+    <div id="scriptOutput" class="mt-8 hidden">
+      <h3 class="text-lg font-bold mb-2">Generated Installation Script</h3>
+      <div class="bg-gray-800 text-green-200 p-4 rounded-lg overflow-x-auto">
+        <pre id="generatedScript" class="text-sm"></pre>
+      </div>
+      <button id="copyScript" class="mt-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        <i class="fas fa-copy mr-2"></i>Copy to Clipboard
+      </button>
+
+    <div id="configOutput" class="mt-8 hidden">
+  <h3 class="text-lg font-bold mb-2">Generated k8s Configuration</h3>
+  <div class="bg-gray-800 text-green-200 p-4 rounded-lg overflow-x-auto">
+    <pre id="generatedConfig" class="text-sm"></pre>
+  </div>
+  <button id="copyConfig" class="mt-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+    <i class="fas fa-copy mr-2"></i>Copy Configuration to Clipboard
+  </button>
+  <button id="downloadCombinedConfig" class="mt-4 ml-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+    <i class="fas fa-download mr-2"></i>Download Combined Manifest
+  </button>
+  <button id="downloadZipFiles" class="mt-4 ml-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+    <i class="fas fa-file-archive mr-2"></i>Download All as Zip
+  </button>
+  
+  <div class="mt-4 bg-blue-50 p-4 rounded-lg">
+    <h4 class="font-bold mb-2">How to add this configuration:</h4>
+    <div class="bg-gray-800 text-green-200 p-4 rounded-lg overflow-x-auto">
+      <pre id="addConfigCommands" class="text-sm"></pre>
+    </div>
+  </div>
+</div>
+
+  <div id="toastNotification" class="toast-notification"></div>
+
+
+<script src="jszip.min.js"></script>
+
+<script>
+  // Constants for API Versions and Kinds
+  const K8S_API_VERSIONS = {
+    apps: 'apps/v1',
+    core: 'v1',
+    autoscalingV2: 'autoscaling/v2',
+    autoscalingV1Beta: 'autoscaling.k8s.io/v1', // For VPA
+    networking: 'networking.k8s.io/v1'
+  };
+
+  // Helper to show a toast notification
+  function showToast(message) {
+    const toast = document.getElementById('toastNotification');
+    if (!toast) { // Create toast element if it doesn't exist
+      const newToast = document.createElement('div');
+      newToast.id = 'toastNotification';
+      newToast.classList.add('toast-notification');
+      document.body.appendChild(newToast);
+      toast = newToast;
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 3000); // Hide after 3 seconds
+  }
+
+  // Helper function to parse key=value pairs
+  function parseKeyValuePairs(input) {
+    if (!input) return {};
+    return input.split(',').reduce((acc, pair) => {
+      const [key, value] = pair.split('=').map(s => s.trim());
+      if (key && value) acc[key] = value;
+      return acc;
+    }, {});
+  }
+
+  // Tab Navigation
+  function showTab(tabNumber) {
+    // Hide all tab contents
+    document.querySelectorAll('.tab-content').forEach(tab => {
+      tab.classList.add('hidden');
+    });
+    
+    // Show selected tab content
+    document.getElementById(`tabContent${tabNumber}`).classList.remove('hidden');
+    
+    // Update tab buttons
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.classList.remove('text-blue-600', 'border-blue-600');
+      button.classList.add('text-gray-500');
+    });
+    
+    // Highlight current tab
+    document.getElementById(`tab${tabNumber}`).classList.add('text-blue-600', 'border-blue-600');
+    document.getElementById(`tab${tabNumber}`).classList.remove('text-gray-500');
+
+    // If navigating to Review tab, populate review sections
+    if (tabNumber === 5) {
+      populateReview();
+    }
+  }
+  
+  function nextTab(next) {
+    // Removed pre-validation here to allow free tab navigation
+    showTab(next);
+  }
+  
+  function prevTab(prev) {
+    showTab(prev);
+  }
+  
+  // Initialize first tab
+  showTab(1);
+  
+  // Environment type toggle
+  document.getElementById('environmentType').addEventListener('change', function() {
+    const isCloud = this.value === 'cloud';
+    const isLocal = this.value === 'local';
+    
+    document.getElementById('cloudProviderSection').classList.toggle('hidden', !isCloud);
+    document.getElementById('localClusterSection').classList.toggle('hidden', !isLocal);
+  });
+  
+  // Toggle options for checkboxes
+  document.getElementById('enableHPA').addEventListener('change', function() {
+    document.getElementById('hpaOptions').classList.toggle('hidden', !this.checked);
+  });
+  
+  document.getElementById('enableVPA').addEventListener('change', function() {
+    document.getElementById('vpaOptions').classList.toggle('hidden', !this.checked);
+  });
+  
+  document.getElementById('enableIngress').addEventListener('change', function() {
+    document.getElementById('ingressOptions').classList.toggle('hidden', !this.checked);
+  });
+
+  // --- Kubernetes Script Generation Functions (Modularized) ---
+
+  function generateClusterScript(formData) {
+    let script = '';
+    if (formData.environment === 'cloud') {
+      script = `# ${formData.cloudProvider.toUpperCase()} Cluster Setup\n`;
+      switch(formData.cloudProvider) {
+        case 'aws':
+          script += `eksctl create cluster --name ${formData.workloadName}-cluster --version ${formData.k8sVersion} --region us-west-2 --nodegroup-name standard-workers --node-type t3.medium --nodes 3 --nodes-min 1 --nodes-max 4\n`;
+          break;
+        case 'gcp':
+          script += `gcloud container clusters create ${formData.workloadName}-cluster --cluster-version ${formData.k8sVersion} --machine-type n1-standard-2 --num-nodes 3 --zone us-central1-a\n`;
+          break;
+        case 'azure':
+          script += `az aks create --resource-group ${formData.workloadName}ResourceGroup --name ${formData.workloadName}AKSCluster --node-count 3 --kubernetes-version ${formData.k8sVersion} --generate-ssh-keys\n`;
+          break;
+        case 'digitalocean':
+          script += `doctl kubernetes cluster create ${formData.workloadName}-cluster --version ${formData.k8sVersion} --region nyc1 --size s-2vcpu-2gb --count 3\n`;
+          break;
+      }
+    } else if (formData.environment === 'local') {
+      script = `# Local ${formData.localCluster} Setup\n`;
+      switch(formData.localCluster) {
+        case 'minikube':
+          script += `minikube start --kubernetes-version v${formData.k8sVersion}\n`;
+          break;
+        case 'kind':
+          script += `kind create cluster --name ${formData.workloadName}-cluster --image kindest/node:v${formData.k8sVersion}\n`;
+          break;
+        case 'k3d':
+          script += `k3d cluster create ${formData.workloadName}-cluster --image rancher/k3s:v${formData.k8sVersion}-k3s1\n`;
+          break;
+        case 'microk8s':
+          script += `microk8s install --channel ${formData.k8sVersion}/stable\n`;
+          break;
+      }
+    }
+    return script;
+  }
+
+  // Modified: Removed trailing ---
+  function generateNamespaceYaml(namespace, labels) {
+    if (namespace === 'default') return '';
+    let yaml = `apiVersion: ${K8S_API_VERSIONS.core}\nkind: Namespace\n`;
+    yaml += `metadata:\n  name: ${namespace}\n`;
+    if (Object.keys(labels).length > 0) {
+      yaml += `  labels:\n`;
+      for (const [key, value] of Object.entries(labels)) {
+        yaml += `    ${key}: ${value}\n`;
+      }
+    }
+    return yaml;
+  }
+
+  function generateWorkloadYaml(formData) {
+    let yaml = `apiVersion: ${K8S_API_VERSIONS.apps}\nkind: ${formData.workloadType}\n`;
+    yaml += `metadata:\n  name: ${formData.workloadName}\n`;
+    yaml += `  namespace: ${formData.namespace}\n`;
+    
+    const workloadLabels = parseKeyValuePairs(formData.workloadLabels);
+    if (Object.keys(workloadLabels).length > 0) {
+      yaml += `  labels:\n`;
+      for (const [key, value] of Object.entries(workloadLabels)) {
+        yaml += `    ${key}: ${value}\n`;
+      }
+    }
+    
+    yaml += `spec:\n  replicas: ${formData.replicas}\n`;
+    yaml += `  selector:\n    matchLabels:\n      app: ${formData.workloadName}\n`; // Selector should always match 'app' label
+    yaml += `  template:\n    metadata:\n      labels:\n        app: ${formData.workloadName}\n`;
+    
+    // Add other labels to template metadata, excluding 'app' which is handled by selector
+    for (const [key, value] of Object.entries(workloadLabels)) {
+      if (key !== 'app') yaml += `        ${key}: ${value}\n`;
+    }
+    
+    yaml += `    spec:\n`;
+    
+    if (formData.serviceAccount && formData.serviceAccount !== 'default') {
+      yaml += `      serviceAccountName: ${formData.serviceAccount}\n`;
+    }
+    
+    if (formData.securityContext) {
+      yaml += `      securityContext:\n`;
+      formData.securityContext.split('\n').forEach(line => {
+        if (line.trim()) yaml += `        ${line.trim()}\n`;
+      });
+    }
+    
+    yaml += `      containers:\n      - name: ${formData.workloadName}-container\n`;
+    yaml += `        image: ${formData.image}\n`;
+    yaml += `        ports:\n        - containerPort: ${formData.containerPort}\n`;
+    
+    // Resource limits and requests
+    if (formData.cpuRequest || formData.memoryRequest || formData.cpuLimit || formData.memoryLimit) {
+      yaml += `        resources:\n`;
+      if (formData.cpuRequest || formData.memoryRequest) {
+        yaml += `          requests:\n`;
+        if (formData.cpuRequest) yaml += `            cpu: ${formData.cpuRequest}\n`;
+        if (formData.memoryRequest) yaml += `            memory: ${formData.memoryRequest}\n`;
+      }
+      if (formData.cpuLimit || formData.memoryLimit) {
+        yaml += `          limits:\n`;
+        if (formData.cpuLimit) yaml += `            cpu: ${formData.cpuLimit}\n`;
+        if (formData.memoryLimit) yaml += `            memory: ${formData.memoryLimit}\n`;
+      }
+    }
+    return yaml;
+  }
+
+  // Modified: Removed trailing ---
+  function generateServiceYaml(formData) {
+    if (formData.serviceType === 'none') return '';
+    let yaml = `apiVersion: ${K8S_API_VERSIONS.core}\nkind: Service\n`;
+    yaml += `metadata:\n  name: ${formData.serviceName || formData.workloadName + '-svc'}\n`;
+    yaml += `  namespace: ${formData.namespace}\n`;
+    
+    yaml += `spec:\n  selector:\n    app: ${formData.workloadName}\n`;
+    yaml += `  ports:\n    - protocol: TCP\n      port: ${formData.servicePort}\n      targetPort: ${formData.targetPort}\n`;
+    yaml += `  type: ${formData.serviceType}\n`;
+    return yaml;
+  }
+
+  // Modified: Removed trailing ---
+  function generateIngressYaml(formData) {
+      if (!formData.enableIngress || !formData.ingressHost) return '';
+
+      let yaml = `apiVersion: ${K8S_API_VERSIONS.networking}\nkind: Ingress\n`;
+      yaml += `metadata:\n  name: ${formData.workloadName}-ingress\n`;
+      yaml += `  namespace: ${formData.namespace}\n`;
+      
+      if (formData.ingressClass) {
+          yaml += `  annotations:\n    kubernetes.io/ingress.class: ${formData.ingressClass}\n`;
+      }
+      
+      yaml += `spec:\n  rules:\n  - host: ${formData.ingressHost}\n`;
+      yaml += `    http:\n      paths:\n      - path: ${formData.ingressPath}\n`;
+      yaml += `        pathType: ${formData.ingressPathType || 'Prefix'}\n        backend:\n`;
+      yaml += `          service:\n            name: ${formData.serviceName || formData.workloadName + '-svc'}\n`;
+      yaml += `            port:\n              number: ${formData.servicePort}\n`;
+      
+      if (formData.ingressTLS !== 'none') {
+          yaml += `  tls:\n  - hosts:\n    - ${formData.ingressHost}\n`;
+          if (formData.ingressTLS === 'letsencrypt') {
+              yaml += `    secretName: ${formData.ingressHost.replace(/\./g, '-')}-tls\n`; // Replaces all dots for valid secret name
+          } else if (formData.ingressTLS === 'custom') {
+              yaml += `    secretName: custom-tls-secret\n`;
+          }
+      }
+      return yaml;
+  }
+
+  // Modified: Removed trailing ---
+  function generateHpaYaml(formData) {
+    if (!formData.enableHPA) return '';
+    let yaml = `apiVersion: ${K8S_API_VERSIONS.autoscalingV2}\nkind: HorizontalPodAutoscaler\n`;
+    yaml += `metadata:\n  name: ${formData.workloadName}-hpa\n`;
+    yaml += `  namespace: ${formData.namespace}\n`;
+    yaml += `spec:\n  scaleTargetRef:\n    apiVersion: ${K8S_API_VERSIONS.apps}\n`;
+    yaml += `    kind: ${formData.workloadType}\n    name: ${formData.workloadName}\n`;
+    yaml += `  minReplicas: ${formData.hpaMin}\n`;
+    yaml += `  maxReplicas: ${formData.hpaMax}\n`;
+    yaml += `  metrics:\n  - type: Resource\n    resource:\n`;
+    yaml += `      name: cpu\n      target:\n        type: Utilization\n`;
+    yaml += `        averageUtilization: ${formData.hpaCpu}\n`;
+    return yaml;
+  }
+
+  // Modified: Removed trailing ---
+  function generateVpaYaml(formData) {
+    if (!formData.enableVPA) return '';
+    let yaml = `apiVersion: ${K8S_API_VERSIONS.autoscalingV1Beta}\nkind: VerticalPodAutoscaler\n`;
+    yaml += `metadata:\n  name: ${formData.workloadName}-vpa\n`;
+    yaml += `  namespace: ${formData.namespace}\n`;
+    yaml += `spec:\n  targetRef:\n    apiVersion: ${K8S_API_VERSIONS.apps}\n`;
+    yaml += `    kind: ${formData.workloadType}\n    name: ${formData.workloadName}\n`;
+    yaml += `  updatePolicy:\n    updateMode: ${formData.vpaUpdatePolicy}\n`;
+    yaml += `  resourcePolicy:\n    containerPolicies:\n    - containerName: "*"\n`;
+    
+    const hasMinAllowed = formData.vpaMinCpu || formData.vpaMinMemory;
+    const hasMaxAllowed = formData.vpaMaxCpu || formData.vpaMaxMemory;
+
+    if (hasMinAllowed) {
+      yaml += `      minAllowed:\n`;
+      if (formData.vpaMinCpu) yaml += `        cpu: ${formData.vpaMinCpu}\n`;
+      if (formData.vpaMinMemory) yaml += `        memory: ${formData.vpaMinMemory}\n`;
+    }
+    
+    if (hasMaxAllowed) {
+      yaml += `      maxAllowed:\n`;
+      if (formData.vpaMaxCpu) yaml += `        cpu: ${formData.vpaMaxCpu}\n`;
+      if (formData.vpaMaxMemory) yaml += `        memory: ${formData.vpaMaxMemory}\n`;
+    }
+    return yaml;
+  }
+
+  // Global variable to store manifest files for access by downloadZip function
+  let generatedManifestFiles = {};
+
+  // Main script generation logic
+  function generateAllK8sScripts(formData) {
+    let clusterScript = generateClusterScript(formData);
+    let manifestFiles = {}; // This will hold individual files
+    let applyCommands = '';
+    let combinedConfigParts = []; // For the combined configScript
+
+    const workloadLabels = parseKeyValuePairs(formData.workloadLabels);
+
+    // Add Namespace if not default
+    if (formData.namespace !== 'default') {
+      const namespaceYaml = generateNamespaceYaml(formData.namespace, workloadLabels);
+      if (namespaceYaml) {
+        manifestFiles['namespace.yaml'] = namespaceYaml;
+        combinedConfigParts.push(namespaceYaml);
+        applyCommands += `kubectl apply -f namespace.yaml\n`;
+      }
+    }
+    
+    // Add Workload (Deployment, StatefulSet, etc.)
+    const workloadYaml = generateWorkloadYaml(formData);
+    if (workloadYaml) {
+      manifestFiles['workload.yaml'] = workloadYaml;
+      combinedConfigParts.push(workloadYaml);
+      applyCommands += `\n# Apply the workload configuration\nkubectl apply -f workload.yaml\n`;
+    }
+
+    // Add Service
+    if (formData.serviceType !== 'none') {
+      const serviceYaml = generateServiceYaml(formData);
+      if (serviceYaml) {
+        manifestFiles['service.yaml'] = serviceYaml;
+        combinedConfigParts.push(serviceYaml);
+        applyCommands += `kubectl apply -f service.yaml\n`;
+      }
+    }
+
+    // Add HPA
+    if (formData.enableHPA) {
+      const hpaYaml = generateHpaYaml(formData);
+      if (hpaYaml) {
+        manifestFiles['hpa.yaml'] = hpaYaml;
+        combinedConfigParts.push(hpaYaml);
+        applyCommands += `kubectl apply -f hpa.yaml\n`;
+      }
+    }
+
+    // Add VPA
+    if (formData.enableVPA) {
+      const vpaYaml = generateVpaYaml(formData);
+      if (vpaYaml) {
+        manifestFiles['vpa.yaml'] = vpaYaml;
+        combinedConfigParts.push(vpaYaml);
+        applyCommands += `kubectl apply -f vpa.yaml\n`;
+      }
+    }
+
+    // Add Ingress
+    if (formData.enableIngress && formData.ingressHost) {
+      const ingressYaml = generateIngressYaml(formData);
+      if (ingressYaml) {
+        manifestFiles['ingress.yaml'] = ingressYaml;
+        combinedConfigParts.push(ingressYaml);
+        applyCommands += `kubectl apply -f ingress.yaml\n`;
+        if (formData.ingressTLS === 'letsencrypt') {
+            applyCommands += `\n# For Let's Encrypt, ensure cert-manager is installed:\n`;
+            applyCommands += `kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml\n`;
+        }
+      }
+    }
+    
+    // Add RBAC (basic example, can be expanded)
+    if (formData.enableRBAC && formData.serviceAccount && formData.serviceAccount !== 'default') {
+      let rbacYaml = `apiVersion: rbac.authorization.k8s.io/v1\nkind: Role\n`;
+      rbacYaml += `metadata:\n  name: ${formData.serviceAccount}-role\n  namespace: ${formData.namespace}\n`;
+      rbacYaml += `rules:\n- apiGroups: [""]\n  resources: ["pods", "services", "configmaps"]\n  verbs: ["get", "list", "watch"]\n`; // Example rules
+      rbacYaml += `---
+apiVersion: rbac.authorization.k8s.io/v1\nkind: RoleBinding\n`;
+      rbacYaml += `metadata:\n  name: ${formData.serviceAccount}-rolebinding\n  namespace: ${formData.namespace}\n`;
+      rbacYaml += `subjects:\n- kind: ServiceAccount\n  name: ${formData.serviceAccount}\n  namespace: ${formData.namespace}\n`;
+      rbacYaml += `roleRef:\n  kind: Role\n  name: ${formData.serviceAccount}-role\n  apiGroup: rbac.authorization.k8s.io\n`;
+      
+      // Since RBAC yaml contains multiple documents, we split it for separate file
+      const rbacParts = rbacYaml.split('---').filter(part => part.trim() !== '').map(part => part.trim());
+      if (rbacParts[0]) {
+        manifestFiles['rbac-role.yaml'] = rbacParts[0];
+        combinedConfigParts.push(rbacParts[0]);
+      }
+      if (rbacParts[1]) {
+        manifestFiles['rbac-rolebinding.yaml'] = rbacParts[1];
+        combinedConfigParts.push(rbacParts[1]);
+      }
+      applyCommands += `kubectl apply -f rbac-role.yaml\n`;
+      applyCommands += `kubectl apply -f rbac-rolebinding.yaml\n`;
+    }
+
+    // Add Network Policy (placeholder)
+    if (formData.enableNetworkPolicy) {
+      let networkPolicyYaml = `apiVersion: networking.k8s.io/v1\nkind: NetworkPolicy\n`;
+      networkPolicyYaml += `metadata:\n  name: ${formData.workloadName}-network-policy\n  namespace: ${formData.namespace}\n`;
+      networkPolicyYaml += `spec:\n  podSelector:\n    matchLabels:\n      app: ${formData.workloadName}\n`;
+      networkPolicyYaml += `  policyTypes:\n    - Ingress\n    - Egress\n`;
+      networkPolicyYaml += `# Add specific ingress/egress rules here based on requirements\n`;
+      if (networkPolicyYaml) {
+        manifestFiles['networkpolicy.yaml'] = networkPolicyYaml;
+        combinedConfigParts.push(networkPolicyYaml);
+        applyCommands += `kubectl apply -f networkpolicy.yaml\n`;
+      }
+    }
+
+    // Reconstruct combined configScript from combinedConfigParts for the combined download
+    let combinedConfigScript = combinedConfigParts.join('\n---\n');
+    if (combinedConfigParts.length > 0) {
+        combinedConfigScript += '\n'; // Ensure a newline at the end if there's content
+    }
+
+    return { clusterScript, configScript: combinedConfigScript, applyCommands, manifestFiles };
+  }
+
+  // Function to collect all form data
+  function collectFormData() {
+    return {
+      environment: document.getElementById('environmentType').value,
+      cloudProvider: document.getElementById('cloudProvider').value,
+      localCluster: document.getElementById('localCluster').value,
+      k8sVersion: document.getElementById('k8sVersion').value,
+      namespace: document.getElementById('namespace').value || 'default',
+      workloadType: document.getElementById('workloadType').value,
+      workloadName: document.getElementById('workloadName').value || '', // Required
+      workloadLabels: document.getElementById('workloadLabels').value,
+      image: document.getElementById('containerImage').value || '', // Required
+      containerPort: document.getElementById('containerPort').value || 80, // Required
+      replicas: document.getElementById('replicaCount').value || 2,
+      serviceType: document.getElementById('serviceType').value,
+      serviceName: document.getElementById('serviceName').value || '',
+      servicePort: document.getElementById('servicePort').value || 80,
+      targetPort: document.getElementById('targetPort').value || 80,
+      enableIngress: document.getElementById('enableIngress').checked,
+      ingressClass: document.getElementById('ingressClass').value,
+      ingressHost: document.getElementById('ingressHost').value,
+      ingressPath: document.getElementById('ingressPath').value,
+      ingressPathType: document.getElementById('ingressPathType').value,
+      ingressTLS: document.getElementById('ingressTLS').value,
+      cpuRequest: document.getElementById('cpuRequest').value,
+      cpuLimit: document.getElementById('cpuLimit').value,
+      memoryRequest: document.getElementById('memoryRequest').value,
+      memoryLimit: document.getElementById('memoryLimit').value,
+      enableHPA: document.getElementById('enableHPA').checked,
+      hpaMin: document.getElementById('hpaMin').value,
+      hpaMax: document.getElementById('hpaMax').value,
+      hpaCpu: document.getElementById('hpaCpu').value,
+      enableVPA: document.getElementById('enableVPA').checked,
+      vpaUpdatePolicy: document.getElementById('vpaUpdatePolicy').value,
+      vpaMinCpu: document.getElementById('vpaMinCpu').value,
+      vpaMaxCpu: document.getElementById('vpaMaxCpu').value,
+      vpaMinMemory: document.getElementById('vpaMinMemory').value,
+      vpaMaxMemory: document.getElementById('vpaMaxMemory').value,
+      enableRBAC: document.getElementById('enableRBAC').checked,
+      enableNetworkPolicy: document.getElementById('enableNetworkPolicy').checked,
+      serviceAccount: document.getElementById('serviceAccount').value,
+      securityContext: document.getElementById('securityContext').value
+    };
+  }
+
+  function populateReview() {
+    const formData = collectFormData();
+
+    // Review Cluster Settings
+    let clusterReview = `Environment: ${formData.environment}`;
+    if (formData.environment === 'cloud') {
+      clusterReview += `<br>Cloud Provider: ${formData.cloudProvider}`;
+    } else if (formData.environment === 'local') {
+      clusterReview += `<br>Local Cluster: ${formData.localCluster}`;
+    }
+    clusterReview += `<br>Kubernetes Version: ${formData.k8sVersion}`;
+    document.getElementById('reviewCluster').innerHTML = clusterReview;
+
+    // Review Workload Settings
+    let workloadReview = `Namespace: ${formData.namespace}`;
+    workloadReview += `<br>Workload Type: ${formData.workloadType}`;
+    workloadReview += `<br>Workload Name: ${formData.workloadName || '<span class="text-red-500">Required</span>'}`;
+    workloadReview += `<br>Labels: ${formData.workloadLabels || 'N/A'}`;
+    workloadReview += `<br>Container Image: ${formData.image || '<span class="text-red-500">Required</span>'}`;
+    workloadReview += `<br>Container Port: ${formData.containerPort || '<span class="text-red-500">Required</span>'}`;
+    workloadReview += `<br>Replicas: ${formData.replicas}`;
+    document.getElementById('reviewWorkload').innerHTML = workloadReview;
+
+    // Review Networking Settings
+    let networkingReview = `Service Type: ${formData.serviceType}`;
+    if (formData.serviceType !== 'none') {
+      networkingReview += `<br>Service Name: ${formData.serviceName || formData.workloadName + '-svc'}`;
+      networkingReview += `<br>Service Port: ${formData.servicePort}`;
+      networkingReview += `<br>Target Port: ${formData.targetPort}`;
+    }
+    networkingReview += `<br>Enable Ingress: ${formData.enableIngress ? 'Yes' : 'No'}`;
+    if (formData.enableIngress) {
+      networkingReview += `<br>Ingress Host: ${formData.ingressHost || '<span class="text-red-500">Required if enabled</span>'}`;
+      networkingReview += `<br>Ingress Class: ${formData.ingressClass || 'N/A'}`;
+      networkingReview += `<br>Ingress Path: ${formData.ingressPath}`;
+      networkingReview += `<br>Ingress Path Type: ${formData.ingressPathType}`;
+      networkingReview += `<br>Ingress TLS: ${formData.ingressTLS}`;
+    }
+    document.getElementById('reviewNetworking').innerHTML = networkingReview;
+
+    // Review Advanced Settings
+    let advancedReview = `CPU Request: ${formData.cpuRequest || 'N/A'}`;
+    advancedReview += `<br>CPU Limit: ${formData.cpuLimit || 'N/A'}`;
+    advancedReview += `<br>Memory Request: ${formData.memoryRequest || 'N/A'}`;
+    advancedReview += `<br>Memory Limit: ${formData.memoryLimit || 'N/A'}`;
+    advancedReview += `<br>Enable HPA: ${formData.enableHPA ? 'Yes' : 'No'}`;
+    if (formData.enableHPA) {
+      advancedReview += `<br>   Min Replicas: ${formData.hpaMin}`;
+      advancedReview += `<br>   Max Replicas: ${formData.hpaMax}`;
+      advancedReview += `<br>   Target CPU %: ${formData.hpaCpu}`;
+    }
+    advancedReview += `<br>Enable VPA: ${formData.enableVPA ? 'Yes' : 'No'}`;
+    if (formData.enableVPA) {
+      advancedReview += `<br>   Update Policy: ${formData.vpaUpdatePolicy}`;
+      advancedReview += `<br>   Min Allowed CPU: ${formData.vpaMinCpu || 'N/A'}`;
+      advancedReview += `<br>   Max Allowed CPU: ${formData.vpaMaxCpu || 'N/A'}`;
+      advancedReview += `<br>   Min Allowed Memory: ${formData.vpaMinMemory || 'N/A'}`;
+      advancedReview += `<br>   Max Allowed Memory: ${formData.vpaMaxMemory || 'N/A'}`;
+    }
+    advancedReview += `<br>Enable RBAC: ${formData.enableRBAC ? 'Yes' : 'No'}`;
+    advancedReview += `<br>Add Network Policy: ${formData.enableNetworkPolicy ? 'Yes' : 'No'}`;
+    advancedReview += `<br>Service Account: ${formData.serviceAccount || 'default'}`;
+    advancedReview += `<br>Security Context: ${formData.securityContext.replace(/\n/g, '<br>  ') || 'N/A'}`;
+    document.getElementById('reviewAdvanced').innerHTML = advancedReview;
+  }
+
+
+  // Generate script button click handler
+  document.getElementById('generateScript').addEventListener('click', function() {
+    const formData = collectFormData();
+
+    // Centralized validation before generating output
+    if (!formData.workloadName || !formData.image || !formData.containerPort) {
+        showToast('Error: Workload Name, Container Image, and Container Port are required fields.');
+        return;
+    }
+    if (formData.serviceType !== 'none' && !formData.serviceName) {
+        showToast('Error: Service Name is required if a Service Type is selected.');
+        return;
+    }
+    if (formData.enableIngress && !formData.ingressHost) {
+        showToast('Error: Ingress Hostname is required if Ingress is enabled.');
+        return;
+    }
+    
+    // Generate the actual configuration
+    const { clusterScript, configScript, applyCommands, manifestFiles } = generateAllK8sScripts(formData);
+    
+    // Store the generated individual manifest files for the zip download
+    generatedManifestFiles = manifestFiles;
+
+    // Display the results
+    document.getElementById('generatedScript').textContent = clusterScript;
+    document.getElementById('generatedConfig').textContent = configScript;
+    document.getElementById('addConfigCommands').textContent = applyCommands;
+    
+    document.getElementById('scriptOutput').classList.remove('hidden');
+    document.getElementById('configOutput').classList.remove('hidden');
+    
+    // Scroll to results
+    document.getElementById('scriptOutput').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Copy to clipboard functionality
+  document.getElementById('copyScript').addEventListener('click', function() {
+    const scriptText = document.getElementById('generatedScript').textContent;
+    navigator.clipboard.writeText(scriptText).then(() => {
+      showToast('Cluster Script copied to clipboard!');
+    });
+  });
+
+  document.getElementById('copyConfig').addEventListener('click', function() {
+    const configText = document.getElementById('generatedConfig').textContent;
+    navigator.clipboard.writeText(configText).then(() => {
+      showToast('K8s Configuration copied to clipboard!');
+    });
+  });
+
+  // New: Download Combined Manifest functionality
+  document.getElementById('downloadCombinedConfig').addEventListener('click', function() {
+    const configText = document.getElementById('generatedConfig').textContent;
+    const filename = 'k8s-manifests.yaml';
+    
+    const blob = new Blob([configText], { type: 'text/yaml' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('Combined K8s Manifest downloaded!');
+  });
+
+  // New: Download All as Zip functionality
+ document.getElementById('downloadZipFiles').addEventListener('click', function() {
+  if (Object.keys(generatedManifestFiles).length === 0) {
+    showToast('No Kubernetes manifests to download. Generate configuration first.');
+    return;
+  }
+
+  const zip = new JSZip();
+  for (const filename in generatedManifestFiles) {
+    if (generatedManifestFiles.hasOwnProperty(filename)) {
+      let content = generatedManifestFiles[filename].trim(); 
+      zip.file(filename, content);
+    }
+  }
+
+  zip.generateAsync({ type: "blob" })
+    .then(function(content) {
+      const filename = 'k8s_manifests.zip';
+      const url = URL.createObjectURL(content);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Separate K8s Manifests downloaded as a ZIP!');
+    })
+    .catch(err => {
+      console.error("Error zipping files:", err);
+      showToast('Failed to create zip file.');
+    });
+});
+
+</script>
+
+
+
+  <script>
+    async function fetchLatestUpdate() {
+      try {
+        const url = "https://script.google.com/macros/s/AKfycbxZVmJjswUOGZLNm2zR9afxjzUeSHccbW_pSXwmeaPMFVa-oJSteKwJNFWS423h5FSj/exec";
+        const res = await fetch(url);
+        const json = await res.json();
+
+        // Adjust this depending on your actual data structure
+        const data = Array.isArray(json) ? json : json.data;
+
+        console.log("Fetched data:", data); // Debug check
+
+        if (!Array.isArray(data) || data.length < 2) return;
+
+        const [timestamp, message] = data[data.length - 1];
+        const updateBox = document.getElementById("latestUpdate");
+        const updateMsg = document.getElementById("updateMessage");
+
+        const dateObj = new Date(timestamp);
+        const formatted = dateObj.toLocaleString("en-IN", {
+          dateStyle: "medium",
+          timeStyle: "short"
+        });
+
+        updateMsg.textContent = `🕒 ${formatted} — Latest Update: ${message}`;
+        updateBox.classList.remove("hidden");
+      } catch (err) {
+        console.error("Failed to fetch update:", err);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchLatestUpdate();
+      setInterval(fetchLatestUpdate, 5 * 60 * 1000); // Refresh every 5 minutes
+    });
+  </script>
+
+
+
+</body>
+</html>

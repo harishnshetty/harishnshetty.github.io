@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kubernetesfile Generator with Config Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col lg:flex-row items-center justify-center p-6">
+
+
+   <div class="w-full lg:w-80 bg-gray-50 p-6 shadow-inner lg:shadow-none lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-y-auto z-10">
+    <div class="text-center">
+      <h3 class="text-xl font-bold">Kubernetes Page</h3>
+<img src="img/image.png" alt="Harish N Shetty" class="w-40 h-40 rounded-2xl mx-auto mb-4 shadow-md border border-gray-300" />
+      <h2 class="text-xl font-bold">Harish N Shetty</h2>
+      <p class="text-sm text-gray-600 mb-2">harishnshetty • he/him</p>
+      <p class="text-sm mb-4">DevOps Learner || Open Source Enthusiast || Keep learning, sharing and growing</p>
+
+     <ul class="text-left text-sm space-y-2">
+  <li><strong>Status:</strong> <span class="text-green-600">open to work</span></li>
+  <li><strong>Location:</strong> Bengaluru, Karnataka, India</li>
+  <li><strong>Email:</strong> <a href="mailto:harishn662@gmail.com" class="text-blue-600 underline">harishn662@gmail.com</a></li>
+  <li><strong>Website:</strong> <a href="https://harishnshetty.github.io" class="text-blue-600 underline" target="_blank">Website</a></li>
+  
+  <!-- Social Media Icons -->
+  <li class="flex items-center">
+    <strong class="mr-2">Social:</strong>
+    <div class="flex space-x-3">
+      <a href="https://www.linkedin.com/in/harishnshetty" target="_blank" title="LinkedIn">
+        <img src="img/linkedin.png" alt="LinkedIn" class="w-8 h-8 hover:opacity-80">
+      </a>
+      <a href="https://github.com/harishnshetty" target="_blank" title="GitHub">
+        <img src="img/github.png" alt="GitHub" class="w-8 h-8 hover:opacity-80">
+      </a>
+      <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank" title="YouTube">
+        <img src="img/youtube.png" alt="YouTube" class="w-8 h-8 hover:opacity-80">
+      </a>
+      <a href="https://www.instagram.com/devopswithharish?igsh=YWc5ZzNmdzBzNjI4" target="_blank" title="Instagram">
+        <img src="img/instagram.png" alt="Instagram" class="w-8 h-8 hover:opacity-80">
+      </a>
+      <a href="https://x.com/devopswitharish?t=SWH2zb-b8Dh4AGEm6tpwGg&s=09" target="_blank" title="Twitter (X)">
+        <img src="img/twitter.png" alt="Twitter" class="w-8 h-8 hover:opacity-80">
+      </a>
+    </div>
+  </li>
+</ul>
+
+<p class="text-lg text-red-600 font-medium text-center mt-4 mx-auto max-w-2xl">
+  This is an open-source generator tool. You can support ongoing development & feature improvements.
+</p>
+     🔒 License & Usage Notice<br>
+  &copy; 2025 Harish N Shetty. All rights reserved.
+<ul class="text-left text-xl font-bold text-black space-y-2">
+  <li>
+    <strong>PayPal:</strong>
+    <a href="https://paypal.me/harishnshetty" class="text-blue-700 underline font-bold">@harishnshetty</a>
+  </li>
+  <li>
+    <strong>UPI ID:</strong> harishn662@ybl
+  </li>
+</ul>
+
+
+            <img src="img/qr1.png" alt="Harish N Shetty" class="w-45 h-45  mx-auto mb-4">
+<br> Desgin & Developed By</br><strong>Harish N Shetty</strong> 
+    </div>
+  </div>
+
+  <!-- Main Content -->
+<div class="flex-0 p-1 overflow-y-auto lg:ml-80"></div>
+  <div class="max-w-4xl w-full bg-white rounded-xl shadow-md p-6">
+    <a href="update.html" target="_blank">
+      
+      <div id="latestUpdate" class="mb-4 w-full max-w-full text-sm text-blue-800 bg-blue-100 p-3 rounded hidden cursor-pointer hover:bg-blue-200 transition">
+        <img src="img/7.gif" alt="update" class="w-10 h-10 sm:w-7 sm:h-7 flex-shrink-0" />
+        <div class="flex items-center gap-3">
+          <i class="fas fa-bell text-blue-600"></i>
+          <span id="updateMessage">Fetching updates...</span>
+        </div>
+      </div>
+    </a>
+
+   <h1 class="text-2xl font-bold mb-2 text-center">
+  <i class="fab fa-Kubernetes text-blue-500 mr-2"></i>Advanced Kubernetesfile Generator
+</h1>
+<p class="text-sm text-gray-600 text-center italic mb-6">
+  This tool is still in improvement stage — please review and modify the generated script based on your own knowledge.
+</p>
+
+    
+    <div class="flex flex-wrap gap-3 justify-center mb-6">
+      <a href="Kubernetes.pdf" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-file-pdf text-red-500 mr-2"></i> 📕Kubernetes PDF
+      </a>
+      <a href="https://youtube.com/playlist?list=PLB1yU-G7FE-ENj8uOF2wuiU_AWdvZAI7H" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fab fa-youtube text-red-500 mr-2"></i> Tutorials
+      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_tqab3RWclUkxWWtBKdqYp0wjoGlCawZIYDT1itX-xAnY2g/viewform" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-comment-dots text-blue-500 mr-2"></i> ✍️ Feedback Form
+      </a>
+
+
+      <a href="https://harishnshetty.github.io/feedback/Kubernetes.html" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-comment-dots text-blue-500 mr-2"></i> Read Feedback
+      </a>
+
+      <a href="lic.txt" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+        <i class="fas fa-comment-dots text-blue-500 mr-2"></i> 🔑LICENSE
+      </a>
+
+          </div>
+
+
+<!-- Application Selector -->
+<div class="bg-gray-50 p-4 rounded-lg mb-6">
+  <label class="block text-sm font-medium text-gray-700 mb-2">Select Application</label>
+  <select id="app-selector" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" onchange="loadAppTemplate()">
+    <option value="nginx">NGINX (Web Server)</option>
+    <option value="tomcat">Tomcat (Java Web App)</option>
+    <option value="mongo">MongoDB (NoSQL Database)</option>
+    <option value="mysql">MySQL (SQL Database)</option>
+  </select>
+</div>
+
+
+     <!-- Configuration Form -->
+    <div class="bg-gray-50 p-6 rounded-lg mb-6">
+      <h3 class="text-lg font-semibold mb-4">NGINX Deployment Configuration</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Basic Settings -->
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Deployment Name</label>
+            <input type="text" id="deployment-name" value="nginx-deployment" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Container Name</label>
+            <input type="text" id="container-name" value="nginx-container" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">NGINX Image Version</label>
+            <select id="nginx-version" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+              <option value="latest">latest</option>
+              <option value="stable">stable</option>
+              <option value="alpine">alpine</option>
+              <option value="1.25">1.25</option>
+              <option value="1.24">1.24</option>
+              <option value="1.23">1.23</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Resource Settings -->
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Replicas</label>
+            <input type="number" id="replicas" value="2" min="1" max="10"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Container Port</label>
+            <input type="number" id="container-port" value="80" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            <p class="text-xs text-gray-500 mt-1">NGINX typically uses port 80 (HTTP) or 443 (HTTPS)</p>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Service Type</label>
+            <select id="service-type" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+              <option value="ClusterIP">ClusterIP (internal only)</option>
+              <option value="NodePort">NodePort (external access)</option>
+              <option value="LoadBalancer">LoadBalancer (cloud provider)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Advanced Options (collapsible) -->
+      <div class="mt-6">
+        <button onclick="toggleAdvancedOptions()" class="flex items-center text-blue-600 hover:text-blue-800">
+          <i class="fas fa-cogs mr-2"></i>
+          <span>Advanced Options</span>
+          <i id="advanced-arrow" class="fas fa-chevron-down ml-2"></i>
+        </button>
+        
+        <div id="advanced-options" class="hidden mt-4 space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Resource Limits (CPU)</label>
+              <input type="text" id="cpu-limit" value="500m" placeholder="e.g., 500m, 1"
+                     class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Resource Limits (Memory)</label>
+              <input type="text" id="memory-limit" value="512Mi" placeholder="e.g., 512Mi, 1Gi"
+                     class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Environment Variables</label>
+            <div id="env-vars-container">
+              <!-- Dynamic env vars will be added here -->
+            </div>
+            <button onclick="addEnvVar()" class="mt-2 text-sm bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">
+              <i class="fas fa-plus mr-1"></i> Add Variable
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Generate and Reset Buttons -->
+    <button onclick="generateManifest()" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-medium transition flex items-center justify-center">
+      <i class="fas fa-magic mr-2"></i> Generate Kubernetes Manifest
+    </button>
+    
+    <button onclick="resetForm()" class="w-full mt-4 bg-gray-600 hover:bg-gray-700 text-white px-4 py-3 rounded-lg font-medium transition flex items-center justify-center">
+      <i class="fas fa-redo mr-2"></i> Reset Form
+    </button>
+
+    <!-- Output Tabs -->
+    <div class="mt-8">
+      <div class="flex border-b">
+        <button id="deployment-tab" class="px-4 py-2 font-medium border-b-2 border-blue-500 text-blue-600">Deployment</button>
+        <button id="service-tab" class="px-4 py-2 font-medium text-gray-500 hover:text-gray-700">Service</button>
+        <button id="all-tab" class="px-4 py-2 font-medium text-gray-500 hover:text-gray-700">Combined</button>
+      </div>
+      
+      <div class="mt-4">
+        <!-- Deployment Output -->
+        <div id="deployment-output" class="output-content">
+          <div class="flex justify-between items-center mb-2">
+            <h4 class="font-semibold flex items-center">
+              <i class="fas fa-code mr-2"></i> Deployment YAML
+            </h4>
+            <div class="flex space-x-2">
+              <button onclick="copyToClipboard('deployment-yaml')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-copy mr-1"></i> Copy
+              </button>
+              <button onclick="downloadFile('deployment-yaml', 'deployment.yaml')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-download mr-1"></i> Download
+              </button>
+            </div>
+          </div>
+          <pre id="deployment-yaml" class="p-3 bg-gray-50 rounded text-sm overflow-x-auto"></pre>
+        </div>
+        
+        <!-- Service Output (hidden by default) -->
+        <div id="service-output" class="output-content hidden">
+          <div class="flex justify-between items-center mb-2">
+            <h4 class="font-semibold flex items-center">
+              <i class="fas fa-code mr-2"></i> Service YAML
+            </h4>
+            <div class="flex space-x-2">
+              <button onclick="copyToClipboard('service-yaml')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-copy mr-1"></i> Copy
+              </button>
+              <button onclick="downloadFile('service-yaml', 'service.yaml')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-download mr-1"></i> Download
+              </button>
+            </div>
+          </div>
+          <pre id="service-yaml" class="p-3 bg-gray-50 rounded text-sm overflow-x-auto"></pre>
+        </div>
+        
+        <!-- Combined Output (hidden by default) -->
+        <div id="all-output" class="output-content hidden">
+          <div class="flex justify-between items-center mb-2">
+            <h4 class="font-semibold flex items-center">
+              <i class="fas fa-code mr-2"></i> Combined YAML
+            </h4>
+            <div class="flex space-x-2">
+              <button onclick="copyToClipboard('all-yaml')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-copy mr-1"></i> Copy
+              </button>
+              <button onclick="downloadFile('all-yaml', 'nginx-manifest.yaml')" class="text-sm bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded flex items-center">
+                <i class="fas fa-download mr-1"></i> Download
+              </button>
+            </div>
+          </div>
+          <pre id="all-yaml" class="p-3 bg-gray-50 rounded text-sm overflow-x-auto"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+// Application templates configuration
+const appTemplates = {
+  nginx: {
+    name: "NGINX",
+    defaultImage: "nginx:latest",
+    defaultPort: 80,
+    description: "NGINX web server deployment",
+    formFields: `
+      <h3 class="text-lg font-semibold mb-4">NGINX Deployment Configuration</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Deployment Name</label>
+            <input type="text" id="deployment-name" value="nginx-deployment" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Container Name</label>
+            <input type="text" id="container-name" value="nginx-container" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">NGINX Image Version</label>
+            <select id="app-version" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+              <option value="latest">latest</option>
+              <option value="stable">stable</option>
+              <option value="alpine">alpine</option>
+              <option value="1.25">1.25</option>
+            </select>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Replicas</label>
+            <input type="number" id="replicas" value="2" min="1" max="10"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Container Port</label>
+            <input type="number" id="container-port" value="80" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            <p class="text-xs text-gray-500 mt-1">NGINX typically uses port 80 (HTTP) or 443 (HTTPS)</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Service Type</label>
+            <select id="service-type" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+              <option value="ClusterIP">ClusterIP (internal only)</option>
+              <option value="NodePort">NodePort (external access)</option>
+              <option value="LoadBalancer">LoadBalancer (cloud provider)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    `,
+    advancedFields: `
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Resource Limits (CPU)</label>
+          <input type="text" id="cpu-limit" value="500m" placeholder="e.g., 500m, 1"
+                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Resource Limits (Memory)</label>
+          <input type="text" id="memory-limit" value="512Mi" placeholder="e.g., 512Mi, 1Gi"
+                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        </div>
+      </div>
+    `
+  },
+  tomcat: {
+    name: "Tomcat",
+    defaultImage: "tomcat:latest",
+    defaultPort: 8080,
+    description: "Tomcat Java web application server",
+    formFields: `
+      <h3 class="text-lg font-semibold mb-4">Tomcat Deployment Configuration</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Deployment Name</label>
+            <input type="text" id="deployment-name" value="tomcat-deployment" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Container Name</label>
+            <input type="text" id="container-name" value="tomcat-container" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Tomcat Version</label>
+            <select id="app-version" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+              <option value="latest">latest</option>
+              <option value="10.1">10.1</option>
+              <option value="9.0">9.0</option>
+              <option value="8.5">8.5</option>
+            </select>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Replicas</label>
+            <input type="number" id="replicas" value="1" min="1" max="10"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Container Port</label>
+            <input type="number" id="container-port" value="8080" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            <p class="text-xs text-gray-500 mt-1">Tomcat typically uses port 8080</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Service Type</label>
+            <select id="service-type" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+              <option value="ClusterIP">ClusterIP (internal only)</option>
+              <option value="NodePort">NodePort (external access)</option>
+              <option value="LoadBalancer">LoadBalancer (cloud provider)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    `,
+    advancedFields: `
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Resource Limits (CPU)</label>
+          <input type="text" id="cpu-limit" value="1000m" placeholder="e.g., 1000m, 2"
+                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Resource Limits (Memory)</label>
+          <input type="text" id="memory-limit" value="1Gi" placeholder="e.g., 1Gi, 2Gi"
+                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        </div>
+      </div>
+      <div class="mt-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Java Options</label>
+        <input type="text" id="java-opts" placeholder="-Xmx512m -Xms256m"
+               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+      </div>
+    `
+  },
+  mongo: {
+    name: "MongoDB",
+    defaultImage: "mongo:latest",
+    defaultPort: 27017,
+    description: "MongoDB NoSQL database deployment",
+    formFields: `
+      <h3 class="text-lg font-semibold mb-4">MongoDB Deployment Configuration</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Deployment Name</label>
+            <input type="text" id="deployment-name" value="mongodb-deployment" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Container Name</label>
+            <input type="text" id="container-name" value="mongodb-container" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">MongoDB Version</label>
+            <select id="app-version" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+              <option value="latest">latest</option>
+              <option value="6.0">6.0</option>
+              <option value="5.0">5.0</option>
+              <option value="4.4">4.4</option>
+            </select>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Replicas</label>
+            <input type="number" id="replicas" value="1" min="1" max="3"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Container Port</label>
+            <input type="number" id="container-port" value="27017" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            <p class="text-xs text-gray-500 mt-1">MongoDB default port is 27017</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Root Username</label>
+            <input type="text" id="root-user" placeholder="admin"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+        </div>
+      </div>
+    `,
+    advancedFields: `
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Resource Limits (CPU)</label>
+          <input type="text" id="cpu-limit" value="1000m" placeholder="e.g., 1000m, 2"
+                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Resource Limits (Memory)</label>
+          <input type="text" id="memory-limit" value="2Gi" placeholder="e.g., 2Gi, 4Gi"
+                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        </div>
+      </div>
+      <div class="mt-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Root Password</label>
+        <input type="password" id="root-password" placeholder="securepassword"
+               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div class="mt-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Storage Size</label>
+        <input type="text" id="storage-size" value="10Gi" placeholder="e.g., 10Gi, 20Gi"
+               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+      </div>
+    `
+  },
+  mysql: {
+    name: "MySQL",
+    defaultImage: "mysql:latest",
+    defaultPort: 3306,
+    description: "MySQL relational database deployment",
+    formFields: `
+      <h3 class="text-lg font-semibold mb-4">MySQL Deployment Configuration</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Deployment Name</label>
+            <input type="text" id="deployment-name" value="mysql-deployment" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Container Name</label>
+            <input type="text" id="container-name" value="mysql-container" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">MySQL Version</label>
+            <select id="app-version" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+              <option value="latest">latest</option>
+              <option value="8.0">8.0</option>
+              <option value="5.7">5.7</option>
+              <option value="5.6">5.6</option>
+            </select>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Replicas</label>
+            <input type="number" id="replicas" value="1" min="1" max="3"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Container Port</label>
+            <input type="number" id="container-port" value="3306" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            <p class="text-xs text-gray-500 mt-1">MySQL default port is 3306</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Root Password</label>
+            <input type="password" id="root-password" placeholder="securepassword"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          </div>
+        </div>
+      </div>
+    `,
+    advancedFields: `
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Resource Limits (CPU)</label>
+          <input type="text" id="cpu-limit" value="1000m" placeholder="e.g., 1000m, 2"
+                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Resource Limits (Memory)</label>
+          <input type="text" id="memory-limit" value="2Gi" placeholder="e.g., 2Gi, 4Gi"
+                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        </div>
+      </div>
+      <div class="mt-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Database Name</label>
+        <input type="text" id="database-name" placeholder="myapp_db"
+               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div class="mt-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Storage Size</label>
+        <input type="text" id="storage-size" value="10Gi" placeholder="e.g., 10Gi, 20Gi"
+               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+      </div>
+    `
+  }
+};
+
+// Load the selected application template
+function loadAppTemplate() {
+  const appSelector = document.getElementById('app-selector');
+  const selectedApp = appSelector.value;
+  const appTemplate = appTemplates[selectedApp];
+  
+  const formContainer = document.getElementById('app-config-form');
+  
+  // Build the form HTML
+  let formHTML = appTemplate.formFields;
+  
+  // Add advanced options section
+  formHTML += `
+    <div class="mt-6">
+      <button onclick="toggleAdvancedOptions()" class="flex items-center text-blue-600 hover:text-blue-800">
+        <i class="fas fa-cogs mr-2"></i>
+        <span>Advanced Options</span>
+        <i id="advanced-arrow" class="fas fa-chevron-down ml-2"></i>
+      </button>
+      
+      <div id="advanced-options" class="hidden mt-4 space-y-4">
+        ${appTemplate.advancedFields}
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Environment Variables</label>
+          <div id="env-vars-container">
+            <!-- Dynamic env vars will be added here -->
+          </div>
+          <button onclick="addEnvVar()" class="mt-2 text-sm bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">
+            <i class="fas fa-plus mr-1"></i> Add Variable
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  formContainer.innerHTML = formHTML;
+  
+  // Update the generateManifest function to use the new template
+  generateManifest = function() {
+    const selectedApp = document.getElementById('app-selector').value;
+    const appTemplate = appTemplates[selectedApp];
+    
+    // Get common values
+    const deploymentName = document.getElementById('deployment-name').value || `${selectedApp}-deployment`;
+    const containerName = document.getElementById('container-name').value || `${selectedApp}-container`;
+    const appVersion = document.getElementById('app-version')?.value || 'latest';
+    const replicas = document.getElementById('replicas').value || 1;
+    const containerPort = document.getElementById('container-port').value || appTemplate.defaultPort;
+    const serviceType = document.getElementById('service-type').value || 'ClusterIP';
+    const cpuLimit = document.getElementById('cpu-limit')?.value;
+    const memoryLimit = document.getElementById('memory-limit')?.value;
+    
+    // Collect environment variables
+    const envVars = [];
+    document.querySelectorAll('#env-vars-container > div').forEach(div => {
+      const key = div.querySelector('.env-key').value;
+      const value = div.querySelector('.env-value').value;
+      if (key) {
+        envVars.push({ key, value });
+      }
+    });
+    
+    // Generate Deployment YAML
+    let deploymentYaml = `apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${deploymentName}
+  labels:
+    app: ${deploymentName}
+spec:
+  replicas: ${replicas}
+  selector:
+    matchLabels:
+      app: ${deploymentName}
+  template:
+    metadata:
+      labels:
+        app: ${deploymentName}
+    spec:
+      containers:
+      - name: ${containerName}
+        image: ${selectedApp}:${appVersion}
+        ports:
+        - containerPort: ${containerPort}`;
+
+    // Add app-specific configurations
+    if (selectedApp === 'mysql' || selectedApp === 'mongo') {
+      const rootPassword = document.getElementById('root-password')?.value;
+      if (rootPassword) {
+        deploymentYaml += `
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "${rootPassword}"`;
+        
+        if (selectedApp === 'mysql') {
+          const dbName = document.getElementById('database-name')?.value;
+          if (dbName) {
+            deploymentYaml += `
+        - name: MYSQL_DATABASE
+          value: "${dbName}"`;
+          }
+        }
+      }
+    } else if (selectedApp === 'tomcat') {
+      const javaOpts = document.getElementById('java-opts')?.value;
+      if (javaOpts) {
+        deploymentYaml += `
+        env:
+        - name: JAVA_OPTS
+          value: "${javaOpts}"`;
+      }
+    }
+
+    // Add resource limits if specified
+    if (cpuLimit || memoryLimit) {
+      deploymentYaml += `
+        resources:
+          limits:`;
+      if (cpuLimit) deploymentYaml += `
+            cpu: "${cpuLimit}"`;
+      if (memoryLimit) deploymentYaml += `
+            memory: "${memoryLimit}"`;
+    }
+
+    // Add custom environment variables if any
+    if (envVars.length > 0) {
+      if (!deploymentYaml.includes('env:')) {
+        deploymentYaml += `
+        env:`;
+      }
+      envVars.forEach(env => {
+        deploymentYaml += `
+          - name: ${env.key}
+            value: "${env.value}"`;
+      });
+    }
+
+    // Add storage for databases if specified
+    if (selectedApp === 'mysql' || selectedApp === 'mongo') {
+      const storageSize = document.getElementById('storage-size')?.value;
+      if (storageSize) {
+        deploymentYaml += `
+      volumes:
+      - name: ${selectedApp}-storage
+        persistentVolumeClaim:
+          claimName: ${deploymentName}-pvc`;
+          
+        // Add volume mount to container spec
+        deploymentYaml = deploymentYaml.replace(
+          'ports:',
+          `ports:
+        volumeMounts:
+        - name: ${selectedApp}-storage
+          mountPath: ${selectedApp === 'mysql' ? '/var/lib/mysql' : '/data/db'}
+`);
+        
+        // Add PVC YAML to combined output
+        const pvcYaml = `---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ${deploymentName}-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: ${storageSize}`;
+      }
+    }
+
+    // Generate Service YAML
+    const serviceYaml = `apiVersion: v1
+kind: Service
+metadata:
+  name: ${deploymentName}-service
+  labels:
+    app: ${deploymentName}
+spec:
+  type: ${serviceType}
+  selector:
+    app: ${deploymentName}
+  ports:
+    - protocol: TCP
+      port: ${containerPort}
+      targetPort: ${containerPort}`;
+
+    // Generate Combined YAML
+    let allYaml = deploymentYaml;
+    if (selectedApp === 'mysql' || selectedApp === 'mongo') {
+      const storageSize = document.getElementById('storage-size')?.value;
+      if (storageSize) {
+        allYaml += `
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ${deploymentName}-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: ${storageSize}`;
+      }
+    }
+    allYaml += `
+---
+${serviceYaml}`;
+
+    // Update the output
+    document.getElementById('deployment-yaml').textContent = deploymentYaml;
+    document.getElementById('service-yaml').textContent = serviceYaml;
+    document.getElementById('all-yaml').textContent = allYaml;
+  };
+
+  // Initialize the form with default values
+  document.getElementById('container-port').value = appTemplate.defaultPort;
+  
+  // Add event listeners to form fields
+  const formFields = formContainer.querySelectorAll('input, select');
+  formFields.forEach(field => {
+    field.addEventListener('input', generateManifest);
+    field.addEventListener('change', generateManifest);
+  });
+  
+  // Generate initial manifest
+  generateManifest();
+}
+
+// Initialize the page with NGINX template
+document.addEventListener('DOMContentLoaded', function() {
+  loadAppTemplate();
+  setupTabSwitching();
+});
+</script>
+
+<!-- message update -->
+<script>
+  async function fetchLatestUpdate() {
+    try {
+      const url = "https://script.google.com/macros/s/AKfycbxZVmJjswUOGZLNm2zR9afxjzUeSHccbW_pSXwmeaPMFVa-oJSteKwJNFWS423h5FSj/exec";
+      const res = await fetch(url);
+      const json = await res.json();
+
+      // Adjust this depending on your actual data structure
+      const data = Array.isArray(json) ? json : json.data;
+
+      console.log("Fetched data:", data); // Debug check
+
+      if (!Array.isArray(data) || data.length < 2) return;
+
+      const [timestamp, message] = data[data.length - 1];
+      const updateBox = document.getElementById("latestUpdate");
+      const updateMsg = document.getElementById("updateMessage");
+
+      const dateObj = new Date(timestamp);
+      const formatted = dateObj.toLocaleString("en-IN", {
+        dateStyle: "medium",
+        timeStyle: "short"
+      });
+
+      updateMsg.textContent = `🕒 ${formatted} — Latest Update: ${message}`;
+      updateBox.classList.remove("hidden");
+    } catch (err) {
+      console.error("Failed to fetch update:", err);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchLatestUpdate();
+    setInterval(fetchLatestUpdate, 5 * 60 * 1000); // Refresh every 5 minutes
+  });
+</script>
+
+
+
+</body>
+</html>
