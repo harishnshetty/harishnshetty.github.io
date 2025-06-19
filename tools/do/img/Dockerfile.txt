@@ -1,0 +1,30 @@
+# Ubuntu with Python, Nginx and Gunicorn for Flask
+FROM ubuntu:22.04
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip python3-venv nginx && \
+    pip3 install flask gunicorn && \
+    apt-get clean
+
+# Configure Nginx
+COPY nginx.conf /etc/nginx/sites-available/default
+RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default && \
+    rm /etc/nginx/sites-enabled/default
+
+# Copy application files
+COPY ./app /app
+WORKDIR /app
+
+# Install Python dependencies
+RUN if [ -f requirements.txt ]; then pip3 install -r requirements.txt; fi
+
+# Copy entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Expose ports (80 for Nginx, 8000 for Gunicorn)
+EXPOSE 80 8000
+
+# Run the application
+CMD ["/entrypoint.sh"]
