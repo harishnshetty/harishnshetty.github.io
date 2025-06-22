@@ -32,78 +32,97 @@
 <body class="text-white min-h-screen flex flex-col items-center justify-center px-4 py-10">
   <h1 class="text-4xl sm:text-5xl font-bold mb-6 title-gradient text-center">DevOps Script Tools</h1>
   <div class="mb-6">
-  <a href="../index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow-lg transition duration-300">
-    ⬅️ Back to Home
-  </a>
-</div>
+    <a href="../index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow-lg transition duration-300">
+      ⬅️ Back to Home
+    </a>
+  </div>
 
   <p class="text-center text-gray-300 mb-10 max-w-xl">Choose from a variety of tools below to generate and customize DevOps scripts for your infrastructure.</p>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 max-w-4xl w-full">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl w-full">
     <!-- Ansible -->
     <a href="an/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
       <h2 class="text-2xl font-bold mb-2">Ansible</h2>
       <p class="text-sm text-gray-300">Create playbooks to automate provisioning and configuration.</p>
     </a>
 
-    <!-- Docker -->
-    <a href="do/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
-      <h2 class="text-2xl font-bold mb-2">Docker</h2>
-      <p class="text-sm text-gray-300">Generate Dockerfiles and manage container deployments.</p>
-    </a>
+    
 
     <!-- Jenkins -->
-    <a href="je/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
+    <a href="jenkins/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
       <h2 class="text-2xl font-bold mb-2">Jenkins</h2>
       <p class="text-sm text-gray-300">Automate pipelines with Jenkinsfile creation tools.</p>
     </a>
 
+    <!-- DevSecOps -->
+    <a href="devsecops/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
+      <h2 class="text-2xl font-bold mb-2">DevSecOps</h2>
+      <p class="text-sm text-gray-300">Security-focused DevOps practices and tools.</p>
+    </a>
+    
     <!-- Terraform -->
     <a href="te/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
       <h2 class="text-2xl font-bold mb-2">Terraform</h2>
       <p class="text-sm text-gray-300">Build cloud infrastructure templates with ease.</p>
     </a>
-  </div>
 
-<!-- License Section -->
-<section class="mt-16 px-4 max-w-4xl text-center text-gray-300 text-sm">
-  <h3 class="text-lg font-semibold text-white mb-2">🔒 License & Usage Notice</h3>
-  <p class="leading-relaxed">
-    <strong>Copyright © 2025 Harish N Shetty</strong><br />
-    All rights reserved.
-  </p>
-  <p class="mt-4 leading-relaxed">
-    This website, including all source code, design, and content, is proprietary and confidential.
-    No part of this project may be copied, reproduced, distributed, or used in any form without prior written permission from the author.
-  </p>
-  <p class="mt-4 leading-relaxed">
-    The content is published publicly for demonstration and personal branding purposes only.
-    Unauthorized use or reuse is strictly prohibited.
-  </p>
-</section>
+    <!-- Kubernetes -->
+    <a href="k8s/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
+      <h2 class="text-2xl font-bold mb-2">Kubernetes</h2>
+      <p class="text-sm text-gray-300">Manage container orchestration and deployments.</p>
+    </a>
 
-<!-- Stylish Footer with Icons -->
-<footer class="bg-white text-black text-center py-6 mt-16 border-t">
-  <div class="flex flex-wrap justify-center items-center gap-4 text-sm">
-    <a href="mailto:harishn662@gmail.com" aria-label="Email">
-      <img src="an/img/gmail.svg" alt="Email" class="w-6 h-6" />
-    </a>
-    <a href="https://github.com/harishnshetty" target="_blank" aria-label="GitHub">
-      <img src="an/img/github.svg" alt="GitHub" class="w-6 h-6" />
-    </a>
-    <a href="https://www.linkedin.com/in/harishnshetty" target="_blank" aria-label="LinkedIn">
-      <img src="an/img/linkedin.svg" alt="LinkedIn" class="w-6 h-6" />
-    </a>
-    <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank" aria-label="YouTube">
-      <img src="an/img/youtube.svg" alt="YouTube" class="w-6 h-6" />
+    
+
+    <!-- Prometheus and Grafana -->
+    <a href="monitoring/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
+      <h2 class="text-2xl font-bold mb-2">Prometheus & Grafana</h2>
+      <p class="text-sm text-gray-300">Monitoring and visualization solutions.</p>
     </a>
   </div>
-  <p class="text-xs mt-4">
 
-    Script tools are shared for viewing only. No reuse JS or redesign permitted.
-  </p>
-</footer>
+  <!-- Docker -->
+    <a href="do/index.html" class="glow bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center">
+      <h2 class="text-2xl font-bold mb-2">Docker (Dev stage)</h2>
+      <p class="text-sm text-gray-300">Generate Dockerfiles and manage container deployments.</p>
+    </a>
 
+  <!-- License Section -->
+  <section class="mt-16 px-4 max-w-4xl text-center text-gray-300 text-sm">
+    <h3 class="text-lg font-semibold text-white mb-2">🔒 License & Usage Notice</h3>
+    <p class="leading-relaxed">
+      <strong>Copyright © 2025 Harish N Shetty</strong><br />
+      All rights reserved.
+    </p>
+    <p class="mt-4 leading-relaxed">
+      This website, including all source code, design, and content, is proprietary and confidential.
+      No part of this project may be copied, reproduced, distributed, or used in any form without prior written permission from the author.
+    </p>
+    <p class="mt-4 leading-relaxed">
+      The content is published publicly for demonstration and personal branding purposes only.
+      Unauthorized use or reuse is strictly prohibited.
+    </p>
+  </section>
 
+  <!-- Stylish Footer with Icons -->
+  <footer class="bg-white text-black text-center py-6 mt-16 border-t">
+    <div class="flex flex-wrap justify-center items-center gap-4 text-sm">
+      <a href="mailto:harishn662@gmail.com" aria-label="Email">
+        <img src="an/img/gmail.svg" alt="Email" class="w-6 h-6" />
+      </a>
+      <a href="https://github.com/harishnshetty" target="_blank" aria-label="GitHub">
+        <img src="an/img/github.svg" alt="GitHub" class="w-6 h-6" />
+      </a>
+      <a href="https://www.linkedin.com/in/harishnshetty" target="_blank" aria-label="LinkedIn">
+        <img src="an/img/linkedin.svg" alt="LinkedIn" class="w-6 h-6" />
+      </a>
+      <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank" aria-label="YouTube">
+        <img src="an/img/youtube.svg" alt="YouTube" class="w-6 h-6" />
+      </a>
+    </div>
+    <p class="text-xs mt-4">
+      Script tools are shared for viewing only. No reuse JS or redesign permitted.
+    </p>
+  </footer>
 </body>
 </html>
