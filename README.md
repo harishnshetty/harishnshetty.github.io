@@ -1,60 +1,62 @@
-# Harish N Shetty – Portfolio Website
+### Hi there 👋 I'm Harish N Shetty
 
-This is the personal portfolio website of **Harish N Shetty**, a DevOps and Cloud enthusiast. It showcases professional experience, skills, projects, certifications, and Script Tool generator.
-
-The site is built using:
-- 🌐 HTML, Tailwind CSS, JavaScript
-- 💻 Responsive and animated UI
-- ☁️ Focused on DevOps tools: Jenkins, Docker, Kubernetes, AWS, Terraform, Git, and more
-
-Visit the live site at:  
-➡️ **https://harishnshetty.github.io**
+🚀 A DevOps Engineer & Cloud Enthusiast from 🇮🇳 India  
+🔧 Passionate about automation, infrastructure as code, cloud-native technologies, and continuous delivery pipelines.
 
 ---
 
-## 📁 Structure
+### 🧠 About Me
 
-- `index.html` – Main landing page
-- Links to: `Script generator` `projects.html`, `skills.html`, `certifications.html`, `experience.html`,etc.
-- Dynamic typing animation, theme toggle, and mobile-friendly navigation
-
----
-
-## 📫 Contact
-
-- 📧 harishn662@gmail.com  
-- 💼 [LinkedIn](https://www.linkedin.com/in/harish-n-shetty/)  
-- 💻 [GitHub](https://github.com/harishnshetty)
+- 🧰 6+ years in IT infrastructure & system administration  
+- 🧪 Transitioned into DevOps with hands-on in CI/CD, Docker, Kubernetes, Ansible, Terraform, and AWS  
+- 🌐 Built multiple personal DevOps tools and hosted a public [Script Generator](https://harishnshetty.github.io/tools/)  
+- 🎯 Currently exploring DevSecOps, Argo CD, and Microservices
 
 ---
 
-## ❗ License
+### 💼 Skills & Tools
 
-This website is **proprietary**.
-Copyright © 2025 Harish N Shetty
+<p float="left">
+  <a href="https://aws.amazon.com/" target="_blank"><img src="https://raw.githubusercontent.com/itsksaurabh/itsksaurabh/master/assets/aws.gif" height="70"/></a>
+  <a href="https://www.linux.org/" target="_blank"><img src="https://raw.githubusercontent.com/itsksaurabh/itsksaurabh/master/assets/linux.gif" height="70"/></a>
+  <a href="https://www.jenkins.io/" target="_blank"><img src="https://raw.githubusercontent.com/itsksaurabh/itsksaurabh/master/assets/jenkins.gif" height="70"/></a>
+  <a href="https://hub.docker.com/" target="_blank"><img src="https://raw.githubusercontent.com/itsksaurabh/itsksaurabh/master/assets/docker.gif" height="70"/></a>
+  <a href="https://kubernetes.io/" target="_blank"><img src="https://raw.githubusercontent.com/itsksaurabh/itsksaurabh/master/assets/k8s.gif" height="70"/></a>
+  <a href="https://www.ansible.com/" target="_blank"><img src="https://www.vectorlogo.zone/logos/ansible/ansible-icon.svg" height="60"/></a>
+  <a href="https://www.terraform.io/" target="_blank"><img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" height="60"/></a>
+  <a href="https://grafana.com/" target="_blank"><img src="https://www.vectorlogo.zone/logos/grafana/grafana-icon.svg" height="60"/></a>
+  <a href="https://prometheus.io/" target="_blank"><img src="https://www.vectorlogo.zone/logos/prometheusio/prometheusio-icon.svg" height="60"/></a>
+  <a href="https://github.com/" target="_blank"><img src="https://raw.githubusercontent.com/itsksaurabh/itsksaurabh/master/assets/git.gif" height="70"/></a>
+</p>
 
-All rights reserved.
+---
 
-This script generation tool, including but not limited to the source code, HTML/CSS layout, JavaScript functionality, images, and visual design, is the exclusive property of Harish N Shetty.
+### 📫 Connect With Me
 
-This website and tool are made publicly accessible for demonstration, educational, and personal branding purposes only.
+<p float="left">
+  <a href="mailto:harishn662@example.com" target="_blank"><img src="https://img.icons8.com/ios-glyphs/90/gmail.png" height="40"/></a>
+  <a href="https://github.com/harishnshetty" target="_blank"><img src="https://img.icons8.com/ios-filled/90/github.png" height="40"/></a>
+  <a href="https://www.linkedin.com/in/harish-n-shetty/" target="_blank"><img src="https://img.icons8.com/ios-filled/90/linkedin.png" height="40"/></a>
+  <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank"><img src="https://img.icons8.com/ios-filled/90/youtube-play.png" height="40"/></a>
+  <a href="https://x.com/devopswitharish?t=SWH2zb-b8Dh4AGEm6tpwGg&s=09" target="_blank"><img src="https://img.icons8.com/ios-filled/90/twitterx--v2.png" height="40"/></a>
+  <a href="https://www.instagram.com/devopswithharish?igsh=YWc5ZzNmdzBzNjI4" target="_blank"><img src="https://img.icons8.com/ios-filled/90/instagram-new.png" height="40"/></a>
+</p>
 
-You are permitted to:
-✔️ View and interact with the tool in your browser
-✔️ Use the generated output (e.g., YAML scripts) for personal or internal use
+---
 
-You are NOT permitted to:
-❌ Copy or reuse any part of the source code
-❌ Modify or derive your own version of this tool
-❌ Reuse or imitate the UI, branding, design, or content
-❌ Host, redistribute, or publish this project or any of its parts
-❌ Use this tool for commercial or training services without written consent
+### 🌐 Projects & Tools
 
-Unauthorized use, reuse, modification, or distribution is strictly prohibited and may result in legal action.
+🔗 **Portfolio Website** – [https://harishnshetty.github.io](https://harishnshetty.github.io)  
+🔧 **Script Generator Tool** – [https://harishnshetty.github.io/tools](https://harishnshetty.github.io/tools)
 
-If you wish to license this tool for professional use, training, or customization, please contact the author directly.
+---
 
-Contact: harishn662@gmail.com  
-Website: https://harishnshetty.github.io  
-LinkedIn: https://www.linkedin.com/in/harishnshetty  
+### 📄 Resume
 
+📌 [Download Resume (PDF)](./resume.pdf)
+
+---
+
+<p align="center">
+  <b>© 2025 Harish N Shetty</b>  
+</p>
