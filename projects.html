@@ -177,9 +177,11 @@
 
 <main class="p-6 flex items-start">
   <!-- Vertical sidebar -->
-  <aside id="sidebar-box" class="sticky top-24 flex flex-col items-center justify-center bg-white dark:bg-gray-800 rounded shadow p-4 mr-6 w-[100px] h-[300px] overflow-y-auto">
-    <h2 id="card-title" class="text-2xl font-bold text-gray-800 dark:text-gray-100 whitespace-pre-line"></h2>
-  </aside>
+ <aside id="sidebar-box" class="sticky top-24 flex flex-col items-center justify-center bg-white dark:bg-gray-800 rounded shadow p-4 mr-6 w-[100px] h-[300px] overflow-y-auto">
+  <h2 id="card-title" class="text-2xl font-bold text-gray-800 dark:text-gray-100 whitespace-pre-line"></h2>
+  <p id="project-count" class="mt-4 text-red-600 font-bold">Total: 0</p>
+</aside>
+  
 
   <!-- Grid container -->
   <div class="flex-1">
@@ -280,7 +282,6 @@
 
 
 
-
 <script>
 const cardData = {
   all: { title: 'A\nL\nL' },
@@ -290,82 +291,89 @@ const cardData = {
   k8s: { title: 'K\n8\nS' }
 };
 
+const projectDataList = [];
 
-  const projectDataList = [];
+function getImageId(url) {
+  const match = url.match(/(?:\/d\/|id=)([a-zA-Z0-9_-]+)/);
+  return match ? match[1] : null;
+}
 
-  function getImageId(url) {
-    const match = url.match(/(?:\/d\/|id=)([a-zA-Z0-9_-]+)/);
-    return match ? match[1] : null;
-  }
+function convertToLh3Url(driveUrl) {
+  const id = getImageId(driveUrl);
+  return id ? `https://lh3.googleusercontent.com/d/${id}` : '';
+}
 
-  function convertToLh3Url(driveUrl) {
-    const id = getImageId(driveUrl);
-    return id ? `https://lh3.googleusercontent.com/d/${id}` : '';
-  }
+const showCard = (id) => {
+  const title = document.getElementById('card-title');
+  const data = cardData[id];
+  title.textContent = data.title;
+  fetchAndRenderProjects(id);
+};
 
-  const showCard = (id) => {
-    const title = document.getElementById('card-title');
-    const data = cardData[id];
-    title.textContent = data.title;
-    fetchAndRenderProjects(id);
-  };
+async function fetchAndRenderProjects(filter) {
+  const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/1eOYwWMBSvQef0JKZ26tNzskTxhWBXZpvL1akXaAgmZg/values/sheet1?key=AIzaSyCepK4W-S9qKxy4yas67_1EQ-Y7X2-Wezk');
+  const data = await response.json();
+  const values = data.values;
+  const headers = values[0];
+  const rows = values.slice(1).sort((a, b) => {
+    const dateA = new Date(a[0]);
+    const dateB = new Date(b[0]);
+    return dateB - dateA; // Descending: newest first
+  });
 
-  async function fetchAndRenderProjects(filter) {
-    const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/1eOYwWMBSvQef0JKZ26tNzskTxhWBXZpvL1akXaAgmZg/values/sheet1?key=AIzaSyCepK4W-S9qKxy4yas67_1EQ-Y7X2-Wezk');
-    const data = await response.json();
-    const values = data.values;
-    const headers = values[0];
-    const rows = values.slice(1).sort((a, b) => {
-  const dateA = new Date(a[0]);
-  const dateB = new Date(b[0]);
-  return dateB - dateA; // Descending: newest first
-});
+  const projectGrid = document.getElementById('project-grid');
+  projectGrid.innerHTML = '';
+  projectDataList.length = 0; // Clear previous data
 
-    const projectGrid = document.getElementById('project-grid');
-    projectGrid.innerHTML = '';
-    projectDataList.length = 0; // Clear previous data
+  let count = 0;
 
-    rows.forEach(row => {
-      const rowData = Object.fromEntries(headers.map((h, i) => [h.trim().toLowerCase().replaceAll(' ', '-'), row[i] || '']));
-      const projectType = rowData['project']?.toLowerCase();
+  rows.forEach(row => {
+    const rowData = Object.fromEntries(headers.map((h, i) => [h.trim().toLowerCase().replaceAll(' ', '-'), row[i] || '']));
+    const projectType = rowData['project']?.toLowerCase();
 
-      if (filter === 'all' || projectType === filter) {
-        const card = document.createElement('div');
-        card.className = 'glow-card bg-white dark:bg-gray-800 p-4 rounded shadow';
-        const imgSrc = convertToLh3Url(rowData.image);
+    if (filter === 'all' || projectType === filter) {
+      count++; // Count matching project
 
-        const projectData = {
-          title: rowData.title,
-          youtube: rowData['youtube-url'],
-          github: rowData['git-url'],
-          image: imgSrc
-        };
-        const projectIndex = projectDataList.length;
-        projectDataList.push(projectData);
+      const card = document.createElement('div');
+      card.className = 'glow-card bg-white dark:bg-gray-800 p-4 rounded shadow';
+      const imgSrc = convertToLh3Url(rowData.image);
 
-        card.innerHTML = `
-          <img src="${imgSrc}" alt="${rowData.title}" class="w-full aspect-video object-cover mb-4 rounded cursor-pointer" onclick="openProjectDetail(${projectIndex})" />
-          <h3 class="text-lg font-bold mb-2 break-words line-clamp-2">${rowData.title}</h3>
+      const projectData = {
+        title: rowData.title,
+        youtube: rowData['youtube-url'],
+        github: rowData['git-url'],
+        image: imgSrc
+      };
+      const projectIndex = projectDataList.length;
+      projectDataList.push(projectData);
 
-          <div class="flex items-center gap-4 mt-2">
-            ${rowData['youtube-url'] ? `<a href="${rowData['youtube-url']}" target="_blank" aria-label="YouTube"><img src="img/youtube.svg" alt="YouTube" class="w-6 h-6 hover:scale-110 transition" /></a>` : ''}
-            ${rowData['git-url'] ? `<a href="${rowData['git-url']}" target="_blank" aria-label="GitHub"><img src="img/github.svg" alt="GitHub" class="w-6 h-6 hover:scale-110 transition" /></a>` : ''}
-          </div>
-        `;
+      card.innerHTML = `
+        <img src="${imgSrc}" alt="${rowData.title}" class="w-full aspect-video object-cover mb-4 rounded cursor-pointer" onclick="openProjectDetail(${projectIndex})" />
+        <h3 class="text-lg font-bold mb-2 break-words line-clamp-2">${rowData.title}</h3>
 
-        projectGrid.appendChild(card);
-      }
-    });
-  }
+        <div class="flex items-center gap-4 mt-2">
+          ${rowData['youtube-url'] ? `<a href="${rowData['youtube-url']}" target="_blank" aria-label="YouTube"><img src="img/youtube.svg" alt="YouTube" class="w-6 h-6 hover:scale-110 transition" /></a>` : ''}
+          ${rowData['git-url'] ? `<a href="${rowData['git-url']}" target="_blank" aria-label="GitHub"><img src="img/github.svg" alt="GitHub" class="w-6 h-6 hover:scale-110 transition" /></a>` : ''}
+        </div>
+      `;
 
-  function openProjectDetail(index) {
-    const selected = projectDataList[index];
-    sessionStorage.setItem('selectedProject', JSON.stringify(selected));
-    window.open('project-detail.html', '_blank');
-  }
+      projectGrid.appendChild(card);
+    }
+  });
 
-  document.addEventListener('DOMContentLoaded', () => showCard('all'));
+  // Show total count in left sidebar
+  document.getElementById('project-count').textContent = `Total: ${count}`;
+}
+
+function openProjectDetail(index) {
+  const selected = projectDataList[index];
+  sessionStorage.setItem('selectedProject', JSON.stringify(selected));
+  window.open('project-detail.html', '_blank');
+}
+
+document.addEventListener('DOMContentLoaded', () => showCard('all'));
 </script>
+
 
 
 
