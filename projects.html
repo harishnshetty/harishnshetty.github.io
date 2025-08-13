@@ -179,7 +179,10 @@
   <!-- Vertical sidebar -->
  <aside id="sidebar-box" class="sticky top-24 flex flex-col items-center justify-center bg-white dark:bg-gray-800 rounded shadow p-4 mr-6 w-[100px] h-[300px] overflow-y-auto">
   <h2 id="card-title" class="text-2xl font-bold text-gray-800 dark:text-gray-100 whitespace-pre-line"></h2>
-  <p id="project-count" class="mt-4 text-red-600 font-bold">Total: 0</p>
+    <span class="text-gray-700 dark:text-gray-300 font-semibold mb-2">___</span>
+  <p id="project-count" class="mt-4 text-red-600 font-bold text-4xl">0</p>
+
+
 </aside>
   
 
@@ -362,7 +365,8 @@ async function fetchAndRenderProjects(filter) {
   });
 
   // Show total count in left sidebar
-  document.getElementById('project-count').textContent = `Total: ${count}`;
+ document.getElementById('project-count').textContent = count;
+
 }
 
 function openProjectDetail(index) {
