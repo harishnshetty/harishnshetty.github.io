@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Monitoring Script Generator with Config Editor</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col lg:flex-row items-center justify-center p-6">
 
@@ -106,126 +107,253 @@
     <div class="mt-8">
       <h2 class="text-xl font-bold mb-4">Prometheus and Grafana Installation Generator</h2>
       
+      <!-- Installation Type Selector -->
       <div class="mb-6">
-        <label class="flex items-center space-x-3 mb-3">
-          <input type="checkbox" id="installPrometheus" class="form-checkbox h-5 w-5 text-blue-600" checked>
-          <span class="text-gray-700 font-medium">Install Prometheus</span>
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="installationType">
+          Installation Type
         </label>
-        
-        <div id="prometheusOptions" class="ml-8 mb-4">
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="prometheusUrl">
-              Prometheus Download URL
-            </label>
-            <input type="text" id="prometheusUrl" 
-                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                   value="https://github.com/prometheus/prometheus/releases/download/v2.51.2/prometheus-2.51.2.linux-amd64.tar.gz">
-            <p class="text-xs text-gray-500 mt-1">You can find latest versions at <a href="https://prometheus.io/download/" class="text-blue-500" target="_blank">prometheus.io/download</a></p>
-          </div>
+        <select id="installationType" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <option value="system">System (On-prem/VMs)</option>
+          <option value="eks">Amazon EKS (Kubernetes)</option>
+        </select>
+      </div>
+
+      <!-- System Installation Options -->
+      <div id="systemOptions">
+        <div class="mb-6">
+          <label class="flex items-center space-x-3 mb-3">
+            <input type="checkbox" id="installPrometheus" class="form-checkbox h-5 w-5 text-blue-600" checked>
+            <span class="text-gray-700 font-medium">Install Prometheus</span>
+          </label>
           
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="prometheusPort">
-              Prometheus Web Port
-            </label>
-            <input type="number" id="prometheusPort" value="9090"
-                   class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <div id="prometheusOptions" class="ml-8 mb-4">
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="prometheusUrl">
+                Prometheus Download URL
+              </label>
+              <input type="text" id="prometheusUrl" 
+                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                     value="https://github.com/prometheus/prometheus/releases/download/v3.5.0/prometheus-3.5.0.linux-amd64.tar.gz">
+              <p class="text-xs text-gray-500 mt-1">You can find latest versions at <a href="https://prometheus.io/download/" class="text-blue-500" target="_blank">prometheus.io/download</a></p>
+            </div>
+            
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="prometheusPort">
+                Prometheus Web Port
+              </label>
+              <input type="number" id="prometheusPort" value="9090"
+                     class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
           </div>
+        </div>
+
+        <div class="mb-6">
+          <label class="flex items-center space-x-3 mb-3">
+            <input type="checkbox" id="addHostMonitoring" class="form-checkbox h-5 w-5 text-blue-600">
+            <span class="text-gray-700 font-medium">Add Host To Monitoring</span>
+          </label>
+          
+          <div id="hostMonitoringOptions" class="ml-8 mb-4 hidden">
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="hostJobName">
+                Job Name
+              </label>
+              <input type="text" id="hostJobName" value="node_exporter"
+                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="hostTargets">
+                Target Hosts (comma separated)
+              </label>
+              <input type="text" id="hostTargets" value="localhost:9100"
+                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+              <p class="text-xs text-gray-500 mt-1">Format: host1:port,host2:port (default port is 9100)</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-6">
+          <label class="flex items-center space-x-3 mb-3">
+            <input type="checkbox" id="installNodeExporter" class="form-checkbox h-5 w-5 text-blue-600">
+            <span class="text-gray-700 font-medium">Install Node Exporter</span>
+          </label>
+          
+          <div id="nodeExporterOptions" class="ml-8 mb-4 hidden">
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="nodeExporterUrl">
+                Node Exporter Download URL
+              </label>
+              <input type="text" id="nodeExporterUrl" 
+                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                     value="https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz">
+                     <p class="text-xs text-gray-500 mt-1">You can find latest versions at <a href="https://prometheus.io/download/" class="text-blue-500" target="_blank">prometheus.io/download</a></p>
+            </div>
+            
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="nodeExporterPort">
+                Node Exporter Port
+              </label>
+              <input type="number" id="nodeExporterPort" value="9100"
+                     class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-6">
+          <label class="flex items-center space-x-3 mb-3">
+            <input type="checkbox" id="installGrafana" class="form-checkbox h-5 w-5 text-blue-600">
+            <span class="text-gray-700 font-medium">Install Grafana</span>
+          </label>
+          
+          <div id="grafanaOptions" class="ml-8 mb-4 hidden">
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaPort">
+                Grafana Web Port
+              </label>
+              <input type="number" id="grafanaPort" value="3000"
+                     class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaAdminPassword">
+                Admin Password (min 8 chars)
+              </label>
+              <input type="password" id="grafanaAdminPassword" placeholder="Leave blank for default"
+                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-6">
+          <label class="flex items-center space-x-3 mb-3">
+            <input type="checkbox" id="enableService" class="form-checkbox h-5 w-5 text-blue-600" checked>
+            <span class="text-gray-700 font-medium">Enable as Systemd Service</span>
+          </label>
+        </div>
+        
+        <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="linuxDistro">
+            Linux Distribution
+          </label>
+          <select id="linuxDistro" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <option value="ubuntu">Ubuntu/Debian</option>
+            <option value="centos">CentOS/RHEL</option>
+            <option value="generic">Generic Linux</option>
+          </select>
         </div>
       </div>
 
-      <div class="mb-6">
-        <label class="flex items-center space-x-3 mb-3">
-          <input type="checkbox" id="addHostMonitoring" class="form-checkbox h-5 w-5 text-blue-600">
-          <span class="text-gray-700 font-medium">Add Host To Monitoring</span>
-        </label>
-        
-        <div id="hostMonitoringOptions" class="ml-8 mb-4 hidden">
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="hostJobName">
-              Job Name
-            </label>
-            <input type="text" id="hostJobName" value="node_exporter"
-                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-          </div>
+      <!-- EKS Installation Options -->
+      <div id="eksOptions" class="hidden">
+        <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="eksClusterName">
+            EKS Cluster Name
+          </label>
+          <input type="text" id="eksClusterName" placeholder="my-eks-cluster"
+                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="eksRegion">
+            AWS Region
+          </label>
+          <input type="text" id="eksRegion" placeholder="us-west-2"
+                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+
+        <div class="mb-6">
+          <label class="flex items-center space-x-3 mb-3">
+            <input type="checkbox" id="installPrometheusEKS" class="form-checkbox h-5 w-5 text-blue-600" checked>
+            <span class="text-gray-700 font-medium">Install Prometheus (via Helm)</span>
+          </label>
           
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="hostTargets">
-              Target Hosts (comma separated)
-            </label>
-            <input type="text" id="hostTargets" value="localhost:9100"
-                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            <p class="text-xs text-gray-500 mt-1">Format: host1:port,host2:port (default port is 9100)</p>
+          <div id="prometheusEksOptions" class="ml-8 mb-4">
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="prometheusEksNamespace">
+                Namespace
+              </label>
+              <input type="text" id="prometheusEksNamespace" value="monitoring"
+                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="prometheusEksStorageClass">
+                Storage Class
+              </label>
+              <input type="text" id="prometheusEksStorageClass" value="gp2"
+                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+              <p class="text-xs text-gray-500 mt-1">Use 'ebs-sc' for EBS, 'efs-sc' for EFS, or your custom storage class</p>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <div class="mb-6">
-        <label class="flex items-center space-x-3 mb-3">
-          <input type="checkbox" id="installNodeExporter" class="form-checkbox h-5 w-5 text-blue-600">
-          <span class="text-gray-700 font-medium">Install Node Exporter</span>
-        </label>
-        
-        <div id="nodeExporterOptions" class="ml-8 mb-4 hidden">
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="nodeExporterUrl">
-              Node Exporter Download URL
-            </label>
-            <input type="text" id="nodeExporterUrl" 
-                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                   value="https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz">
-          </div>
+
+        <div class="mb-6">
+          <label class="flex items-center space-x-3 mb-3">
+            <input type="checkbox" id="installGrafanaEKS" class="form-checkbox h-5 w-5 text-blue-600" checked>
+            <span class="text-gray-700 font-medium">Install Grafana (via Helm)</span>
+          </label>
           
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="nodeExporterPort">
-              Node Exporter Port
-            </label>
-            <input type="number" id="nodeExporterPort" value="9100"
-                   class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <div id="grafanaEksOptions" class="ml-8 mb-4">
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaEksNamespace">
+                Namespace
+              </label>
+              <input type="text" id="grafanaEksNamespace" value="monitoring"
+                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaEksAdminPassword">
+                Admin Password (min 8 chars)
+              </label>
+              <input type="password" id="grafanaEksAdminPassword" placeholder="Leave blank for default"
+                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaEksIngressHost">
+                Ingress Host (optional)
+              </label>
+              <input type="text" id="grafanaEksIngressHost" placeholder="grafana.example.com"
+                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+              <p class="text-xs text-gray-500 mt-1">Leave blank if not using ingress</p>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <div class="mb-6">
-        <label class="flex items-center space-x-3 mb-3">
-          <input type="checkbox" id="installGrafana" class="form-checkbox h-5 w-5 text-blue-600">
-          <span class="text-gray-700 font-medium">Install Grafana</span>
-        </label>
-        
-        <div id="grafanaOptions" class="ml-8 mb-4 hidden">
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaPort">
-              Grafana Web Port
-            </label>
-            <input type="number" id="grafanaPort" value="3000"
-                   class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-          </div>
+
+        <div class="mb-6">
+          <label class="flex items-center space-x-3 mb-3">
+            <input type="checkbox" id="enableEksMonitoring" class="form-checkbox h-5 w-5 text-blue-600" checked>
+            <span class="text-gray-700 font-medium">Enable EKS Cluster Monitoring</span>
+          </label>
           
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaAdminPassword">
-              Admin Password (min 8 chars)
-            </label>
-            <input type="password" id="grafanaAdminPassword" placeholder="Leave blank for default"
-                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <div id="eksMonitoringOptions" class="ml-8 mb-4">
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="eksMetricsTypes">
+                Metrics to Collect
+              </label>
+              <div class="space-y-2">
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600" checked>
+                  <span class="ml-2 text-gray-700">Cluster Metrics (CPU/Memory/Disk)</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600" checked>
+                  <span class="ml-2 text-gray-700">Node Metrics</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600" checked>
+                  <span class="ml-2 text-gray-700">Pod Metrics</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
+                  <span class="ml-2 text-gray-700">Custom Metrics</span>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <div class="mb-6">
-        <label class="flex items-center space-x-3 mb-3">
-          <input type="checkbox" id="enableService" class="form-checkbox h-5 w-5 text-blue-600" checked>
-          <span class="text-gray-700 font-medium">Enable as Systemd Service</span>
-        </label>
-      </div>
-      
-      <div class="mb-6">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="linuxDistro">
-          Linux Distribution
-        </label>
-        <select id="linuxDistro" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-          <option value="ubuntu">Ubuntu/Debian</option>
-          <option value="centos">CentOS/RHEL</option>
-          <option value="generic">Generic Linux</option>
-        </select>
       </div>
       
       <button id="generateScript" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
@@ -343,28 +471,39 @@ sudo systemctl restart prometheus`;
 # Generated by Harish N Shetty's Monitoring Generator https://harishnshetty.github.io/tools/
 # WARNING: Review this script before running on production systems\n\n`;
 
-      // Only create Prometheus user/directories if Prometheus or Node Exporter is being installed
-      if (installPrometheus || installNodeExporter) {
-        script += `# Create user and directories for Prometheus/Node Exporter
-sudo useradd --no-create-home --shell /bin/false prometheus
-sudo mkdir -p /etc/prometheus /var/lib/prometheus\n\n`;
-      }
+ 
 
-      if (installPrometheus) {
+         if (installPrometheus) {
         script += `
 # Install Prometheus
 echo "Installing Prometheus from ${prometheusUrl}"
+
+# Create dedicated prometheus user and group
+sudo useradd --system --no-create-home --shell /bin/false prometheus
+sudo mkdir -p /etc/prometheus /var/lib/prometheus
+sudo chown prometheus:prometheus /var/lib/prometheus
+
+# Download and extract
 wget ${prometheusUrl} -O /tmp/prometheus.tar.gz
 tar xvf /tmp/prometheus.tar.gz -C /tmp
-sudo mv /tmp/prometheus-*/prometheus /tmp/prometheus-*/promtool /usr/local/bin/
-sudo mv /tmp/prometheus-*/prometheus.yml /etc/prometheus/
-sudo mv /tmp/prometheus-*/consoles /tmp/prometheus-*/console_libraries /etc/prometheus/
-sudo chown -R prometheus:prometheus /etc/prometheus /var/lib/prometheus
+PROM_DIR=$(find /tmp -maxdepth 1 -type d -name "prometheus-*")
 
-# Create systemd service
+# Move binaries and set permissions
+sudo cp $PROM_DIR/prometheus $PROM_DIR/promtool /usr/local/bin/
+sudo chown prometheus:prometheus /usr/local/bin/prometheus /usr/local/bin/promtool
+sudo chmod 755 /usr/local/bin/prometheus /usr/local/bin/promtool
+
+# Move config files and set permissions
+sudo cp -r $PROM_DIR/consoles $PROM_DIR/console_libraries /etc/prometheus/
+sudo cp $PROM_DIR/prometheus.yml /etc/prometheus/
+sudo chown -R prometheus:prometheus /etc/prometheus
+sudo chmod 644 /etc/prometheus/prometheus.yml
+
+# Create systemd service with proper security
 cat <<EOF | sudo tee /etc/systemd/system/prometheus.service
 [Unit]
-Description=Prometheus
+Description=Prometheus Monitoring System
+Documentation=https://prometheus.io/docs/introduction/overview/
 Wants=network-online.target
 After=network-online.target
 
@@ -372,52 +511,86 @@ After=network-online.target
 User=prometheus
 Group=prometheus
 Type=simple
+Restart=always
+RestartSec=3
 ExecStart=/usr/local/bin/prometheus \\
-    --config.file /etc/prometheus/prometheus.yml \\
-    --storage.tsdb.path /var/lib/prometheus/ \\
-    --web.listen-address=:${prometheusPort}
+  --config.file=/etc/prometheus/prometheus.yml \\
+  --storage.tsdb.path=/var/lib/prometheus \\
+  --web.console.templates=/etc/prometheus/consoles \\
+  --web.console.libraries=/etc/prometheus/console_libraries \\
+  --web.listen-address=0.0.0.0:${prometheusPort} \\
+  --web.enable-lifecycle
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
+# Set proper permissions for the service file
+sudo chmod 644 /etc/systemd/system/prometheus.service
+
+# Enable and start service
 sudo systemctl daemon-reload
 sudo systemctl enable prometheus
 sudo systemctl start prometheus
 `;
-      }
+    }
 
-      if (installNodeExporter) {
+    if (installNodeExporter) {
         script += `
 # Install Node Exporter
 echo "Installing Node Exporter from ${nodeExporterUrl}"
+
+# Create dedicated node_exporter user and group
+sudo useradd --system --no-create-home --shell /bin/false node_exporter
+
+# Download and extract
 wget ${nodeExporterUrl} -O /tmp/node_exporter.tar.gz
 tar xvf /tmp/node_exporter.tar.gz -C /tmp
-sudo mv /tmp/node_exporter-*/node_exporter /usr/local/bin/
+NODE_EXP_DIR=$(find /tmp -maxdepth 1 -type d -name "node_exporter-*")
 
-# Create systemd service
+# Move binary and set permissions
+sudo cp $NODE_EXP_DIR/node_exporter /usr/local/bin/
+sudo chown node_exporter:node_exporter /usr/local/bin/node_exporter
+sudo chmod 755 /usr/local/bin/node_exporter
+
+# Create systemd service with proper security
 cat <<EOF | sudo tee /etc/systemd/system/node_exporter.service
 [Unit]
 Description=Node Exporter
+Documentation=https://prometheus.io/docs/guides/node-exporter/
 Wants=network-online.target
 After=network-online.target
 
 [Service]
-User=prometheus
-Group=prometheus
+User=node_exporter
+Group=node_exporter
 Type=simple
-ExecStart=/usr/local/bin/node_exporter --web.listen-address=:${nodeExporterPort}
+Restart=always
+RestartSec=3
+ExecStart=/usr/local/bin/node_exporter \\
+  --collector.logind \\
+  --web.listen-address=:${nodeExporterPort}
+
+# Security hardening
+ProtectSystem=full
+PrivateTmp=yes
+PrivateDevices=yes
+NoNewPrivileges=yes
+ProtectHome=read-only
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
+# Set proper permissions for the service file
+sudo chmod 644 /etc/systemd/system/node_exporter.service
+
+# Enable and start service
 sudo systemctl daemon-reload
 sudo systemctl enable node_exporter
 sudo systemctl start node_exporter
 `;
-      }
-
+    }
       if (installGrafana) {
         script += `
 # Install Grafana
@@ -467,6 +640,8 @@ fi
 
       script += `echo "Installation complete!"\n`;
 
+      script += `echo "-----------------------------------------\n`;
+
       if (installPrometheus) {
         script += `echo "Prometheus is running on port ${prometheusPort}"\n`;
       }
@@ -482,28 +657,33 @@ fi
       }
 
       if (installGrafana) {
-        script += `
+  script += `
+# Print Grafana Post-Installation Notes
+cat <<'EOF'
+# +++++++++++++++++++++++++++++++++++++++ +++++++++++++++++++++++++++++++
 # Grafana Post-Installation Notes:
 - Access Grafana dashboard at: http://your-server-ip:${grafanaPort}
 - Default username: admin
 - Default password: ${grafanaAdminPassword || 'admin'} (change this after first login)`;
-        
-        if (installPrometheus) {
-          script += `
+
+  if (installPrometheus) {
+    script += `
 - To add Prometheus as data source:
   1. Go to Configuration > Data Sources
   2. Add Prometheus
   3. Set URL to: http://localhost:${prometheusPort}
   4. Click Save & Test`;
-        }
+  }
 
-        script += `
+  script += `
 # Recommended next steps:
 - Import dashboard ID 1860 for Node Exporter metrics
 - Set up authentication and users
 - Configure alerts and notifications
+EOF
 `;
-      }
+}
+
 
       document.getElementById('generatedScript').textContent = script;
       document.getElementById('scriptOutput').classList.remove('hidden');
@@ -520,6 +700,230 @@ fi
     });
   </script>
 
+
+<script>
+    // Toggle between System and EKS options
+    document.getElementById('installationType').addEventListener('change', function() {
+      const isEks = this.value === 'eks';
+      document.getElementById('systemOptions').classList.toggle('hidden', isEks);
+      document.getElementById('eksOptions').classList.toggle('hidden', !isEks);
+    });
+
+    // Your existing toggle functions for options...
+
+    // Generate script button
+    document.getElementById('generateScript').addEventListener('click', function() {
+      const installationType = document.getElementById('installationType').value;
+      
+      if (installationType === 'system') {
+        generateSystemScript();
+      } else {
+        generateEksScript();
+      }
+    });
+
+    function generateSystemScript() {
+      // Your existing system script generation logic
+    }
+
+    function generateEksScript() {
+      const clusterName = document.getElementById('eksClusterName').value || 'my-eks-cluster';
+      const region = document.getElementById('eksRegion').value || 'us-west-2';
+      const installPrometheus = document.getElementById('installPrometheusEKS').checked;
+      const prometheusNamespace = document.getElementById('prometheusEksNamespace').value || 'monitoring';
+      const prometheusStorageClass = document.getElementById('prometheusEksStorageClass').value || 'gp2';
+      const installGrafana = document.getElementById('installGrafanaEKS').checked;
+      const grafanaNamespace = document.getElementById('grafanaEksNamespace').value || 'monitoring';
+      const grafanaAdminPassword = document.getElementById('grafanaEksAdminPassword').value;
+      const grafanaIngressHost = document.getElementById('grafanaEksIngressHost').value;
+      const enableEksMonitoring = document.getElementById('enableEksMonitoring').checked;
+
+      let script = `#!/bin/bash
+# EKS Monitoring Installation Script
+# Generated by Harish N Shetty's Monitoring Generator https://harishnshetty.github.io/tools/
+# WARNING: Review this script before running on production systems
+
+# Prerequisites:
+# 1. AWS CLI configured with proper permissions
+# 2. kubectl configured to access your EKS cluster
+# 3. Helm installed (v3.x)\n\n`;
+
+      script += `# Set EKS cluster context
+aws eks --region ${region} update-kubeconfig --name ${clusterName}\n\n`;
+
+      if (installPrometheus) {
+        script += `# Install Prometheus using Helm
+echo "Installing Prometheus in namespace ${prometheusNamespace}"
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+cat <<EOF > prometheus-values.yaml
+alertmanager:
+  enabled: false
+server:
+  persistentVolume:
+    storageClass: ${prometheusStorageClass}
+  resources:
+    limits:
+      cpu: 1
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      memory: 1Gi
+pushgateway:
+  enabled: false
+EOF
+
+helm install prometheus prometheus-community/prometheus \\
+  --namespace ${prometheusNamespace} \\
+  --create-namespace \\
+  --values prometheus-values.yaml
+
+# Create Prometheus service monitor for EKS metrics
+kubectl apply -f - <<EOF
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: eks-monitor
+  namespace: ${prometheusNamespace}
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      k8s-app: kube-state-metrics
+  namespaceSelector:
+    matchNames:
+    - kube-system
+  endpoints:
+  - port: http-metrics
+    interval: 30s
+EOF\n\n`;
+      }
+
+      if (installGrafana) {
+        script += `# Install Grafana using Helm
+echo "Installing Grafana in namespace ${grafanaNamespace}"
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+
+cat <<EOF > grafana-values.yaml
+adminPassword: ${grafanaAdminPassword || 'admin'}
+persistence:
+  enabled: true
+  storageClassName: ${prometheusStorageClass}
+service:
+  type: LoadBalancer
+${grafanaIngressHost ? `
+ingress:
+  enabled: true
+  hosts:
+    - ${grafanaIngressHost}
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+` : ''}
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+    - name: Prometheus
+      type: prometheus
+      url: http://prometheus-server.${prometheusNamespace}.svc.cluster.local
+      access: proxy
+      isDefault: true
+EOF
+
+helm install grafana grafana/grafana \\
+  --namespace ${grafanaNamespace} \\
+  --create-namespace \\
+  --values grafana-values.yaml\n\n`;
+      }
+
+      if (enableEksMonitoring) {
+        script += `# Enable EKS control plane metrics
+echo "Enabling EKS control plane metrics"
+aws eks update-cluster-config \\
+  --region ${region} \\
+  --name ${clusterName} \\
+  --resources-vpc-config '{}' \\
+  --logging '{"clusterLogging":[{"types":["api","audit","authenticator","controllerManager","scheduler"],"enabled":true}]}'
+
+# Install kube-state-metrics for cluster metrics
+kubectl apply -f https://github.com/kubernetes/kube-state-metrics/releases/latest/download/kubernetes-kube-state-metrics-service.yaml
+kubectl apply -f https://github.com/kubernetes/kube-state-metrics/releases/latest/download/kubernetes-kube-state-metrics-deployment.yaml
+
+# Install node exporter daemonset for node metrics
+kubectl apply -f - <<EOF
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-exporter
+  namespace: ${prometheusNamespace}
+  labels:
+    k8s-app: node-exporter
+spec:
+  selector:
+    matchLabels:
+      k8s-app: node-exporter
+  template:
+    metadata:
+      labels:
+        k8s-app: node-exporter
+    spec:
+      containers:
+      - image: prom/node-exporter:v1.3.1
+        name: node-exporter
+        ports:
+        - containerPort: 9100
+          name: metrics
+      hostNetwork: true
+      hostPID: true
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+EOF\n\n`;
+      }
+
+      script += `echo "Installation complete!"\n\n`;
+
+      if (installPrometheus) {
+        script += `echo "Prometheus is installed in namespace ${prometheusNamespace}"\n`;
+        script += `echo "To access Prometheus UI, run: kubectl port-forward -n ${prometheusNamespace} svc/prometheus-server 9090:80\n`;
+      }
+
+      if (installGrafana) {
+        script += `echo "Grafana is installed in namespace ${grafanaNamespace}"\n`;
+        if (grafanaIngressHost) {
+          script += `echo "Grafana will be available at: http${grafanaIngressHost ? 's' : ''}://${grafanaIngressHost}"\n`;
+        } else {
+          script += `echo "To get Grafana URL, run: kubectl get svc -n ${grafanaNamespace} grafana -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'\n`;
+        }
+        script += `echo "Default credentials: admin:${grafanaAdminPassword || 'admin'}"\n`;
+      }
+
+      script += `\n# Post-Installation Notes:
+- To import dashboards in Grafana:
+  1. Connect to Grafana
+  2. Go to Dashboards > Manage
+  3. Import the following dashboards:
+     - Kubernetes Cluster Monitoring: 315
+     - Node Exporter Full: 1860
+     - EKS Control Plane: 12006
+
+- For alerts, configure Alertmanager or use Grafana alerting
+- Consider setting up persistent storage for long-term metrics retention
+- Monitor resource usage and scale Prometheus/Grafana as needed\n`;
+
+      document.getElementById('generatedScript').textContent = script;
+      document.getElementById('scriptOutput').classList.remove('hidden');
+    }
+
+    // Your existing copy functionality...
+  </script>
   <!-- message update -->
   <script>
     async function fetchLatestUpdate() {
@@ -557,5 +961,8 @@ fi
       setInterval(fetchLatestUpdate, 5 * 60 * 1000); // Refresh every 5 minutes
     });
   </script>
+
+
+
 </body>
 </html>
