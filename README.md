@@ -36,7 +36,7 @@
 <p float="left">
   <a href="mailto:harishn662@example.com" target="_blank"><img src="https://img.icons8.com/ios-glyphs/90/gmail.png" height="40"/></a>
   <a href="https://github.com/harishnshetty" target="_blank"><img src="https://img.icons8.com/ios-filled/90/github.png" height="40"/></a>
-  <a href="https://www.linkedin.com/in/harish-n-shetty/" target="_blank"><img src="https://img.icons8.com/ios-filled/90/linkedin.png" height="40"/></a>
+  <a href="https://www.linkedin.com/in/harishnshetty/" target="_blank"><img src="https://img.icons8.com/ios-filled/90/linkedin.png" height="40"/></a>
   <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank"><img src="https://img.icons8.com/ios-filled/90/youtube-play.png" height="40"/></a>
   <a href="https://x.com/devopswitharish?t=SWH2zb-b8Dh4AGEm6tpwGg&s=09" target="_blank"><img src="https://img.icons8.com/ios-filled/90/twitterx--v2.png" height="40"/></a>
   <a href="https://www.instagram.com/devopswithharish?igsh=YWc5ZzNmdzBzNjI4" target="_blank"><img src="https://img.icons8.com/ios-filled/90/instagram-new.png" height="40"/></a>
