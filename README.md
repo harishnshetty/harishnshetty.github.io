@@ -34,7 +34,7 @@
 ### 📫 Connect With Me
 
 <p float="left">
-  <a href="mailto:harishn662@example.com" target="_blank"><img src="https://img.icons8.com/ios-glyphs/90/gmail.png" height="40"/></a>
+  <a href="mailto:harishn662@gmail.com" target="_blank"><img src="https://img.icons8.com/ios-glyphs/90/gmail.png" height="40"/></a>
   <a href="https://github.com/harishnshetty" target="_blank"><img src="https://img.icons8.com/ios-filled/90/github.png" height="40"/></a>
   <a href="https://www.linkedin.com/in/harishnshetty/" target="_blank"><img src="https://img.icons8.com/ios-filled/90/linkedin.png" height="40"/></a>
   <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank"><img src="https://img.icons8.com/ios-filled/90/youtube-play.png" height="40"/></a>
