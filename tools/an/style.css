@@ -1,67 +1,527 @@
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-.section {
-  margin-bottom: 20px;
-}
-
-textarea {
-  width: 100%;
-  height: 300px;
-  font-family: monospace;
-  font-size: 14px;
-  padding: 10px;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-button {
-  padding: 10px 20px;
-  margin-top: 10px;
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s, color 0.3s;
 }
 
-.copy-btn {
-  cursor: pointer;
-  font-size: 1.2em;
-  background: none;
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* ── Dark mode ── */
+body.dark {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+body.dark .card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+body.dark .sidebar {
+  background: #1e293b !important;
+}
+
+body.dark select,
+body.dark input[type="text"],
+body.dark input[type="number"],
+body.dark textarea {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+
+body.dark label {
+  color: #cbd5e1;
+}
+
+body.dark .group-header {
+  background: #0f172a !important;
+  color: #7dd3fc !important;
+}
+
+body.dark #appDropdownMenu {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+body.dark .dropdown-item:hover {
+  background: #0f172a !important;
+}
+
+body.dark #output {
+  background: #050d1a;
+  border-color: #1e3a5f;
+}
+
+body.dark .section-label {
+  color: #94a3b8;
+}
+
+body.dark .divider {
+  border-color: #334155;
+}
+
+body.dark .update-bar {
+  background: #1e3a5f;
+  color: #93c5fd;
+}
+
+/* ── Layout ── */
+.sidebar {
+  width: 280px;
+  min-width: 280px;
+  background: #f8fafc;
+  border-right: 1px solid #e2e8f0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 20;
+  transition: background 0.3s;
+}
+
+.main-content {
+  margin-left: 280px;
+  padding: 24px;
+  max-width: 960px;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+/* ── Card ── */
+.card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
   border: none;
-  margin-left: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
 }
 
-.copy-btn:hover {
-  color: green;
+.btn:active {
+  transform: scale(0.97);
 }
 
-.app-options {
+.btn-primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.btn-success {
+  background: #16a34a;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background: #15803d;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
+}
+
+.btn-warning {
+  background: #d97706;
+  color: #fff;
+}
+
+.btn-warning:hover {
+  background: #b45309;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  color: #374151;
+}
+
+body.dark .btn-ghost {
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+.btn-ghost:hover {
+  background: #f1f5f9;
+}
+
+body.dark .btn-ghost:hover {
+  background: #1e3a5f;
+}
+
+/* ── Form controls ── */
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #374151;
+}
+
+.form-select,
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  background: #fff;
+  color: #111827;
+}
+
+.form-select:focus,
+.form-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-checkbox {
+  width: 15px;
+  height: 15px;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+/* ── Dropdown ── */
+.dropdown-wrap {
+  position: relative;
+}
+
+#appDropdownMenu {
+  position: absolute;
+  z-index: 30;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  max-height: 280px;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   display: none;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  padding-left: 20px;
-  border-left: 2px solid #ccc;
+  margin-top: 4px;
 }
-select#appSelect {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  width: 250px;
-  height: auto;
-  margin-top: 5px;
-  font-size: 16px;
-  padding: 5px;
+
+#appDropdownMenu.open {
+  display: block;
 }
-@media (max-width: 600px) {
-  textarea {
-    height: 200px;
+
+.group-header {
+  padding: 5px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #2563eb;
+  background: #eff6ff;
+  position: sticky;
+  top: 0;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.dropdown-item:hover {
+  background: #f0f9ff;
+}
+
+/* ── Checkbox groups ── */
+.check-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+
+.check-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* ── YAML output ── */
+#output {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
+  white-space: pre;
+  overflow-x: auto;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 180px;
+  transition: background 0.3s;
+}
+
+.yaml-key {
+  color: #7c3aed;
+}
+
+.yaml-str {
+  color: #059669;
+}
+
+.yaml-bool {
+  color: #d97706;
+}
+
+.yaml-num {
+  color: #dc2626;
+}
+
+.yaml-comment {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.yaml-dash {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+body.dark .yaml-key {
+  color: #a78bfa;
+}
+
+body.dark .yaml-str {
+  color: #34d399;
+}
+
+body.dark .yaml-bool {
+  color: #fbbf24;
+}
+
+body.dark .yaml-num {
+  color: #f87171;
+}
+
+body.dark .yaml-comment {
+  color: #6b7280;
+}
+
+body.dark .yaml-dash {
+  color: #f87171;
+}
+
+/* ── Section label ── */
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px dashed #e2e8f0;
+  margin: 14px 0;
+}
+
+/* ── Update bar ── */
+.update-bar {
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 14px;
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background: #16a34a;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
   }
-  select#appSelect {
-    width: 100%;
-  }
-  button {
-    width: 100%;
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
-module.exports = {
-  darkMode: 'class',
-  // ...rest
-};
+
+/* ── Pill badge ── */
+.badge {
+  display: inline-block;
+  padding: 1px 9px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-green {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.badge-blue {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.badge-gray {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+body.dark .badge-green {
+  background: #14532d;
+  color: #86efac;
+}
+
+body.dark .badge-blue {
+  background: #1e3a5f;
+  color: #93c5fd;
+}
+
+/* ── Toggle switch ── */
+.toggle {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  display: inline-block;
+}
+
+.toggle input {
+  display: none;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #d1d5db;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: 0.2s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle input:checked+.toggle-slider {
+  background: #2563eb;
+}
+
+.toggle input:checked+.toggle-slider::before {
+  transform: translateX(16px);
+}
+
+/* ── Dark mode toggle button ── */
+#darkToggle {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 50;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s;
+}
+
+body.dark #darkToggle {
+  background: #1e293b;
+  border-color: #334155;
+}
