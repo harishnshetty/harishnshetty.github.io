@@ -35,6 +35,43 @@ function showToast(msg, color = '#16a34a') {
   setTimeout(() => t.remove(), 2800);
 }
 
+// ── App search / filter ────────────────────────────────────
+window.filterAppDropdown = function (query) {
+  const q = query.trim().toLowerCase();
+  const menu = document.getElementById('appDropdownMenu');
+  if (!menu) return;
+
+  const items = menu.querySelectorAll('label.dropdown-item');
+  const groups = menu.querySelectorAll('.group-header');
+  let totalVisible = 0;
+
+  // Show/hide each item based on query match against label text + value
+  items.forEach(label => {
+    const text = label.textContent.toLowerCase();
+    const val = (label.querySelector('input')?.value || '').toLowerCase();
+    const show = !q || text.includes(q) || val.includes(q);
+    label.style.display = show ? '' : 'none';
+    if (show) totalVisible++;
+  });
+
+  // Hide group headers that have no visible items below them
+  groups.forEach(header => {
+    let sibling = header.nextElementSibling;
+    let hasVisible = false;
+    while (sibling && !sibling.classList.contains('group-header')) {
+      if (sibling.tagName === 'LABEL' && sibling.style.display !== 'none') {
+        hasVisible = true; break;
+      }
+      sibling = sibling.nextElementSibling;
+    }
+    header.style.display = hasVisible ? '' : 'none';
+  });
+
+  // No-results indicator
+  const noRes = document.getElementById('appNoResults');
+  if (noRes) noRes.style.display = totalVisible === 0 ? '' : 'none';
+};
+
 // ── Dropdown toggle ────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('appDropdownButton');
@@ -43,7 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btn.addEventListener('click', e => { e.stopPropagation(); menu.classList.toggle('open'); });
   document.addEventListener('click', e => {
-    if (!btn.contains(e.target) && !menu.contains(e.target)) menu.classList.remove('open');
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      // Clear search and reset visibility when dropdown is closed
+      const searchInput = document.getElementById('appSearch');
+      if (searchInput && searchInput.value) {
+        searchInput.value = '';
+        filterAppDropdown('');
+      }
+    }
   });
 
   document.querySelectorAll('.app-checkbox').forEach(cb => {
@@ -263,9 +308,37 @@ const pkgNames = {
   git: { ubuntu: 'git', redhat: 'git', amazon: 'git', alpine: 'git' },
   nodejs: { ubuntu: 'nodejs', redhat: 'nodejs', amazon: 'nodejs', alpine: 'nodejs' },
   jenkins: { ubuntu: 'jenkins', redhat: 'jenkins', amazon: 'jenkins', alpine: 'jenkins' },
-  sonarqube: { ubuntu: 'sonarqube', redhat: 'sonarqube', amazon: 'sonarqube', alpine: 'sonarqube' },
+  sonarqube: { ubuntu: 'sonarqube', redhat: 'sonarqube', amazon: 'sonarqube' },
   elasticsearch: { ubuntu: 'elasticsearch', redhat: 'elasticsearch', amazon: 'elasticsearch' },
   kibana: { ubuntu: 'kibana', redhat: 'kibana', amazon: 'kibana' },
+  // Kubernetes tools
+  kubectl: { ubuntu: 'kubectl', redhat: 'kubectl', amazon: 'kubectl', alpine: 'kubectl' },
+  helm: { ubuntu: 'helm', redhat: 'helm', amazon: 'helm', alpine: 'helm' },
+  eksctl: { ubuntu: 'eksctl', redhat: 'eksctl', amazon: 'eksctl' },        // binary via curl
+  k9s: { ubuntu: 'k9s', redhat: 'k9s', amazon: 'k9s' },           // binary via curl
+  minikube: { ubuntu: 'minikube', redhat: 'minikube', amazon: 'minikube' },
+  kind: { ubuntu: 'kind', redhat: 'kind', amazon: 'kind' },          // binary via curl
+  kustomize: { ubuntu: 'kustomize', redhat: 'kustomize', amazon: 'kustomize' },     // binary via curl
+  argocd: { ubuntu: 'argocd', redhat: 'argocd', amazon: 'argocd' },        // binary via curl
+  fluxcd: { ubuntu: 'flux', redhat: 'flux', amazon: 'flux' },          // binary via curl
+  // Cloud CLI
+  'aws-cli': { ubuntu: 'awscli', debian: 'awscli', redhat: 'awscli', amazon: 'awscli', alpine: 'aws-cli' },
+  'azure-cli': { ubuntu: 'azure-cli', redhat: 'azure-cli', amazon: 'azure-cli' },
+  gcloud: { ubuntu: 'google-cloud-cli', redhat: 'google-cloud-sdk', amazon: 'google-cloud-sdk' },
+  // IaC
+  packer: { ubuntu: 'packer', redhat: 'packer', amazon: 'packer' },
+  nomad: { ubuntu: 'nomad', redhat: 'nomad', amazon: 'nomad' },
+  consul: { ubuntu: 'consul', redhat: 'consul', amazon: 'consul' },
+  pulumi: { ubuntu: 'pulumi', redhat: 'pulumi', amazon: 'pulumi' },
+  // Security
+  trivy: { ubuntu: 'trivy', redhat: 'trivy', amazon: 'trivy' },
+  falco: { ubuntu: 'falco', redhat: 'falco', amazon: 'falco' },
+  certbot: { ubuntu: 'certbot', redhat: 'certbot', amazon: 'certbot', alpine: 'certbot' },
+  // Web / Proxy
+  haproxy: { ubuntu: 'haproxy', redhat: 'haproxy', amazon: 'haproxy', alpine: 'haproxy' },
+  traefik: { ubuntu: 'traefik', redhat: 'traefik', amazon: 'traefik' },       // binary/docker
+  caddy: { ubuntu: 'caddy', redhat: 'caddy', amazon: 'caddy', alpine: 'caddy' },
+  keepalived: { ubuntu: 'keepalived', redhat: 'keepalived', amazon: 'keepalived', alpine: 'keepalived' },
 };
 
 function resolvePackageName(os, app) {
@@ -274,13 +347,24 @@ function resolvePackageName(os, app) {
 
 // Service names (sometimes differ from package)
 const serviceNames = {
-  apache2: 'apache2', httpd: 'httpd', mysql: 'mysql', mariadb: 'mariadb',
-  postgresql: 'postgresql', mongodb: 'mongod', redis: 'redis',
-  prometheus: 'prometheus', grafana: 'grafana-server', jenkins: 'jenkins',
-  elasticsearch: 'elasticsearch', kibana: 'kibana', zabbix: 'zabbix-agent',
-  sonarqube: 'sonarqube', docker: 'docker', vault: 'vault',
-  nexus: 'nexus', node_exporter: 'node_exporter', alertmanager: 'alertmanager',
-  logstash: 'logstash',
+  apache2: 'apache2', httpd: 'httpd', mysql: 'mysql',
+  mariadb: 'mariadb', postgresql: 'postgresql', mongodb: 'mongod',
+  redis: 'redis', prometheus: 'prometheus', grafana: 'grafana-server',
+  jenkins: 'jenkins', elasticsearch: 'elasticsearch', kibana: 'kibana',
+  'zabbix-agent': 'zabbix-agent', sonarqube: 'sonarqube', docker: 'docker',
+  vault: 'vault', nexus: 'nexus', node_exporter: 'node_exporter',
+  alertmanager: 'alertmanager', logstash: 'logstash',
+  // Kubernetes (typically no daemon service — CLI tools)
+  kubectl: null, helm: null, eksctl: null, k9s: null, minikube: 'minikube',
+  kind: null, kustomize: null, argocd: 'argocd-server', fluxcd: null,
+  // Cloud CLI (no daemon)
+  'aws-cli': null, 'azure-cli': null, gcloud: null,
+  // IaC
+  packer: null, pulumi: null, consul: 'consul', nomad: 'nomad', vault: 'vault',
+  // Security
+  trivy: null, falco: 'falco', certbot: 'certbot',
+  // Web / Proxy
+  haproxy: 'haproxy', traefik: 'traefik', caddy: 'caddy', keepalived: 'keepalived',
 };
 function svcName(app) { return serviceNames[app] || app; }
 
@@ -555,8 +639,10 @@ window.generateYAML = function () {
   const out = document.getElementById('output');
   if (out) {
     out.innerHTML = syntaxHighlight(yaml);
+    out.dataset.raw = yaml;
   }
 };
+
 
 // ── YAML syntax highlighting ───────────────────────────────
 function syntaxHighlight(text) {
@@ -587,19 +673,78 @@ function syntaxHighlight(text) {
 
 // ── Copy / Download / Clear ────────────────────────────────
 window.copyYAML = function () {
-  const text = document.getElementById('output')?.innerText;
+  const out = document.getElementById('output');
+  const text = out?.dataset.raw || out?.innerText;
   if (!text) { showToast('⚠️ Nothing to copy', '#d97706'); return; }
   navigator.clipboard.writeText(text).then(() => showToast('✅ YAML copied!')).catch(() => showToast('❌ Copy failed', '#dc2626'));
 };
 
-window.downloadYAML = function () {
-  const text = document.getElementById('output')?.innerText;
-  if (!text) { showToast('⚠️ Nothing to download', '#d97706'); return; }
+window.downloadYAML = async function () {
+  const out = document.getElementById('output');
+  const yaml = out?.dataset.raw || out?.innerText;
+  if (!yaml) { showToast('⚠️ Nothing to download', '#d97706'); return; }
+
   const name = document.getElementById('downloadName')?.value?.trim() || 'playbook';
-  const blob = new Blob([text], { type: 'text/yaml' });
+  const os = document.getElementById('os')?.value || 'ubuntu';
+  const apps = getSelectedApps();
+  const actions = [...document.querySelectorAll('.action:checked')].map(e => e.value);
+  const hostsVal = document.getElementById('hostsInput')?.value?.trim() || 'all';
+
+  if (apps.length === 0 || typeof JSZip === 'undefined') {
+    // ── plain .yml fallback ────────────────────────────────
+    const blob = new Blob([yaml], { type: 'text/yaml' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = `${name}.yml`; a.click();
+    showToast('⬇️ Downloaded!');
+    return;
+  }
+
+  // ── FULL PROJECT STRUCTURE ZIP ─────────────────────────────
+  const checkedDirs = [...document.querySelectorAll('.role-file:checked')].map(c => c.value);
+  const dirs = checkedDirs.length
+    ? checkedDirs
+    : ['tasks', 'handlers', 'defaults', 'vars', 'files', 'templates', 'meta', 'tests'];
+
+  const zip = new JSZip();
+  const zipRoot = zip.folder(name);
+  const rolesFolder = zipRoot.folder('roles');
+  const roleNameList = [];
+
+  apps.forEach(app => {
+    const appSuffix = actions.includes('remove') ? 'remove' : 'setup';
+    const roleName = `${app.replace(/-/g, '_')}_${appSuffix}`;
+    roleNameList.push({ app, roleName });
+
+    const roleDir = rolesFolder.folder(roleName);
+    roleDir.file('README.md', buildAppRoleReadme(app, roleName, actions));
+    if (dirs.includes('tasks')) roleDir.folder('tasks').file('main.yml', buildAppRoleTasks(os, app, actions));
+    if (dirs.includes('handlers')) roleDir.folder('handlers').file('main.yml', buildAppRoleHandlers(app));
+    if (dirs.includes('defaults')) roleDir.folder('defaults').file('main.yml', buildAppRoleDefaults(os, app, roleName));
+    if (dirs.includes('vars')) roleDir.folder('vars').file('main.yml', buildAppRoleVars(app));
+    if (dirs.includes('files')) roleDir.folder('files').file('.gitkeep', '');
+    if (dirs.includes('templates')) roleDir.folder('templates').file('.gitkeep', '');
+    if (dirs.includes('meta')) roleDir.folder('meta').file('main.yml', buildAppRoleMeta(app, roleName));
+    if (dirs.includes('tests')) {
+      const t = roleDir.folder('tests');
+      t.file('inventory', `#SPDX-License-Identifier: MIT-0\nlocalhost\n`);
+      t.file('test.yml', `#SPDX-License-Identifier: MIT-0\n---\n- name: Test ${roleName}\n  hosts: ${hostsVal}\n  become: true\n  roles:\n    - role: ${roleName}\n`);
+    }
+  });
+
+  zipRoot.file('site.yml', buildZipSiteYml(roleNameList, hostsVal));
+  zipRoot.file('ansible.cfg', `# ansible.cfg\n[defaults]\nroles_path = ./roles\ninventory  = inventory.ini\n`);
+  zipRoot.file('inventory.ini',
+    `# inventory.ini — fill in your host IPs\n[webservers]\n# web-01 ansible_host=192.168.1.10\n\n[databases]\n# db-01 ansible_host=192.168.1.20\n\n[monitoring]\n# mon-01 ansible_host=192.168.1.30\n\n[devops]\n# ci-01 ansible_host=192.168.1.40\n\n[all:vars]\nansible_user=ubuntu\nansible_ssh_private_key_file=~/.ssh/id_rsa\n`);
+  const roleListMd = roleNameList.map(r => `- \`roles/${r.roleName}\` — manages **${r.app}**`).join('\n');
+  zipRoot.file('README.md',
+    `# ${name}\n\nGenerated by [Ansible YAML Generator](https://harishnshetty.github.io/tools/an/)\n\n## Roles\n${roleListMd}\n\n## Usage\n\`\`\`bash\nansible-playbook -i inventory.ini site.yml\nansible-playbook -i inventory.ini site.yml --tags web\nansible-playbook -i inventory.ini site.yml --limit databases\n\`\`\`\n`);
+
+  const blob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 6 } });
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob); a.download = `${name}.yml`; a.click();
-  showToast('⬇️ Downloaded!');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${name}.zip`;
+  a.click();
+  showToast(`📦 ${name}.zip downloaded!`, '#7c3aed');
 };
 
 window.clearYAML = function () {
@@ -674,9 +819,9 @@ function updateRolePreview() {
 // ── Role file builders ────────────────────────────────────────
 function buildRoleTasks(os, apps, actions) {
   if (!apps.length && !actions.includes('sys-update') && !actions.includes('basic-app')) {
-    return `---\n# tasks/main.yml\n- name: Example task\n  debug:\n    msg: "Role applied successfully"\n`;
+    return `#SPDX-License-Identifier: MIT-0\n---\n# tasks/main.yml\n- name: Example task\n  debug:\n    msg: "Role applied successfully"\n`;
   }
-  let out = `---\n# tasks/main.yml — auto-generated\n\n`;
+  let out = `#SPDX-License-Identifier: MIT-0\n---\n# tasks/main.yml — auto-generated\n\n`;
   if (actions.includes('sys-update')) {
     const pm = pkgModule(os);
     if (pm === 'apt') out += `- name: Update apt cache\n  apt:\n    update_cache: yes\n    cache_valid_time: 3600\n\n`;
@@ -705,19 +850,19 @@ function buildRoleTasks(os, apps, actions) {
 }
 
 function buildRoleHandlers(apps) {
-  if (!apps.length) return `---\n# handlers/main.yml\n`;
-  return `---\n# handlers/main.yml\n\n` + apps.map(a => `- name: Restart ${a}\n  service:\n    name: ${svcName(a)}\n    state: restarted\n`).join('\n');
+  if (!apps.length) return `#SPDX-License-Identifier: MIT-0\n---\n# handlers/main.yml\n`;
+  return `#SPDX-License-Identifier: MIT-0\n---\n# handlers/main.yml\n\n` + apps.map(a => `- name: Restart ${a}\n  service:\n    name: ${svcName(a)}\n    state: restarted\n`).join('\n');
 }
 
 function buildRoleDefaults(os, apps) {
   const rn = document.getElementById('roleName')?.value?.trim() || 'my_role';
-  let out = `---\n# defaults/main.yml — lowest priority variables\n\n${rn}_os: "${os}"\n`;
+  let out = `#SPDX-License-Identifier: MIT-0\n---\n# defaults/main.yml — lowest priority variables\n\n${rn}_os: "${os}"\n`;
   if (apps.length) out += `\n${rn}_packages:\n` + apps.map(a => `  - ${resolvePackageName(os, a)}`).join('\n') + '\n';
   return out;
 }
 
 function buildRoleVars(apps) {
-  let out = `---\n# vars/main.yml — high priority variables\n\n`;
+  let out = `#SPDX-License-Identifier: MIT-0\n---\n# vars/main.yml — high priority variables\n\n`;
   if (apps.length) out += apps.map(a => `${a}_service_state: started\n${a}_service_enabled: yes`).join('\n') + '\n';
   else out += `# Add your variables here\n`;
   return out;
@@ -727,7 +872,7 @@ function buildRoleMeta(apps) {
   const author = document.getElementById('roleAuthor')?.value?.trim() || 'your_name';
   const desc = document.getElementById('roleDescription')?.value?.trim() || 'An Ansible role';
   const license = document.getElementById('roleLicense')?.value || 'MIT';
-  const minAns = document.getElementById('roleMinAnsible')?.value || '2.16';
+  const minAns = document.getElementById('roleMinAnsible')?.value || '2.20';
   const company = document.getElementById('roleCompany')?.value?.trim() || '';
   const os = document.getElementById('os')?.value || 'ubuntu';
   const platMap = {
@@ -735,21 +880,129 @@ function buildRoleMeta(apps) {
     oracle: 'EL', centos: 'EL', fedora: 'Fedora', amazon: 'Amazon',
     suse: 'SLES', opensuse: 'opensuse', alpine: 'Alpine'
   };
-  return `---\n# meta/main.yml\ngalaxy_info:\n  author: ${author}\n  description: "${desc}"\n  company: "${company}"\n  license: ${license}\n  min_ansible_version: "${minAns}"\n\n  platforms:\n    - name: ${platMap[os] || 'EL'}\n      versions:\n        - all\n\n  galaxy_tags: [system, automation]\n\ndependencies: []\n`;
+  const companyLine = company ? `  company: "${company}"\n` : `  # company: your company (optional)\n`;
+  return `#SPDX-License-Identifier: ${license}\ngalaxy_info:\n  author: ${author}\n  description: ${desc}\n${companyLine}\n  # If the issue tracker for your role is not on github, uncomment the\n  # next line and provide a value\n  # issue_tracker_url: http://example.com/issue/tracker\n\n  # Choose a valid license ID from https://spdx.org - some suggested licenses:\n  # - BSD-3-Clause (default)\n  # - MIT\n  # - GPL-2.0-or-later\n  # - GPL-3.0-only\n  # - Apache-2.0\n  # - CC-BY-4.0\n  license: ${license}\n\n  min_ansible_version: "${minAns}"\n\n  platforms:\n    - name: ${platMap[os] || 'EL'}\n      versions:\n        - all\n\n  galaxy_tags:\n    - system\n    - automation\n    # NOTE: A tag is limited to a single word comprised of alphanumeric characters.\n    #       Maximum 20 tags per role.\n\ndependencies: []\n  # List your role dependencies here, one per line. Be sure to remove the '[]' above,\n  # if you add dependencies to this list.\n`;
 }
 
 function buildRoleReadme(roleName, desc, apps) {
   const author = document.getElementById('roleAuthor')?.value?.trim() || 'your_name';
-  const license = document.getElementById('roleLicense')?.value || 'MIT';
-  return `# ${roleName}\n\n${desc || 'An Ansible role.'}\n\n## Requirements\nNone.\n\n## Role Variables\nSee \`defaults/main.yml\` and \`vars/main.yml\`.\n\n## Example Playbook\n\`\`\`yaml\n- hosts: all\n  become: true\n  roles:\n    - role: ${roleName}\n\`\`\`\n\n## Apps\n${apps.length ? apps.map(a => `- ${a}`).join('\n') : '*(none)*'}\n\n## License\n${license}\n\n## Author\n${author} — Generated via [Ansible YAML Generator](https://harishnshetty.github.io/tools/an/)\n`;
+  const license = document.getElementById('roleLicense')?.value || 'BSD';
+  const pkg_list = apps.length
+    ? apps.map(a => `  - ${a}_package: "${a}"`).join('\n')
+    : '  # role_variable: value';
+  return `${roleName}\n${'='.repeat(roleName.length)}\n\n${desc || 'A brief description of the role goes here.'}\n\nRequirements\n------------\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\nRole Variables\n--------------\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\`\`\`yaml\n${pkg_list}\n\`\`\`\n\nDependencies\n------------\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\nExample Playbook\n----------------\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n    - hosts: servers\n      roles:\n         - { role: ${author}.${roleName} }\n\nLicense\n-------\n\n${license}\n\nAuthor Information\n------------------\n\n${author}\n`;
 }
 
-// ── Main zip builder ────────────────────────────────────────
+// ── Per-app single-role builders ─────────────────────────────
+function buildAppRoleTasks(os, app, actions) {
+  const pm = pkgModule(os);
+  const pkg = resolvePackageName(os, app);
+  const purge = document.getElementById('purgeConfig')?.checked;
+  let out = `#SPDX-License-Identifier: MIT-0\n---\n# tasks/main.yml — ${app}\n\n`;
+  if (actions.includes('install')) {
+    out += `- name: Install ${app}\n  ${pm}:\n    name: ${pkg}\n    state: present\n`;
+    if (pm === 'apt') out += `    update_cache: yes\n`;
+    out += `\n`;
+  }
+  if (actions.includes('start')) out += `- name: Start and enable ${app}\n  service:\n    name: ${svcName(app)}\n    state: started\n    enabled: yes\n  tags: [${app}, service]\n\n`;
+  if (actions.includes('stop')) out += `- name: Stop ${app}\n  service:\n    name: ${svcName(app)}\n    state: stopped\n    enabled: no\n\n`;
+  if (actions.includes('enable')) out += `- name: Enable ${app} on boot\n  service:\n    name: ${svcName(app)}\n    enabled: yes\n\n`;
+  if (actions.includes('disable')) out += `- name: Disable ${app}\n  service:\n    name: ${svcName(app)}\n    enabled: no\n\n`;
+  if (actions.includes('reload')) out += `- name: Reload ${app}\n  service:\n    name: ${svcName(app)}\n    state: reloaded\n  notify: Restart ${app}\n\n`;
+  if (actions.includes('remove')) {
+    out += `- name: Remove ${app}\n  ${pm}:\n    name: ${pkg}\n    state: absent\n`;
+    if (pm === 'apt' && purge) out += `    purge: yes\n`;
+    out += `\n`;
+  }
+  if (!out.includes('- name:')) {
+    out += `- name: Confirm ${app} is ready\n  debug:\n    msg: "${app} role applied"\n`;
+  }
+  return out;
+}
+
+function buildAppRoleHandlers(app) {
+  return `#SPDX-License-Identifier: MIT-0\n---\n# handlers/main.yml — ${app}\n\n- name: Restart ${app}\n  service:\n    name: ${svcName(app)}\n    state: restarted\n`;
+}
+
+function buildAppRoleDefaults(os, app, roleName) {
+  const pkg = resolvePackageName(os, app);
+  return `#SPDX-License-Identifier: MIT-0\n---\n# defaults/main.yml — ${roleName}\n\n${app}_package: "${pkg}"\n${app}_service_name: "${svcName(app)}"\n${app}_service_state: started\n${app}_service_enabled: yes\n`;
+}
+
+function buildAppRoleVars(app) {
+  return `#SPDX-License-Identifier: MIT-0\n---\n# vars/main.yml — ${app}\n# High-priority variables (override defaults)\n\n# ${app}_custom_option: "value"\n`;
+}
+
+function buildAppRoleMeta(app, roleName) {
+  const author = document.getElementById('roleAuthor')?.value?.trim() || 'your_name';
+  const desc = document.getElementById('roleDescription')?.value?.trim() || `Ansible role for ${app}`;
+  const license = document.getElementById('roleLicense')?.value || 'MIT';
+  const minAns = document.getElementById('roleMinAnsible')?.value || '2.20';
+  const company = document.getElementById('roleCompany')?.value?.trim() || '';
+  const os = document.getElementById('os')?.value || 'ubuntu';
+  const platMap = {
+    ubuntu: 'Ubuntu', debian: 'Debian', redhat: 'EL', rocky: 'EL', alma: 'EL',
+    oracle: 'EL', centos: 'EL', fedora: 'Fedora', amazon: 'Amazon', suse: 'SLES', opensuse: 'opensuse', alpine: 'Alpine'
+  };
+  const companyLine = company ? `  company: "${company}"\n` : `  # company: your company (optional)\n`;
+  return `#SPDX-License-Identifier: ${license}\ngalaxy_info:\n  author: ${author}\n  description: ${desc}\n${companyLine}\n  # issue_tracker_url: http://example.com/issue/tracker\n\n  license: ${license}\n\n  min_ansible_version: "${minAns}"\n\n  platforms:\n    - name: ${platMap[os] || 'EL'}\n      versions:\n        - all\n\n  galaxy_tags:\n    - ${app}\n    - system\n\ndependencies: []\n`;
+}
+
+function buildAppRoleReadme(app, roleName, actions) {
+  const author = document.getElementById('roleAuthor')?.value?.trim() || 'your_name';
+  const license = document.getElementById('roleLicense')?.value || 'BSD';
+  const actionList = actions.filter(a => !['sys-update', 'basic-app'].includes(a));
+  const varBlock = `${app}_package: "${app}"\n${app}_service_state: started\n${app}_service_enabled: yes`;
+  const actionDesc = actionList.length
+    ? actionList.map(a => `- ${a} the ${app} service`).join('\n')
+    : `- Manage the ${app} service`;
+  return `${roleName}\n${'='.repeat(roleName.length)}\n\n${actionDesc}\n\nRequirements\n------------\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here.\n\nRole Variables\n--------------\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\`\`\`yaml\n${varBlock}\n\`\`\`\n\nDependencies\n------------\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\nExample Playbook\n----------------\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n    - hosts: servers\n      roles:\n         - { role: ${author}.${roleName} }\n\nLicense\n-------\n\n${license}\n\nAuthor Information\n------------------\n\n${author}\n`;
+}
+
+// Build a site.yml that references all roles grouped by category
+function buildZipSiteYml(roleNames, hostsVal) {
+  // Group roles by category using the appCategory map
+  const grouped = {};
+  roleNames.forEach(({ app, roleName }) => {
+    const cat = appCategory[app] || 'general';
+    if (!grouped[cat]) grouped[cat] = [];
+    grouped[cat].push(roleName);
+  });
+
+  const catMeta = {
+    web: { hosts: 'webservers', tags: ['web'] },
+    db: { hosts: 'databases', tags: ['db'] },
+    devops: { hosts: 'devops', tags: ['devops'] },
+    monitoring: { hosts: 'monitoring', tags: ['monitoring'] },
+    security: { hosts: 'all', tags: ['security'] },
+    general: { hosts: hostsVal, tags: ['all'] },
+  };
+
+  let yaml = `---\n# site.yml — Root Playbook\n# Usage: ansible-playbook -i inventory.ini site.yml\n#        ansible-playbook -i inventory.ini site.yml --tags "web"\n#        ansible-playbook -i inventory.ini site.yml --limit webservers\n\n`;
+
+  Object.entries(grouped).forEach(([cat, roles]) => {
+    const m = catMeta[cat] || catMeta.general;
+    yaml += `- name: Play — ${cat} [${m.tags.join(', ')}]\n`;
+    yaml += `  hosts: ${m.hosts}\n`;
+    yaml += `  become: true\n`;
+    yaml += `  gather_facts: true\n`;
+    yaml += `  tags: [${m.tags.join(', ')}]\n`;
+    yaml += `\n  roles:\n`;
+    roles.forEach(r => {
+      yaml += `    - role: ${r}\n`;
+      yaml += `      tags: [${m.tags.join(', ')}]\n`;
+    });
+    yaml += `\n`;
+  });
+  return yaml;
+}
+
+// ── Main zip builder ─────────────────────────────────────────
 window.downloadRoleZip = async function () {
   const cb = document.getElementById('galaxyRoleCheckbox');
   if (!cb?.checked) { showToast('⚠️ Enable Galaxy Role Init first', '#d97706'); return; }
 
-  const roleName = (document.getElementById('roleName')?.value?.trim() || 'my_role').replace(/\s+/g, '_');
+  const baseRoleName = (document.getElementById('roleName')?.value?.trim() || 'my_role').replace(/\s+/g, '_');
   const desc = document.getElementById('roleDescription')?.value?.trim() || '';
   const hostsVal = document.getElementById('hostsInput')?.value?.trim() || 'all';
   const os = document.getElementById('os')?.value || 'ubuntu';
@@ -757,31 +1010,81 @@ window.downloadRoleZip = async function () {
   const actions = [...document.querySelectorAll('.action:checked')].map(e => e.value);
   const dirs = [...document.querySelectorAll('.role-file:checked')].map(c => c.value);
 
-  if (!roleName) { showToast('⚠️ Enter a role name', '#d97706'); return; }
+  if (!baseRoleName) { showToast('⚠️ Enter a role name', '#d97706'); return; }
 
   const zip = new JSZip();
-  const root = zip.folder(roleName);
+  const zipRoot = zip.folder(baseRoleName);
 
-  root.file('README.md', buildRoleReadme(roleName, desc, apps));
-  if (dirs.includes('tasks')) root.folder('tasks').file('main.yml', buildRoleTasks(os, apps, actions));
-  if (dirs.includes('handlers')) root.folder('handlers').file('main.yml', buildRoleHandlers(apps));
-  if (dirs.includes('defaults')) root.folder('defaults').file('main.yml', buildRoleDefaults(os, apps));
-  if (dirs.includes('vars')) root.folder('vars').file('main.yml', buildRoleVars(apps));
-  if (dirs.includes('files')) root.folder('files').file('.gitkeep', '');
-  if (dirs.includes('templates')) root.folder('templates').file('.gitkeep', '');
-  if (dirs.includes('meta')) root.folder('meta').file('main.yml', buildRoleMeta(apps));
-  if (dirs.includes('tests')) {
-    const t = root.folder('tests');
-    t.file('inventory', `[test_servers]\nlocalhost ansible_connection=local\n`);
-    t.file('test.yml', `---\n- name: Test ${roleName}\n  hosts: ${hostsVal}\n  become: true\n  roles:\n    - role: ${roleName}\n`);
+  // ── MULTI-APP: one independent role per app under roles/ ───────
+  if (apps.length > 0) {
+    const rolesFolder = zipRoot.folder('roles');
+    const roleNameList = []; // [{app, roleName}] for site.yml
+
+    apps.forEach(app => {
+      // Role name: e.g. nginx → nginx_setup, mysql → mysql_setup
+      const appSuffix = (actions.includes('remove')) ? 'remove' : 'setup';
+      const roleName = `${app.replace(/-/g, '_')}_${appSuffix}`;
+      roleNameList.push({ app, roleName });
+
+      const roleDir = rolesFolder.folder(roleName);
+
+      roleDir.file('README.md', buildAppRoleReadme(app, roleName, actions));
+      if (dirs.includes('tasks')) roleDir.folder('tasks').file('main.yml', buildAppRoleTasks(os, app, actions));
+      if (dirs.includes('handlers')) roleDir.folder('handlers').file('main.yml', buildAppRoleHandlers(app));
+      if (dirs.includes('defaults')) roleDir.folder('defaults').file('main.yml', buildAppRoleDefaults(os, app, roleName));
+      if (dirs.includes('vars')) roleDir.folder('vars').file('main.yml', buildAppRoleVars(app));
+      if (dirs.includes('files')) roleDir.folder('files').file('.gitkeep', '');
+      if (dirs.includes('templates')) roleDir.folder('templates').file('.gitkeep', '');
+      if (dirs.includes('meta')) roleDir.folder('meta').file('main.yml', buildAppRoleMeta(app, roleName));
+      if (dirs.includes('tests')) {
+        const t = roleDir.folder('tests');
+        t.file('inventory', `#SPDX-License-Identifier: MIT-0\nlocalhost\n`);
+        t.file('test.yml', `#SPDX-License-Identifier: MIT-0\n---\n- name: Test ${roleName}\n  hosts: ${hostsVal}\n  become: true\n  roles:\n    - role: ${roleName}\n`);
+      }
+    });
+
+    // site.yml at project root (next to roles/)
+    zipRoot.file('site.yml', buildZipSiteYml(roleNameList, hostsVal));
+
+    // ansible.cfg pointing roles_path to ./roles
+    zipRoot.file('ansible.cfg',
+      `# ansible.cfg\n[defaults]\nroles_path = ./roles\ninventory  = inventory.ini\n`);
+
+    // inventory.ini stub
+    zipRoot.file('inventory.ini',
+      `# inventory.ini - fill in your host IPs\n[webservers]\n# web-01 ansible_host=192.168.1.10\n\n[databases]\n# db-01 ansible_host=192.168.1.20\n\n[monitoring]\n# mon-01 ansible_host=192.168.1.30\n\n[devops]\n# ci-01 ansible_host=192.168.1.40\n\n[all:vars]\nansible_user=ubuntu\nansible_ssh_private_key_file=~/.ssh/id_rsa\n`);
+
+    // Project-level README
+    const roleListMd = roleNameList.map(r => `- \`roles/${r.roleName}\` — manages **${r.app}**`).join('\n');
+    zipRoot.file('README.md',
+      `# ${baseRoleName}\n\nGenerated by [Ansible YAML Generator](https://harishnshetty.github.io/tools/an/)\n\n## Roles\n${roleListMd}\n\n## Usage\n\`\`\`bash\n# Run everything\nansible-playbook -i inventory.ini site.yml\n\n# Run only web roles\nansible-playbook -i inventory.ini site.yml --tags web\n\n# Limit to a host group\nansible-playbook -i inventory.ini site.yml --limit databases\n\`\`\`\n`);
+
+  } else {
+    // ── SINGLE / NO-APP: legacy flat role layout ────────────────
+    zipRoot.file('README.md', buildRoleReadme(baseRoleName, desc, apps));
+    if (dirs.includes('tasks')) zipRoot.folder('tasks').file('main.yml', buildRoleTasks(os, apps, actions));
+    if (dirs.includes('handlers')) zipRoot.folder('handlers').file('main.yml', buildRoleHandlers(apps));
+    if (dirs.includes('defaults')) zipRoot.folder('defaults').file('main.yml', buildRoleDefaults(os, apps));
+    if (dirs.includes('vars')) zipRoot.folder('vars').file('main.yml', buildRoleVars(apps));
+    if (dirs.includes('files')) zipRoot.folder('files').file('.gitkeep', '');
+    if (dirs.includes('templates')) zipRoot.folder('templates').file('.gitkeep', '');
+    if (dirs.includes('meta')) zipRoot.folder('meta').file('main.yml', buildRoleMeta(apps));
+    if (dirs.includes('tests')) {
+      const t = zipRoot.folder('tests');
+      t.file('inventory', `#SPDX-License-Identifier: MIT-0\nlocalhost\n`);
+      t.file('test.yml', `#SPDX-License-Identifier: MIT-0\n---\n- name: Test ${baseRoleName}\n  hosts: ${hostsVal}\n  become: true\n  roles:\n    - role: ${baseRoleName}\n`);
+    }
+    // Still include a site.yml
+    zipRoot.file('site.yml',
+      `---\n# site.yml\n- name: Play — ${hostsVal}\n  hosts: ${hostsVal}\n  become: true\n  gather_facts: true\n\n  roles:\n    - role: ${baseRoleName}\n`);
   }
 
   const blob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 6 } });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `${roleName}.zip`;
+  a.download = `${baseRoleName}.zip`;
   a.click();
-  showToast(`📦 ${roleName}.zip downloaded!`, '#7c3aed');
+  showToast(`📦 ${baseRoleName}.zip downloaded!`, '#7c3aed');
 };
 
 // ══════════════════════════════════════════════════════════════
@@ -1011,6 +1314,106 @@ window.uploadInventoryCSV = function (event) {
 //  ROOT PLAYBOOK — site.yml
 // ══════════════════════════════════════════════════════════════
 
+// ── App-category mappings for Root Playbook sync ─────────────────
+const appCategory = {
+  // Web
+  nginx: 'web', apache2: 'web', httpd: 'web',
+  haproxy: 'web', traefik: 'web', caddy: 'web', keepalived: 'web',
+  // Databases
+  mysql: 'db', mariadb: 'db', postgresql: 'db', mongodb: 'db', redis: 'db',
+  // DevOps / CI-CD
+  docker: 'devops', git: 'devops', jenkins: 'devops', ansible: 'devops',
+  terraform: 'devops', sonarqube: 'devops', nexus: 'devops',
+  packer: 'devops', pulumi: 'devops', nomad: 'devops',
+  // Monitoring
+  prometheus: 'monitoring', grafana: 'monitoring', node_exporter: 'monitoring',
+  alertmanager: 'monitoring', 'zabbix-agent': 'monitoring',
+  elasticsearch: 'monitoring', kibana: 'monitoring', logstash: 'monitoring',
+  // Security
+  vault: 'security', consul: 'security', fail2ban: 'security', clamav: 'security',
+  trivy: 'security', falco: 'security', certbot: 'security',
+  // Kubernetes
+  kubectl: 'kubernetes', helm: 'kubernetes', eksctl: 'kubernetes',
+  k9s: 'kubernetes', minikube: 'kubernetes', kind: 'kubernetes',
+  kustomize: 'kubernetes', argocd: 'kubernetes', fluxcd: 'kubernetes',
+  // Cloud CLI
+  'aws-cli': 'cloud', 'azure-cli': 'cloud', gcloud: 'cloud',
+};
+const categoryMeta = {
+  web: { hosts: 'webservers', tag: 'web' },
+  db: { hosts: 'databases', tag: 'db' },
+  devops: { hosts: 'devops', tag: 'devops' },
+  monitoring: { hosts: 'monitoring', tag: 'monitoring' },
+  security: { hosts: 'all', tag: 'security' },
+  kubernetes: { hosts: 'k8s_nodes', tag: 'kubernetes' },
+  cloud: { hosts: 'all', tag: 'cloud' },
+  iac: { hosts: 'devops', tag: 'iac' },
+};
+
+// Build a canonical role name from an app name + selected actions/features
+function deriveRoleName(app, actions, features) {
+  const app_ = app.replace(/-/g, '_');
+  if (actions.includes('install') || actions.includes('start') || actions.includes('enable')) {
+    return `${app_}_setup`;
+  }
+  if (actions.includes('remove')) return `${app_}_remove`;
+  if (features.includes('config')) return `${app_}_config`;
+  return `${app_}_role`;
+}
+
+// Sync Root Playbook table from currently selected apps / actions / features
+window.syncRootFromSelections = function () {
+  const apps = getSelectedApps();
+  const actions = [...document.querySelectorAll('.action:checked')].map(e => e.value);
+  const features = [...document.querySelectorAll('.feature:checked')].map(e => e.value);
+  const hostsVal = document.getElementById('hostsInput')?.value?.trim() || 'all';
+
+  // Clear existing rows
+  const tbody = document.getElementById('rootTableBody');
+  if (tbody) tbody.innerHTML = '';
+
+  // ── 1. Common play for sys-update / basic-app ─────────────────────
+  const sysActions = [];
+  if (actions.includes('sys-update')) sysActions.push('update');
+  if (actions.includes('basic-app')) sysActions.push('packages');
+  if (sysActions.length) {
+    addRootRow(hostsVal, 'common', sysActions.join(', '), 'yes', '');
+  }
+
+  // ── 2. One play per app-category ─────────────────────────────────
+  const grouped = {}; // category → [roleName]
+  apps.forEach(app => {
+    const cat = appCategory[app] || 'general';
+    if (!grouped[cat]) grouped[cat] = [];
+    grouped[cat].push(deriveRoleName(app, actions, features));
+  });
+
+  // Feature-derived extra roles to append to each group
+  const featureRoles = [];
+  if (features.includes('config')) featureRoles.push('config_deploy');
+  if (features.includes('ssl')) featureRoles.push('ssl_setup');
+  if (features.includes('enableFirewall')) featureRoles.push('firewall_setup');
+  if (features.includes('user')) featureRoles.push('user_setup');
+
+  Object.entries(grouped).forEach(([cat, roleList]) => {
+    const meta = categoryMeta[cat] || { hosts: 'all', tag: cat };
+    const allRoles = [...roleList, ...featureRoles];
+    const tags = [meta.tag, ...actions.filter(a => !['sys-update', 'basic-app'].includes(a))];
+    addRootRow(meta.hosts, allRoles.join(', '), [...new Set(tags)].join(', '), 'yes', '');
+  });
+
+  // ── 3. Fallback: if no apps selected but features chosen ──────────
+  if (!apps.length && featureRoles.length) {
+    addRootRow(hostsVal, featureRoles.join(', '), features.join(', '), 'yes', '');
+  }
+
+  if (!tbody.children.length) {
+    showToast('⚠️ Select apps / actions first', '#d97706');
+  } else {
+    showToast(`✅ ${tbody.children.length} play${tbody.children.length > 1 ? 's' : ''} synced from selections!`);
+  }
+};
+
 window.addRootRow = function (hosts = 'all', roles = '', tags = '', become = 'yes', when = '') {
   const tbody = document.getElementById('rootTableBody');
   if (!tbody) return;
@@ -1042,9 +1445,15 @@ window.addRootRow = function (hosts = 'all', roles = '', tags = '', become = 'ye
 };
 
 window.generateSiteYAML = function () {
-  let yaml = `---\n# site.yml — Root Playbook\n# Usage: ansible-playbook -i inventory.ini site.yml\n#        ansible-playbook -i inventory.ini site.yml --tags "web,db"\n#        ansible-playbook -i inventory.ini site.yml --limit prod-env\n\n`;
+  const rows = document.querySelectorAll('#rootTableBody tr');
+  if (!rows.length) {
+    showToast('⚠️ No plays — use Sync or add a row first', '#d97706');
+    return '';
+  }
 
-  document.querySelectorAll('#rootTableBody tr').forEach(tr => {
+  let yaml = `---\n# site.yml — Root Playbook\n# Generated by Ansible YAML Generator\n# Usage: ansible-playbook -i inventory.ini site.yml\n#        ansible-playbook -i inventory.ini site.yml --tags "web,db"\n#        ansible-playbook -i inventory.ini site.yml --limit webservers\n\n`;
+
+  rows.forEach(tr => {
     const hosts = tr.querySelector('.root-hosts')?.value.trim() || 'all';
     const roles = tr.querySelector('.root-roles')?.value.trim() || '';
     const tags = tr.querySelector('.root-tags')?.value.trim() || '';
@@ -1072,20 +1481,24 @@ window.generateSiteYAML = function () {
   const out = document.getElementById('rootOutput');
   out.innerHTML = syntaxHighlight(yaml);
   out.classList.remove('hidden');
+  // store raw for download/copy
+  out.dataset.raw = yaml;
   return yaml;
 };
 
 window.downloadSiteYAML = function () {
-  const yaml = generateSiteYAML();
-  const text = document.getElementById('rootOutput')?.innerText || yaml;
+  const out = document.getElementById('rootOutput');
+  const yaml = (out?.dataset.raw) || generateSiteYAML();
+  if (!yaml) return;
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([text], { type: 'text/yaml' }));
+  a.href = URL.createObjectURL(new Blob([yaml], { type: 'text/yaml' }));
   a.download = 'site.yml'; a.click();
   showToast('⬇️ site.yml downloaded!');
 };
 
 window.copySiteYAML = function () {
-  const text = document.getElementById('rootOutput')?.innerText;
+  const out = document.getElementById('rootOutput');
+  const text = out?.dataset.raw || out?.innerText;
   if (!text) { showToast('⚠️ Generate first', '#d97706'); return; }
   navigator.clipboard.writeText(text).then(() => showToast('✅ site.yml copied!'));
 };

@@ -209,8 +209,16 @@
             Select Applications
           </button>
           <div id="appDropdownMenu">
+            <!-- Search bar -->
+            <div
+              style="padding:8px 10px 6px; position:sticky; top:0; background:#fff; z-index:1; border-bottom:1px solid #e5e7eb;">
+              <input id="appSearch" type="text" placeholder="🔍 Search apps…" oninput="filterAppDropdown(this.value)"
+                onclick="event.stopPropagation()"
+                style="width:100%;padding:5px 8px;border:1px solid #d1d5db;border-radius:6px;font-size:0.78rem;outline:none;" />
+            </div>
+
             <!-- Web Servers -->
-            <div class="group-header">🌐 Web Servers</div>
+            <div class="group-header" data-group="web">🌐 Web Servers</div>
             <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="nginx" />
               Nginx</label>
             <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="apache2" />
@@ -219,7 +227,7 @@
               HTTPD (RedHat)</label>
 
             <!-- Databases -->
-            <div class="group-header">🗄️ Databases</div>
+            <div class="group-header" data-group="db">🗄️ Databases</div>
             <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="mysql" />
               MySQL</label>
             <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="mariadb" />
@@ -232,7 +240,7 @@
               Redis</label>
 
             <!-- DevOps / CI/CD -->
-            <div class="group-header">🚀 DevOps / CI-CD</div>
+            <div class="group-header" data-group="devops">🚀 DevOps / CI-CD</div>
             <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="docker" />
               Docker</label>
             <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="git" />
@@ -249,7 +257,7 @@
               Nexus Repository</label>
 
             <!-- Monitoring -->
-            <div class="group-header">📊 Monitoring & Logging</div>
+            <div class="group-header" data-group="monitoring">📊 Monitoring &amp; Logging</div>
             <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="prometheus" />
               Prometheus</label>
             <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="grafana" />
@@ -268,13 +276,77 @@
               Logstash</label>
 
             <!-- Security -->
-            <div class="group-header">🔒 Security</div>
+            <div class="group-header" data-group="security">🔒 Security</div>
             <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="vault" />
               HashiCorp Vault</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="consul" />
+              HashiCorp Consul</label>
             <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="fail2ban" />
               Fail2ban</label>
             <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="clamav" />
               ClamAV</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="trivy" />
+              Trivy (vuln scanner)</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="falco" />
+              Falco (runtime security)</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="certbot" />
+              Certbot (Let's Encrypt)</label>
+
+            <!-- Kubernetes / K8s -->
+            <div class="group-header" data-group="kubernetes">☸️ Kubernetes / K8s</div>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="kubectl" />
+              kubectl</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="helm" />
+              Helm</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="eksctl" />
+              eksctl (AWS EKS)</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="k9s" />
+              k9s (K8s UI)</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="minikube" />
+              Minikube</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="kind" />
+              kind (K8s in Docker)</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="kustomize" />
+              Kustomize</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="argocd" />
+              ArgoCD CLI</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="fluxcd" />
+              FluxCD CLI</label>
+
+            <!-- Cloud CLI -->
+            <div class="group-header" data-group="cloud">☁️ Cloud CLI</div>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="aws-cli" />
+              AWS CLI</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="azure-cli" />
+              Azure CLI</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="gcloud" />
+              Google Cloud SDK</label>
+
+            <!-- IaC / Orchestration -->
+            <div class="group-header" data-group="iac">🏗️ IaC / Orchestration</div>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="packer" />
+              HashiCorp Packer</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="nomad" />
+              HashiCorp Nomad</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="pulumi" />
+              Pulumi</label>
+
+            <!-- Web / Proxy -->
+            <div class="group-header" data-group="proxy">🔀 Web / Proxy</div>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="haproxy" />
+              HAProxy</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="traefik" />
+              Traefik</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="caddy" />
+              Caddy</label>
+            <label class="dropdown-item"><input type="checkbox" class="app-checkbox form-checkbox" value="keepalived" />
+              Keepalived (VRRP)</label>
+
+            <!-- No results indicator -->
+            <div id="appNoResults"
+              style="display:none;padding:10px 12px;font-size:0.78rem;color:#9ca3af;text-align:center;">
+              No apps match your search
+            </div>
           </div>
         </div>
       </div>
@@ -439,8 +511,11 @@
               <select id="roleMinAnsible" class="form-select">
                 <option value="2.14">2.14</option>
                 <option value="2.15">2.15</option>
-                <option value="2.16" selected>2.16</option>
+                <option value="2.16">2.16</option>
                 <option value="2.17">2.17</option>
+                <option value="2.18">2.18</option>
+                <option value="2.19">2.19</option>
+                <option value="2.20" selected>2.20 (installed)</option>
               </select>
             </div>
             <div>
@@ -554,9 +629,19 @@
       <div class="card">
         <p class="section-label">🗂️ Root Playbook — site.yml (manage 100s of roles)</p>
         <p class="text-xs text-gray-500 mb-3">
-          Define plays that import roles. Each row = one play block in <code>site.yml</code>.
-          Use <strong>ansible-playbook -i inventory.ini site.yml --tags web</strong> to run selectively.
+          Click <strong>Sync from Selections</strong> to auto-build plays from your chosen apps, actions
+          &amp; features above — or add/edit rows manually.
+          Run with: <code>ansible-playbook -i inventory.ini site.yml --tags web</code>
         </p>
+
+        <!-- Sync button -->
+        <div class="mb-3">
+          <button class="btn" style="background:#0891b2;color:#fff;" onclick="syncRootFromSelections()"
+            title="Auto-populate plays from your selected Applications, Actions &amp; Optional Features">
+            🔄 Sync from Selections
+          </button>
+          <span class="text-xs text-gray-400 ml-2">Reads your apps · actions · features and generates play rows</span>
+        </div>
 
         <div class="overflow-x-auto mb-3">
           <table class="w-full text-sm border-collapse" id="rootTable">
@@ -631,7 +716,7 @@
         <div class="flex flex-wrap items-center gap-3">
           <button class="btn btn-primary" onclick="generateYAML()">⚡ Generate YAML</button>
           <button class="btn btn-warning" onclick="copyYAML()">📋 Copy YAML</button>
-          <button class="btn btn-success" onclick="downloadYAML()">⬇️ Download .yml</button>
+          <button class="btn btn-success" onclick="downloadYAML()">⬇️ Download-Playbook.Zip</button>
           <button class="btn btn-danger" onclick="clearYAML()">🗑️ Clear</button>
           <button class="btn" id="downloadRoleBtn" onclick="downloadRoleZip()"
             style="background:#7c3aed;color:#fff;display:none" title="Download Ansible Galaxy role as .zip">📦 Download
