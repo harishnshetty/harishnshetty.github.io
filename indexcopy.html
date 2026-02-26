@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
   <meta charset="UTF-8" />
@@ -8,45 +9,65 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
   <style>
-    html, body {
-      height: 100%; /* Ensures body takes up the full viewport height */
+    html,
+    body {
+      height: 100%;
+      /* Ensures body takes up the full viewport height */
       margin: 0;
     }
 
     body {
       display: flex;
-      flex-direction: column; /* Stack the content and footer vertically */
+      flex-direction: column;
+      /* Stack the content and footer vertically */
       background: linear-gradient(-45deg, #667eea, #cab6b6, #365fcd, #667eea);
       background-size: 400% 400%;
       animation: gradientShift 10s ease infinite;
-      flex-grow: 1; /* Ensures the body grows to fill available space */
+      flex-grow: 1;
+      /* Ensures the body grows to fill available space */
     }
 
     footer {
-      margin-top: auto; /* Ensures footer is at the bottom */
-      padding: 1rem; /* Adjust padding to prevent overflow */
+      margin-top: auto;
+      /* Ensures footer is at the bottom */
+      padding: 1rem;
+      /* Adjust padding to prevent overflow */
     }
-    
+
     footer .flex {
-      flex-wrap: wrap; /* Allows items to wrap in case of space constraints */
-      justify-content: center; /* Centers the footer items */
-      gap: 1rem; /* Adds space between items */
+      flex-wrap: wrap;
+      /* Allows items to wrap in case of space constraints */
+      justify-content: center;
+      /* Centers the footer items */
+      gap: 1rem;
+      /* Adds space between items */
     }
-    
+
     footer img {
-      width: 2.5rem; /* Set width to 10rem (w-10) */
-      height: 2.5rem; /* Set height to 10rem (h-10) */
+      width: 2.5rem;
+      /* Set width to 10rem (w-10) */
+      height: 2.5rem;
+      /* Set height to 10rem (h-10) */
     }
-    
+
     footer span {
-      font-size: 1rem; /* Adjust the font size to match the icon size */
+      font-size: 1rem;
+      /* Adjust the font size to match the icon size */
     }
-    
+
 
     @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .gradient-text {
@@ -61,9 +82,17 @@
     }
 
     @keyframes textGlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .glow-button {
@@ -79,9 +108,17 @@
     }
 
     @keyframes glowGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .glow-button:hover {
@@ -94,9 +131,9 @@
     }
 
     .glow-card:hover {
-      box-shadow:  0 0 25px 10px rgba(127, 90, 240, 0.3),
-                   0 0 40px 15px rgba(226, 204, 204, 0.2),
-                   0 0 60px 20px rgba(30, 138, 133, 0.2); 
+      box-shadow: 0 0 25px 10px rgba(127, 90, 240, 0.3),
+        0 0 40px 15px rgba(226, 204, 204, 0.2),
+        0 0 60px 20px rgba(30, 138, 133, 0.2);
       transform: translateY(-5px) scale(1.02);
     }
 
@@ -177,8 +214,8 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full sm:w-auto mt-4 sm:mt-0 text-sm sm:text-base">
-                     <!--  <a href="contact.html" class="bg-gray-600 px-2 py-2 rounded text-center truncate">Contact</a> -->
-          <a href="./resume.pdf" download class="glow-button text-center truncate">⬇️ Resume</a>
+          <!--  <a href="contact.html" class="bg-gray-600 px-2 py-2 rounded text-center truncate">Contact</a> -->
+          <!-- <a href="./resume.pdf" download class="glow-button text-center truncate">⬇️ Resume</a> -->
         </div>
       </div>
     </nav>
@@ -187,11 +224,13 @@
   <!-- Hero Section -->
   <section class="flex justify-center items-center py-10 px-4">
     <div class="flex flex-col sm:flex-row items-center w-full max-w-4xl gap-4 overflow-x-hidden">
-      <img src="image.png" alt="Chat Assistant" class="rounded-full w-24 sm:w-32 md:w-40 max-w-full flex-shrink-0 shadow-xl" />
+      <img src="image.png" alt="Chat Assistant"
+        class="rounded-full w-24 sm:w-32 md:w-40 max-w-full flex-shrink-0 shadow-xl" />
       <div class="flex-grow text-left min-w-[200px]">
         <h2 class="text-2xl md:text-4xl font-bold mb-2">Welcome to Harish's Portfolio</h2>
         <p class="text-base md:text-lg mb-4">Cloud Enthusiast • DevOps Learner • AWS</p>
-        <div class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full px-4 py-2 shadow-md flex items-center gap-2 w-full max-w-xs md:max-w-md">
+        <div
+          class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full px-4 py-2 shadow-md flex items-center gap-2 w-full max-w-xs md:max-w-md">
           <input id="autoInput" type="text" placeholder="Skills"
             class="bg-transparent outline-none w-full text-sm md:text-base dark:text-white" />
         </div>
@@ -253,31 +292,36 @@
   </section>
   <footer id="contact" class="bg-white text-black text-center py-4 px-2">
     <div class="flex flex-wrap justify-center items-center gap-4 text-sm">
-  <a href="mailto:harishn662@gmail.com" class="hover:opacity-75" aria-label="Email">
-    <img src="img/gmail.svg" alt="Email" class="w-10 h-10" />
-  </a>
-  <span>harishn662@gmail.com</span>
-  <a href="https://github.com/harishnshetty" target="_blank" class="hover:opacity-75" aria-label="GitHub">
-    <img src="img/github.svg" alt="GitHub" class="w-10 h-10" />
-  </a>
-  <a href="https://www.linkedin.com/in/harishnshetty/" target="_blank" class="hover:opacity-75" aria-label="LinkedIn">
-    <img src="img/linkedin.svg" alt="LinkedIn" class="w-10 h-10" />
-  </a>
+      <a href="mailto:harishn662@gmail.com" class="hover:opacity-75" aria-label="Email">
+        <img src="img/gmail.svg" alt="Email" class="w-10 h-10" />
+      </a>
+      <span>harishn662@gmail.com</span>
+      <a href="https://github.com/harishnshetty" target="_blank" class="hover:opacity-75" aria-label="GitHub">
+        <img src="img/github.svg" alt="GitHub" class="w-10 h-10" />
+      </a>
+      <a href="https://www.linkedin.com/in/harishnshetty/" target="_blank" class="hover:opacity-75"
+        aria-label="LinkedIn">
+        <img src="img/linkedin.svg" alt="LinkedIn" class="w-10 h-10" />
+      </a>
 
-  <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank" class="hover:opacity-75" aria-label="Youtube">
-    <img src="img/youtube.svg" alt="Youtube" class="w-10 h-10" />
-  </a>
+      <a href="https://www.youtube.com/@HarishNShetty0107" target="_blank" class="hover:opacity-75"
+        aria-label="Youtube">
+        <img src="img/youtube.svg" alt="Youtube" class="w-10 h-10" />
+      </a>
 
-  <a href="https://x.com/devopswitharish?t=SWH2zb-b8Dh4AGEm6tpwGg&s=09" target="_blank" class="hover:opacity-75" aria-label="Youtube">
-    <img src="img/twitter.svg" alt="Twitter" class="w-10 h-10" />
-  </a>
-  <a href="https://www.instagram.com/devopswithharish?igsh=YWc5ZzNmdzBzNjI4" target="_blank" class="hover:opacity-75" aria-label="Youtube">
-    <img src="img/instagram.svg" alt="Instagram class="w-10 h-10" />
-  </a>
-</div>
-  <p class="text-xs text-black-1000 mt-4">&copy; 2025 Harish N Shetty. All rights reserved.</p>
-</footer>
- 
+      <a href="https://x.com/devopswitharish?t=SWH2zb-b8Dh4AGEm6tpwGg&s=09" target="_blank" class="hover:opacity-75"
+        aria-label="Youtube">
+        <img src="img/twitter.svg" alt="Twitter" class="w-10 h-10" />
+      </a>
+      <a href="https://www.instagram.com/devopswithharish?igsh=YWc5ZzNmdzBzNjI4" target="_blank"
+        class="hover:opacity-75" aria-label="Youtube">
+        <img src="img/instagram.svg" alt="Instagram class=" w-10 h-10" />
+      </a>
+    </div>
+    <p class="text-xs text-black-1000 mt-4">&copy; 2025 Harish N Shetty. All rights reserved.</p>
+  </footer>
+
 
 </body>
+
 </html>
