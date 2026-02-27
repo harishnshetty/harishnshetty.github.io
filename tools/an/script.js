@@ -1427,7 +1427,20 @@ window.syncRootFromSelections = function () {
   const apps = getSelectedApps();
   const actions = [...document.querySelectorAll('.action:checked')].map(e => e.value);
   const features = [...document.querySelectorAll('.feature:checked')].map(e => e.value);
-  const hostsVal = document.getElementById('hostsInput')?.value?.trim() || 'all';
+  let hostsVal = document.getElementById('hostsInput')?.value?.trim() || 'all';
+
+  // Read available groups from the inventory table
+  const inventoryGroups = [...new Set(
+    [...document.querySelectorAll('#invTableBody .inv-group')]
+      .map(i => i.value.trim()).filter(v => v && v !== 'ungrouped')
+  )];
+  const getGroup = (type) => {
+    if (inventoryGroups.length === 0) return categoryMeta[type]?.hosts || 'all';
+    if (type === 'web') return inventoryGroups[0];
+    if (type === 'db') return inventoryGroups[1] || inventoryGroups[0];
+    if (type === 'devops' || type === 'monitoring') return inventoryGroups[2] || inventoryGroups[inventoryGroups.length - 1];
+    return hostsVal;
+  };
 
   // Clear existing rows
   const tbody = document.getElementById('rootTableBody');
@@ -1457,7 +1470,9 @@ window.syncRootFromSelections = function () {
   if (features.includes('user')) featureRoles.push('user_setup');
 
   Object.entries(grouped).forEach(([cat, roleList]) => {
-    const meta = categoryMeta[cat] || { hosts: 'all', tag: cat };
+    const meta = Object.assign({}, categoryMeta[cat] || { hosts: 'all', tag: cat });
+    meta.hosts = getGroup(cat);
+
     const allRoles = [...roleList, ...featureRoles];
     const tags = [meta.tag, ...actions.filter(a => !['sys-update', 'basic-app'].includes(a))];
     addRootRow(meta.hosts, allRoles.join(', '), [...new Set(tags)].join(', '), 'yes', '');
