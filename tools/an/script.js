@@ -1114,6 +1114,13 @@ window.downloadRoleZip = async function () {
       if (input.value.trim()) input.value.split(',').forEach(r => requiredRoles.add(r.trim()));
     });
 
+    // Forcefully inject required feature roles if the UI table is out of sync
+    if (actions.includes('sys-update') || actions.includes('basic-app')) requiredRoles.add('common');
+    if (features.includes('user')) requiredRoles.add('user_setup');
+    if (features.includes('config')) requiredRoles.add('config_deploy');
+    if (features.includes('ssl')) requiredRoles.add('ssl_setup');
+    if (features.includes('enableFirewall')) requiredRoles.add('firewall_setup');
+
     // Fallback: if table empty, ensure generated roles match our siteYmlContent 
     // (though buildZipSiteYml only requires what's in roleNameList)
     const generatedRoleNames = new Set(roleNameList.map(r => r.roleName));
