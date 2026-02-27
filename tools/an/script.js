@@ -1043,6 +1043,68 @@ window.downloadRoleZip = async function () {
       }
     });
 
+    // Generate missing roles required by the Site Playbook (common, config_deploy, ssl_setup, etc.)
+    const requiredRoles = new Set();
+    document.querySelectorAll('#rootTableBody .root-roles').forEach(input => {
+      if (input.value.trim()) input.value.split(',').forEach(r => requiredRoles.add(r.trim()));
+    });
+
+    // Fallback: if table empty, ensure generated roles match our siteYmlContent 
+    // (though buildZipSiteYml only requires what's in roleNameList)
+    const generatedRoleNames = new Set(roleNameList.map(r => r.roleName));
+
+    requiredRoles.forEach(roleName => {
+      if (!generatedRoleNames.has(roleName)) {
+        generatedRoleNames.add(roleName);
+        const roleDir = rolesFolder.folder(roleName);
+
+        let customTasks = `#SPDX-License-Identifier: MIT-0\n---\n# tasks/main.yml — ${roleName}\n\n`;
+        const unIndent = str => str.replace(/^  /gm, '');
+
+        if (roleName === 'common') {
+          let hasCustom = false;
+          if (actions.includes('sys-update')) {
+            const pm = pkgModule(os);
+            if (pm === 'apt') customTasks += `- name: Update apt cache\n  apt:\n    update_cache: yes\n    cache_valid_time: 3600\n\n`;
+            else if (pm === 'dnf') customTasks += `- name: Update all packages\n  dnf:\n    name: "*"\n    state: latest\n\n`;
+            else if (pm === 'yum') customTasks += `- name: Update all packages\n  yum:\n    name: "*"\n    state: latest\n\n`;
+            else if (pm === 'zypper') customTasks += `- name: Refresh zypper repos\n  zypper:\n    refresh: yes\n\n`;
+            else if (pm === 'apk') customTasks += `- name: Update apk cache\n  apk:\n    update_cache: yes\n\n`;
+            hasCustom = true;
+          }
+          if (actions.includes('basic-app')) {
+            const pm = pkgModule(os); const pkgs = basicPkgs[os] || basicPkgs.ubuntu;
+            customTasks += `- name: Install basic packages\n  ${pm}:\n    name:\n` + pkgs.map(p => `      - ${p}`).join('\n') + `\n    state: present\n` + (pm === 'apt' ? `    update_cache: yes\n` : '') + `\n`;
+            hasCustom = true;
+          }
+          if (!hasCustom) customTasks += `- name: Ensure common tasks\n  debug:\n    msg: "common role skeleton applied"\n`;
+        } else if (roleName === 'user_setup' && features.includes('user')) {
+          apps.forEach(app => customTasks += unIndent(userTask(app)));
+        } else if (roleName === 'config_deploy' && features.includes('config')) {
+          const configContent = document.getElementById('configEditor')?.value || '';
+          if (apps.length === 0 && configContent) {
+            const ind = configContent.split('\n').map(l => '      ' + l).join('\n');
+            customTasks += `- name: Apply general configuration\n  copy:\n    content: |\n${ind}\n    dest: /etc/app.conf\n    owner: root\n    group: root\n    mode: '0644'\n\n`;
+          } else if (configContent) {
+            apps.forEach(app => customTasks += unIndent(configTask(app, configContent)));
+          }
+        } else if (roleName === 'ssl_setup' && features.includes('ssl')) {
+          apps.forEach(app => customTasks += unIndent(sslTask(app)));
+        } else if (roleName === 'firewall_setup' && features.includes('enableFirewall')) {
+          customTasks += unIndent(firewallTasks());
+        } else {
+          customTasks += `- name: Placeholder for ${roleName}\n  debug:\n    msg: "Replace this with actual tasks for ${roleName}"\n`;
+        }
+
+        roleDir.file('README.md', `# ${roleName}\n\nAuto-generated skeleton role for ${roleName}.\n`);
+        if (dirs.includes('tasks')) roleDir.folder('tasks').file('main.yml', customTasks);
+        if (dirs.includes('handlers')) roleDir.folder('handlers').file('main.yml', `#SPDX-License-Identifier: MIT-0\n---\n# handlers/main.yml\n`);
+        if (dirs.includes('defaults')) roleDir.folder('defaults').file('main.yml', `#SPDX-License-Identifier: MIT-0\n---\n# defaults/main.yml\n`);
+        if (dirs.includes('vars')) roleDir.folder('vars').file('main.yml', `#SPDX-License-Identifier: MIT-0\n---\n# vars/main.yml\n`);
+        if (dirs.includes('meta')) roleDir.folder('meta').file('main.yml', buildAppRoleMeta(roleName, roleName));
+      }
+    });
+
     // site.yml at project root (next to roles/)
     const siteYmlContent = (document.querySelectorAll('#rootTableBody tr').length > 0) ? generateSiteYAML() : buildZipSiteYml(roleNameList, hostsVal);
     zipRoot.file('site.yml', siteYmlContent);
