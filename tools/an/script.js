@@ -1075,6 +1075,7 @@ window.downloadRoleZip = async function () {
   const os = document.getElementById('os')?.value || 'ubuntu';
   const apps = getSelectedApps();
   const actions = [...document.querySelectorAll('.action:checked')].map(e => e.value);
+  const features = [...document.querySelectorAll('.feature:checked')].map(e => e.value);
   const dirs = [...document.querySelectorAll('.role-file:checked')].map(c => c.value);
 
   if (!baseRoleName) { showToast('⚠️ Enter a role name', '#d97706'); return; }
@@ -1082,8 +1083,21 @@ window.downloadRoleZip = async function () {
   const zip = new JSZip();
   const zipRoot = zip.folder(baseRoleName);
 
-  // ── MULTI-APP: one independent role per app under roles/ ───────
-  if (apps.length > 0) {
+  // Generate missing roles required by the Site Playbook (common, config_deploy, ssl_setup, etc.)
+  const requiredRoles = new Set();
+  document.querySelectorAll('#rootTableBody .root-roles').forEach(input => {
+    if (input.value.trim()) input.value.split(',').forEach(r => requiredRoles.add(r.trim()));
+  });
+
+  // Forcefully inject required feature roles if the UI table is out of sync
+  if (actions.includes('sys-update') || actions.includes('basic-app')) requiredRoles.add('common');
+  if (features.includes('user')) requiredRoles.add('user_setup');
+  if (features.includes('config')) requiredRoles.add('config_deploy');
+  if (features.includes('ssl')) requiredRoles.add('ssl_setup');
+  if (features.includes('enableFirewall')) requiredRoles.add('firewall_setup');
+
+  // ── MULTI-APP OR ROOT PLAYS: Playbook tree layout ──────────────
+  if (apps.length > 0 || requiredRoles.size > 0 || actions.length > 0) {
     const rolesFolder = zipRoot.folder('roles');
     const roleNameList = []; // [{app, roleName}] for site.yml
 
@@ -1110,18 +1124,6 @@ window.downloadRoleZip = async function () {
       }
     });
 
-    // Generate missing roles required by the Site Playbook (common, config_deploy, ssl_setup, etc.)
-    const requiredRoles = new Set();
-    document.querySelectorAll('#rootTableBody .root-roles').forEach(input => {
-      if (input.value.trim()) input.value.split(',').forEach(r => requiredRoles.add(r.trim()));
-    });
-
-    // Forcefully inject required feature roles if the UI table is out of sync
-    if (actions.includes('sys-update') || actions.includes('basic-app')) requiredRoles.add('common');
-    if (features.includes('user')) requiredRoles.add('user_setup');
-    if (features.includes('config')) requiredRoles.add('config_deploy');
-    if (features.includes('ssl')) requiredRoles.add('ssl_setup');
-    if (features.includes('enableFirewall')) requiredRoles.add('firewall_setup');
 
     // Fallback: if table empty, ensure generated roles match our siteYmlContent 
     // (though buildZipSiteYml only requires what's in roleNameList)
