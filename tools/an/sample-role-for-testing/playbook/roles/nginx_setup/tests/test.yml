@@ -1,7 +1,0 @@
-#SPDX-License-Identifier: MIT-0
----
-- name: Test nginx_setup
-  hosts: all
-  become: true
-  roles:
-    - role: nginx_setup

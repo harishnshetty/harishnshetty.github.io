@@ -1,8 +1,0 @@
-#SPDX-License-Identifier: MIT-0
----
-# defaults/main.yml — ansible_setup
-
-ansible_package: "ansible"
-ansible_service_name: "ansible"
-ansible_service_state: started
-ansible_service_enabled: yes

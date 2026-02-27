@@ -1,8 +1,0 @@
-#SPDX-License-Identifier: MIT-0
----
-# defaults/main.yml — terraform_setup
-
-terraform_package: "terraform"
-terraform_service_name: "terraform"
-terraform_service_state: started
-terraform_service_enabled: yes

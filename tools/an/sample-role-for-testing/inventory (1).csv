@@ -1,6 +1,0 @@
-﻿Group,Host/IP,Alias,ansible_user,ansible_port,ansible_ssh_private_key_file,Extra Vars
-dev-env,15.206.146.174,dev-web-01,ubuntu,22,/home/harish/Downloads/new-keypair,
-dev-env,65.2.188.60,dev-db-01,ubuntu,22,/home/harish/Downloads/new-keypair,
-prod-env,3.108.185.38,prod-web-01,ubuntu,22,/home/harish/Downloads/new-keypair,
-prod-env,3.111.170.53,prod-db-01,ubuntu,22,/home/harish/Downloads/new-keypair,
-nginx-node,10.0.3.10,nginx-01,ubuntu,22,/home/harish/Downloads/new-keypair,ansible_user=ubuntu

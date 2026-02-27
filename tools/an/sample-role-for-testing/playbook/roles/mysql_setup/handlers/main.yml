@@ -1,8 +1,0 @@
-#SPDX-License-Identifier: MIT-0
----
-# handlers/main.yml — mysql
-
-- name: Restart mysql
-  service:
-    name: mysql
-    state: restarted
