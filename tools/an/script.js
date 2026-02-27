@@ -304,6 +304,7 @@ function pkgModule(os) {
 
 // Special package names per OS
 const pkgNames = {
+  mysql: { ubuntu: 'mysql-server', debian: 'mysql-server' },
   docker: { ubuntu: 'docker.io', debian: 'docker.io', redhat: 'docker-ce', centos: 'docker-ce', amazon: 'docker', alpine: 'docker' },
   git: { ubuntu: 'git', redhat: 'git', amazon: 'git', alpine: 'git' },
   nodejs: { ubuntu: 'nodejs', redhat: 'nodejs', amazon: 'nodejs', alpine: 'nodejs' },
