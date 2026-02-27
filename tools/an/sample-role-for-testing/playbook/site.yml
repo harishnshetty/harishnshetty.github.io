@@ -1,0 +1,36 @@
+---
+# site.yml — Root Playbook
+# Usage: ansible-playbook -i inventory.ini site.yml
+#        ansible-playbook -i inventory.ini site.yml --tags "web"
+#        ansible-playbook -i inventory.ini site.yml --limit webservers
+
+- name: Play — web [web]
+  hosts: webservers
+  become: true
+  gather_facts: true
+  tags: [web]
+
+  roles:
+    - role: nginx_setup
+      tags: [web]
+
+- name: Play — db [db]
+  hosts: databases
+  become: true
+  gather_facts: true
+  tags: [db]
+
+  roles:
+    - role: mysql_setup
+      tags: [db]
+
+- name: Play — devops [devops]
+  hosts: devops
+  become: true
+  gather_facts: true
+  tags: [devops]
+
+  roles:
+    - role: git_setup
+      tags: [devops]
+

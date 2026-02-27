@@ -1,0 +1,8 @@
+#SPDX-License-Identifier: MIT-0
+---
+# defaults/main.yml — mysql_setup
+
+mysql_package: "mysql"
+mysql_service_name: "mysql"
+mysql_service_state: started
+mysql_service_enabled: yes
