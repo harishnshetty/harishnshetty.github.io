@@ -838,7 +838,7 @@ function buildRoleTasks(os, apps, actions) {
   apps.forEach(app => {
     const pm = pkgModule(os); const pkg = resolvePackageName(os, app);
     out += `# ── ${app} ──\n`;
-    if (actions.includes('install')) out += `- name: Install ${app}\n  ${pm}:\n    name: ${pkg}\n    state: present\n` + (pm === 'apt' ? `    update_cache: yes\n` : '') + `\n`;
+    if (actions.includes('install')) out += getInstallTasks(os, app, pm, pkg);
     if (actions.includes('start')) out += `- name: Start and enable ${app}\n  service:\n    name: ${svcName(app)}\n    state: started\n    enabled: yes\n  tags: [${app}, service]\n\n`;
     if (actions.includes('stop')) out += `- name: Stop ${app}\n  service:\n    name: ${svcName(app)}\n    state: stopped\n    enabled: no\n\n`;
     if (actions.includes('reload')) out += `- name: Reload ${app}\n  service:\n    name: ${svcName(app)}\n    state: reloaded\n  notify: Restart ${app}\n\n`;
@@ -894,6 +894,72 @@ function buildRoleReadme(roleName, desc, apps) {
   return `${roleName}\n${'='.repeat(roleName.length)}\n\n${desc || 'A brief description of the role goes here.'}\n\nRequirements\n------------\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\nRole Variables\n--------------\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\`\`\`yaml\n${pkg_list}\n\`\`\`\n\nDependencies\n------------\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\nExample Playbook\n----------------\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n    - hosts: servers\n      roles:\n         - { role: ${author}.${roleName} }\n\nLicense\n-------\n\n${license}\n\nAuthor Information\n------------------\n\n${author}\n`;
 }
 
+// ── Advanced Installation Overrides ────────────────────────
+function getInstallTasks(os, app, pm, pkg) {
+  let s = '';
+  // Hashicorp Tools
+  if (['terraform', 'packer', 'vault', 'consul', 'nomad'].includes(app)) {
+    if (os === 'ubuntu' || os === 'debian') {
+      s += `- name: Add Hashicorp GPG key\n  apt_key:\n    url: https://apt.releases.hashicorp.com/gpg\n    state: present\n`;
+      s += `- name: Add Hashicorp repo\n  apt_repository:\n    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"\n    state: present\n`;
+      s += `- name: Install ${app}\n  apt:\n    name: ${pkg}\n    state: present\n    update_cache: yes\n\n`;
+    } else if (os === 'redhat' || os === 'centos' || os === 'amazon') {
+      s += `- name: Add Hashicorp repo\n  yum_repository:\n    name: hashicorp\n    description: Hashicorp Stable\n    baseurl: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo\n    enabled: yes\n    gpgcheck: yes\n    gpgkey: https://rpm.releases.hashicorp.com/gpg\n`;
+      s += `- name: Install ${app}\n  yum:\n    name: ${pkg}\n    state: present\n\n`;
+    } else s += `- name: Install ${app}\n  ${pm}:\n    name: ${pkg}\n    state: present\n\n`;
+  }
+  // Docker
+  else if (app === 'docker') {
+    if (os === 'ubuntu' || os === 'debian') {
+      s += `- name: Install Docker prerequisites\n  apt:\n    name: ['apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']\n    state: present\n    update_cache: yes\n`;
+      s += `- name: Add Docker GPG key\n  apt_key:\n    url: https://download.docker.com/linux/{{ ansible_distribution|lower }}/gpg\n    state: present\n`;
+      s += `- name: Add Docker repo\n  apt_repository:\n    repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} stable"\n    state: present\n`;
+      s += `- name: Install Docker\n  apt:\n    name: ['docker-ce', 'docker-ce-cli', 'containerd.io']\n    state: present\n    update_cache: yes\n\n`;
+    } else s += `- name: Install Docker\n  ${pm}:\n    name: ${pkg}\n    state: present\n\n`;
+  }
+  // Jenkins
+  else if (app === 'jenkins') {
+    if (os === 'ubuntu' || os === 'debian') {
+      s += `- name: Install Java for Jenkins\n  apt:\n    name: openjdk-17-jre\n    state: present\n    update_cache: yes\n`;
+      s += `- name: Add Jenkins GPG key\n  apt_key:\n    url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key\n    state: present\n`;
+      s += `- name: Add Jenkins repo\n  apt_repository:\n    repo: "deb https://pkg.jenkins.io/debian-stable binary/"\n    state: present\n`;
+      s += `- name: Install Jenkins\n  apt:\n    name: jenkins\n    state: present\n    update_cache: yes\n\n`;
+    } else s += `- name: Install Jenkins\n  ${pm}:\n    name: ${pkg}\n    state: present\n\n`;
+  }
+  // Kubernetes / Cloud Binaries
+  else if (['kubectl', 'helm', 'minikube', 'kind', 'kustomize', 'eksctl', 'k9s', 'aws-cli'].includes(app)) {
+    if (app === 'helm') {
+      s += `- name: Download Helm script\n  get_url:\n    url: https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3\n    dest: /tmp/get_helm.sh\n    mode: '0700'\n`;
+      s += `- name: Install Helm\n  command: /tmp/get_helm.sh\n  args:\n    creates: /usr/local/bin/helm\n\n`;
+    } else if (app === 'aws-cli') {
+      s += `- name: Download AWS CLI v2\n  unarchive:\n    src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\n    dest: /tmp\n    remote_src: yes\n`;
+      s += `- name: Install AWS CLI\n  command: /tmp/aws/install --update\n  args:\n    creates: /usr/local/bin/aws\n\n`;
+    } else if (app === 'kustomize') {
+      s += `- name: Download and extract Kustomize\n  unarchive:\n    src: https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.3.0/kustomize_v5.3.0_linux_amd64.tar.gz\n    dest: /usr/local/bin\n    remote_src: yes\n    mode: '0755'\n\n`;
+    } else {
+      const urls = {
+        kubectl: 'https://dl.k8s.io/release/v1.29.0/bin/linux/amd64/kubectl',
+        minikube: 'https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64',
+        kind: 'https://kind.sigs.k8s.io/dl/v0.22.0/kind-linux-amd64',
+        eksctl: 'https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz',
+        k9s: 'https://github.com/derailed/k9s/releases/download/v0.32.4/k9s_Linux_amd64.tar.gz'
+      };
+      if (['eksctl', 'k9s'].includes(app)) {
+        s += `- name: Download and extract ${app}\n  unarchive:\n    src: ${urls[app]}\n    dest: /usr/local/bin\n    remote_src: yes\n    mode: '0755'\n\n`;
+      } else {
+        s += `- name: Download ${app} binary\n  get_url:\n    url: ${urls[app]}\n    dest: /usr/local/bin/${app}\n    mode: '0755'\n\n`;
+      }
+    }
+  }
+  // Default packaging
+  else {
+    s += `- name: Install ${app}\n  ${pm}:\n    name: ${pkg}\n    state: present\n`;
+    if (pm === 'apt') s += `    update_cache: yes\n`;
+    s += `\n`;
+  }
+  return s;
+}
+
 // ── Per-app single-role builders ─────────────────────────────
 function buildAppRoleTasks(os, app, actions) {
   const pm = pkgModule(os);
@@ -901,9 +967,7 @@ function buildAppRoleTasks(os, app, actions) {
   const purge = document.getElementById('purgeConfig')?.checked;
   let out = `#SPDX-License-Identifier: MIT-0\n---\n# tasks/main.yml — ${app}\n\n`;
   if (actions.includes('install')) {
-    out += `- name: Install ${app}\n  ${pm}:\n    name: ${pkg}\n    state: present\n`;
-    if (pm === 'apt') out += `    update_cache: yes\n`;
-    out += `\n`;
+    out += getInstallTasks(os, app, pm, pkg);
   }
   if (actions.includes('start')) out += `- name: Start and enable ${app}\n  service:\n    name: ${svcName(app)}\n    state: started\n    enabled: yes\n  tags: [${app}, service]\n\n`;
   if (actions.includes('stop')) out += `- name: Stop ${app}\n  service:\n    name: ${svcName(app)}\n    state: stopped\n    enabled: no\n\n`;
