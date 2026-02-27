@@ -1,8 +1,0 @@
-#SPDX-License-Identifier: MIT-0
----
-# handlers/main.yml — git
-
-- name: Restart git
-  service:
-    name: git
-    state: restarted

@@ -1,6 +1,6 @@
 #SPDX-License-Identifier: MIT-0
 ---
-# vars/main.yml — git
+# vars/main.yml — ansible
 # High-priority variables (override defaults)
 
-# git_custom_option: "value"
+# ansible_custom_option: "value"

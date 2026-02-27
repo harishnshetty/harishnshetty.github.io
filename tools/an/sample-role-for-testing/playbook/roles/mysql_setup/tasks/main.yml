@@ -4,7 +4,7 @@
 
 - name: Install mysql
   apt:
-    name: mysql
+    name: mysql-server
     state: present
     update_cache: yes
 
@@ -12,4 +12,3 @@
   service:
     name: mysql
     enabled: yes
-

@@ -1,0 +1,7 @@
+#SPDX-License-Identifier: MIT-0
+---
+- name: Test ansible_setup
+  hosts: all
+  become: true
+  roles:
+    - role: ansible_setup

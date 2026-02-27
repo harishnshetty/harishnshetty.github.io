@@ -1,0 +1,26 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install basic packages
+  apt:
+    name:
+      - vim
+      - nano
+      - curl
+      - wget
+      - git
+      - htop
+      - net-tools
+      - iproute2
+      - dnsutils
+      - ca-certificates
+      - gnupg
+      - openssh-client
+      - sudo
+      - unzip
+      - lsof
+    state: present
+    update_cache: yes
+

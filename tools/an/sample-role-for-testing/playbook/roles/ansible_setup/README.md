@@ -1,8 +1,8 @@
-git_setup
-=========
+ansible_setup
+=============
 
-- install the git service
-- enable the git service
+- install the ansible service
+- enable the ansible service
 
 Requirements
 ------------
@@ -15,9 +15,9 @@ Role Variables
 A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
 
 ```yaml
-git_package: "git"
-git_service_state: started
-git_service_enabled: yes
+ansible_package: "ansible"
+ansible_service_state: started
+ansible_service_enabled: yes
 ```
 
 Dependencies
@@ -32,7 +32,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: Harish N Shetty.git_setup }
+         - { role: Harish N Shetty.ansible_setup }
 
 License
 -------

@@ -1,0 +1,8 @@
+#SPDX-License-Identifier: MIT-0
+---
+# handlers/main.yml — ansible
+
+- name: Restart ansible
+  service:
+    name: ansible
+    state: restarted
