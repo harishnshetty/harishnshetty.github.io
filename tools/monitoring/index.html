@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,10 +8,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col lg:flex-row items-center justify-center p-6">
 
   <!-- Sidebar -->
-  <div class="w-full lg:w-80 bg-gray-50 p-6 shadow-inner lg:shadow-none lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-y-auto z-10">
+  <!-- <div class="w-full lg:w-80 bg-gray-50 p-6 shadow-inner lg:shadow-none lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-y-auto z-10">
     <div class="text-center">
       <h3 class="text-xl font-bold">Monitoring Script Page</h3>
       <img src="img/image.png" alt="Harish N Shetty" class="w-40 h-40 rounded-2xl mx-auto mb-4 shadow-md border border-gray-300" />
@@ -64,13 +66,14 @@
       <img src="img/qr2.png" alt="Harish N Shetty" class="w-45 h-45 mx-auto mb-4">
       <br> Design & Developed By</br><strong>Harish N Shetty</strong> 
     </div>
-  </div>
+  </div> -->
 
   <!-- Main Content -->
   <div class="flex-0 p-1 overflow-y-auto lg:ml-80"></div>
   <div class="max-w-4xl w-full bg-white rounded-xl shadow-md p-6">
     <a href="update.html" target="_blank">
-      <div id="latestUpdate" class="mb-4 w-full max-w-full text-sm text-blue-800 bg-blue-100 p-3 rounded hidden cursor-pointer hover:bg-blue-200 transition">
+      <div id="latestUpdate"
+        class="mb-4 w-full max-w-full text-sm text-blue-800 bg-blue-100 p-3 rounded hidden cursor-pointer hover:bg-blue-200 transition">
         <img src="img/7.gif" alt="update" class="w-10 h-10 sm:w-7 sm:h-7 flex-shrink-0" />
         <div class="flex items-center gap-3">
           <i class="fas fa-bell text-blue-600"></i>
@@ -83,36 +86,43 @@
       <i class="fab fa-monitoring script text-blue-500 mr-2"></i>Advanced Monitoring Script Generator
     </h1>
     <p class="text-sm text-gray-600 text-center italic mb-6">
-      This tool is still in improvement stage — please review and modify the generated script based on your own knowledge.
+      This tool is still in improvement stage — please review and modify the generated script based on your own
+      knowledge.
     </p>
 
     <div class="flex flex-wrap gap-3 justify-center mb-6">
-      <a href="monitoring script.pdf" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+      <a href="monitoring script.pdf"
+        class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
         <i class="fas fa-file-pdf text-red-500 mr-2"></i> 📕Monitoring Script PDF
       </a>
-      <a href="https://youtube.com/playlist?list=PLB1yU-G7FE-ENj8uOF2wuiU_AWdvZAI7H" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+      <a href="https://youtube.com/playlist?list=PLB1yU-G7FE-ENj8uOF2wuiU_AWdvZAI7H"
+        class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
         <i class="fab fa-youtube text-red-500 mr-2"></i> Tutorials
       </a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_tqab3RWclUkxWWtBKdqYp0wjoGlCawZIYDT1itX-xAnY2g/viewform" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_tqab3RWclUkxWWtBKdqYp0wjoGlCawZIYDT1itX-xAnY2g/viewform"
+        class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
         <i class="fas fa-comment-dots text-blue-500 mr-2"></i> ✍️ Feedback Form
       </a>
-      <a href="https://harishnshetty.github.io/feedback/monitoring script.html" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+      <a href="https://harishnshetty.github.io/feedback/monitoring script.html"
+        class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
         <i class="fas fa-comment-dots text-blue-500 mr-2"></i> Read Feedback
       </a>
-      <a href="lic.txt" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+      <a href="lic.txt" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center"
+        target="_blank">
         <i class="fas fa-comment-dots text-blue-500 mr-2"></i> 🔑LICENSE
       </a>
     </div>
 
     <div class="mt-8">
       <h2 class="text-xl font-bold mb-4">Prometheus and Grafana Installation Generator</h2>
-      
+
       <!-- Installation Type Selector -->
       <div class="mb-6">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="installationType">
           Installation Type
         </label>
-        <select id="installationType" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        <select id="installationType"
+          class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
           <option value="system">System (On-prem/VMs)</option>
           <option value="eks">Amazon EKS (Kubernetes)</option>
         </select>
@@ -125,24 +135,26 @@
             <input type="checkbox" id="installPrometheus" class="form-checkbox h-5 w-5 text-blue-600" checked>
             <span class="text-gray-700 font-medium">Install Prometheus</span>
           </label>
-          
+
           <div id="prometheusOptions" class="ml-8 mb-4">
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="prometheusUrl">
                 Prometheus Download URL
               </label>
-              <input type="text" id="prometheusUrl" 
-                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                     value="https://github.com/prometheus/prometheus/releases/download/v3.5.0/prometheus-3.5.0.linux-amd64.tar.gz">
-              <p class="text-xs text-gray-500 mt-1">You can find latest versions at <a href="https://prometheus.io/download/" class="text-blue-500" target="_blank">prometheus.io/download</a></p>
+              <input type="text" id="prometheusUrl"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                value="https://github.com/prometheus/prometheus/releases/download/v3.5.0/prometheus-3.5.0.linux-amd64.tar.gz">
+              <p class="text-xs text-gray-500 mt-1">You can find latest versions at <a
+                  href="https://prometheus.io/download/" class="text-blue-500"
+                  target="_blank">prometheus.io/download</a></p>
             </div>
-            
+
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="prometheusPort">
                 Prometheus Web Port
               </label>
               <input type="number" id="prometheusPort" value="9090"
-                     class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
           </div>
         </div>
@@ -152,91 +164,94 @@
             <input type="checkbox" id="addHostMonitoring" class="form-checkbox h-5 w-5 text-blue-600">
             <span class="text-gray-700 font-medium">Add Host To Monitoring</span>
           </label>
-          
+
           <div id="hostMonitoringOptions" class="ml-8 mb-4 hidden">
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="hostJobName">
                 Job Name
               </label>
               <input type="text" id="hostJobName" value="node_exporter"
-                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
-            
+
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="hostTargets">
                 Target Hosts (comma separated)
               </label>
               <input type="text" id="hostTargets" value="localhost:9100"
-                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
               <p class="text-xs text-gray-500 mt-1">Format: host1:port,host2:port (default port is 9100)</p>
             </div>
           </div>
         </div>
-        
+
         <div class="mb-6">
           <label class="flex items-center space-x-3 mb-3">
             <input type="checkbox" id="installNodeExporter" class="form-checkbox h-5 w-5 text-blue-600">
             <span class="text-gray-700 font-medium">Install Node Exporter</span>
           </label>
-          
+
           <div id="nodeExporterOptions" class="ml-8 mb-4 hidden">
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="nodeExporterUrl">
                 Node Exporter Download URL
               </label>
-              <input type="text" id="nodeExporterUrl" 
-                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                     value="https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz">
-                     <p class="text-xs text-gray-500 mt-1">You can find latest versions at <a href="https://prometheus.io/download/" class="text-blue-500" target="_blank">prometheus.io/download</a></p>
+              <input type="text" id="nodeExporterUrl"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                value="https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz">
+              <p class="text-xs text-gray-500 mt-1">You can find latest versions at <a
+                  href="https://prometheus.io/download/" class="text-blue-500"
+                  target="_blank">prometheus.io/download</a></p>
             </div>
-            
+
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="nodeExporterPort">
                 Node Exporter Port
               </label>
               <input type="number" id="nodeExporterPort" value="9100"
-                     class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
           </div>
         </div>
-        
+
         <div class="mb-6">
           <label class="flex items-center space-x-3 mb-3">
             <input type="checkbox" id="installGrafana" class="form-checkbox h-5 w-5 text-blue-600">
             <span class="text-gray-700 font-medium">Install Grafana</span>
           </label>
-          
+
           <div id="grafanaOptions" class="ml-8 mb-4 hidden">
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaPort">
                 Grafana Web Port
               </label>
               <input type="number" id="grafanaPort" value="3000"
-                     class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                class="shadow appearance-none border rounded w-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
-            
+
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaAdminPassword">
                 Admin Password (min 8 chars)
               </label>
               <input type="password" id="grafanaAdminPassword" placeholder="Leave blank for default"
-                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
           </div>
         </div>
-        
+
         <div class="mb-6">
           <label class="flex items-center space-x-3 mb-3">
             <input type="checkbox" id="enableService" class="form-checkbox h-5 w-5 text-blue-600" checked>
             <span class="text-gray-700 font-medium">Enable as Systemd Service</span>
           </label>
         </div>
-        
+
         <div class="mb-6">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="linuxDistro">
             Linux Distribution
           </label>
-          <select id="linuxDistro" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <select id="linuxDistro"
+            class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             <option value="ubuntu">Ubuntu/Debian</option>
             <option value="centos">CentOS/RHEL</option>
             <option value="generic">Generic Linux</option>
@@ -251,7 +266,7 @@
             EKS Cluster Name
           </label>
           <input type="text" id="eksClusterName" placeholder="my-eks-cluster"
-                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
 
         <div class="mb-6">
@@ -259,7 +274,7 @@
             AWS Region
           </label>
           <input type="text" id="eksRegion" placeholder="us-west-2"
-                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
 
         <div class="mb-6">
@@ -267,23 +282,24 @@
             <input type="checkbox" id="installPrometheusEKS" class="form-checkbox h-5 w-5 text-blue-600" checked>
             <span class="text-gray-700 font-medium">Install Prometheus (via Helm)</span>
           </label>
-          
+
           <div id="prometheusEksOptions" class="ml-8 mb-4">
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="prometheusEksNamespace">
                 Namespace
               </label>
               <input type="text" id="prometheusEksNamespace" value="monitoring"
-                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
-            
+
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="prometheusEksStorageClass">
                 Storage Class
               </label>
               <input type="text" id="prometheusEksStorageClass" value="gp2"
-                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-              <p class="text-xs text-gray-500 mt-1">Use 'ebs-sc' for EBS, 'efs-sc' for EFS, or your custom storage class</p>
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+              <p class="text-xs text-gray-500 mt-1">Use 'ebs-sc' for EBS, 'efs-sc' for EFS, or your custom storage class
+              </p>
             </div>
           </div>
         </div>
@@ -293,30 +309,30 @@
             <input type="checkbox" id="installGrafanaEKS" class="form-checkbox h-5 w-5 text-blue-600" checked>
             <span class="text-gray-700 font-medium">Install Grafana (via Helm)</span>
           </label>
-          
+
           <div id="grafanaEksOptions" class="ml-8 mb-4">
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaEksNamespace">
                 Namespace
               </label>
               <input type="text" id="grafanaEksNamespace" value="monitoring"
-                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
-            
+
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaEksAdminPassword">
                 Admin Password (min 8 chars)
               </label>
               <input type="password" id="grafanaEksAdminPassword" placeholder="Leave blank for default"
-                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
-            
+
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="grafanaEksIngressHost">
                 Ingress Host (optional)
               </label>
               <input type="text" id="grafanaEksIngressHost" placeholder="grafana.example.com"
-                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
               <p class="text-xs text-gray-500 mt-1">Leave blank if not using ingress</p>
             </div>
           </div>
@@ -327,7 +343,7 @@
             <input type="checkbox" id="enableEksMonitoring" class="form-checkbox h-5 w-5 text-blue-600" checked>
             <span class="text-gray-700 font-medium">Enable EKS Cluster Monitoring</span>
           </label>
-          
+
           <div id="eksMonitoringOptions" class="ml-8 mb-4">
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="eksMetricsTypes">
@@ -355,18 +371,20 @@
           </div>
         </div>
       </div>
-      
-      <button id="generateScript" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+
+      <button id="generateScript"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         Generate Installation Script
       </button>
     </div>
-    
+
     <div id="scriptOutput" class="mt-8 hidden">
       <h3 class="text-lg font-bold mb-2">Generated Installation Script</h3>
       <div class="bg-gray-800 text-green-200 p-4 rounded-lg overflow-x-auto">
         <pre id="generatedScript" class="text-sm"></pre>
       </div>
-      <button id="copyScript" class="mt-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+      <button id="copyScript"
+        class="mt-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         <i class="fas fa-copy mr-2"></i>Copy to Clipboard
       </button>
 
@@ -375,10 +393,11 @@
         <div class="bg-gray-800 text-green-200 p-4 rounded-lg overflow-x-auto">
           <pre id="generatedConfig" class="text-sm"></pre>
         </div>
-        <button id="copyConfig" class="mt-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        <button id="copyConfig"
+          class="mt-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           <i class="fas fa-copy mr-2"></i>Copy Configuration to Clipboard
         </button>
-        
+
         <div class="mt-4 bg-blue-50 p-4 rounded-lg">
           <h4 class="font-bold mb-2">How to add this configuration:</h4>
           <div class="bg-gray-800 text-green-200 p-4 rounded-lg overflow-x-auto">
@@ -391,35 +410,35 @@
 
   <script>
     // Toggle options based on checkboxes
-    document.getElementById('installPrometheus').addEventListener('change', function() {
+    document.getElementById('installPrometheus').addEventListener('change', function () {
       document.getElementById('prometheusOptions').style.display = this.checked ? 'block' : 'none';
     });
-    
-    document.getElementById('addHostMonitoring').addEventListener('change', function() {
+
+    document.getElementById('addHostMonitoring').addEventListener('change', function () {
       document.getElementById('hostMonitoringOptions').classList.toggle('hidden', !this.checked);
     });
-    
-    document.getElementById('installNodeExporter').addEventListener('change', function() {
+
+    document.getElementById('installNodeExporter').addEventListener('change', function () {
       document.getElementById('nodeExporterOptions').classList.toggle('hidden', !this.checked);
     });
-    
-    document.getElementById('installGrafana').addEventListener('change', function() {
+
+    document.getElementById('installGrafana').addEventListener('change', function () {
       document.getElementById('grafanaOptions').classList.toggle('hidden', !this.checked);
     });
 
     // Generate script button
-    document.getElementById('generateScript').addEventListener('click', function() {
+    document.getElementById('generateScript').addEventListener('click', function () {
       const installPrometheus = document.getElementById('installPrometheus').checked;
       const prometheusUrl = document.getElementById('prometheusUrl').value;
       const prometheusPort = document.getElementById('prometheusPort').value;
-      
+
       const installNodeExporter = document.getElementById('installNodeExporter').checked;
       const nodeExporterUrl = document.getElementById('nodeExporterUrl').value;
       const nodeExporterPort = document.getElementById('nodeExporterPort').value;
-      
+
       const enableService = document.getElementById('enableService').checked;
       const linuxDistro = document.getElementById('linuxDistro').value;
-      
+
       const addHostMonitoring = document.getElementById('addHostMonitoring').checked;
       const hostJobName = document.getElementById('hostJobName').value;
       const hostTargets = document.getElementById('hostTargets').value;
@@ -433,11 +452,11 @@
         const formattedTargets = hostTargets.split(',')
           .map(target => `"${target.trim()}"`)
           .join(', ');
-        
+
         const config = `  - job_name: "${hostJobName}"
     static_configs:
       - targets: [${formattedTargets}]`;
-        
+
         const commands = `# To add this configuration to prometheus.yml:
 sudo cp /etc/prometheus/prometheus.yml /etc/prometheus/prometheus.yml.bak  # Create backup
 sudo nano /etc/prometheus/prometheus.yml  # Edit the file
@@ -456,11 +475,11 @@ sudo systemctl restart prometheus`;
       }
 
       // Add copy functionality for the configuration
-      document.getElementById('copyConfig').addEventListener('click', function() {
+      document.getElementById('copyConfig').addEventListener('click', function () {
         const configText = document.getElementById('generatedConfig').textContent;
-        navigator.clipboard.writeText(configText).then(function() {
+        navigator.clipboard.writeText(configText).then(function () {
           alert('Configuration copied to clipboard!');
-        }, function() {
+        }, function () {
           alert('Failed to copy configuration');
         });
       });
@@ -471,9 +490,9 @@ sudo systemctl restart prometheus`;
 # Generated by Harish N Shetty's Monitoring Generator https://harishnshetty.github.io/tools/
 # WARNING: Review this script before running on production systems\n\n`;
 
- 
 
-         if (installPrometheus) {
+
+      if (installPrometheus) {
         script += `
 # Install Prometheus
 echo "Installing Prometheus from ${prometheusUrl}"
@@ -533,9 +552,9 @@ sudo systemctl daemon-reload
 sudo systemctl enable prometheus
 sudo systemctl start prometheus
 `;
-    }
+      }
 
-    if (installNodeExporter) {
+      if (installNodeExporter) {
         script += `
 # Install Node Exporter
 echo "Installing Node Exporter from ${nodeExporterUrl}"
@@ -590,7 +609,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable node_exporter
 sudo systemctl start node_exporter
 `;
-    }
+      }
       if (installGrafana) {
         script += `
 # Install Grafana
@@ -657,7 +676,7 @@ fi
       }
 
       if (installGrafana) {
-  script += `
+        script += `
 # Print Grafana Post-Installation Notes
 cat <<'EOF'
 # +++++++++++++++++++++++++++++++++++++++ +++++++++++++++++++++++++++++++
@@ -666,23 +685,23 @@ cat <<'EOF'
 - Default username: admin
 - Default password: ${grafanaAdminPassword || 'admin'} (change this after first login)`;
 
-  if (installPrometheus) {
-    script += `
+        if (installPrometheus) {
+          script += `
 - To add Prometheus as data source:
   1. Go to Configuration > Data Sources
   2. Add Prometheus
   3. Set URL to: http://localhost:${prometheusPort}
   4. Click Save & Test`;
-  }
+        }
 
-  script += `
+        script += `
 # Recommended next steps:
 - Import dashboard ID 1860 for Node Exporter metrics
 - Set up authentication and users
 - Configure alerts and notifications
 EOF
 `;
-}
+      }
 
 
       document.getElementById('generatedScript').textContent = script;
@@ -690,20 +709,20 @@ EOF
     });
 
     // Copy to clipboard button
-    document.getElementById('copyScript').addEventListener('click', function() {
+    document.getElementById('copyScript').addEventListener('click', function () {
       const scriptText = document.getElementById('generatedScript').textContent;
-      navigator.clipboard.writeText(scriptText).then(function() {
+      navigator.clipboard.writeText(scriptText).then(function () {
         alert('Script copied to clipboard!');
-      }, function() {
+      }, function () {
         alert('Failed to copy script');
       });
     });
   </script>
 
 
-<script>
+  <script>
     // Toggle between System and EKS options
-    document.getElementById('installationType').addEventListener('change', function() {
+    document.getElementById('installationType').addEventListener('change', function () {
       const isEks = this.value === 'eks';
       document.getElementById('systemOptions').classList.toggle('hidden', isEks);
       document.getElementById('eksOptions').classList.toggle('hidden', !isEks);
@@ -712,9 +731,9 @@ EOF
     // Your existing toggle functions for options...
 
     // Generate script button
-    document.getElementById('generateScript').addEventListener('click', function() {
+    document.getElementById('generateScript').addEventListener('click', function () {
       const installationType = document.getElementById('installationType').value;
-      
+
       if (installationType === 'system') {
         generateSystemScript();
       } else {
@@ -965,4 +984,5 @@ EOF\n\n`;
 
 
 </body>
+
 </html>

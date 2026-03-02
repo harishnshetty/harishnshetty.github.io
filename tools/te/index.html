@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,31 +25,40 @@
       transition: opacity 0.5s ease-in-out;
       z-index: 1000;
     }
+
     .toast-notification.show {
       opacity: 1;
     }
+
     .hljs {
       background: #1e1e1e;
       color: #d4d4d4;
     }
+
     .hljs-keyword {
       color: #569cd6;
     }
+
     .hljs-string {
       color: #ce9178;
     }
+
     .hljs-number {
       color: #b5cea8;
     }
+
     .hljs-variable {
       color: #9cdcfe;
     }
+
     .hljs-attr {
       color: #9cdcfe;
     }
+
     .hljs-built_in {
       color: #dcdcaa;
     }
+
     .copy-btn {
       position: absolute;
       right: 10px;
@@ -60,9 +70,11 @@
       border-radius: 4px;
       cursor: pointer;
     }
+
     .copy-btn:hover {
       background: rgba(255, 255, 255, 0.2);
     }
+
     .config-editor {
       border: 1px solid #ddd;
       border-radius: 4px;
@@ -71,9 +83,10 @@
     }
   </style>
 </head>
+
 <body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col lg:flex-row items-center justify-center p-6">
 
-  <div class="w-full lg:w-80 bg-gray-50 p-6 shadow-inner lg:shadow-none lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-y-auto z-10">
+  <!-- <div class="w-full lg:w-80 bg-gray-50 p-6 shadow-inner lg:shadow-none lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-y-auto z-10">
     <div class="text-center">
       <h3 class="text-xl font-bold">Terraform Script Generator</h3>
       <img src="img/image.png" alt="Harish N Shetty" class="w-40 h-40 rounded-2xl mx-auto mb-4 shadow-md border border-gray-300" />
@@ -127,12 +140,13 @@
       <img src="img/qr2.png" alt="Harish N Shetty" class="w-45 h-45 mx-auto mb-4">
       <br> Design & Developed By</br><strong>Harish N Shetty</strong> 
     </div>
-  </div>
+  </div> -->
 
   <div class="flex-0 p-1 overflow-y-auto lg:ml-80"></div>
   <div class="max-w-4xl w-full bg-white rounded-xl shadow-md p-6">
     <a href="update.html" target="_blank">
-      <div id="latestUpdate" class="mb-4 w-full max-w-full text-sm text-blue-800 bg-blue-100 p-3 rounded hidden cursor-pointer hover:bg-blue-200 transition">
+      <div id="latestUpdate"
+        class="mb-4 w-full max-w-full text-sm text-blue-800 bg-blue-100 p-3 rounded hidden cursor-pointer hover:bg-blue-200 transition">
         <div class="flex items-center gap-3">
           <i class="fas fa-bell text-blue-600"></i>
           <span id="updateMessage">Fetching updates...</span>
@@ -148,35 +162,46 @@
     </p>
 
     <div class="flex flex-wrap gap-3 justify-center mb-6">
-      <a href="terraform.pdf" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+      <a href="terraform.pdf" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center"
+        target="_blank">
         <i class="fas fa-file-pdf text-red-500 mr-2"></i> Terraform Best Practices
       </a>
-      <a href="https://youtube.com/playlist?list=PLB1yU-G7FE-ENj8uOF2wuiU_AWdvZAI7H" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+      <a href="https://youtube.com/playlist?list=PLB1yU-G7FE-ENj8uOF2wuiU_AWdvZAI7H"
+        class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
         <i class="fab fa-youtube text-red-500 mr-2"></i> Tutorials
       </a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_tqab3RWclUkxWWtBKdqYp0wjoGlCawZIYDT1itX-xAnY2g/viewform" class="px-3 py-1 bg-gray-100 hover:bg-blue-200 rounded-full text-sm flex items-center" target="_blank">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_tqab3RWclUkxWWtBKdqYp0wjoGlCawZIYDT1itX-xAnY2g/viewform"
+        class="px-3 py-1 bg-gray-100 hover:bg-blue-200 rounded-full text-sm flex items-center" target="_blank">
         <i class="fas fa-comment-dots text-blue-500 mr-2"></i> ✍️ Feedback Form
       </a>
-      <a href="https://harishnshetty.github.io/feedback/terraform.html" class="px-3 py-1 bg-gray-100 hover:bg-blue-200 rounded-full text-sm flex items-center" target="_blank">
+      <a href="https://harishnshetty.github.io/feedback/terraform.html"
+        class="px-3 py-1 bg-gray-100 hover:bg-blue-200 rounded-full text-sm flex items-center" target="_blank">
         <i class="fas fa-comment-dots text-blue-500 mr-2"></i> Read Feedback
       </a>
-      <a href="lic.txt" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center" target="_blank">
+      <a href="lic.txt" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm flex items-center"
+        target="_blank">
         <i class="fas fa-comment-dots text-blue-500 mr-2"></i> 🔑LICENSE
       </a>
     </div>
 
     <div class="flex border-b mb-6 overflow-x-auto">
-      <button id="tab1" class="tab-button py-2 px-4 font-medium text-blue-600 border-b-2 border-blue-600 whitespace-nowrap" onclick="showTab(1)">1. Provider Setup</button>
-      <button id="tab2" class="tab-button py-2 px-4 font-medium text-gray-500 whitespace-nowrap" onclick="showTab(2)">2. Infrastructure</button>
-      <button id="tab3" class="tab-button py-2 px-4 font-medium text-gray-500 whitespace-nowrap" onclick="showTab(3)">3. Networking</button>
-      <button id="tab4" class="tab-button py-2 px-4 font-medium text-gray-500 whitespace-nowrap" onclick="showTab(4)">4. Security</button>
-      <button id="tab5" class="tab-button py-2 px-4 font-medium text-gray-500 whitespace-nowrap" onclick="showTab(5)">5. Review</button>
+      <button id="tab1"
+        class="tab-button py-2 px-4 font-medium text-blue-600 border-b-2 border-blue-600 whitespace-nowrap"
+        onclick="showTab(1)">1. Provider Setup</button>
+      <button id="tab2" class="tab-button py-2 px-4 font-medium text-gray-500 whitespace-nowrap" onclick="showTab(2)">2.
+        Infrastructure</button>
+      <button id="tab3" class="tab-button py-2 px-4 font-medium text-gray-500 whitespace-nowrap" onclick="showTab(3)">3.
+        Networking</button>
+      <button id="tab4" class="tab-button py-2 px-4 font-medium text-gray-500 whitespace-nowrap" onclick="showTab(4)">4.
+        Security</button>
+      <button id="tab5" class="tab-button py-2 px-4 font-medium text-gray-500 whitespace-nowrap" onclick="showTab(5)">5.
+        Review</button>
     </div>
 
     <div id="tabContents">
       <div id="tabContent1" class="tab-content space-y-4">
         <h3 class="text-lg font-semibold border-b pb-2">Cloud Provider & Backend Configuration</h3>
-        
+
         <div class="p-4 bg-gray-50 rounded-lg">
           <h4 class="font-medium mb-2">Terraform Core</h4>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -203,7 +228,7 @@
             <option value="azure">Azure</option>
             <option value="gcp">GCP</option>
           </select>
-          
+
           <div id="awsOptions" class="provider-options mt-4 space-y-2">
             <div>
               <label for="awsRegion" class="block text-sm font-medium mb-1">AWS Region</label>
@@ -221,8 +246,10 @@
               <input type="text" id="azureLocation" value="East US" class="w-full p-2 border rounded">
             </div>
             <div>
-              <label for="azureSubscriptionId" class="block text-sm font-medium mb-1">Azure Subscription ID (Optional)</label>
-              <input type="text" id="azureSubscriptionId" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" class="w-full p-2 border rounded">
+              <label for="azureSubscriptionId" class="block text-sm font-medium mb-1">Azure Subscription ID
+                (Optional)</label>
+              <input type="text" id="azureSubscriptionId" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                class="w-full p-2 border rounded">
             </div>
           </div>
 
@@ -247,12 +274,13 @@
             <option value="azurerm">Azure Storage Account</option>
             <option value="gcs">GCP Cloud Storage</option>
           </select>
-          
+
           <div id="backendOptions" class="mt-4 hidden space-y-2">
             <div id="s3BackendOptions" class="backend-option hidden space-y-2">
               <div>
                 <label for="s3Bucket" class="block text-sm font-medium mb-1">S3 Bucket Name</label>
-                <input type="text" id="s3Bucket" placeholder="my-terraform-state-bucket" class="w-full p-2 border rounded">
+                <input type="text" id="s3Bucket" placeholder="my-terraform-state-bucket"
+                  class="w-full p-2 border rounded">
               </div>
               <div>
                 <label for="s3Key" class="block text-sm font-medium mb-1">S3 Key (Path to state file)</label>
@@ -263,15 +291,18 @@
                 <input type="text" id="s3Region" value="us-east-1" class="w-full p-2 border rounded">
               </div>
               <div>
-                <label for="s3DynamoTable" class="block text-sm font-medium mb-1">DynamoDB Table for State Locking (Optional)</label>
-                <input type="text" id="s3DynamoTable" placeholder="my-terraform-locks" class="w-full p-2 border rounded">
+                <label for="s3DynamoTable" class="block text-sm font-medium mb-1">DynamoDB Table for State Locking
+                  (Optional)</label>
+                <input type="text" id="s3DynamoTable" placeholder="my-terraform-locks"
+                  class="w-full p-2 border rounded">
               </div>
             </div>
 
             <div id="azurermBackendOptions" class="backend-option hidden space-y-2">
               <div>
                 <label for="azStorageAccount" class="block text-sm font-medium mb-1">Storage Account Name</label>
-                <input type="text" id="azStorageAccount" placeholder="mystorageaccount" class="w-full p-2 border rounded">
+                <input type="text" id="azStorageAccount" placeholder="mystorageaccount"
+                  class="w-full p-2 border rounded">
               </div>
               <div>
                 <label for="azContainerName" class="block text-sm font-medium mb-1">Container Name</label>
@@ -281,13 +312,15 @@
                 <label for="azKey" class="block text-sm font-medium mb-1">Key (Path to state file)</label>
                 <input type="text" id="azKey" value="terraform.tfstate" class="w-full p-2 border rounded">
               </div>
-              <p class="text-xs text-gray-500">Ensure AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY/SAS_TOKEN env vars are set.</p>
+              <p class="text-xs text-gray-500">Ensure AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY/SAS_TOKEN env
+                vars are set.</p>
             </div>
 
             <div id="gcsBackendOptions" class="backend-option hidden space-y-2">
               <div>
                 <label for="gcsBucket" class="block text-sm font-medium mb-1">GCS Bucket Name</label>
-                <input type="text" id="gcsBucket" placeholder="my-terraform-state-bucket" class="w-full p-2 border rounded">
+                <input type="text" id="gcsBucket" placeholder="my-terraform-state-bucket"
+                  class="w-full p-2 border rounded">
               </div>
               <div>
                 <label for="gcsPrefix" class="block text-sm font-medium mb-1">GCS Prefix (Path to state file)</label>
@@ -306,14 +339,14 @@
 
       <div id="tabContent2" class="tab-content hidden space-y-4">
         <h3 class="text-lg font-semibold border-b pb-2">Infrastructure Components</h3>
-        
+
         <div class="p-4 bg-gray-50 rounded-lg">
           <h4 class="font-medium mb-2">Compute Resources</h4>
           <label for="computeType" class="block text-sm font-medium mb-1">Select Compute Type</label>
           <select id="computeType" class="w-full p-2 border rounded">
             <option value="ec2">EC2 Instances (AWS)</option>
             <option value="eks">EKS Cluster (AWS Kubernetes)</option>
-            </select>
+          </select>
 
           <div id="ec2Options" class="compute-option mt-4 space-y-2">
             <div>
@@ -325,7 +358,8 @@
               <input type="text" id="instanceType" value="t3.micro" class="w-full p-2 border rounded">
             </div>
             <div>
-              <label for="amiId" class="block text-sm font-medium mb-1">AMI ID (Optional, defaults to Ubuntu latest)</label>
+              <label for="amiId" class="block text-sm font-medium mb-1">AMI ID (Optional, defaults to Ubuntu
+                latest)</label>
               <input type="text" id="amiId" placeholder="ami-xxxxxxxxxxxxxxxxx" class="w-full p-2 border rounded">
             </div>
             <div>
@@ -343,7 +377,7 @@
               <label for="nodeGroupType" class="block text-sm font-medium mb-1">Node Group Type</label>
               <select id="nodeGroupType" class="w-full p-2 border rounded">
                 <option value="managed">Managed Node Group</option>
-                </select>
+              </select>
             </div>
             <div>
               <label for="eksNodeCount" class="block text-sm font-medium mb-1">Desired Node Count</label>
@@ -362,14 +396,14 @@
             <input type="checkbox" id="enableDatabase" class="mr-2">
             Enable Managed Database
           </label>
-          
+
           <div id="databaseOptions" class="hidden ml-6 space-y-2 mt-2">
             <div>
               <label for="databaseType" class="block text-sm font-medium mb-1">Database Type</label>
               <select id="databaseType" class="w-full p-2 border rounded">
                 <option value="rds">RDS (Relational Database Service)</option>
                 <option value="aurora">Aurora (AWS)</option>
-                </select>
+              </select>
             </div>
             <div>
               <label for="databaseEngine" class="block text-sm font-medium mb-1">Database Engine</label>
@@ -393,8 +427,10 @@
               <input type="text" id="databaseUsername" value="admin" class="w-full p-2 border rounded">
             </div>
             <div>
-              <label for="databasePassword" class="block text-sm font-medium mb-1">Master Password (Will be stored in Secrets Manager if enabled)</label>
-              <input type="password" id="databasePassword" value="YourSecureP@ssw0rd!" class="w-full p-2 border rounded">
+              <label for="databasePassword" class="block text-sm font-medium mb-1">Master Password (Will be stored in
+                Secrets Manager if enabled)</label>
+              <input type="password" id="databasePassword" value="YourSecureP@ssw0rd!"
+                class="w-full p-2 border rounded">
             </div>
           </div>
         </div>
@@ -405,7 +441,7 @@
             <input type="checkbox" id="enableObjectStorage" class="mr-2">
             Enable Object Storage (e.g., S3 Bucket)
           </label>
-          
+
           <div id="objectStorageOptions" class="hidden ml-6 space-y-2 mt-2">
             <div>
               <label for="bucketName" class="block text-sm font-medium mb-1">Bucket Name</label>
@@ -440,10 +476,10 @@
 
       <div id="tabContent3" class="tab-content hidden space-y-4">
         <h3 class="text-lg font-semibold border-b pb-2">Networking Configuration</h3>
-        
+
         <div class="p-4 bg-gray-50 rounded-lg">
           <h4 class="font-medium mb-2">VPC/Network</h4>
-          
+
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label for="vpcCidr" class="block text-sm font-medium mb-1">VPC CIDR Block</label>
@@ -456,26 +492,29 @@
               </label>
             </div>
           </div>
-          
+
           <div class="mt-4">
             <label class="block text-sm font-medium mb-1">Subnets</label>
             <div class="space-y-2">
               <div class="flex items-center">
                 <input type="checkbox" id="enablePublicSubnets" class="mr-2" checked>
                 <label for="enablePublicSubnets">Public Subnets</label>
-                <input type="number" id="publicSubnetCount" min="1" max="6" value="2" class="ml-2 w-16 p-1 border rounded">
+                <input type="number" id="publicSubnetCount" min="1" max="6" value="2"
+                  class="ml-2 w-16 p-1 border rounded">
                 <span class="ml-2 text-sm text-gray-600">AZs</span>
               </div>
               <div class="flex items-center">
                 <input type="checkbox" id="enablePrivateSubnets" class="mr-2" checked>
                 <label for="enablePrivateSubnets">Private Subnets</label>
-                <input type="number" id="privateSubnetCount" min="1" max="6" value="2" class="ml-2 w-16 p-1 border rounded">
+                <input type="number" id="privateSubnetCount" min="1" max="6" value="2"
+                  class="ml-2 w-16 p-1 border rounded">
                 <span class="ml-2 text-sm text-gray-600">AZs</span>
               </div>
               <div class="flex items-center">
                 <input type="checkbox" id="enableDatabaseSubnets" class="mr-2">
                 <label for="enableDatabaseSubnets">Database Subnets</label>
-                <input type="number" id="databaseSubnetCount" min="1" max="6" value="2" class="ml-2 w-16 p-1 border rounded">
+                <input type="number" id="databaseSubnetCount" min="1" max="6" value="2"
+                  class="ml-2 w-16 p-1 border rounded">
                 <span class="ml-2 text-sm text-gray-600">AZs</span>
               </div>
             </div>
@@ -484,14 +523,14 @@
 
         <div class="p-4 bg-gray-50 rounded-lg">
           <h4 class="font-medium mb-2">Load Balancing</h4>
-          
+
           <div class="space-y-4">
             <div>
               <label for="enableLoadBalancer" class="flex items-center">
                 <input type="checkbox" id="enableLoadBalancer" class="mr-2">
                 Enable Load Balancer
               </label>
-              
+
               <div id="loadBalancerOptions" class="hidden ml-6 space-y-2 mt-2">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -512,7 +551,8 @@
                 </div>
                 <div>
                   <label for="targetGroupPort" class="block text-sm font-medium mb-1">Target Group Port</label>
-                  <input type="number" id="targetGroupPort" value="80" min="1" max="65535" class="w-full p-2 border rounded">
+                  <input type="number" id="targetGroupPort" value="80" min="1" max="65535"
+                    class="w-full p-2 border rounded">
                 </div>
               </div>
             </div>
@@ -528,14 +568,14 @@
 
         <div class="p-4 bg-gray-50 rounded-lg">
           <h4 class="font-medium mb-2">DNS & CDN</h4>
-          
+
           <div class="space-y-4">
             <div>
               <label for="enableDns" class="flex items-center">
                 <input type="checkbox" id="enableDns" class="mr-2">
                 Configure DNS
               </label>
-              
+
               <div id="dnsOptions" class="hidden ml-6 space-y-2 mt-2">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -546,7 +586,7 @@
                     <label for="dnsProvider" class="block text-sm font-medium mb-1">DNS Provider</label>
                     <select id="dnsProvider" class="w-full p-2 border rounded">
                       <option value="route53">AWS Route53</option>
-                      </select>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -557,14 +597,14 @@
                 <input type="checkbox" id="enableCdn" class="mr-2">
                 Enable CDN
               </label>
-              
+
               <div id="cdnOptions" class="hidden ml-6 space-y-2 mt-2">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label for="cdnProvider" class="block text-sm font-medium mb-1">CDN Provider</label>
                     <select id="cdnProvider" class="w-full p-2 border rounded">
                       <option value="cloudfront">AWS CloudFront</option>
-                      </select>
+                    </select>
                   </div>
                   <div>
                     <label for="enableHttps" class="flex items-center">
@@ -574,8 +614,10 @@
                   </div>
                 </div>
                 <div>
-                  <label for="cdnOriginDomain" class="block text-sm font-medium mb-1">Origin Domain Name (e.g., your-alb.elb.amazonaws.com)</label>
-                  <input type="text" id="cdnOriginDomain" placeholder="my-alb-xxxxxxxx.elb.amazonaws.com" class="w-full p-2 border rounded">
+                  <label for="cdnOriginDomain" class="block text-sm font-medium mb-1">Origin Domain Name (e.g.,
+                    your-alb.elb.amazonaws.com)</label>
+                  <input type="text" id="cdnOriginDomain" placeholder="my-alb-xxxxxxxx.elb.amazonaws.com"
+                    class="w-full p-2 border rounded">
                 </div>
               </div>
             </div>
@@ -594,26 +636,28 @@
 
       <div id="tabContent4" class="tab-content hidden space-y-4">
         <h3 class="text-lg font-semibold border-b pb-2">Security Configuration</h3>
-        
+
         <div class="p-4 bg-gray-50 rounded-lg">
           <h4 class="font-medium mb-2">IAM & Access Control</h4>
-          
+
           <div class="space-y-4">
             <div>
               <label for="enableIamRoles" class="flex items-center">
                 <input type="checkbox" id="enableIamRoles" class="mr-2" checked>
                 Create IAM Roles
               </label>
-              
+
               <div id="iamOptions" class="ml-6 space-y-2 mt-2">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label for="ec2RoleName" class="block text-sm font-medium mb-1">EC2 Role Name</label>
-                    <input type="text" id="ec2RoleName" placeholder="ec2-role" value="my-ec2-role" class="w-full p-2 border rounded">
+                    <input type="text" id="ec2RoleName" placeholder="ec2-role" value="my-ec2-role"
+                      class="w-full p-2 border rounded">
                   </div>
                   <div>
                     <label for="lambdaRoleName" class="block text-sm font-medium mb-1">Lambda Role Name</label>
-                    <input type="text" id="lambdaRoleName" placeholder="lambda-role" value="my-lambda-role" class="w-full p-2 border rounded">
+                    <input type="text" id="lambdaRoleName" placeholder="lambda-role" value="my-lambda-role"
+                      class="w-full p-2 border rounded">
                   </div>
                 </div>
                 <div class="flex items-center">
@@ -627,23 +671,25 @@
 
         <div class="p-4 bg-gray-50 rounded-lg">
           <h4 class="font-medium mb-2">Security Groups</h4>
-          
+
           <div class="space-y-4">
             <div>
               <label for="enableDefaultSg" class="flex items-center">
                 <input type="checkbox" id="enableDefaultSg" class="mr-2" checked>
                 Create Default Security Groups (Web, DB)
               </label>
-              
+
               <div id="securityGroupOptions" class="ml-6 space-y-2 mt-2">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label for="webSgName" class="block text-sm font-medium mb-1">Web Tier SG Name</label>
-                    <input type="text" id="webSgName" placeholder="web-tier-sg" value="web-tier-sg" class="w-full p-2 border rounded">
+                    <input type="text" id="webSgName" placeholder="web-tier-sg" value="web-tier-sg"
+                      class="w-full p-2 border rounded">
                   </div>
                   <div>
                     <label for="dbSgName" class="block text-sm font-medium mb-1">Database SG Name</label>
-                    <input type="text" id="dbSgName" placeholder="db-tier-sg" value="db-tier-sg" class="w-full p-2 border rounded">
+                    <input type="text" id="dbSgName" placeholder="db-tier-sg" value="db-tier-sg"
+                      class="w-full p-2 border rounded">
                   </div>
                 </div>
               </div>
@@ -654,15 +700,16 @@
                 <input type="checkbox" id="enableCustomSgRules" class="mr-2">
                 Add Custom Security Group Rules
               </label>
-              
+
               <div id="customSgRulesOptions" class="hidden ml-6 space-y-2 mt-2">
                 <div class="flex items-center gap-2">
-                  <button onclick="addSgRule()" class="bg-blue-500 hover:bg-blue-600 text-white text-sm py-1 px-2 rounded">
+                  <button onclick="addSgRule()"
+                    class="bg-blue-500 hover:bg-blue-600 text-white text-sm py-1 px-2 rounded">
                     <i class="fas fa-plus mr-1"></i> Add Rule
                   </button>
                 </div>
                 <div id="sgRulesContainer" class="space-y-2">
-                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -670,23 +717,25 @@
 
         <div class="p-4 bg-gray-50 rounded-lg">
           <h4 class="font-medium mb-2">Encryption & Secrets</h4>
-          
+
           <div class="space-y-4">
             <div>
               <label for="enableKms" class="flex items-center">
                 <input type="checkbox" id="enableKms" class="mr-2">
                 Enable KMS Encryption Key
               </label>
-              
+
               <div id="kmsOptions" class="hidden ml-6 space-y-2 mt-2">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label for="kmsAlias" class="block text-sm font-medium mb-1">KMS Key Alias</label>
-                    <input type="text" id="kmsAlias" placeholder="alias/my-key" value="alias/my-app-key" class="w-full p-2 border rounded">
+                    <input type="text" id="kmsAlias" placeholder="alias/my-key" value="alias/my-app-key"
+                      class="w-full p-2 border rounded">
                   </div>
                   <div>
                     <label for="kmsDescription" class="block text-sm font-medium mb-1">Description</label>
-                    <input type="text" id="kmsDescription" placeholder="Encryption key for project" value="Encryption key for my-application" class="w-full p-2 border rounded">
+                    <input type="text" id="kmsDescription" placeholder="Encryption key for project"
+                      value="Encryption key for my-application" class="w-full p-2 border rounded">
                   </div>
                 </div>
               </div>
@@ -697,16 +746,18 @@
                 <input type="checkbox" id="enableSecretsManager" class="mr-2">
                 Store Secrets in Secrets Manager
               </label>
-              
+
               <div id="secretsManagerOptions" class="hidden ml-6 space-y-2 mt-2">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label for="secretName" class="block text-sm font-medium mb-1">Secret Name</label>
-                    <input type="text" id="secretName" placeholder="db-credentials" value="my-app/db-credentials" class="w-full p-2 border rounded">
+                    <input type="text" id="secretName" placeholder="db-credentials" value="my-app/db-credentials"
+                      class="w-full p-2 border rounded">
                   </div>
                   <div>
                     <label for="secretDescription" class="block text-sm font-medium mb-1">Description</label>
-                    <input type="text" id="secretDescription" placeholder="Database credentials" value="Database credentials for my-application" class="w-full p-2 border rounded">
+                    <input type="text" id="secretDescription" placeholder="Database credentials"
+                      value="Database credentials for my-application" class="w-full p-2 border rounded">
                   </div>
                 </div>
               </div>
@@ -726,7 +777,7 @@
 
       <div id="tabContent5" class="tab-content hidden space-y-4">
         <h3 class="text-lg font-semibold border-b pb-2">Review & Generate</h3>
-        
+
         <div class="bg-gray-50 p-4 rounded-lg">
           <h4 class="font-medium mb-2">Configuration Summary</h4>
           <div id="configSummary" class="text-sm space-y-2">
@@ -742,7 +793,7 @@
               <select id="outputFormat" class="w-full p-2 border rounded">
                 <option value="single">Single main.tf file</option>
                 <option value="modules">Terraform modules structure (main.tf, variables.tf, outputs.tf)</option>
-                </select>
+              </select>
             </div>
             <div>
               <label for="includeComments" class="flex items-center">
@@ -773,10 +824,12 @@ resource "null_resource" "placeholder" {
           <button onclick="prevTab(4)" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
             <i class="fas fa-arrow-left mr-2"></i> Back
           </button>
-          <button onclick="generateTerraform()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+          <button onclick="generateTerraform()"
+            class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             <i class="fas fa-magic mr-2"></i> Generate Terraform
           </button>
-          <button onclick="downloadFiles()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button onclick="downloadFiles()"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             <i class="fas fa-download mr-2"></i> Download Files
           </button>
         </div>
@@ -795,10 +848,10 @@ resource "null_resource" "placeholder" {
       document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.add('hidden');
       });
-      
+
       // Show selected tab content
       document.getElementById(`tabContent${tabNumber}`).classList.remove('hidden');
-      
+
       // Update tab button styles
       document.querySelectorAll('.tab-button').forEach(button => {
         button.classList.remove('text-blue-600', 'border-blue-600');
@@ -806,61 +859,61 @@ resource "null_resource" "placeholder" {
         button.style.borderBottomWidth = '2px'; // Ensure border is always visible
         button.style.borderColor = 'transparent';
       });
-      
+
       document.getElementById(`tab${tabNumber}`).classList.remove('text-gray-500');
       document.getElementById(`tab${tabNumber}`).classList.add('text-blue-600', 'border-blue-600');
       document.getElementById(`tab${tabNumber}`).style.borderColor = '#2563eb'; // Tailwind blue-600
     }
-    
+
     function nextTab(tabNumber) {
       // Validate current tab before proceeding
       if (validateCurrentTab(tabNumber - 1)) {
         showTab(tabNumber);
       }
     }
-    
+
     function prevTab(tabNumber) {
       showTab(tabNumber);
     }
-    
+
     function validateCurrentTab(tabNumber) {
       const projectName = document.getElementById('projectName').value.trim();
       const environment = document.getElementById('environment').value.trim();
       const provider = document.getElementById('cloudProvider').value;
 
       if (!projectName || !environment) {
-          showToast('Project Name and Environment are required on Tab 1.');
-          return false;
+        showToast('Project Name and Environment are required on Tab 1.');
+        return false;
       }
 
       if (tabNumber === 1) { // Provider Setup
-          if (!provider) {
-              showToast('Please select a cloud provider on Tab 1.');
-              return false;
+        if (!provider) {
+          showToast('Please select a cloud provider on Tab 1.');
+          return false;
+        }
+        if (provider === 'gcp' && !document.getElementById('gcpProject').value.trim()) {
+          showToast('GCP Project ID is required for GCP provider.');
+          return false;
+        }
+        const backendType = document.getElementById('backendType').value;
+        if (backendType === 's3') {
+          if (!document.getElementById('s3Bucket').value.trim() || !document.getElementById('s3Key').value.trim() || !document.getElementById('s3Region').value.trim()) {
+            showToast('S3 Bucket, Key, and Region are required for S3 backend.');
+            return false;
           }
-          if (provider === 'gcp' && !document.getElementById('gcpProject').value.trim()) {
-              showToast('GCP Project ID is required for GCP provider.');
-              return false;
+        } else if (backendType === 'azurerm') {
+          if (!document.getElementById('azStorageAccount').value.trim() || !document.getElementById('azContainerName').value.trim() || !document.getElementById('azKey').value.trim()) {
+            showToast('Azure Storage Account, Container, and Key are required for Azure backend.');
+            return false;
           }
-          const backendType = document.getElementById('backendType').value;
-          if (backendType === 's3') {
-              if (!document.getElementById('s3Bucket').value.trim() || !document.getElementById('s3Key').value.trim() || !document.getElementById('s3Region').value.trim()) {
-                  showToast('S3 Bucket, Key, and Region are required for S3 backend.');
-                  return false;
-              }
-          } else if (backendType === 'azurerm') {
-              if (!document.getElementById('azStorageAccount').value.trim() || !document.getElementById('azContainerName').value.trim() || !document.getElementById('azKey').value.trim()) {
-                  showToast('Azure Storage Account, Container, and Key are required for Azure backend.');
-                  return false;
-              }
-          } else if (backendType === 'gcs') {
-              if (!document.getElementById('gcsBucket').value.trim() || !document.getElementById('gcsPrefix').value.trim()) {
-                  showToast('GCS Bucket and Prefix are required for GCS backend.');
-                  return false;
-              }
+        } else if (backendType === 'gcs') {
+          if (!document.getElementById('gcsBucket').value.trim() || !document.getElementById('gcsPrefix').value.trim()) {
+            showToast('GCS Bucket and Prefix are required for GCS backend.');
+            return false;
           }
+        }
       }
-      
+
       if (tabNumber === 2) { // Infrastructure
         const computeType = document.getElementById('computeType').value;
         if (computeType === 'ec2') {
@@ -970,20 +1023,20 @@ resource "null_resource" "placeholder" {
 
       return true;
     }
-    
+
     // Toast notification
     function showToast(message) {
       const toast = document.getElementById('toast');
       const toastMessage = document.getElementById('toastMessage');
-      
+
       toastMessage.textContent = message;
       toast.classList.add('show');
-      
+
       setTimeout(() => {
         toast.classList.remove('show');
       }, 3000);
     }
-    
+
     // Copy to clipboard
     function copyToClipboard() {
       const code = document.getElementById('generatedCode').textContent;
@@ -993,17 +1046,17 @@ resource "null_resource" "placeholder" {
         showToast('Failed to copy code: ' + err);
       });
     }
-    
+
     // Dynamic form elements
-    document.getElementById('cloudProvider').addEventListener('change', function() {
+    document.getElementById('cloudProvider').addEventListener('change', function () {
       const provider = this.value;
       document.querySelectorAll('.provider-options').forEach(div => {
         div.classList.add('hidden');
       });
       document.getElementById(`${provider}Options`).classList.remove('hidden');
     });
-    
-    document.getElementById('backendType').addEventListener('change', function() {
+
+    document.getElementById('backendType').addEventListener('change', function () {
       const backend = this.value;
       document.querySelectorAll('.backend-option').forEach(div => {
         div.classList.add('hidden');
@@ -1015,69 +1068,69 @@ resource "null_resource" "placeholder" {
         document.getElementById('backendOptions').classList.add('hidden');
       }
     });
-    
-    document.getElementById('computeType').addEventListener('change', function() {
+
+    document.getElementById('computeType').addEventListener('change', function () {
       const compute = this.value;
       document.querySelectorAll('.compute-option').forEach(div => {
         div.classList.add('hidden');
       });
       document.getElementById(`${compute}Options`).classList.remove('hidden');
     });
-    
+
     // Toggle options based on checkboxes
-    document.getElementById('enableDatabase').addEventListener('change', function() {
+    document.getElementById('enableDatabase').addEventListener('change', function () {
       document.getElementById('databaseOptions').classList.toggle('hidden', !this.checked);
     });
-    
-    document.getElementById('enableObjectStorage').addEventListener('change', function() {
+
+    document.getElementById('enableObjectStorage').addEventListener('change', function () {
       document.getElementById('objectStorageOptions').classList.toggle('hidden', !this.checked);
     });
-    
-    document.getElementById('enableLoadBalancer').addEventListener('change', function() {
+
+    document.getElementById('enableLoadBalancer').addEventListener('change', function () {
       document.getElementById('loadBalancerOptions').classList.toggle('hidden', !this.checked);
     });
-    
-    document.getElementById('enableDns').addEventListener('change', function() {
+
+    document.getElementById('enableDns').addEventListener('change', function () {
       document.getElementById('dnsOptions').classList.toggle('hidden', !this.checked);
     });
-    
-    document.getElementById('enableCdn').addEventListener('change', function() {
+
+    document.getElementById('enableCdn').addEventListener('change', function () {
       document.getElementById('cdnOptions').classList.toggle('hidden', !this.checked);
     });
-    
-    document.getElementById('enableIamRoles').addEventListener('change', function() {
+
+    document.getElementById('enableIamRoles').addEventListener('change', function () {
       // IAM options are always shown if IAM roles are enabled
       document.getElementById('iamOptions').classList.toggle('hidden', !this.checked);
     });
 
-    document.getElementById('enableDefaultSg').addEventListener('change', function() {
+    document.getElementById('enableDefaultSg').addEventListener('change', function () {
       // Security Group options are always shown if default SG is enabled
       document.getElementById('securityGroupOptions').classList.toggle('hidden', !this.checked);
     });
-    
-    document.getElementById('enableKms').addEventListener('change', function() {
+
+    document.getElementById('enableKms').addEventListener('change', function () {
       document.getElementById('kmsOptions').classList.toggle('hidden', !this.checked);
     });
-    
-    document.getElementById('enableSecretsManager').addEventListener('change', function() {
+
+    document.getElementById('enableSecretsManager').addEventListener('change', function () {
       document.getElementById('secretsManagerOptions').classList.toggle('hidden', !this.checked);
       // If Secrets Manager is enabled, also check if database password needs to be handled
       if (this.checked && document.getElementById('enableDatabase').checked) {
-         document.getElementById('databasePassword').setAttribute('placeholder', 'Will be stored in Secrets Manager');
+        document.getElementById('databasePassword').setAttribute('placeholder', 'Will be stored in Secrets Manager');
       } else {
         document.getElementById('databasePassword').setAttribute('placeholder', 'YourSecureP@ssw0rd!');
       }
     });
 
-    document.getElementById('enableCustomSgRules').addEventListener('change', function() {
+    document.getElementById('enableCustomSgRules').addEventListener('change', function () {
       document.getElementById('customSgRulesOptions').classList.toggle('hidden', !this.checked);
     });
-    
+
     // Add security group rule
     function addSgRule() {
       const container = document.getElementById('sgRulesContainer');
       const ruleId = Date.now(); // Unique ID for the rule
-      
+
       const ruleDiv = document.createElement('div');
       ruleDiv.className = 'bg-white p-3 rounded border';
       ruleDiv.id = `sgRule-${ruleId}`; // Assign ID to the rule div
@@ -1120,32 +1173,32 @@ resource "null_resource" "placeholder" {
       `;
       container.appendChild(ruleDiv);
     }
-    
+
     function removeSgRule(ruleId) {
       const ruleDiv = document.getElementById(`sgRule-${ruleId}`);
       if (ruleDiv) {
         ruleDiv.remove();
       }
     }
-    
+
     // Generate Terraform configuration
     function generateTerraform() {
       if (!validateCurrentTab(4)) { // Validate previous tab (security) before generating
         return;
       }
       generateConfigSummary();
-      
+
       const outputFormat = document.getElementById('outputFormat').value;
       let mainTfContent = generateMainTfCode();
       let variablesTfContent = '';
       let outputsTfContent = '';
 
       if (outputFormat === 'modules') {
-          variablesTfContent = generateVariablesTfCode();
-          outputsTfContent = generateOutputsTfCode();
+        variablesTfContent = generateVariablesTfCode();
+        outputsTfContent = generateOutputsTfCode();
       } else {
-          // If single file, ensure outputs are still appended to main.tf if any.
-          mainTfContent += '\n' + generateOutputsTfCode();
+        // If single file, ensure outputs are still appended to main.tf if any.
+        mainTfContent += '\n' + generateOutputsTfCode();
       }
 
       const codeElement = document.getElementById('generatedCode');
@@ -1153,11 +1206,11 @@ resource "null_resource" "placeholder" {
       hljs.highlightElement(codeElement);
       showToast('Terraform code generated!');
     }
-    
+
     function generateConfigSummary() {
       const summaryDiv = document.getElementById('configSummary');
       let summaryHTML = '<h3>Core Configuration:</h3>';
-      
+
       const projectName = document.getElementById('projectName').value;
       const environment = document.getElementById('environment').value;
       const provider = document.getElementById('cloudProvider').value;
@@ -1170,11 +1223,11 @@ resource "null_resource" "placeholder" {
       summaryHTML += `<p><strong>Terraform Version:</strong> ${document.getElementById('terraformVersion').value}</p>`;
       summaryHTML += `<p><strong>Backend Type:</strong> ${backendType.charAt(0).toUpperCase() + backendType.slice(1)}</p>`;
       if (backendType !== 'local') {
-          summaryHTML += `<ul class="list-disc list-inside ml-4">`;
-          if (backendType === 's3') summaryHTML += `<li>Bucket: ${document.getElementById('s3Bucket').value}</li><li>Key: ${document.getElementById('s3Key').value}</li><li>Region: ${document.getElementById('s3Region').value}</li>`;
-          else if (backendType === 'azurerm') summaryHTML += `<li>Storage Account: ${document.getElementById('azStorageAccount').value}</li><li>Container: ${document.getElementById('azContainerName').value}</li>`;
-          else if (backendType === 'gcs') summaryHTML += `<li>Bucket: ${document.getElementById('gcsBucket').value}</li><li>Prefix: ${document.getElementById('gcsPrefix').value}</li>`;
-          summaryHTML += `</ul>`;
+        summaryHTML += `<ul class="list-disc list-inside ml-4">`;
+        if (backendType === 's3') summaryHTML += `<li>Bucket: ${document.getElementById('s3Bucket').value}</li><li>Key: ${document.getElementById('s3Key').value}</li><li>Region: ${document.getElementById('s3Region').value}</li>`;
+        else if (backendType === 'azurerm') summaryHTML += `<li>Storage Account: ${document.getElementById('azStorageAccount').value}</li><li>Container: ${document.getElementById('azContainerName').value}</li>`;
+        else if (backendType === 'gcs') summaryHTML += `<li>Bucket: ${document.getElementById('gcsBucket').value}</li><li>Prefix: ${document.getElementById('gcsPrefix').value}</li>`;
+        summaryHTML += `</ul>`;
       }
       if (provider === 'aws') summaryHTML += `<p><strong>AWS Region:</strong> ${document.getElementById('awsRegion').value}</p>`;
       else if (provider === 'azure') summaryHTML += `<p><strong>Azure Location:</strong> ${document.getElementById('azureLocation').value}</p>`;
@@ -1238,13 +1291,13 @@ resource "null_resource" "placeholder" {
 
       summaryDiv.innerHTML = summaryHTML;
     }
-    
+
     function generateMainTfCode() {
       const provider = document.getElementById('cloudProvider').value;
       const projectName = document.getElementById('projectName').value;
       const environment = document.getElementById('environment').value;
       const includeComments = document.getElementById('includeComments').checked;
-      
+
       let code = '';
       const indent = '  ';
 
@@ -1254,17 +1307,17 @@ resource "null_resource" "placeholder" {
         code += `# Environment: ${environment}\n`;
         code += `# Generated on: ${new Date().toISOString()}\n\n`;
       }
-      
+
       // Terraform block
       code += `terraform {\n`;
       code += `${indent}required_version = "${document.getElementById('terraformVersion').value}.x"\n\n`;
-      
+
       // Backend configuration
       const backendType = document.getElementById('backendType').value;
       if (backendType !== 'local') {
         if (includeComments) code += `${indent}# Remote Backend Configuration\n`;
         code += `${indent}backend "${backendType}" {\n`;
-        
+
         if (backendType === 's3') {
           code += `${indent}${indent}bucket         = "${document.getElementById('s3Bucket').value}"\n`;
           code += `${indent}${indent}key            = "${document.getElementById('s3Key').value}"\n`;
@@ -1281,11 +1334,11 @@ resource "null_resource" "placeholder" {
           code += `${indent}${indent}bucket = "${document.getElementById('gcsBucket').value}"\n`;
           code += `${indent}${indent}prefix = "${document.getElementById('gcsPrefix').value}"\n`;
         }
-        
+
         code += `${indent}}\n`;
       }
       code += `}\n\n`;
-      
+
       // Provider configuration
       if (includeComments) code += `# Provider configuration\n`;
       if (provider === 'aws') {
@@ -1296,7 +1349,7 @@ resource "null_resource" "placeholder" {
           code += `${indent}profile = "${profile}"\n`;
         }
         code += `}\n\n`;
-        
+
         // Data source for AZs
         if (includeComments) code += `# Get available AWS availability zones for region\n`;
         code += `data "aws_availability_zones" "available" {\n`;
@@ -1317,7 +1370,7 @@ resource "null_resource" "placeholder" {
         code += `${indent}region  = "${document.getElementById('gcpRegion').value}"\n`;
         code += `}\n\n`;
       }
-      
+
       // IAM Roles
       if (document.getElementById('enableIamRoles').checked && provider === 'aws') {
         if (includeComments) code += `# IAM Roles for EC2 and Lambda\n`;
@@ -1344,7 +1397,7 @@ resource "null_resource" "placeholder" {
           code += `${indent}policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"\n`;
           code += `}\n\n`;
         }
-        
+
         const lambdaRoleName = document.getElementById('lambdaRoleName').value.trim() || `${projectName}-${environment}-lambda-role`;
         code += `resource "aws_iam_role" "${lambdaRoleName}" {\n`;
         code += `${indent}name               = "${lambdaRoleName}"\n`;
@@ -1399,7 +1452,7 @@ resource "null_resource" "placeholder" {
         code += `${indent}${indent}Environment = "${environment}"\n`;
         code += `${indent}}\n`;
         if (document.getElementById('enableKms').checked) {
-            code += `${indent}kms_key_id = aws_kms_key.main.arn\n`;
+          code += `${indent}kms_key_id = aws_kms_key.main.arn\n`;
         }
         code += `}\n\n`;
 
@@ -1411,7 +1464,7 @@ resource "null_resource" "placeholder" {
         code += `${indent}})\n`;
         code += `}\n\n`;
       }
-      
+
       // VPC configuration
       if (provider === 'aws') {
         if (includeComments) code += `# Networking configuration (VPC and Subnets)\n`;
@@ -1419,33 +1472,33 @@ resource "null_resource" "placeholder" {
         const privateSubnetCount = document.getElementById('enablePrivateSubnets').checked ? parseInt(document.getElementById('privateSubnetCount').value) : 0;
         const databaseSubnetCount = document.getElementById('enableDatabaseSubnets').checked ? parseInt(document.getElementById('databaseSubnetCount').value) : 0;
         const totalSubnetCount = publicSubnetCount + privateSubnetCount + databaseSubnetCount;
-        
+
         code += `module "vpc" {\n`;
         code += `${indent}source  = "terraform-aws-modules/vpc/aws"\n`;
         code += `${indent}version = "~> 5.0"\n\n`; // Updated module version
-        
+
         code += `${indent}name = "${projectName}-${environment}-vpc"\n`;
         code += `${indent}cidr = var.vpc_cidr\n\n`;
-        
+
         if (totalSubnetCount > 0) {
-            code += `${indent}azs             = slice(data.aws_availability_zones.available.names, 0, ${Math.max(publicSubnetCount, privateSubnetCount, databaseSubnetCount) || 1})\n`;
+          code += `${indent}azs             = slice(data.aws_availability_zones.available.names, 0, ${Math.max(publicSubnetCount, privateSubnetCount, databaseSubnetCount) || 1})\n`;
         } else {
-            code += `${indent}azs             = ["${document.getElementById('awsRegion').value}a"] # Default to one AZ if no subnets selected\n`;
+          code += `${indent}azs             = ["${document.getElementById('awsRegion').value}a"] # Default to one AZ if no subnets selected\n`;
         }
-        
+
         if (publicSubnetCount > 0) {
           code += `${indent}public_subnets  = [for i in range(${publicSubnetCount}) : cidrsubnet(var.vpc_cidr, 8, i)]\n`;
         }
-        
+
         if (privateSubnetCount > 0) {
           code += `${indent}private_subnets = [for i in range(${privateSubnetCount}) : cidrsubnet(var.vpc_cidr, 8, ${publicSubnetCount} + i)]\n`;
         }
-        
+
         if (databaseSubnetCount > 0) {
           const offset = publicSubnetCount + privateSubnetCount;
           code += `${indent}database_subnets = [for i in range(${databaseSubnetCount}) : cidrsubnet(var.vpc_cidr, 8, ${offset} + i)]\n`;
         }
-        
+
         code += `${indent}enable_nat_gateway = ${document.getElementById('enableNatGateway').checked}\n`;
         if (document.getElementById('enableNatGateway').checked) {
           code += `${indent}single_nat_gateway = true\n`;
@@ -1457,11 +1510,11 @@ resource "null_resource" "placeholder" {
         code += `${indent}}\n`;
         code += `}\n\n`;
       }
-      
+
       // Security Groups
       if (provider === 'aws' && (document.getElementById('enableDefaultSg').checked || document.getElementById('enableCustomSgRules').checked)) {
         if (includeComments) code += `# Security Groups\n`;
-        
+
         if (document.getElementById('enableDefaultSg').checked) {
           const webSgName = document.getElementById('webSgName').value.trim() || `${projectName}-${environment}-web-sg`;
           const dbSgName = document.getElementById('dbSgName').value.trim() || `${projectName}-${environment}-db-sg`;
@@ -1470,7 +1523,7 @@ resource "null_resource" "placeholder" {
           code += `${indent}name        = "${webSgName}"\n`;
           code += `${indent}description = "Security group for web servers"\n`;
           code += `${indent}vpc_id      = module.vpc.vpc_id\n\n`;
-          
+
           code += `${indent}ingress {\n`;
           code += `${indent}${indent}description = "HTTP from anywhere"\n`;
           code += `${indent}${indent}from_port   = 80\n`;
@@ -1478,7 +1531,7 @@ resource "null_resource" "placeholder" {
           code += `${indent}${indent}protocol    = "tcp"\n`;
           code += `${indent}${indent}cidr_blocks = ["0.0.0.0/0"]\n`;
           code += `${indent}}\n\n`;
-          
+
           code += `${indent}ingress {\n`;
           code += `${indent}${indent}description = "HTTPS from anywhere"\n`;
           code += `${indent}${indent}from_port   = 443\n`;
@@ -1486,7 +1539,7 @@ resource "null_resource" "placeholder" {
           code += `${indent}${indent}protocol    = "tcp"\n`;
           code += `${indent}${indent}cidr_blocks = ["0.0.0.0/0"]\n`;
           code += `${indent}}\n\n`;
-          
+
           code += `${indent}egress {\n`;
           code += `${indent}${indent}from_port   = 0\n`;
           code += `${indent}${indent}to_port     = 0\n`;
@@ -1503,7 +1556,7 @@ resource "null_resource" "placeholder" {
             code += `${indent}name        = "${dbSgName}"\n`;
             code += `${indent}description = "Security group for database access"\n`;
             code += `${indent}vpc_id      = module.vpc.vpc_id\n\n`;
-            
+
             code += `${indent}ingress {\n`;
             code += `${indent}${indent}description = "Allow DB access from web tier"\n`;
             code += `${indent}${indent}from_port   = ${document.getElementById('databaseEngine').value === 'mysql' || document.getElementById('databaseEngine').value === 'mariadb' ? 3306 : 5432}\n`; // Default ports
@@ -1528,37 +1581,37 @@ resource "null_resource" "placeholder" {
         if (document.getElementById('enableCustomSgRules').checked) {
           const rules = document.querySelectorAll('#sgRulesContainer > div');
           if (rules.length > 0) {
-              code += `resource "aws_security_group" "custom_rules_sg" {\n`;
-              code += `${indent}name        = "${projectName}-${environment}-custom-sg"\n`;
-              code += `${indent}description = "Custom security group with user-defined rules"\n`;
-              code += `${indent}vpc_id      = module.vpc.vpc_id\n`;
-              code += `${indent}tags = {\n`;
-              code += `${indent}${indent}Name = "${projectName}-${environment}-custom-sg"\n`;
-              code += `${indent}}\n\n`;
-              
-              rules.forEach((rule, index) => {
-                  const type = rule.querySelector('.sg-rule-type').value;
-                  const fromPort = rule.querySelector('.sg-rule-from').value;
-                  const toPort = rule.querySelector('.sg-rule-to').value;
-                  const protocol = rule.querySelector('.sg-rule-protocol').value;
-                  const cidrBlocks = rule.querySelector('.sg-rule-cidr').value.split(',').map(c => `"${c.trim()}"`).join(', ');
+            code += `resource "aws_security_group" "custom_rules_sg" {\n`;
+            code += `${indent}name        = "${projectName}-${environment}-custom-sg"\n`;
+            code += `${indent}description = "Custom security group with user-defined rules"\n`;
+            code += `${indent}vpc_id      = module.vpc.vpc_id\n`;
+            code += `${indent}tags = {\n`;
+            code += `${indent}${indent}Name = "${projectName}-${environment}-custom-sg"\n`;
+            code += `${indent}}\n\n`;
 
-                  code += `${indent}${type} {\n`;
-                  code += `${indent}${indent}from_port   = ${fromPort}\n`;
-                  code += `${indent}${indent}to_port     = ${toPort}\n`;
-                  code += `${indent}${indent}protocol    = "${protocol}"\n`;
-                  code += `${indent}${indent}cidr_blocks = [${cidrBlocks}]\n`;
-                  code += `${indent}}\n`;
-              });
-              code += `}\n\n`;
+            rules.forEach((rule, index) => {
+              const type = rule.querySelector('.sg-rule-type').value;
+              const fromPort = rule.querySelector('.sg-rule-from').value;
+              const toPort = rule.querySelector('.sg-rule-to').value;
+              const protocol = rule.querySelector('.sg-rule-protocol').value;
+              const cidrBlocks = rule.querySelector('.sg-rule-cidr').value.split(',').map(c => `"${c.trim()}"`).join(', ');
+
+              code += `${indent}${type} {\n`;
+              code += `${indent}${indent}from_port   = ${fromPort}\n`;
+              code += `${indent}${indent}to_port     = ${toPort}\n`;
+              code += `${indent}${indent}protocol    = "${protocol}"\n`;
+              code += `${indent}${indent}cidr_blocks = [${cidrBlocks}]\n`;
+              code += `${indent}}\n`;
+            });
+            code += `}\n\n`;
           }
         }
       }
-      
+
       // Compute resources
       if (includeComments) code += `# Compute resources\n`;
       const computeType = document.getElementById('computeType').value;
-      
+
       if (computeType === 'ec2' && provider === 'aws') {
         const instanceCount = document.getElementById('instanceCount').value;
         const instanceType = document.getElementById('instanceType').value;
@@ -1568,18 +1621,18 @@ resource "null_resource" "placeholder" {
 
         // Data source for latest Ubuntu AMI
         if (!amiId) {
-            code += `data "aws_ami" "ubuntu" {\n`;
-            code += `${indent}most_recent = true\n`;
-            code += `${indent}filter {\n`;
-            code += `${indent}${indent}name   = "name"\n`;
-            code += `${indent}${indent}values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]\n`;
-            code += `${indent}}\n`;
-            code += `${indent}filter {\n`;
-            code += `${indent}${indent}name   = "virtualization-type"\n`;
-            code += `${indent}${indent}values = ["hvm"]\n`;
-            code += `${indent}}\n`;
-            code += `${indent}owners = ["099720109477"] # Canonical\n`;
-            code += `}\n\n`;
+          code += `data "aws_ami" "ubuntu" {\n`;
+          code += `${indent}most_recent = true\n`;
+          code += `${indent}filter {\n`;
+          code += `${indent}${indent}name   = "name"\n`;
+          code += `${indent}${indent}values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]\n`;
+          code += `${indent}}\n`;
+          code += `${indent}filter {\n`;
+          code += `${indent}${indent}name   = "virtualization-type"\n`;
+          code += `${indent}${indent}values = ["hvm"]\n`;
+          code += `${indent}}\n`;
+          code += `${indent}owners = ["099720109477"] # Canonical\n`;
+          code += `}\n\n`;
         }
 
         code += `resource "aws_instance" "app" {\n`;
@@ -1589,7 +1642,7 @@ resource "null_resource" "placeholder" {
         code += `${indent}subnet_id     = element(module.vpc.private_subnets, count.index % length(module.vpc.private_subnets))\n`;
         code += `${indent}vpc_security_group_ids = [aws_security_group.${document.getElementById('webSgName').value.trim() || `${projectName}-${environment}-web-sg`}.id]\n`;
         if (document.getElementById('enableIamRoles').checked) {
-            code += `${indent}iam_instance_profile = aws_iam_instance_profile.${ec2RoleName}.name\n`;
+          code += `${indent}iam_instance_profile = aws_iam_instance_profile.${ec2RoleName}.name\n`;
         }
         code += `\n`;
         code += `${indent}root_block_device {\n`;
@@ -1603,10 +1656,10 @@ resource "null_resource" "placeholder" {
         code += `}\n\n`;
 
         if (document.getElementById('enableIamRoles').checked) {
-            code += `resource "aws_iam_instance_profile" "${ec2RoleName}" {\n`;
-            code += `${indent}name = "${ec2RoleName}"\n`;
-            code += `${indent}role = aws_iam_role.${ec2RoleName}.name\n`;
-            code += `}\n\n`;
+          code += `resource "aws_iam_instance_profile" "${ec2RoleName}" {\n`;
+          code += `${indent}name = "${ec2RoleName}"\n`;
+          code += `${indent}role = aws_iam_role.${ec2RoleName}.name\n`;
+          code += `}\n\n`;
         }
 
 
@@ -1618,19 +1671,19 @@ resource "null_resource" "placeholder" {
         code += `module "eks" {\n`;
         code += `${indent}source  = "terraform-aws-modules/eks/aws"\n`;
         code += `${indent}version = "~> 20.0"\n\n`; // Updated module version
-        
+
         code += `${indent}cluster_name    = "${projectName}-${environment}-eks"\n`;
         code += `${indent}cluster_version = "${kubernetesVersion}"\n`;
         code += `${indent}vpc_id          = module.vpc.vpc_id\n`;
         code += `${indent}subnet_ids      = module.vpc.private_subnets\n\n`;
-        
+
         code += `${indent}enable_irsa = true # Enable IAM Roles for Service Accounts\n\n`;
 
         code += `${indent}tags = {\n`;
         code += `${indent}${indent}Environment = "${environment}"\n`;
         code += `${indent}${indent}Project     = "${projectName}"\n`;
         code += `${indent}}\n\n`;
-        
+
         if (document.getElementById('nodeGroupType').value === 'managed') {
           code += `${indent}managed_node_groups = {\n`;
           code += `${indent}${indent}default = {\n`;
@@ -1659,21 +1712,21 @@ resource "null_resource" "placeholder" {
         code += `${indent}${indent}Environment = "${environment}"\n`;
         code += `${indent}}\n`;
         code += `}\n\n`;
-        
+
         code += `resource "aws_s3_bucket_acl" "data_bucket_acl" {\n`;
         code += `${indent}bucket = aws_s3_bucket.data_bucket.id\n`;
         code += `${indent}acl    = "${bucketAcl}"\n`;
         code += `}\n\n`;
 
         if (bucketVersioning) {
-            code += `resource "aws_s3_bucket_versioning" "data_bucket_versioning" {\n`;
-            code += `${indent}bucket = aws_s3_bucket.data_bucket.id\n`;
-            code += `${indent}versioning_configuration {\n`;
-            code += `${indent}${indent}status = "Enabled"\n`;
-            code += `${indent}}\n`;
-            code += `}\n\n`;
+          code += `resource "aws_s3_bucket_versioning" "data_bucket_versioning" {\n`;
+          code += `${indent}bucket = aws_s3_bucket.data_bucket.id\n`;
+          code += `${indent}versioning_configuration {\n`;
+          code += `${indent}${indent}status = "Enabled"\n`;
+          code += `${indent}}\n`;
+          code += `}\n\n`;
         }
-        
+
         // Block public access for general security
         code += `resource "aws_s3_bucket_public_access_block" "data_bucket_public_access_block" {\n`;
         code += `${indent}bucket = aws_s3_bucket.data_bucket.id\n`;
@@ -1699,7 +1752,7 @@ resource "null_resource" "placeholder" {
           code += `module "db" {\n`;
           code += `${indent}source  = "terraform-aws-modules/rds/aws"\n`;
           code += `${indent}version = "~> 6.0"\n\n`; // Updated module version
-          
+
           code += `${indent}identifier = "${projectName}-${environment}-db"\n\n`;
           code += `${indent}engine               = "${dbEngine}"\n`;
           code += `${indent}engine_version       = "latest"\n`; // Or specify a version like "8.0" for MySQL
@@ -1707,7 +1760,7 @@ resource "null_resource" "placeholder" {
           code += `${indent}allocated_storage    = ${dbStorage}\n`;
           code += `${indent}storage_encrypted   = ${document.getElementById('enableKms').checked}\n`;
           if (document.getElementById('enableKms').checked) {
-              code += `${indent}kms_key_id          = aws_kms_key.main.arn\n`;
+            code += `${indent}kms_key_id          = aws_kms_key.main.arn\n`;
           }
           code += `${indent}db_name              = "${projectName}"\n`;
           code += `${indent}username             = "${dbUsername}"\n`;
@@ -1765,7 +1818,7 @@ resource "null_resource" "placeholder" {
         code += `${indent}${indent}${indent}target_group_index = 0\n`;
         code += `${indent}${indent}}\n`;
         code += `${indent}]\n\n`;
-        
+
         code += `${indent}tags = {\n`;
         code += `${indent}${indent}Name        = "${projectName}-${environment}-alb"\n`;
         code += `${indent}${indent}Environment = "${environment}"\n`;
@@ -1793,16 +1846,16 @@ resource "null_resource" "placeholder" {
         code += `}\n\n`;
 
         if (document.getElementById('enableLoadBalancer').checked) {
-            code += `resource "aws_route53_record" "app_record" {\n`;
-            code += `${indent}zone_id = aws_route53_zone.main.zone_id\n`;
-            code += `${indent}name    = "${projectName}.${domainName}"\n`;
-            code += `${indent}type    = "A"\n`;
-            code += `${indent}alias {\n`;
-            code += `${indent}${indent}name                   = module.alb.lb_dns_name\n`;
-            code += `${indent}${indent}zone_id                = module.alb.lb_zone_id\n`;
-            code += `${indent}${indent}evaluate_target_health = true\n`;
-            code += `${indent}}\n`;
-            code += `}\n\n`;
+          code += `resource "aws_route53_record" "app_record" {\n`;
+          code += `${indent}zone_id = aws_route53_zone.main.zone_id\n`;
+          code += `${indent}name    = "${projectName}.${domainName}"\n`;
+          code += `${indent}type    = "A"\n`;
+          code += `${indent}alias {\n`;
+          code += `${indent}${indent}name                   = module.alb.lb_dns_name\n`;
+          code += `${indent}${indent}zone_id                = module.alb.lb_zone_id\n`;
+          code += `${indent}${indent}evaluate_target_health = true\n`;
+          code += `${indent}}\n`;
+          code += `}\n\n`;
         }
       }
 
@@ -1857,177 +1910,177 @@ resource "null_resource" "placeholder" {
         code += `${indent}}\n`;
         code += `}\n\n`;
       }
-      
+
       return code;
     }
 
     function generateVariablesTfCode() {
-        const projectName = document.getElementById('projectName').value;
-        const environment = document.getElementById('environment').value;
-        const provider = document.getElementById('cloudProvider').value;
-        const vpcCidr = document.getElementById('vpcCidr').value;
+      const projectName = document.getElementById('projectName').value;
+      const environment = document.getElementById('environment').value;
+      const provider = document.getElementById('cloudProvider').value;
+      const vpcCidr = document.getElementById('vpcCidr').value;
 
-        let varsCode = `# Variables for ${projectName}-${environment} deployment\n\n`;
-        const indent = '  ';
+      let varsCode = `# Variables for ${projectName}-${environment} deployment\n\n`;
+      const indent = '  ';
 
-        if (provider === 'aws') {
-            varsCode += `variable "aws_region" {\n`;
-            varsCode += `${indent}description = "AWS region for deployment"\n`;
-            varsCode += `${indent}type        = string\n`;
-            varsCode += `${indent}default     = "${document.getElementById('awsRegion').value}"\n`;
-            varsCode += `}\n\n`;
-        }
-
-        varsCode += `variable "vpc_cidr" {\n`;
-        varsCode += `${indent}description = "CIDR block for the VPC"\n`;
+      if (provider === 'aws') {
+        varsCode += `variable "aws_region" {\n`;
+        varsCode += `${indent}description = "AWS region for deployment"\n`;
         varsCode += `${indent}type        = string\n`;
-        varsCode += `${indent}default     = "${vpcCidr}"\n`;
+        varsCode += `${indent}default     = "${document.getElementById('awsRegion').value}"\n`;
         varsCode += `}\n\n`;
+      }
 
-        // Add other variables as needed, e.g., instance_type, counts, etc.
-        // For simplicity, many values are hardcoded in main.tf for now, but should be moved here.
+      varsCode += `variable "vpc_cidr" {\n`;
+      varsCode += `${indent}description = "CIDR block for the VPC"\n`;
+      varsCode += `${indent}type        = string\n`;
+      varsCode += `${indent}default     = "${vpcCidr}"\n`;
+      varsCode += `}\n\n`;
 
-        return varsCode;
+      // Add other variables as needed, e.g., instance_type, counts, etc.
+      // For simplicity, many values are hardcoded in main.tf for now, but should be moved here.
+
+      return varsCode;
     }
 
     function generateOutputsTfCode() {
-        const projectName = document.getElementById('projectName').value;
-        const environment = document.getElementById('environment').value;
-        const provider = document.getElementById('cloudProvider').value;
-        const computeType = document.getElementById('computeType').value;
+      const projectName = document.getElementById('projectName').value;
+      const environment = document.getElementById('environment').value;
+      const provider = document.getElementById('cloudProvider').value;
+      const computeType = document.getElementById('computeType').value;
 
-        let outputsCode = `# Outputs for ${projectName}-${environment} deployment\n\n`;
-        const indent = '  ';
+      let outputsCode = `# Outputs for ${projectName}-${environment} deployment\n\n`;
+      const indent = '  ';
 
-        if (provider === 'aws') {
-            outputsCode += `output "vpc_id" {\n`;
-            outputsCode += `${indent}description = "The ID of the VPC"\n`;
-            outputsCode += `${indent}value       = module.vpc.vpc_id\n`;
-            outputsCode += `}\n\n`;
+      if (provider === 'aws') {
+        outputsCode += `output "vpc_id" {\n`;
+        outputsCode += `${indent}description = "The ID of the VPC"\n`;
+        outputsCode += `${indent}value       = module.vpc.vpc_id\n`;
+        outputsCode += `}\n\n`;
 
-            outputsCode += `output "public_subnet_ids" {\n`;
-            outputsCode += `${indent}description = "List of public subnet IDs"\n`;
-            outputsCode += `${indent}value       = module.vpc.public_subnets\n`;
-            outputsCode += `}\n\n`;
+        outputsCode += `output "public_subnet_ids" {\n`;
+        outputsCode += `${indent}description = "List of public subnet IDs"\n`;
+        outputsCode += `${indent}value       = module.vpc.public_subnets\n`;
+        outputsCode += `}\n\n`;
 
-            outputsCode += `output "private_subnet_ids" {\n`;
-            outputsCode += `${indent}description = "List of private subnet IDs"\n`;
-            outputsCode += `${indent}value       = module.vpc.private_subnets\n`;
-            outputsCode += `}\n\n`;
+        outputsCode += `output "private_subnet_ids" {\n`;
+        outputsCode += `${indent}description = "List of private subnet IDs"\n`;
+        outputsCode += `${indent}value       = module.vpc.private_subnets\n`;
+        outputsCode += `}\n\n`;
 
-            if (computeType === 'ec2') {
-                outputsCode += `output "instance_public_ips" {\n`;
-                outputsCode += `${indent}description = "Public IP addresses of EC2 instances"\n`;
-                outputsCode += `${indent}value       = aws_instance.app[*].public_ip\n`;
-                outputsCode += `}\n\n`;
-                outputsCode += `output "instance_private_ips" {\n`;
-                outputsCode += `${indent}description = "Private IP addresses of EC2 instances"\n`;
-                outputsCode += `${indent}value       = aws_instance.app[*].private_ip\n`;
-                outputsCode += `}\n\n`;
-            } else if (computeType === 'eks') {
-                outputsCode += `output "eks_cluster_name" {\n`;
-                outputsCode += `${indent}description = "Name of the EKS cluster"\n`;
-                outputsCode += `${indent}value       = module.eks.cluster_name\n`;
-                outputsCode += `}\n\n`;
-                outputsCode += `output "eks_cluster_endpoint" {\n`;
-                outputsCode += `${indent}description = "Endpoint for the EKS cluster"\n`;
-                outputsCode += `${indent}value       = module.eks.cluster_endpoint\n`;
-                outputsCode += `}\n\n`;
-            }
-            if (document.getElementById('enableLoadBalancer').checked) {
-                outputsCode += `output "alb_dns_name" {\n`;
-                outputsCode += `${indent}description = "DNS name of the Load Balancer"\n`;
-                outputsCode += `${indent}value       = module.alb.lb_dns_name\n`;
-                outputsCode += `}\n\n`;
-            }
-            if (document.getElementById('enableObjectStorage').checked) {
-                outputsCode += `output "s3_bucket_id" {\n`;
-                outputsCode += `${indent}description = "ID of the S3 data bucket"\n`;
-                outputsCode += `${indent}value       = aws_s3_bucket.data_bucket.id\n`;
-                outputsCode += `}\n\n`;
-            }
-            if (document.getElementById('enableDatabase').checked) {
-                outputsCode += `output "db_endpoint" {\n`;
-                outputsCode += `${indent}description = "RDS DB instance endpoint"\n`;
-                outputsCode += `${indent}value       = module.db.db_instance_endpoint\n`;
-                outputsCode += `}\n\n`;
-            }
-            if (document.getElementById('enableSecretsManager').checked) {
-                outputsCode += `output "db_secret_arn" {\n`;
-                outputsCode += `${indent}description = "ARN of the database secret in Secrets Manager"\n`;
-                outputsCode += `${indent}value       = aws_secretsmanager_secret.db_credentials.arn\n`;
-                outputsCode += `}\n\n`;
-            }
-            if (document.getElementById('enableKms').checked) {
-                outputsCode += `output "kms_key_arn" {\n`;
-                outputsCode += `${indent}description = "ARN of the generated KMS key"\n`;
-                outputsCode += `${indent}value       = aws_kms_key.main.arn\n`;
-                outputsCode += `}\n\n`;
-            }
-            if (document.getElementById('enableDns').checked) {
-                outputsCode += `output "route53_zone_id" {\n`;
-                outputsCode += `${indent}description = "ID of the Route53 Hosted Zone"\n`;
-                outputsCode += `${indent}value       = aws_route53_zone.main.zone_id\n`;
-                outputsCode += `}\n\n`;
-                outputsCode += `output "route53_name_servers" {\n`;
-                outputsCode += `${indent}description = "Name servers for the Route53 Hosted Zone"\n`;
-                outputsCode += `${indent}value       = aws_route53_zone.main.name_servers\n`;
-                outputsCode += `}\n\n`;
-            }
-            if (document.getElementById('enableCdn').checked) {
-                outputsCode += `output "cloudfront_domain_name" {\n`;
-                outputsCode += `${indent}description = "Domain name of the CloudFront distribution"\n`;
-                outputsCode += `${indent}value       = aws_cloudfront_distribution.s3_distribution.domain_name\n`;
-                outputsCode += `}\n\n`;
-            }
+        if (computeType === 'ec2') {
+          outputsCode += `output "instance_public_ips" {\n`;
+          outputsCode += `${indent}description = "Public IP addresses of EC2 instances"\n`;
+          outputsCode += `${indent}value       = aws_instance.app[*].public_ip\n`;
+          outputsCode += `}\n\n`;
+          outputsCode += `output "instance_private_ips" {\n`;
+          outputsCode += `${indent}description = "Private IP addresses of EC2 instances"\n`;
+          outputsCode += `${indent}value       = aws_instance.app[*].private_ip\n`;
+          outputsCode += `}\n\n`;
+        } else if (computeType === 'eks') {
+          outputsCode += `output "eks_cluster_name" {\n`;
+          outputsCode += `${indent}description = "Name of the EKS cluster"\n`;
+          outputsCode += `${indent}value       = module.eks.cluster_name\n`;
+          outputsCode += `}\n\n`;
+          outputsCode += `output "eks_cluster_endpoint" {\n`;
+          outputsCode += `${indent}description = "Endpoint for the EKS cluster"\n`;
+          outputsCode += `${indent}value       = module.eks.cluster_endpoint\n`;
+          outputsCode += `}\n\n`;
         }
-        // Add outputs for Azure/GCP if implemented
+        if (document.getElementById('enableLoadBalancer').checked) {
+          outputsCode += `output "alb_dns_name" {\n`;
+          outputsCode += `${indent}description = "DNS name of the Load Balancer"\n`;
+          outputsCode += `${indent}value       = module.alb.lb_dns_name\n`;
+          outputsCode += `}\n\n`;
+        }
+        if (document.getElementById('enableObjectStorage').checked) {
+          outputsCode += `output "s3_bucket_id" {\n`;
+          outputsCode += `${indent}description = "ID of the S3 data bucket"\n`;
+          outputsCode += `${indent}value       = aws_s3_bucket.data_bucket.id\n`;
+          outputsCode += `}\n\n`;
+        }
+        if (document.getElementById('enableDatabase').checked) {
+          outputsCode += `output "db_endpoint" {\n`;
+          outputsCode += `${indent}description = "RDS DB instance endpoint"\n`;
+          outputsCode += `${indent}value       = module.db.db_instance_endpoint\n`;
+          outputsCode += `}\n\n`;
+        }
+        if (document.getElementById('enableSecretsManager').checked) {
+          outputsCode += `output "db_secret_arn" {\n`;
+          outputsCode += `${indent}description = "ARN of the database secret in Secrets Manager"\n`;
+          outputsCode += `${indent}value       = aws_secretsmanager_secret.db_credentials.arn\n`;
+          outputsCode += `}\n\n`;
+        }
+        if (document.getElementById('enableKms').checked) {
+          outputsCode += `output "kms_key_arn" {\n`;
+          outputsCode += `${indent}description = "ARN of the generated KMS key"\n`;
+          outputsCode += `${indent}value       = aws_kms_key.main.arn\n`;
+          outputsCode += `}\n\n`;
+        }
+        if (document.getElementById('enableDns').checked) {
+          outputsCode += `output "route53_zone_id" {\n`;
+          outputsCode += `${indent}description = "ID of the Route53 Hosted Zone"\n`;
+          outputsCode += `${indent}value       = aws_route53_zone.main.zone_id\n`;
+          outputsCode += `}\n\n`;
+          outputsCode += `output "route53_name_servers" {\n`;
+          outputsCode += `${indent}description = "Name servers for the Route53 Hosted Zone"\n`;
+          outputsCode += `${indent}value       = aws_route53_zone.main.name_servers\n`;
+          outputsCode += `}\n\n`;
+        }
+        if (document.getElementById('enableCdn').checked) {
+          outputsCode += `output "cloudfront_domain_name" {\n`;
+          outputsCode += `${indent}description = "Domain name of the CloudFront distribution"\n`;
+          outputsCode += `${indent}value       = aws_cloudfront_distribution.s3_distribution.domain_name\n`;
+          outputsCode += `}\n\n`;
+        }
+      }
+      // Add outputs for Azure/GCP if implemented
 
-        return outputsCode;
+      return outputsCode;
     }
-    
+
     // Download files as zip
     async function downloadFiles() {
-        const outputFormat = document.getElementById('outputFormat').value;
-        const projectName = document.getElementById('projectName').value;
+      const outputFormat = document.getElementById('outputFormat').value;
+      const projectName = document.getElementById('projectName').value;
 
-        const mainTfContent = generateMainTfCode();
-        let variablesTfContent = '';
-        let outputsTfContent = '';
+      const mainTfContent = generateMainTfCode();
+      let variablesTfContent = '';
+      let outputsTfContent = '';
 
-        if (outputFormat === 'modules') {
-            variablesTfContent = generateVariablesTfCode();
-            outputsTfContent = generateOutputsTfCode();
-        } else {
-            // For single file, append outputs to main.tf
-            outputsTfContent = generateOutputsTfCode(); // Generate outputs separately
-            if (outputsTfContent.trim() !== '') {
-                mainTfContent += '\n\n' + outputsTfContent;
-            }
+      if (outputFormat === 'modules') {
+        variablesTfContent = generateVariablesTfCode();
+        outputsTfContent = generateOutputsTfCode();
+      } else {
+        // For single file, append outputs to main.tf
+        outputsTfContent = generateOutputsTfCode(); // Generate outputs separately
+        if (outputsTfContent.trim() !== '') {
+          mainTfContent += '\n\n' + outputsTfContent;
         }
+      }
 
-        const zip = new JSZip();
-        zip.file("main.tf", mainTfContent);
-        if (outputFormat === 'modules') {
-            zip.file("variables.tf", variablesTfContent);
-            zip.file("outputs.tf", outputsTfContent);
-        }
+      const zip = new JSZip();
+      zip.file("main.tf", mainTfContent);
+      if (outputFormat === 'modules') {
+        zip.file("variables.tf", variablesTfContent);
+        zip.file("outputs.tf", outputsTfContent);
+      }
 
-        try {
-            const content = await zip.generateAsync({ type: "blob" });
-            saveAs(content, `${projectName}-terraform-config.zip`);
-            showToast('Files downloaded successfully!');
-        } catch (error) {
-            console.error('Error generating zip:', error);
-            showToast('Error downloading files.');
-        }
+      try {
+        const content = await zip.generateAsync({ type: "blob" });
+        saveAs(content, `${projectName}-terraform-config.zip`);
+        showToast('Files downloaded successfully!');
+      } catch (error) {
+        console.error('Error generating zip:', error);
+        showToast('Error downloading files.');
+      }
     }
-    
+
     // Initialize the form
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Show the first tab by default
       showTab(1);
-      
+
       // Set up event listeners for dynamic form elements
       document.getElementById('cloudProvider').dispatchEvent(new Event('change'));
       document.getElementById('backendType').dispatchEvent(new Event('change'));
@@ -2049,7 +2102,7 @@ resource "null_resource" "placeholder" {
       // Check for updates
       checkForUpdates();
     });
-    
+
     // Check for updates
     function checkForUpdates() {
       // In a real implementation, this would fetch from an API
@@ -2060,4 +2113,5 @@ resource "null_resource" "placeholder" {
     }
   </script>
 </body>
+
 </html>
